@@ -19,9 +19,11 @@
 <form action="" method="POST">
 
 <td>
-
-    <input type="submit" value="Cerrar_sesión" name="cerrar_sesion" id="cerrar_sesion"/></td>
-    <td><input type="submit" value="Regresar" name="regresar" id="regresar"></td>
+<div class="btn-container">
+            <input type="submit" value="Cerrar sesión" name="cerrar_sesion" id="cerrar_sesion"/>
+            <input type="submit" value="Regresar" name="regresar" id="regresar">
+            <td><input type="submit" value="Registrar" name="registrar" id="registrar"></td>
+    </div>
 </tr>
 </form>
 <?php 
@@ -33,10 +35,13 @@ if(isset($_POST['cerrar_sesion']))
     header('location: ../../../index.html');
 }
 else if (isset($_POST['regresar'])){
-    header('Location: ../inicio/index_consulta.php');
+    header('Location: ../inicio/admin.php');
+
+}else if (isset($_POST['registrar'])){
+    header('Location: ../registrar/detalle_evento.php');
 }
 
-?>>
+?>
     <div class="formulario">
 
     <h1 class="title">Consulta detalle evento</h1>
@@ -46,7 +51,7 @@ else if (isset($_POST['regresar'])){
                 
                 <td>cantidad</td>
                 <td>valor neto</td>
-               
+                <td>Actualizar/Eliminar</td>
              
                 
 
@@ -67,7 +72,10 @@ else if (isset($_POST['regresar'])){
                 
                 <td><?php echo $fila['cedula']?></td>
                 <td><?php echo $fila['valor_neto']?></td>
-                
+                <td>
+                <a class="hiper" href="" onclick="window.open
+                ('../actualizar y eliminar/detalle_evento.php?id=<?php echo $fila['id_detalle_evento'] ?>','','width=500, height=400, toolbar=NO'); void(null);">Click Aqui</a>
+                </td>
                 
            
              

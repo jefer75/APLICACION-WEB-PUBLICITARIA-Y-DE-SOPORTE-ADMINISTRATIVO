@@ -6,7 +6,7 @@
         $con = $db -> conectar();
 
     //empieza la consulta
-    $sql = $con -> prepare("SELECT * FROM tipo_e WHERE id_tipo_e='".$_GET['id']."'");
+    $sql = $con -> prepare("SELECT * FROM articulos WHERE id_articulo='".$_GET['id']."'");
     $sql -> execute();
     $fila = $sql -> fetch ();
 
@@ -14,20 +14,28 @@
 
     if (isset($_POST['actualizar'])){
 
-        $tipo_evento= $_POST['tipo_evento'];
+        $id_artuculo= $_POST['id_articulo'];
+        $nombre_A = $_POST['nombre_A'];
+        $cantidad= $_POST['cantidad'];
         
-            $insert= $con -> prepare ("UPDATE tipo_e SET tipo_evento='$tipo_evento' WHERE id_tipo_e = '".$_GET['id']."'");
+            $insert= $con -> prepare ("UPDATE articulos SET nombre_A='$nombre_A', cantidad=$cantidad WHERE id_articulo = '".$_GET['id']."'");
             $insert -> execute();
             echo '<script> alert ("Registro actualizado exitosamente");</script>';
             echo '<script> window.close(); </script>';
                 
         }
-    else if (isset($_POST['eliminar'])){
-            $insert= $con -> prepare ("DELETE FROM tipo_e WHERE id_tipo_e= '".$_GET['id']."'");
-            $insert -> execute();
-            echo '<script> alert ("Registro eliminado exitosamente");</script>';
-            echo '<script> window.close(); </script>';
-    }
+
+        else if (isset($_POST['eliminar'])){
+            $id_artuculo= $_POST['id_articulo'];
+            $nombre_A = $_POST['nombre_A'];
+            $cantidad= $_POST['cantidad'];
+            
+                $insert= $con -> prepare ("DELETE FROM articulos WHERE id_articulo = '".$_GET['id']."'");
+                $insert -> execute();
+                echo '<script> alert ("Registro actualizado exitosamente");</script>';
+                echo '<script> window.close(); </script>';
+                    
+            }
 ?>
 
 <!DOCTYPE html>
@@ -42,9 +50,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
+    <title>Actualizar Articulos</title>
     <link rel="stylesheet" href="../../../css/tablaedi.css">
-    <title></title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
 </head>
 <body onload="centrar();">
     
@@ -52,12 +60,17 @@
             <form autocomplete="off" name="form_actualizar" method="POST">
                 <tr>
                     <td>Identificador</td>
-                    <td><input name="id_tipo_e" value="<?php echo $fila['id_tipo_e']?>" readonly></td>
+                    <td><input name="id_articulo" value="<?php echo $fila['id_articulo']?>" readonly></td>
                 </tr>
 
                 <tr>
-                    <td>Tipo de evento</td>
-                    <td><input name="tipo_evento" value="<?php echo $fila['tipo_evento'] ?>" ></td>                 
+                    <td>Nombre</td>
+                    <td><input name="nombre_A" value="<?php echo $fila['nombre_A'] ?>" readonly></td>                 
+                </tr>
+
+                <tr>
+                    <td>Cantidad</td>
+                    <td><input type="cantidad" name="cantidad" value="<?php echo $fila['cantidad'] ?>"></td>                 
                 </tr>
 
                 <tr>

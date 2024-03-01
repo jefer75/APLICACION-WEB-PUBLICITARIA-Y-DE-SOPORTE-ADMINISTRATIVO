@@ -19,9 +19,11 @@
 <form action="" method="POST">
 
 <td>
-
-    <input type="submit" value="Cerrar_sesión" name="cerrar_sesion" id="cerrar_sesion"/></td>
-    <td><input type="submit" value="Regresar" name="regresar" id="regresar"></td>
+<div class="btn-container">
+            <input type="submit" value="Cerrar sesión" name="cerrar_sesion" id="cerrar_sesion"/>
+            <input type="submit" value="Regresar" name="regresar" id="regresar">
+            <td><input type="submit" value="Registrar" name="registrar" id="registrar"></td>
+    </div>
 </tr>
 </form>
 <?php 
@@ -33,10 +35,13 @@ if(isset($_POST['cerrar_sesion']))
     header('location: ../../../index.html');
 }
 else if (isset($_POST['regresar'])){
-    header('Location: ../inicio/index_consulta.php');
+    header('Location: read_compras.php');
+
+}else if (isset($_POST['registrar'])){
+    header('Location: ../registrar/detalle_compra.php');
 }
 
-?>>
+?>
     <div class="formulario">
 
     <h1 class="title">Consultar detalles de compra</h1>
@@ -44,20 +49,16 @@ else if (isset($_POST['regresar'])){
         <table>
             <tr class="gris">
                 
-                <td>cedula</td>
-                <td>fecha</td>
-                <td>contraseña</td>
-             
-                
-
-
-
-
+                <td>Compras</td>
+                <td>Articulo</td>
+                <td>Cantidad</td>
+                <td>Valor Neto</td>
+                <td>Actualizar/eliminar</td>
             </tr>
             
             <?php
              
-                  $query = $con -> prepare("SELECT * FROM detalle_compra");
+                  $query = $con -> prepare("SELECT * FROM detalle_compra ");
                   $query -> execute ();
                   $resultados = $query -> fetchAll(PDO::FETCH_ASSOC);
 
@@ -65,11 +66,14 @@ else if (isset($_POST['regresar'])){
             ?>
             <tr>
                 
-                <td><?php echo $fila['cedula']?></td>
-                <td><?php echo $fila['fecha']?></td>
-                <td><?php echo $fila['contrasena']?></td>
-                
-           
+                <td><?php echo $fila['id_compras']?></td>
+                <td><?php echo $fila['id_articulo']?></td>
+                <td><?php echo $fila['cantidad']?></td>
+                <td><?php echo $fila['valor_neto_c']?></td>
+                <td>
+                <a class="hiper" href="" onclick="window.open
+                ('../actualizar y eliminar/detalle_compra.php?id=<?php echo $fila['id_detalle_compra'] ?>','','width=500, height=400, toolbar=NO'); void(null);">Click Aqui</a>
+                </td>           
              
             </tr>
             <?php

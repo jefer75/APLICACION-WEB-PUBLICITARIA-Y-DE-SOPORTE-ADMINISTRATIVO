@@ -20,9 +20,11 @@
 <form action="" method="POST">
 
 <td>
-
-    <input type="submit" value="Cerrar_sesión" name="cerrar_sesion" id="cerrar_sesion"/></td>
-    <td><input type="submit" value="Regresar" name="regresar" id="regresar"></td>
+<div class="btn-container">
+            <input type="submit" value="Cerrar sesión" name="cerrar_sesion" id="cerrar_sesion"/>
+            <input type="submit" value="Regresar" name="regresar" id="regresar">
+            <td><input type="submit" value="Registrar" name="registrar" id="registrar"></td>
+    </div>
 </tr>
 </form>
 <?php 
@@ -34,7 +36,10 @@ if(isset($_POST['cerrar_sesion']))
     header('location: ../../../index.html');
 }
 else if (isset($_POST['regresar'])){
-    header('Location: ../inicio/index_consulta.php');
+    header('Location: ../inicio/admin.php');
+
+}else if (isset($_POST['registrar'])){
+    header('Location: ../registrar/compras.php');
 }
 
 ?>
@@ -44,13 +49,30 @@ else if (isset($_POST['regresar'])){
         <form method="POST" action="">
         <table>
             <tr class="gris">
-                
+                <td>Detalles de la compra</td>
                 <td>Identificador</td>
                 <td>Fecha de Compra</td>
                 <td>Cedula</td>
                 <td>Valor Total</td>
                 <td>Actualizar/eliminar</td>
+                <td></td>
             </tr>
+            
+            <!-- <?php
+             
+            //       $query = $con -> prepare("SELECT detalle_compra.id_articulo, articulos.id_articulo From detalle_compra Join articulos on detalle_compra.id_articulo =articulos.id_articulo");
+            //       $query -> execute ();
+            //       $resultados = $query -> fetchAll(PDO::FETCH_ASSOC);
+
+            //       foreach ($resultados as $fila){
+            // ?>
+            <tr>
+            //     <td><?php //echo $fila['id_articulo']?></td>
+
+            //     <?php
+            //       }
+            // ?> -->
+            
             
             <?php
              
@@ -60,7 +82,7 @@ else if (isset($_POST['regresar'])){
 
                   foreach ($resultados as $fila){
             ?>
-            <tr>
+                <td><a href="read_detalle_compra.php">Detalles</a></td>
                 <td><?php echo $fila['id_compras']?></td>
                 <td><?php echo $fila['fecha_c']?></td>
                 <td><?php echo $fila['cedula']?></td>

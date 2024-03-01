@@ -6,7 +6,7 @@
         $con = $db -> conectar();
 
     //empieza la consulta
-    $sql = $con -> prepare("SELECT * FROM tipo_e WHERE id_tipo_e='".$_GET['id']."'");
+    $sql = $con -> prepare("SELECT * FROM tipo_articulo WHERE id_tipo_art='".$_GET['id']."'");
     $sql -> execute();
     $fila = $sql -> fetch ();
 
@@ -14,16 +14,17 @@
 
     if (isset($_POST['actualizar'])){
 
-        $tipo_evento= $_POST['tipo_evento'];
+        $id_tipo_art= $_POST['id_tipo_art'];
+        $tipo_articulo= $_POST['tipo_articulo'];
         
-            $insert= $con -> prepare ("UPDATE tipo_e SET tipo_evento='$tipo_evento' WHERE id_tipo_e = '".$_GET['id']."'");
+            $insert= $con -> prepare ("UPDATE tipo_articulo SET tipo_articulo='$tipo_articulo' WHERE id_tipo_art = '".$_GET['id']."'");
             $insert -> execute();
             echo '<script> alert ("Registro actualizado exitosamente");</script>';
             echo '<script> window.close(); </script>';
                 
         }
     else if (isset($_POST['eliminar'])){
-            $insert= $con -> prepare ("DELETE FROM tipo_e WHERE id_tipo_e= '".$_GET['id']."'");
+            $insert= $con -> prepare ("DELETE FROM tipo_articulo WHERE id_tipo_art= '".$_GET['id']."'");
             $insert -> execute();
             echo '<script> alert ("Registro eliminado exitosamente");</script>';
             echo '<script> window.close(); </script>';
@@ -52,12 +53,12 @@
             <form autocomplete="off" name="form_actualizar" method="POST">
                 <tr>
                     <td>Identificador</td>
-                    <td><input name="id_tipo_e" value="<?php echo $fila['id_tipo_e']?>" readonly></td>
+                    <td><input name="id_tipo_art" value="<?php echo $fila['id_tipo_art']?>" readonly></td>
                 </tr>
 
                 <tr>
                     <td>Tipo de evento</td>
-                    <td><input name="tipo_evento" value="<?php echo $fila['tipo_evento'] ?>" ></td>                 
+                    <td><input name="tipo_articulo" value="<?php echo $fila['tipo_articulo'] ?>" ></td>                 
                 </tr>
 
                 <tr>

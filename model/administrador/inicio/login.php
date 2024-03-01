@@ -73,8 +73,8 @@ header('Location: ../../../index.html');
               
                 <button type="submit" name="inicio" value="validar" class="ingresar">Ingresar</button>
               
-                <a href="../registrar/registro_users.php #usuarios" class="enlaces">Registrarse</a>
-                <a href="../registrar/rec_contra.php" class="enlaces" id="contra">Olvide la contraseña</a>
+                <a href="../registrar/registro_user.php #usuarios" class="enlaces">Registrarse</a>
+                <a href="recuperar_con.php" class="enlaces" id="contra">Olvide la contraseña</a>
           </form>   
 </body>
 </html>
@@ -82,7 +82,7 @@ header('Location: ../../../index.html');
 <?php
     }
      else {
-         echo "NO SE ENCUENTRA UNA LICENCIA ACTIVA";
+        echo '<script> alert("REGISTRO EXITOSO");</script>';
          header ("Location: ../../../index.html");
          exit();
      }

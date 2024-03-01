@@ -22,8 +22,7 @@
 <div class="btn-container">
             <input type="submit" value="Cerrar sesión" name="cerrar_sesion" id="cerrar_sesion"/>
             <input type="submit" value="Regresar" name="regresar" id="regresar">
-            <td><input type="submit" value="Registrar" name="registrar" id="registrar"></td>
-    </div>
+</div>
 </tr>
 </form>
 <?php 
@@ -37,46 +36,30 @@ if(isset($_POST['cerrar_sesion']))
 else if (isset($_POST['regresar'])){
     header('Location: ../inicio/admin.php');
 
-}else if (isset($_POST['registrar'])){
-    header('Location: ../registrar/factura.php');
 }
-
 ?>
     <div class="formulario">
 
-    <h1 class="title">Consulta de factura</h1>
+    <h1 class="title">Consulta de tridders</h1>
         <form method="POST" action="">
         <table>
             <tr class="gris">
                 
-                <td>nit</td>
-                <td>nombre de a empresa</td>
-                <td>telefono</td>
-                <td>Actualizar/Eliminar</td>
-                
-
-
-
-
+                <td>Tipo</td>
+                <td>Fecha de modificacion</td>
             </tr>
             
             <?php
              
-                  $query = $con -> prepare("SELECT * FROM factura");
+                  $query = $con -> prepare("SELECT * FROM trig");
                   $query -> execute ();
                   $resultados = $query -> fetchAll(PDO::FETCH_ASSOC);
 
                   foreach ($resultados as $fila){
             ?>
             <tr>
-                
-                <td><?php echo $fila['fecha']?></td>
-                <td><?php echo $fila['descripcion']?></td>
-                <td><?php echo $fila['valor total']?></td>
-                <td>
-                <a class="hiper" href="" onclick="window.open
-                ('../actualizar y eliminar/factura.php?id=<?php echo $fila['id_factura'] ?>','','width=500, height=400, toolbar=NO'); void(null);">Click Aqui</a>
-                </td>
+                <td>Cambio de contraseña</td>
+                <td><?php echo $fila['fecha_creacion']?></td>
              
             </tr>
             <?php
@@ -90,3 +73,4 @@ else if (isset($_POST['regresar'])){
     </div>
 
 </body>
+</html>

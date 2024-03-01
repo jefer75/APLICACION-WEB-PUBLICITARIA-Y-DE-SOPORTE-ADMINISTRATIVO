@@ -6,7 +6,7 @@
         $con = $db -> conectar();
 
     //empieza la consulta
-    $sql = $con -> prepare("SELECT * FROM tipo_e WHERE id_tipo_e='".$_GET['id']."'");
+    $sql = $con -> prepare("SELECT * FROM estados WHERE id_estado='".$_GET['id']."'");
     $sql -> execute();
     $fila = $sql -> fetch ();
 
@@ -14,16 +14,17 @@
 
     if (isset($_POST['actualizar'])){
 
-        $tipo_evento= $_POST['tipo_evento'];
+        $estado= $_POST['estado'];
         
-            $insert= $con -> prepare ("UPDATE tipo_e SET tipo_evento='$tipo_evento' WHERE id_tipo_e = '".$_GET['id']."'");
+            $insert= $con -> prepare ("UPDATE estados SET estado='$estado' WHERE id_estado= '".$_GET['id']."'");
             $insert -> execute();
             echo '<script> alert ("Registro actualizado exitosamente");</script>';
             echo '<script> window.close(); </script>';
                 
         }
+
     else if (isset($_POST['eliminar'])){
-            $insert= $con -> prepare ("DELETE FROM tipo_e WHERE id_tipo_e= '".$_GET['id']."'");
+            $insert= $con -> prepare ("DELETE FROM estados WHERE id_estado= '".$_GET['id']."'");
             $insert -> execute();
             echo '<script> alert ("Registro eliminado exitosamente");</script>';
             echo '<script> window.close(); </script>';
@@ -42,28 +43,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
     <link rel="stylesheet" href="../../../css/tablaedi.css">
-    <title></title>
+    <title>Editar</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
 </head>
 <body onload="centrar();">
     
         <table class="center">
             <form autocomplete="off" name="form_actualizar" method="POST">
+
+            <div class="contenedor">
                 <tr>
                     <td>Identificador</td>
-                    <td><input name="id_tipo_e" value="<?php echo $fila['id_tipo_e']?>" readonly></td>
+                    <td><input name="id_estado" value="<?php echo $fila['id_estado']?>" readonly></td>
                 </tr>
 
                 <tr>
-                    <td>Tipo de evento</td>
-                    <td><input name="tipo_evento" value="<?php echo $fila['tipo_evento'] ?>" ></td>                 
+                    <td>Estado</td>
+                    <td><input type="varchar" name="estado" value="<?php echo $fila['estado']?>"></td>
                 </tr>
 
                 <tr>
                     <td><input type="submit" name="actualizar" value="Actualizar"></td>
                     <td><input type="submit" name="eliminar" value="Eliminar"></td>
                 </tr>
+                </div>
             </form>
         </table>
     

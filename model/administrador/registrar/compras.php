@@ -18,7 +18,7 @@
      if ($id_articulo=="" || $cantidad=="" || $valor=="" || $fecha_c=="" || $cedula=="" || $descripcion=="")
       {
          echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
-         echo '<script>window.location="registro_compras.php"</script>';
+         echo '<script>window.location="compras.php"</script>';
       }
       
       else{
@@ -26,7 +26,7 @@
         $insertSQL = $con->prepare("INSERT INTO compras(id_articulo,cantidad,valor, fecha_c,cedula,descripcion) VALUES('$id_articulo', '$cantidad', '$valor', '$fecha_c', '$cedula', '$descripcion')");
         $insertSQL -> execute();
         echo '<script> alert("REGISTRO EXITOSO");</script>';
-        echo '<script>window.location="../../../login.html"</script>';
+        echo '<script>window.location="../inicio/admin.php"</script>';
      }  
     }
     ?>
@@ -61,7 +61,7 @@ if(isset($_POST['cerrar_sesion']))
     header('location: ../../../index.html');
 }
 else if (isset($_POST['regresar'])){
-    header('Location: ../inicio/index.php');
+    header('Location: ../consultar/read_compras.php');
 }
 
 ?>

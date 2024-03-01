@@ -8,21 +8,13 @@
 
    if ((isset($_POST["MM_insert"]))&&($_POST["MM_insert"]=="formreg"))
    {
-    $nombre_a= $_POST['nombre_a'];
-    $cantidad= $_POST['cantidad'];
+    $tipo= $_POST['tipo'];
 
-     $sql= $con -> prepare ("SELECT * FROM articulos WHERE nombre_A='$nombre_a'");
+     $sql= $con -> prepare ("SELECT * FROM tipo_articulo");
      $sql -> execute();
      $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
-
-     if ($fila){
-        echo '<script>alert ("ESTE RECREADOR YA EXISTE //CAMBIELO//");</script>';
-        echo '<script>window.location="articulos.php"</script>';
-     }
-
-     else
    
-     if ($nombre_a=="" || $cantidad=="")
+     if ($tipo=="")
       {
          echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
          echo '<script>window.location="articulos.php"</script>';
@@ -30,10 +22,10 @@
       
       else{
 
-        $insertSQL = $con->prepare("INSERT INTO articulos(nombre_A, cantidad) VALUES('$nombre_a', '$cantidad')");
+        $insertSQL = $con->prepare("INSERT INTO tipo_articulo (tipo_articulo) VALUES('$tipo')");
         $insertSQL -> execute();
         echo '<script> alert("REGISTRO EXITOSO");</script>';
-        echo '<script>window.location="../inicio/admin.php"</script>';
+        echo '<script>window.location="../consultar/read_tipo_articulo.php"</script>';
      }  
     }
     ?>
@@ -46,7 +38,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Registro de Empleados</title>
+	<title>Tipos de Articulos</title>
 	<link rel="stylesheet" type="text/css" href="../../../css/formularios.css">
 </head>
 <body background="estos-son-lenguajes-programacion-informaticos-experimentados-usan-diario-443165">
@@ -68,7 +60,7 @@ if(isset($_POST['cerrar_sesion']))
     header('location: ../../../index.html');
 }
 else if (isset($_POST['regresar'])){
-    header('Location: ../consultar/read_articulos.php');
+    header('Location: ../consultar/read_tipo_articulo.php');
 }
 
 ?>
@@ -77,19 +69,15 @@ else if (isset($_POST['regresar'])){
 <div class="formulario">
         <div class="signup-box">
             
-            <h1 class="signup-title">REGISTRO ARTICULOS</h1>
+            <h1 class="signup-title">REGISTRO TIPO DE ARTICULOS</h1>
             <br>
             <form method="post" name="formreg" id="formreg" class="signup-form"  autocomplete="off"> 
                 <!--Username -->
                 <br>
-                <label for="nombre_a">Nombre de articulo</label>
+                <label for="nombre_a"></label>
                 <br>
-                <input type="varchar" name="nombre_a" id="documento" placeholder="Nombre de articulo">
-                <br>
-                <label for="cantidad">Cantidad</label>
-                <br>
-                <input type="varchar" name="cantidad" id="nombres" placeholder="Cantidad de articulo">
-                <br>
+                <input type="varchar" name="tipo" id="documento" placeholder="Tipo de Articulo">
+                <br><br>
                                 
                 <input type="submit" name="validar" value="Registro">
                 <input type="hidden" name="MM_insert" value="formreg">

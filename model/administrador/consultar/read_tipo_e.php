@@ -19,9 +19,11 @@
 <form action="" method="POST">
 
 <td>
-
-    <input type="submit" value="Cerrar_sesión" name="cerrar_sesion" id="cerrar_sesion"/></td>
-    <td><input type="submit" value="Regresar" name="regresar" id="regresar"></td>
+<div class="btn-container">
+            <input type="submit" value="Cerrar sesión" name="cerrar_sesion" id="cerrar_sesion"/>
+            <input type="submit" value="Regresar" name="regresar" id="regresar">
+            <td><input type="submit" value="Registrar" name="registrar" id="registrar"></td>
+    </div>
 </tr>
 </form>
 <?php 
@@ -33,13 +35,16 @@ if(isset($_POST['cerrar_sesion']))
     header('location: ../../../index.html');
 }
 else if (isset($_POST['regresar'])){
-    header('Location: ../inicio/index_consulta.php');
+    header('Location: ../inicio/admin.php');
+
+}else if (isset($_POST['registrar'])){
+    header('Location: ../registrar/tipo_e.php');
 }
 
 ?>
     <div class="formulario">
 
-    <h1 class="title">Consulta de eventos</h1>
+    <h1 class="title">Consulta de Tipos de Evento</h1>
         <form method="POST" action="">
         <table>
             <tr class="gris">
@@ -63,7 +68,7 @@ else if (isset($_POST['regresar'])){
                 <td><?php echo $fila['tipo_evento']?></td>
                 <td>
                 <a class="hiper" href="" onclick="window.open
-                ('../actualizar y eliminar/articulos.php?id=<?php echo $fila['id_tipo_e'] ?>','','width=500, height=400, toolbar=NO'); void(null);">Click Aqui</a>
+                ('../actualizar y eliminar/tipo_e.php?id=<?php echo $fila['id_tipo_e'] ?>','','width=500, height=400, toolbar=NO'); void(null);">Click Aqui</a>
                 </td>
             </tr>
             <?php

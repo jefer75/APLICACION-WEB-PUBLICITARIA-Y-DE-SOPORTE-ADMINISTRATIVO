@@ -12,67 +12,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
+    <title>Licencia</title>
     <link rel="stylesheet" href="../../../css/tablas.css">
 </head>
 <body>
 <form action="" method="POST">
 
 <td>
-<div class="btn-container">
-            <input type="submit" value="Cerrar sesión" name="cerrar_sesion" id="cerrar_sesion"/>
-            <input type="submit" value="Regresar" name="regresar" id="regresar">
-            <td><input type="submit" value="Registrar" name="registrar" id="registrar"></td>
-    </div>
+    <td><input type="submit" value="Regresar" name="regresar" id="regresar"></td>
+    <td><input type="submit" value="registrar" name="registrar" id="registrar"></td>
 </tr>
 </form>
 <?php 
 
-if(isset($_POST['cerrar_sesion']))
-{
-    session_destroy();
-
-    header('location: ../../../index.html');
-}
-else if (isset($_POST['regresar'])){
+if (isset($_POST['regresar'])){
     header('Location: ../inicio/admin.php');
 
 }else if (isset($_POST['registrar'])){
-    header('Location: ../registrar/detalle_factura.php');
+    header('Location: ../registrar/licencia.php');
 }
 
 ?>
     <div class="formulario">
 
-    <h1 class="title">Consulta detalle factura</h1>
+
+    <h1 class="title">Licencias</h1>
         <form method="POST" action="">
         <table>
             <tr class="gris">
-                
-                <td>cantidad</td>
-                <td>valor neto</td>
+
+            <td>Licencia</td>
+                <td>Nit</td>
+                <td>Fecha de inicio</td>
+                <td>Fecha de final</td>
+                <td>Estado</td>
                 <td>Actualizar/Eliminar</td>
-             
             </tr>
             
-            <?php
+            <?php 
              
-                  $query = $con -> prepare("SELECT * FROM detalle_factura");
+                  $query = $con -> prepare("SELECT * FROM licencia");
                   $query -> execute ();
                   $resultados = $query -> fetchAll(PDO::FETCH_ASSOC);
 
                   foreach ($resultados as $fila){
             ?>
             <tr>
-                
-                <td><?php echo $fila['cantidad']?></td>
-                <td><?php echo $fila['valor_neto']?></td>
+                <td><?php echo $fila['licencia']?></td>
+                <td><?php echo $fila['nit']?></td>
+                <td><?php echo $fila['fecha_ini']?></td>
+                <td><?php echo $fila['fecha_fin']?></td>
+                <td><?php echo $fila['id_estado']?></td>
+                </td>
                 <td>
                 <a class="hiper" href="" onclick="window.open
-                ('../actualizar y eliminar/detalle_factura.php?id=<?php echo $fila['id_detalle_factura'] ?>','','width=500, height=400, toolbar=NO'); void(null);">Click Aqui</a>
-                </td>              
-
-             
+                ('../actualizar y eliminar/licencia.php?id=<?php echo $fila['id_licencia'] ?>','','width=500, height=400, toolbar=NO'); void(null);">Click Aqui</a>
+                </td>
+                
             </tr>
             <?php
                   }
@@ -85,3 +81,5 @@ else if (isset($_POST['regresar'])){
     </div>
 
 </body>
+
+</html>

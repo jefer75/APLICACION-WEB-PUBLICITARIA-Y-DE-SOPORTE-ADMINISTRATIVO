@@ -81,7 +81,7 @@
              
             <?php   
              
-             $query = $con -> prepare("SELECT  paquetes.id_paquetes, eventos.id_paquetes, paquetes.nombre_paquete From eventos Join paquetes on eventos.id_paquetes = paquetes.id_paquetes");
+             $query = $con -> prepare("SELECT paquetes.id_paquetes, eventos.id_paquetes, paquetes.nombre_paquete From eventos Join paquetes on eventos.id_paquetes = paquetes.id_paquetes");
              $query -> execute ();
              $resultados = $query -> fetchAll(PDO::FETCH_ASSOC);
 

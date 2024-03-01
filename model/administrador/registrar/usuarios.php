@@ -31,7 +31,7 @@
      if ($cedula=="" || $nombre=="" || $correo=="" || $celular=="" || $contrasena=="" || $tipo_user=="" || $id_estado=="" || $nit=="")
       {
          echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
-         echo '<script>window.location="registro_user.php"</script>';
+         echo '<script>window.location="usuarios.php"</script>';
       }
       
       else{
@@ -41,7 +41,7 @@
         $insertSQL = $con->prepare("INSERT INTO usuarios(cedula, nombre, celular, contrasena, correo, id_tipo_user, id_estado, nit) VALUES('$cedula', '$nombre', '$celular', '$pass_cifrado', '$correo', '$tipo_user', '$id_estado', '$nit')");
         $insertSQL -> execute();
         echo '<script> alert("REGISTRO EXITOSO");</script>';
-        echo '<script>window.location="../inicio/admin.html"</script>';
+        echo '<script>window.location="../../../index.html"</script>';
      }  
     }
     ?>

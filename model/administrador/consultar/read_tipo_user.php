@@ -19,9 +19,10 @@
 <form action="" method="POST">
 
 <td>
-
-    <input type="submit" value="Cerrar_sesión" name="cerrar_sesion" id="cerrar_sesion"/></td>
-    <td><input type="submit" value="Regresar" name="regresar" id="regresar"></td>
+<div class="btn-container">
+            <input type="submit" value="Cerrar sesión" name="cerrar_sesion" id="cerrar_sesion"/>
+            <input type="submit" value="Regresar" name="regresar" id="regresar">
+</div>
 </tr>
 </form>
 <?php 
@@ -33,9 +34,9 @@ if(isset($_POST['cerrar_sesion']))
     header('location: ../../../index.html');
 }
 else if (isset($_POST['regresar'])){
-    header('Location: ../inicio/index_consulta.php');
-}
+    header('Location: ../inicio/admin.php');
 
+}
 ?>
     <div class="formulario">
 
@@ -46,8 +47,6 @@ else if (isset($_POST['regresar'])){
                 
                 <td>Identificador</td>
                 <td>Tipo de usuario</td>
-                <td>Actualizar/Eliminar</td>
-
             </tr>
             
             <?php
@@ -61,10 +60,6 @@ else if (isset($_POST['regresar'])){
             <tr>
                 <td><?php echo $fila['id_tipo_user']?></td>
                 <td><?php echo $fila['tipo_user']?></td>
-                <td>
-                <a class="hiper" href="" onclick="window.open
-                ('../actualizar y eliminar/tipo_user.php?id=<?php echo $fila['id_tipo_user'] ?>','','width=500, height=400, toolbar=NO'); void(null);">Click Aqui</a>
-                </td>
             </tr>
             <?php
                   }
