@@ -29,7 +29,7 @@ if (isset($_POST['regresar'])){
     header('Location: ../inicio/admin.php');
 
 }else if (isset($_POST['registrar'])){
-    header('Location: ../registrar/licencia.php');
+    header('Location: ../registrar/empresa.php');
 }
 
 ?>

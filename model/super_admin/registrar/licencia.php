@@ -45,7 +45,7 @@ $fecha_fin = date("Y-m-d",strtotime($fecha_ini." + 1 year"));
         $insertSQL -> execute();
 
         echo '<script> alert("REGISTRO EXITOSO");</script>';
-        echo '<script>window.location="../inicio/admin.php"</script>';
+        echo '<script>window.location="../consultar/read_licencia.php"</script>';
      }  
     }
     ?>
@@ -69,7 +69,7 @@ $fecha_fin = date("Y-m-d",strtotime($fecha_ini." + 1 year"));
 <?php 
 
 if (isset($_POST['regresar'])){
-    header('Location: ../inicio/admin.php');
+    header('Location: ../consultar/read_licencia.php');
 }
 
 ?>

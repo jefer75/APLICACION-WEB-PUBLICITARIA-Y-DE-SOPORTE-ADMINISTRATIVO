@@ -28,7 +28,7 @@
         $insertSQL = $con->prepare("INSERT INTO empresa(nit,nombre_emp,telefono,direccion) VALUES('$nit', '$nombre_emp','$telefono','$direccion')");
         $insertSQL -> execute();
         echo '<script> alert("REGISTRO EXITOSO");</script>';
-        echo '<script>window.location="../inicio/admin.html"</script>';
+        echo '<script>window.location="../consultar/read_empresa.php"</script>';
      }
    }
    ?>
@@ -51,7 +51,7 @@
 <?php 
 
 if (isset($_POST['regresar'])){
-    header('Location: ../inicio/admin.php');
+    header('Location: ../consultar/read_empresa.php');
 }
 
 ?>
