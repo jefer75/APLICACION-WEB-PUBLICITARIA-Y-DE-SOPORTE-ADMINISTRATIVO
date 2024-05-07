@@ -48,6 +48,7 @@
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/tablas.css">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -458,7 +459,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Paquetes</h5>
-              <a href="../registrar/paquetes.php">Añadir</a>
+              <a href="../registrar/paquetes.php" class="añadir">Añadir</a>
 
               <!-- Table with stripped rows -->
               <table class="table datatable">
@@ -492,7 +493,7 @@
                     <td><?php echo $edad_max?></td>
                     <td><?php echo $valor?></td>
                     <td><a href="" class="boton" onclick="window.open
-                    ('../actualizar y eliminar/paquetes.php?id=<?php echo $id ?>','','width= 600,height=500, toolbar=NO');void(null);">Actualizar/Eliminar</a></td>
+                    ('../actualizar y eliminar/paquetes.php?id=<?php echo $id ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i></a></td>
 
                     <?php
                       }

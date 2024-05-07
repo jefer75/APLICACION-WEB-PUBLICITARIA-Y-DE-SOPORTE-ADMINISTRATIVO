@@ -1,0 +1,27 @@
+.añadir{
+    background-color:#198754;
+    color: white;
+    width: 10%;
+    padding: 2%;
+    margin: 2%;
+    float: right;
+    text-decoration: none;
+    border-radius: 1em;
+}
+
+.añadir:hover{
+    background-color: wheat;
+    color: black;
+}
+
+.boton{
+    background-color:#0d6efd;
+    color: white;
+    padding: 5%;
+    margin: 5% 0 5% 10%;
+    border-radius: 1em;
+}
+.boton:hover{
+    background-color: wheat;
+    color: black;
+}
