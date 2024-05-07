@@ -54,6 +54,8 @@
     <link rel="stylesheet" href="../../../css/tablaedi.css">
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
 </head>
+
+
 <body onload="centrar();">
     
         <table class="center">
