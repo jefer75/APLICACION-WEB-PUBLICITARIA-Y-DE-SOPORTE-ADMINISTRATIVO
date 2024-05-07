@@ -55,20 +55,13 @@
 
 <td>
 
-    <input type="submit" value="Cerrar_sesión" name="cerrar_sesion" id="cerrar_sesion"/></td>
     <td><input type="submit" value="Regresar" name="regresar" id="regresar"></td>
 </tr>
 </form>
 <?php 
 
-if(isset($_POST['cerrar_sesion']))
-{
-    session_destroy();
-
-    header('location: ../../../index.html');
-}
-else if (isset($_POST['regresar'])){
-    header('Location: ../consultar/read_paquetes.php');
+if (isset($_POST['regresar'])){
+    header('Location: ../inicio/paquetes.php');
 }
 
 ?>

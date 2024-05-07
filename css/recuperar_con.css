@@ -1,0 +1,74 @@
+
+
+.btn-link
+{
+  color: black; 
+}
+body
+{
+
+    font-family: 'Roboto', sans-serif;
+    background: #031f2b; /* Old browsers */
+  
+ 
+  background: linear-gradient(to bottom, #1ed4dd 0%,#e5e5e5 60%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  ;
+  
+ 
+  
+  }
+
+.login-form
+{
+   padding: 3%;
+   box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.2), 0 4px 4px 0          rgba(0, 0, 0, 0.02);
+   float: none;
+   margin: 0 auto;
+   margin-top: 10vh;
+   border-radius: 5px;
+   text-align: center;
+  background-color: white;
+}
+.login-form .image-logo
+{
+  height: 50px;
+}
+
+.login-form input
+{
+  width: 60%;
+}
+
+.login-form .input-form
+{
+  position:relative;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+.effect-1, 
+.effect-2, 
+.effect-3{border: 0; padding: 7px 0; border-bottom: 1px solid #186f85;}
+
+.effect-1 ~ .focus-border{position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color:  #53bcca ; background:  #53bcca ;transition: 0.4s;}
+.effect-1:focus ~ .focus-border{width: 100%; transition: 0.4s;}
+
+.container{
+    width: 500px;
+    padding: 20px;
+    margin: auto;
+}
+.password-toggle {
+  position: relative;
+}
+.password-toggle input[type="text"] {
+  padding-right: 30px;
+}
+.password-toggle .toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+

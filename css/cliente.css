@@ -1,0 +1,98 @@
+/* body{background-color: rgb(188, 252, 252);}
+h1{color: rgb(0, 0, 0);
+background-color: rgb(0, 37, 247);
+width: 300px;border-radius: 30%;}
+h2{color: rgb(0, 0, 0);
+margin-top: 100px;
+}
+
+
+.imagen{
+    width: 220px;
+    height: 210px;
+    display: inline-flex;
+    margin-left: 100px;
+    margin-right: 120px;
+}
+
+
+ .infantil{
+    display: inline-flex;
+    margin-left: 150px;
+    margin-right: 90px;
+ } */
+
+ body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  h1 {
+    margin-top: 5%;
+    text-align: center;
+    font-size: 35px; /* Tamaño de fuente */
+    color: #ffffff; /* Color del texto */
+    text-transform: uppercase; /* Convertir texto a mayúsculas */
+    letter-spacing: 2px; /* Espaciado entre letras */
+    transition: color 0.3s; /* Transición suave para el cambio de color */
+}
+h1:hover {
+    color: #119efc; /* Cambia el color del texto al pasar el ratón sobre él */
+}
+
+  /* h1 {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 24px; /* Tamaño de fuente */
+    /* color: #333; /* Color del texto */
+    /* text-transform: uppercase; /* Convertir texto a mayúsculas */
+    /* letter-spacing: 2px; /* Espaciado entre letras */
+/* }  */
+
+  header {
+    background-image: url("../imagenes/img52_.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 20em;
+}
+
+#cerrar_sesion {
+    background-color: #4ddffc9c;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+#cerrar_sesion:hover {
+    background-color: #8337caa4;
+}
+  
+  .container {
+    width: 100%;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .image-container {
+    margin: 9%;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: 15em;
+    transition: transform 0.3s ease;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .image-container:hover img {
+    transform: scale(1.1);
+  }
+  

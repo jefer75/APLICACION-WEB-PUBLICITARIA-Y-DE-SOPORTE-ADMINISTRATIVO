@@ -305,14 +305,14 @@
       
       
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
+        <a class="nav-link collapsed" href="paquetes.php">
           <i class="bi bi-gift-fill"></i>
           <span>Paquetes</span>
         </a>
       </li><!-- End Contact Page Nav -->
       
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
+        <a class="nav-link collapsed" href="">
           <i class="bi bi-cart-plus"></i>
           <span>Compras</span>
         </a>
