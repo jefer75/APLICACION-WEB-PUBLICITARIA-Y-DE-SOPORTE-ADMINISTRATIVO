@@ -20,9 +20,9 @@
 
 <td>
 <div class="btn-container">
-            <input type="submit" value="Cerrar sesión" name="cerrar_sesion" id="cerrar_sesion"/>
             <input type="submit" value="Regresar" name="regresar" id="regresar">
             <td><input type="submit" value="Registrar" name="registrar" id="registrar"></td>
+            <td><input type="submit" value="Tipos de articulos" name="tipos" id="tipos"></td>
     </div>
 </tr>
 </form>
@@ -37,8 +37,8 @@ if(isset($_POST['cerrar_sesion']))
 else if (isset($_POST['regresar'])){
     header('Location: ../inicio/admin.php');
 
-}else if (isset($_POST['registrar'])){
-    header('Location: ../registrar/articulos.php');
+}else if (isset($_POST['tipos'])){
+    header('Location: read_tipo_articulo.php');
 }
 
 ?>

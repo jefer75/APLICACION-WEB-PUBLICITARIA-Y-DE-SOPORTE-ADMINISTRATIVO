@@ -60,24 +60,23 @@ header('Location: ../../../index.html');
             <div class="login-box">
 
             <form method="POST" name="form1" id="form1" action="../../../controller/inicio.php" autocomplete="off" class="registration"> 
-                <h1>Error de Inicio de Sesion</h1>
+                <h1>Error de inicio de Sesion</h1>
               
                 <div class="user-box">
-                <input type="text" name="cedula" required="">
-                <label>Username</label>
+                <input type="text" name="cedula" required>
+                <label>Documento</label>
                 </div>
                 
                 <div class="user-box">
-                <input type="password" name="contrasena" required="">
-                <label>Password</label>
+                <input type="password" name="contrasena" required>
+                <label>Contraseña</label>
                 </div>
               
                 <button type="submit" name="inicio" value="validar" class="ingresar">Ingresar</button>
               
-                <a href="../registrar/registro_users.php #usuarios" class="enlaces">Registrarse</a>
-                <a href="../registrar/rec_contra.php" class="enlaces" id="contra">Olvide la contraseña</a>
-            
-          </form>   
+                <a href="../registrar/registro_user.php #usuarios" class="enlaces">Registrarse</a>
+                <a href="recuperar_con.php" class="enlaces" id="contra">Olvide la contraseña</a>
+          </form> 
 </body>
 </html>
 

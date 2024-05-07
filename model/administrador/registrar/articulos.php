@@ -33,7 +33,7 @@
         $insertSQL = $con->prepare("INSERT INTO articulos(nombre_A, cantidad) VALUES('$nombre_a', '$cantidad')");
         $insertSQL -> execute();
         echo '<script> alert("REGISTRO EXITOSO");</script>';
-        echo '<script>window.location="../inicio/admin.php"</script>';
+        echo '<script>window.location="../consultar/read_articulos.php"</script>';
      }  
     }
     ?>
@@ -53,9 +53,6 @@
 
 <form action="" method="POST">
 
-<td>
-
-    <input type="submit" value="Cerrar_sesión" name="cerrar_sesion" id="cerrar_sesion"/></td>
     <td><input type="submit" value="Regresar" name="regresar" id="regresar"></td>
 </tr>
 </form>
@@ -68,6 +65,9 @@ if(isset($_POST['cerrar_sesion']))
     header('location: ../../../index.html');
 }
 else if (isset($_POST['regresar'])){
+    header('Location: ../consultar/read_articulos.php');
+}
+else if (isset($_POST['tipos'])){
     header('Location: ../consultar/read_articulos.php');
 }
 
@@ -90,6 +90,19 @@ else if (isset($_POST['regresar'])){
                 <br>
                 <input type="varchar" name="cantidad" id="nombres" placeholder="Cantidad de articulo">
                 <br>
+                <select class="cont" name="tipo_user">
+                    <option value ="">Seleccione Tipo de articulo</option>
+                    
+                    <?php
+                        $control = $con -> prepare ("SELECT * from tipo_art");
+                        $control -> execute();
+                    while ($fila = $control->fetch(PDO::FETCH_ASSOC)) 
+                    {
+                        echo "<option value=" . $fila['id_tipo_art'] . ">"
+                        . $fila['tipo_articulo'] . "</option>";
+                    } 
+                    ?>
+                </select>
                                 
                 <input type="submit" name="validar" value="Registro">
                 <input type="hidden" name="MM_insert" value="formreg">
