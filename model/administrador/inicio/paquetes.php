@@ -19,7 +19,41 @@
     foreach ($nombres as $fila) {
       $nombre = $fila['nombre'];
     }
-  ?>
+  
+    if ((isset($_POST["MM_insert"]))&&($_POST["MM_insert"]=="formreg"))
+   {
+    $nombre_paquete= $_POST['nombre_paquete'];
+    $edad_min= $_POST['edad_min'];
+    $edad_max= $_POST['edad_max'];
+    $valor= $_POST['valor'];
+
+     $sql= $con -> prepare ("SELECT * FROM paquetes WHERE nombre_paquete='$nombre_paquete'");
+     $sql -> execute();
+     $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
+
+     if ($fila){
+        echo '<script>alert ("ESTE PAQUETE YA EXISTE //CAMBIELO//");</script>';
+        echo '<script>window.location="paquetes.php"</script>';
+     }
+
+     else
+   
+     if ($nombre_paquete=="" || $edad_min=="" || $edad_max=="" || $valor=="")
+      {
+         echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
+         echo '<script>window.location="paquetes.php"</script>';
+      }
+      
+      else{
+
+        $insertSQL = $con->prepare("INSERT INTO paquetes(nombre_paquete, edad_min, edad_max, valor) VALUES('$nombre_paquete', '$edad_min', '$edad_max', '$valor')");
+        $insertSQL -> execute();
+        echo '<script> alert("REGISTRO EXITOSO");</script>';
+        echo '<script>window.location="paquetes.php"</script>';
+     }  
+    }
+    ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -459,7 +493,40 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Paquetes</h5>
+
               <a href="../registrar/paquetes.php" class="añadir">Añadir</a>
+
+              <section class="modal ">
+                <div class="modal__container">
+                    
+                    <a href="#" class="modal__close" id="cerrar">X</a>
+                    <h2 class="modal__title">Registrar paquete</h2>
+                    <form method="post" name="formreg" id="formreg" class="signup-form"  autocomplete="off"> 
+                        <br>
+                        <label for="nombre_paquete">Nombre Paquete</label>
+                        <br>
+                        <input type="varchar" name="nombre_paquete"  placeholder="Nombre paquete">
+                        <br>
+                        <label for="nombre_artistico">Edad Minima</label>
+                        <br>
+                        <input type="varchar" name="edad_min"  placeholder="Edad_min">
+                        <br>
+                        <label for="direccion">Edad_maxima</label>
+                        <br>
+                        <input type="varchar" name="edad_max" placeholder="Edad_max">
+                        <br>
+                        <label for="telefono">valor</label>
+                        <br>
+                        <input type="int" name="valor" pattern="[0-9]{1,15}" title="Solo se permiten numeros" placeholder="valor">
+                        <br>
+                    
+                        <br>
+                        <br>
+                        <input type="submit" name="validar" value="Registro" class="modal__close">
+                        <input type="hidden" name="MM_insert" value="formreg">
+                        </form>
+                  </div>
+              </section>
 
               <!-- Table with stripped rows -->
               <table class="table datatable">
@@ -474,7 +541,6 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
                   <?php
                       $con_paquetes = $con->prepare("SELECT * FROM paquetes");
                       $con_paquetes->execute();
@@ -485,8 +551,9 @@
                         $edad_min = $fila['edad_min'];
                         $edad_max = $fila['edad_max'];
                         $valor = $fila['valor'];
-                      
-                  ?>
+                        
+                    ?>
+                  <tr>
                     <td><?php echo $id?></td>
                     <td><?php echo $nombre_p?></td>
                     <td><?php echo $edad_min?></td>
@@ -495,10 +562,10 @@
                     <td><a href="" class="boton" onclick="window.open
                     ('../actualizar y eliminar/paquetes.php?id=<?php echo $id ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i></a></td>
 
+                  </tr>
                     <?php
                       }
                     ?>
-                  </tr>
                   
                  
                   
@@ -532,6 +599,7 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+  <script src="../../../js/modal.js"></script>
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.umd.js"></script>
