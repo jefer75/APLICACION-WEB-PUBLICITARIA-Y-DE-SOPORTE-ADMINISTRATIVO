@@ -1,3 +1,52 @@
+
+<?php
+    session_start();
+    require_once("db/connection.php");
+    // include("../../../controller/validarSesion.php");
+    $db = new Database();
+    $con = $db -> conectar();
+
+
+   if ((isset($_POST["MM_insert"]))&&($_POST["MM_insert"]=="formreg"))
+   {
+    $nombre= $_POST['nombre'];
+    $cedula= $_POST['cedula'];
+    $celular= $_POST['celular'];
+    $contrasena= $_POST['contrasena'];
+    $correo= $_POST['correo'];
+    $tipo_user= 2;
+    $id_estado= 1;
+    $nit= 123456789; 
+
+     $sql= $con -> prepare ("SELECT * FROM usuarios WHERE cedula='$cedula'");
+     $sql -> execute();
+     $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
+
+     if ($fila){
+        echo '<script>alert ("DOCUMENTO YA EXISTE //CAMBIELO//");</script>';
+        echo '<script>window.location="index.php"</script>';
+     }
+
+     else
+   
+     if ($cedula=="" || $nombre=="" || $correo=="" || $celular=="" || $contrasena=="" || $tipo_user=="" || $id_estado=="" || $nit=="")
+      {
+         echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
+         echo '<script>window.location="index.php"</script>';
+      }
+      
+      else{
+
+        $pass_cifrado = password_hash($contrasena,PASSWORD_DEFAULT, array("pass"=>12));
+        
+        $insertSQL = $con->prepare("INSERT INTO usuarios(cedula, nombre, celular, contrasena, correo, id_tipo_user, id_estado, nit) VALUES('$cedula', '$nombre', '$celular', '$pass_cifrado', '$correo', '$tipo_user', '$id_estado', '$nit')");
+        $insertSQL -> execute();
+        echo '<script> alert("REGISTRO EXITOSO");</script>';
+        echo '<script>window.location="index.php"</script>';
+     }  
+    }
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +57,8 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -81,7 +131,7 @@
                                     <h1 class="display-2 text-white animated slideInDown mb-4">Arlequin Eventos</h1>
                                     <p class="fs-5 fw-medium text-white mb-4 pb-2">En Arlequín eventos, fusionamos la magia de la recreación, la emoción de la animación y la elegancia de la decoración para crear experiencias unicas y memorables.</p>
                                     <a href="#inicio" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Descubre</a>
-                                    <a href="" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Registrate</a>
+                                    <a href="#registrate" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Registrate</a>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +146,7 @@
                                     <h1 class="display-2 text-white animated slideInDown mb-4">Arlequin Eventos</h1>
                                     <p class="fs-5 fw-medium text-white mb-4 pb-2">Creemos que cada evento es una oportunidad para celebrar la vida y crear recuerdos duraderos. ¡Déjamos hacer brillar tu ocasión especial con nuestro toque mágico y creativo!</p>
                                     <a href="#inicio" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Descubre</a>
-                                    <a href="" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Registrate</a>
+                                    <a href="#registrate" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Registrate</a>
                                 </div>
                             </div>
                         </div>
@@ -405,9 +455,9 @@
         </div>
         <!-- Classes End -->
 
-
+        <form method="post" name="formreg" id="formreg" class="signup-form"  autocomplete="off"> 
         <!-- Appointment Start -->
-        <div class="container-xxl py-5">
+        <div class="container-xxl py-5" id="registrate">
             <div class="container">
                 <div class="bg-light rounded">
                     <div class="row g-0">
@@ -415,44 +465,73 @@
                             <div class="h-100 d-flex flex-column justify-content-center p-5">
                                 <h1 class="mb-4">Registrate</h1>
                                 <p>Reistrate para conocer más acerca de los paquetes y hacer tu reservacion</p>
-                                <form>
+                            
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control border-0" id="gname" placeholder="Nombre">
+                                                
+                                                <input  class="form-control border-0" type="text" name="nombre" id="nombres" pattern="[a-zA-Z/s]+{1,40}" title="Solo se permiten letras" placeholder="Digite Nombre">
                                                 <label for="gname">Nombre completo</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input type="cedula" class="form-control border-0" id="gmail" placeholder="Documento">
+                                    
+                                                <input class="form-control border-0"  type="number" name="cedula" id="documento" pattern="[0-9]{1,15}" title="Solo se permiten numeros" placeholder="Digite Documento">
                                                 <label for="cedula">N° Documento</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input type="number" class="form-control border-0" id="cname" placeholder="Telefono">
+                                                
+                                                <input class="form-control border-0"   type="number" name="celular" id="telefono" pattern="[0-9]{1,15}" title="Solo se permiten numeros" placeholder="Digite Telefono">
                                                 <label for="cname">Telefono de Contacto</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input type="email" class="form-control border-0" id="correo" placeholder="Correo">
+                                                <input  class="form-control border-0"  type="email" name="correo" id="correo" placeholder="Digite Correo">
                                                 <label for="cage">Correo</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input type="password" class="form-control border-0" id="password" placeholder="Contraseña">
+                                                <input class="form-control border-0"   type="password" name="contrasena" placeholder="Contraseña">
                                                 <label for="fecha">Contraseña</label>
                                             </div>
                                         </div>
+
+                                            <div class="col-sm-6">
+                                            <div class="form-floating">
+                                                <label  for="nit"></label>
+
+                                                <?php   
+             
+                                                $query = $con -> prepare("SELECT * FROM empresa where nit=123456789");
+                                                $query -> execute ();
+                                                $resultados = $query -> fetchAll(PDO::FETCH_ASSOC);
+
+                                                foreach ($resultados as $fila1){
+                                        ?>
+
+                                    <input class="form-control border-0" type="varchar" name="nombre_emp" value="<?php echo $fila1['nombre_emp']?>" readonly>
+                                            
+
+                                            <?php
+                                                    }
+                                                ?>
+                                            </div>
+                                        </div>
+
+
                                         
                                         <div class="col-12">
-                                            <button class="btn btn-primary w-100 py-3" type="submit">Registrarse</button>
+                                            
+                                            <input class="btn btn-primary w-100 py-3"   type="submit" name="registrarse" value="Registro">
+                                            <input   type="hidden" name="MM_insert" value="formreg">
                                         </div>
                                     </div>
-                                </form>
+                               
                             </div>
                         </div>
                         <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
@@ -464,6 +543,7 @@
                 </div>
             </div>
         </div>
+ </form>
         <!-- Appointment End -->
 
 
