@@ -62,7 +62,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Paquetes</title>
+  <title>Articulos</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -361,22 +361,22 @@
     </a>
     <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
-        <a href="charts-chartjs.html">
-          <i class="bi bi-circle"></i><span>Cabinas de sonido</span>
+        <a href="sonido.php">
+          <i class="bi bi-circle"></i><span>Sonido</span>
         </a>
       </li>
       <li>
-        <a href="charts-apexcharts.html">
+        <a href="luces.php">
           <i class="bi bi-circle"></i><span>Luces</span>
         </a>
       </li>
       <li>
-        <a href="charts-echarts.html">
+        <a href="complementos.php">
           <i class="bi bi-circle"></i><span>Complementos</span>
         </a>
       </li>
       <li>
-        <a href="charts-echarts.html">
+        <a href="inmobiliarios.php">
           <i class="bi bi-circle"></i><span>Inmobiliarios decoracion</span>
         </a>
       </li>
@@ -482,7 +482,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Paquetes</h1>
+      <h1>Articulos</h1>
       
     </div><!-- End Page Title -->
 
@@ -492,39 +492,52 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Paquetes</h5>
+              <h5 class="card-title">Sonido</h5>
 
-              <a href="../registrar/paquetes.php" class="añadir">Añadir</a>
+              <a href="" class="añadir">Añadir</a>
 
               <section class="modal ">
                 <div class="modal__container">
                     
                     <a href="#" class="modal__close" id="cerrar">X</a>
-                    <h2 class="modal__title">Registrar paquete</h2>
+                    <h2 class="modal__title">Registrar Articulo</h2>
                     <form method="post" name="formreg" id="formreg" class="signup-form"  autocomplete="off"> 
-                        <br>
-                        <label for="nombre_paquete">Nombre Paquete</label>
-                        <br>
-                        <input type="varchar" name="nombre_paquete"  placeholder="Nombre paquete">
-                        <br>
-                        <label for="nombre_artistico">Edad Minima</label>
-                        <br>
-                        <input type="varchar" name="edad_min"  placeholder="Edad_min">
-                        <br>
-                        <label for="direccion">Edad_maxima</label>
-                        <br>
-                        <input type="varchar" name="edad_max" placeholder="Edad_max">
-                        <br>
-                        <label for="telefono">valor</label>
-                        <br>
-                        <input type="int" name="valor" pattern="[0-9]{1,15}" title="Solo se permiten numeros" placeholder="valor">
-                        <br>
-                    
-                        <br>
-                        <br>
-                        <input type="submit" name="validar" value="Registro" class="modal__close">
-                        <input type="hidden" name="MM_insert" value="formreg">
-                        </form>
+                      <!--Username -->
+                      <br>
+                      <label for="nombre_a">Nombre de articulo</label>
+                      <br>
+                      <input type="varchar" name="nombre_a" id="documento" class="form_inputs" placeholder="Nombre de articulo">
+                      <br>
+                      <label for="cantidad">Cantidad</label>
+                      <br>
+                      <input type="number" name="cantidad" id="nombres" class="form_inputs" placeholder="Cantidad de articulo">
+                      <br>
+                      <select class="cont" name="tipo_user">
+                          <option value ="">Seleccione Tipo de articulo</option>
+                          
+                          <?php
+                              $control = $con -> prepare ("SELECT * from tipo_articulo");
+                              $control -> execute();
+                          while ($fila = $control->fetch(PDO::FETCH_ASSOC)) 
+                          {
+                              echo "<option value=" . $fila['id_tipo_art'] . ">"
+                              . $fila['tipo_articulo'] . "</option>";
+                          } 
+                          ?>
+                      </select>
+                                      
+                      <br>
+                      <label for="cantidad">Descripcion</label>
+                      <br>
+                      <input type="varchar" name="cantidad" class="form_inputs" id="nombres" placeholder="Cantidad de articulo">
+                      <br>
+                      <label for="cantidad">Valor</label>
+                      <br>
+                      <input type="number" name="cantidad" id="nombres" class="form_inputs" placeholder="Cantidad de articulo">
+
+                      <input type="submit" name="validar" value="Registro">
+                      <input type="hidden" name="MM_insert" value="formreg">
+                    </form>
                   </div>
               </section>
 
@@ -532,32 +545,36 @@
               <table class="table datatable">
                 <thead>
                   <tr>
-                    <th><b>ID</b></th>
+                  <th><b>ID</b></th>
                     <th>Nombre</th>
-                    <th>Edad minima</th>
-                    <th>Edad maxima</th>
-                    <th>Valor</th>
-                    <th>Accion</th>
+                    <th>estado</th>
+                    <th>descripcion</th>
+                    <th>cantidad</th>
+                    <th>valor</th>
+                    <th>Actualizar</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                      $con_paquetes = $con->prepare("SELECT * FROM paquetes");
+                      $con_paquetes = $con->prepare("SELECT * FROM articulos WHERE id_tipo_art = 1");
                       $con_paquetes->execute();
                       $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
                       foreach ($paquetes as $fila) {
-                        $id = $fila['id_paquetes'];
-                        $nombre_p = $fila['nombre_paquete'];
-                        $edad_min = $fila['edad_min'];
-                        $edad_max = $fila['edad_max'];
+                        $id_articulo = $fila['id_articulo'];
+                        $nombre_A = $fila['nombre_A'];
+                        $id_tipo_art = $fila['id_tipo_art'];
+                        $id_estado = $fila['id_estado'];
+                        $descripcion = $fila['descripcion'];
+                        $cantidad = $fila['cantidad'];
                         $valor = $fila['valor'];
                         
                     ?>
                   <tr>
-                    <td><?php echo $id?></td>
-                    <td><?php echo $nombre_p?></td>
-                    <td><?php echo $edad_min?></td>
-                    <td><?php echo $edad_max?></td>
+                    <td><?php echo $id_articulo?></td>
+                    <td><?php echo $nombre_A?></td>
+                    <td><?php echo $id_estado?></td>
+                    <td><?php echo $descripcion?></td>
+                    <td><?php echo $cantidad?></td>
                     <td><?php echo $valor?></td>
                     <td><a href="" class="boton" onclick="window.open
                     ('../actualizar y eliminar/paquetes.php?id=<?php echo $id ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i></a></td>

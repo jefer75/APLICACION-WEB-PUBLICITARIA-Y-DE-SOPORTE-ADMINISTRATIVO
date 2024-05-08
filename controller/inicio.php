@@ -22,7 +22,7 @@ if (isset($_POST["inicio"])) {
         echo "contraseña:",$contrasena;
 
         if ($_SESSION['id_tipo_user'] == 1) {
-            header ("Location: ../model/administrador/inicio/index.php");
+            header ("Location: ../model/administrador/pages/index.php");
             exit();
         }
         

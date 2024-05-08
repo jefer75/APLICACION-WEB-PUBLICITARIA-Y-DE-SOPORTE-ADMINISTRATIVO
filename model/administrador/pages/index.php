@@ -324,22 +324,22 @@
         </a>
         <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="charts-chartjs.html">
-              <i class="bi bi-circle"></i><span>Cabinas de sonido</span>
+            <a href="sonido.php">
+              <i class="bi bi-circle"></i><span>Sonido</span>
             </a>
           </li>
           <li>
-            <a href="charts-apexcharts.html">
+            <a href="luces.php">
               <i class="bi bi-circle"></i><span>Luces</span>
             </a>
           </li>
           <li>
-            <a href="charts-echarts.html">
+            <a href="complementos.php">
               <i class="bi bi-circle"></i><span>Complementos</span>
             </a>
           </li>
           <li>
-            <a href="charts-echarts.html">
+            <a href="inmobiliarios.php">
               <i class="bi bi-circle"></i><span>Inmobiliarios decoracion</span>
             </a>
           </li>

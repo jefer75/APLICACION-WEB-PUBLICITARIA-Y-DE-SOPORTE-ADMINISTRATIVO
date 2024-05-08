@@ -36,10 +36,7 @@
         echo '<script>window.location="../consultar/read_articulos.php"</script>';
      }  
     }
-    ?>
-
-
-
+?>
 
 <!DOCTYPE html>
 <html>
