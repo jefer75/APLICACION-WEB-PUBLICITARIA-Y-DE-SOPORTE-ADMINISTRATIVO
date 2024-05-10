@@ -45,48 +45,157 @@
         }
     </script>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paquetes</title>
-    <link rel="stylesheet" href="../../../css/tablaedi.css">
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Paquetes</title>
+
+
+
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
+
+ <!-- Google Web Fonts -->
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+
+
+
+<!-- Icon Font Stylesheet -->
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+
+
+<!-- Libraries Stylesheet -->
+
+<link href="lib/animate/animate.min.css" rel="stylesheet">
+
+<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+
+<!-- Customized Bootstrap Stylesheet -->
+
+<link href="../../../css/bootstrap.min.css" rel="stylesheet">
+
+
+
+<!-- Template Stylesheet -->
+
+<link href="../../../css/tablaedi.css" rel="stylesheet">
+
 </head>
+
 <body onload="centrar();">
-    
-        <table class="center">
-            <form autocomplete="off" name="form_actualizar" method="POST">
 
-              <tr>
-                    <td>Identificador</td>
-                    <td><input name="id_paquetes" value="<?php echo $fila['id_paquetes']?>" readonly></td>
-                </tr>
 
-                <tr>
-                    <td>Paquetes</td>
-                    <td><input name="nombre_paquete" value="<?php echo $fila['nombre_paquete'] ?>" ></td>
-                </tr>
 
-                <tr>
-                    <td>Edad minima</td>
-                    <td><input name="edad_min" value="<?php echo $fila['edad_min'] ?>" ></td>                 
-                </tr>
+<div class="card">
 
-                <tr>
-                    <td>Edad maxima</td>
-                    <td><input name="edad_max" value="<?php echo $fila['edad_max'] ?>"></td>                 
-                </tr>
+        <div class="card-body">
 
-                <tr>
-                    <td>Valor</td>
-                    <td><input type="valor" name="valor" value="<?php echo $fila['valor'] ?>" ></td>                 
-                </tr>
-               
-                <tr>
-                    <td><input type="submit" name="actualizar" value="Actualizar"></td>
-                    <td><input type="submit" name="eliminar" value="Eliminar"></td>
-                </tr>
-            </form>
-        </table>
+          <h5 class="card-title">Paquetes</h5>
+
+
+
+          <!-- Multi Columns Form -->
+
+          <form  class="row g-3"autocomplete="off" name="form_actualizar" method="POST">
+
+
+
+            <div class="col-md-12">
+
+              <label for="inputName5" class="form-label">Id_paquetes</label>
+
+              <input class="form-control"  name="id_paquetes" value="<?php echo $fila['id_paquetes']?>" readonly>
+
+             
+
+            </div>
+
+            <div class="col-md-6">
+
+              <label for="inputEmail5" class="form-label">Nombre Paquete</label>
+
+              <input class="form-control" name="nombre_paquete" value="<?php echo $fila['nombre_paquete'] ?>" >
+
+            </div>
+
+            <div class="col-md-6">
+
+              <label for="inputPassword5" class="form-label">Edad Minima</label>
+
+              <input  class="form-control"name="edad_min" value="<?php echo $fila['edad_min'] ?>" >
+
+            </div>
+
+            <div class="col-12">
+
+              <label for="inputAddress5" class="form-label">Edad Maxima</label>
+
+              <input class="form-control" name="edad_max" value="<?php echo $fila['edad_max'] ?>">  
+
+            </div>
+
+            <div class="col-12">
+
+              <label for="inputAddress2" class="form-label">Valor</label>
+
+              <input class="form-control" type="valor" name="valor" value="<?php echo $fila['valor'] ?>" >
+
+            </div>
+
+           
+
+           
+
+         
+
+            <div class="text-center">
+
+            <tr>
+
+            <td><input class="btn" style="background-color: #2c8ac9; color: white;" type="submit" name="actualizar" value="Actualizar"></td>
+
+
+
+            <td><input class="btn" style="background-color: gray; color: white;" type="submit" name="eliminar" value="Eliminar"></td>
+
+
+
+
+
+            </tr>
+
+              <!-- <button type="submit" class="btn btn-primary">Submit</button>
+
+ 
+
+              <button type="reset" class="btn btn-secondary">Reset</button> -->
+
+            </div>
+
+          </form><!-- End Multi Columns Form -->
+
+
+
+        </div>
+
+      </div>
+
+
+
+    </div>
     
 </body>
 </html>
