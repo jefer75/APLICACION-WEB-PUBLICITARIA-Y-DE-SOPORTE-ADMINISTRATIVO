@@ -55,7 +55,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>formulario</title>
-	<link rel="stylesheet" type="text/css" href="../../../css/formularios.css">
+	<link rel="stylesheet" href="../../../css/registro.css">
 </head>
 <body background="estos-son-lenguajes-programacion-informaticos-experimentados-usan-diario-443165">
 
@@ -82,7 +82,7 @@ else if (isset($_POST['regresar'])){
 ?>
 
 <div class="formulario">
-        <div class="signup-box">
+        <div class="login-box">
             
             <h1 class="signup-title">REGISTRO USUARIO</h1>
             <br>

@@ -505,7 +505,7 @@
                     
                    <a href="paquetes.php" class="btn" style="background-color: green; color: white;" id="cerrar">X</a>
 
-                    <h2 class="modal__title">Registrar Paquete</h2> 
+                    <h2 class="modal__title">Registrar paquete</h2> 
 
 
                  
