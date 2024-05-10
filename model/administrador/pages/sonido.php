@@ -22,38 +22,38 @@
   
     if ((isset($_POST["MM_insert"]))&&($_POST["MM_insert"]=="formreg"))
    {
-    $nombre_paquete= $_POST['nombre_paquete'];
-    $edad_min= $_POST['edad_min'];
-    $edad_max= $_POST['edad_max'];
+    $nombre_A= $_POST['nombre_A'];
+    $descripcion= $_POST['descripcion'];
+    $id_tipo_art= $_POST['id_tipo_art'];
+    $cantidad= $_POST['cantidad'];
     $valor= $_POST['valor'];
 
-     $sql= $con -> prepare ("SELECT * FROM paquetes WHERE nombre_paquete='$nombre_paquete'");
+     $sql= $con -> prepare ("SELECT * FROM articulos WHERE nombre_A='$nombre_A'");
      $sql -> execute();
      $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
 
      if ($fila){
         echo '<script>alert ("ESTE PAQUETE YA EXISTE //CAMBIELO//");</script>';
-        echo '<script>window.location="paquetes.php"</script>';
+        echo '<script>window.location="luces.php"</script>';
      }
 
      else
    
-     if ($nombre_paquete=="" || $edad_min=="" || $edad_max=="" || $valor=="")
+     if ($nombre_A=="" || $descripcion=="" || $id_tipo_art=="" || $cantidad=="" || $valor=="")
       {
          echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
-         echo '<script>window.location="paquetes.php"</script>';
+         echo '<script>window.location="luces.php"</script>';
       }
       
       else{
 
-        $insertSQL = $con->prepare("INSERT INTO paquetes(nombre_paquete, edad_min, edad_max, valor) VALUES('$nombre_paquete', '$edad_min', '$edad_max', '$valor')");
+        $insertSQL = $con->prepare("INSERT INTO `articulos`(`nombre_A`, `id_tipo_art`, `id_estado`, `descripcion`, `cantidad`, `valor`) VALUES('$nombre_A', '$id_tipo_art',1, '$descripcion', '$cantidad', '$valor')");
         $insertSQL -> execute();
         echo '<script> alert("REGISTRO EXITOSO");</script>';
-        echo '<script>window.location="paquetes.php"</script>';
+        echo '<script>window.location="luces.php"</script>';
      }  
     }
     ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -496,94 +496,94 @@
 
               <a href="" class="añadir">Añadir</a>
 
-              <section class="modal ">
-                <div class="modal__container">
-                    
-                    <a href="#" class="modal__close" id="cerrar">X</a>
-                    <h2 class="modal__title">Registrar Articulo</h2>
-                    <form method="post" name="formreg" id="formreg" class="signup-form"  autocomplete="off"> 
-                      <!--Username -->
-                      <br>
-                      <label for="nombre_a">Nombre de articulo</label>
-                      <br>
-                      <input type="varchar" name="nombre_a" id="documento" class="form_inputs" placeholder="Nombre de articulo">
-                      <br>
-                      <label for="cantidad">Cantidad</label>
-                      <br>
-                      <input type="number" name="cantidad" id="nombres" class="form_inputs" placeholder="Cantidad de articulo">
-                      <br>
-                      <select class="cont" name="tipo_user">
-                          <option value ="">Seleccione Tipo de articulo</option>
-                          
-                          <?php
-                              $control = $con -> prepare ("SELECT * from tipo_articulo");
-                              $control -> execute();
-                          while ($fila = $control->fetch(PDO::FETCH_ASSOC)) 
-                          {
-                              echo "<option value=" . $fila['id_tipo_art'] . ">"
-                              . $fila['tipo_articulo'] . "</option>";
-                          } 
-                          ?>
-                      </select>
-                                      
-                      <br>
-                      <label for="cantidad">Descripcion</label>
-                      <br>
-                      <input type="varchar" name="cantidad" class="form_inputs" id="nombres" placeholder="Cantidad de articulo">
-                      <br>
-                      <label for="cantidad">Valor</label>
-                      <br>
-                      <input type="number" name="cantidad" id="nombres" class="form_inputs" placeholder="Cantidad de articulo">
-
-                      <input type="submit" name="validar" value="Registro">
-                      <input type="hidden" name="MM_insert" value="formreg">
-                    </form>
-                  </div>
-              </section>
-
-              <!-- Table with stripped rows -->
-              <table class="table datatable">
-                <thead>
-                  <tr>
-                  <th><b>ID</b></th>
-                    <th>Nombre</th>
-                    <th>estado</th>
-                    <th>descripcion</th>
-                    <th>cantidad</th>
-                    <th>valor</th>
-                    <th>Actualizar</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                      $con_paquetes = $con->prepare("SELECT * FROM articulos WHERE id_tipo_art = 1");
-                      $con_paquetes->execute();
-                      $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
-                      foreach ($paquetes as $fila) {
-                        $id_articulo = $fila['id_articulo'];
-                        $nombre_A = $fila['nombre_A'];
-                        $id_tipo_art = $fila['id_tipo_art'];
-                        $id_estado = $fila['id_estado'];
-                        $descripcion = $fila['descripcion'];
-                        $cantidad = $fila['cantidad'];
-                        $valor = $fila['valor'];
+<section class="modal ">
+  <div class="modal__container">
+      
+      <a href="#" class="modal__close" id="cerrar">X</a>
+      <h2 class="modal__title">Registrar Articulo</h2>
+      <form method="post" name="formreg" id="formreg" class="signup-form"  autocomplete="off"> 
+        <!--Username -->
+        <br>
+        <label for="nombre_A">Nombre de articulo</label>
+        <br>
+        <input type="varchar" name="nombre_A" id="nombre_A" class="form_inputs" placeholder="Nombre de articulo">
+        <br>
+        <label for="descripcion">descripcion</label>
+        <br>
+        <input type="varchar" name="descripcion" id="descripcion" class="form_inputs" placeholder="descripcion de articulo">
+        <br>
+        
+        <select class="cont" name="id_tipo_art">
+            <option value ="">Seleccione Tipo de articulo</option>
+            
+            <?php
+                $control = $con -> prepare ("SELECT * from tipo_articulo");
+                $control -> execute();
+            while ($fila = $control->fetch(PDO::FETCH_ASSOC)) 
+            {
+                echo "<option value=" . $fila['id_tipo_art'] . ">"
+                . $fila['tipo_articulo'] . "</option>";
+            } 
+            ?>
+        </select>
                         
-                    ?>
-                  <tr>
-                    <td><?php echo $id_articulo?></td>
-                    <td><?php echo $nombre_A?></td>
-                    <td><?php echo $id_estado?></td>
-                    <td><?php echo $descripcion?></td>
-                    <td><?php echo $cantidad?></td>
-                    <td><?php echo $valor?></td>
-                    <td><a href="" class="boton" onclick="window.open
-                    ('../actualizar y eliminar/paquetes.php?id=<?php echo $id ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i></a></td>
+        <br>
+        <label for="cantidad">cantidad</label>
+        <br>
+        <input type="number" name="cantidad" class="form_inputs" id="cantidad" placeholder="Cantidad de articulo">
+        <br>
+        <label for="Valor">Valor</label>
+        <br>
+        <input type="number" name="valor" id="Valor" class="form_inputs" placeholder="valor de articulo">
 
-                  </tr>
-                    <?php
-                      }
-                    ?>
-                  
+        <input type="submit" name="validar" value="Registro">
+        <input type="hidden" name="MM_insert" value="formreg">
+      </form>
+    </div>
+</section>
+
+<!-- Table with stripped rows -->
+<table class="table datatable">
+  <thead>
+    <tr>
+    <th><b>ID</b></th>
+      <th>Nombre</th>
+      <th>estado</th>
+      <th>descripcion</th>
+      <th>cantidad</th>
+      <th>valor</th>
+      <th>Actualizar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+        $con_paquetes = $con->prepare("SELECT * FROM articulos WHERE id_tipo_art = 1");
+        $con_paquetes->execute();
+        $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($paquetes as $fila) {
+          $id_articulo = $fila['id_articulo'];
+          $nombre_A = $fila['nombre_A'];
+          $id_tipo_art = $fila['id_tipo_art'];
+          $id_estado = $fila['id_estado'];
+          $descripcion = $fila['descripcion'];
+          $cantidad = $fila['cantidad'];
+          $valor = $fila['valor'];
+          
+      ?>
+    <tr>
+      <td><?php echo $id_articulo?></td>
+      <td><?php echo $nombre_A?></td>
+      <td><?php echo $id_estado?></td>
+      <td><?php echo $descripcion?></td>
+      <td><?php echo $cantidad?></td>
+      <td><?php echo $valor?></td>
+      <td><a href="" class="boton" onclick="window.open
+       ('../actualizar y eliminar/articulos.php?id=<?php echo $id_articulo ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i></a></td>
+
+    </tr>
+      <?php
+        }
+      ?>
                  
                   
                 </tbody>

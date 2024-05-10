@@ -496,7 +496,7 @@
 
               <a href="../registrar/paquetes.php" class="añadir">Añadir</a>
 
-              <section class="modal ">
+              <section class="modal">
                 <div class="modal__container">
                     
                     <a href="#" class="modal__close" id="cerrar">X</a>

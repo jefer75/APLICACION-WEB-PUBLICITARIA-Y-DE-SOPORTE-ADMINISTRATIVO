@@ -47,7 +47,7 @@
       
       else{
 
-        $insertSQL = $con->prepare("INSERT INTO `articulos`(`nombre_A`, `id_tipo_art`, `id_estado`, `descripcion`, `cantidad`, `valor`) VALUES('$nombre_A', '$id_tipo_art',2, '$descripcion', '$cantidad', '$valor')");
+        $insertSQL = $con->prepare("INSERT INTO `articulos`(`nombre_A`, `id_tipo_art`, `id_estado`, `descripcion`, `cantidad`, `valor`) VALUES('$nombre_A', '$id_tipo_art',3, '$descripcion', '$cantidad', '$valor')");
         $insertSQL -> execute();
         echo '<script> alert("REGISTRO EXITOSO");</script>';
         echo '<script>window.location="luces.php"</script>';
@@ -385,42 +385,42 @@
   </li><!-- End Charts Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-      <i class="bi bi-cash-coin"></i><span>Ventas</span><i class="bi bi-chevron-down ms-auto"></i>
-    </a>
-    <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-      <li>
-        <a href="icons-bootstrap.html">
-          <i class="bi bi-circle"></i><span>Cumpleaños</span>
+        <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-cash-coin"></i><span>Ventas</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-      </li>
-      <li>
-        <a href="icons-remix.html">
-          <i class="bi bi-circle"></i><span>Baby Shower</span>
-        </a>
-      </li>
-      <li>
-        <a href="icons-boxicons.html">
-          <i class="bi bi-circle"></i><span>XV Años</span>
-        </a>
-      </li>
-      <li>
-        <a href="icons-boxicons.html">
-          <i class="bi bi-circle"></i><span>Primera Comunión</span>
-        </a>
-      </li>
-      <li>
-        <a href="icons-boxicons.html">
-          <i class="bi bi-circle"></i><span>Matrimonio</>
-        </a>span
-      </li>
-      <li>
-        <a href="icons-boxicons.html">
-          <i class="bi bi-circle"></i><span>Hallowen</span>
-        </a>
-      </li>
-    </ul>
-  </li><!-- End Icons Nav -->
+        <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="cumple.php">
+              <i class="bi bi-circle"></i><span>Cumpleaños</span>
+            </a>
+          </li>
+          <li>
+            <a href="baby.php">
+              <i class="bi bi-circle"></i><span>Baby Shower</span>
+            </a>
+          </li>
+          <li>
+            <a href="xv_anos.php">
+              <i class="bi bi-circle"></i><span>XV Años</span>
+            </a>
+          </li>
+          <li>
+            <a href="comunion.php">
+              <i class="bi bi-circle"></i><span>Primera Comunión</span>
+            </a>
+          </li>
+          <li>
+            <a href="matrimonio.php">
+              <i class="bi bi-circle"></i><span>Matrimonio</span>
+            </a>
+          </li>
+          <li>
+            <a href="hallowen.php">
+              <i class="bi bi-circle"></i><span>Hallowen</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Icons Nav -->
 
   <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
@@ -483,7 +483,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Articulos</h1>
+      <h1>ventas</h1>
       
     </div><!-- End Page Title -->
 
@@ -493,100 +493,122 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">luces</h5>
+              <h5 class="card-title">XV años</h5>
 
               <a href="" class="añadir">Añadir</a>
 
-              <section class="modal ">
-                <div class="modal__container">
-                    
-                    <a href="#" class="modal__close" id="cerrar">X</a>
-                    <h2 class="modal__title">Registrar Articulo</h2>
-                    <form method="post" name="formreg" id="formreg" class="signup-form"  autocomplete="off"> 
-                      <!--Username -->
-                      <br>
-                      <label for="nombre_A">Nombre de articulo</label>
-                      <br>
-                      <input type="varchar" name="nombre_A" id="nombre_A" class="form_inputs" placeholder="Nombre de articulo">
-                      <br>
-                      <label for="descripcion">descripcion</label>
-                      <br>
-                      <input type="varchar" name="descripcion" id="descripcion" class="form_inputs" placeholder="descripcion de articulo">
-                      <br>
-                      
-                      <select class="cont" name="id_tipo_art">
-                          <option value ="">Seleccione Tipo de articulo</option>
-                          
-                          <?php
-                              $control = $con -> prepare ("SELECT * from tipo_articulo");
-                              $control -> execute();
-                          while ($fila = $control->fetch(PDO::FETCH_ASSOC)) 
-                          {
-                              echo "<option value=" . $fila['id_tipo_art'] . ">"
-                              . $fila['tipo_articulo'] . "</option>";
-                          } 
-                          ?>
-                      </select>
-                                      
-                      <br>
-                      <label for="cantidad">cantidad</label>
-                      <br>
-                      <input type="number" name="cantidad" class="form_inputs" id="cantidad" placeholder="Cantidad de articulo">
-                      <br>
-                      <label for="Valor">Valor</label>
-                      <br>
-                      <input type="number" name="valor" id="Valor" class="form_inputs" placeholder="valor de articulo">
-
-                      <input type="submit" name="validar" value="Registro">
-                      <input type="hidden" name="MM_insert" value="formreg">
-                    </form>
-                  </div>
-              </section>
-
-              <!-- Table with stripped rows -->
-              <table class="table datatable">
-                <thead>
-                  <tr>
-                  <th><b>ID</b></th>
-                    <th>Nombre</th>
-                    <th>estado</th>
-                    <th>descripcion</th>
-                    <th>cantidad</th>
-                    <th>valor</th>
-                    <th>Actualizar</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                      $con_paquetes = $con->prepare("SELECT * FROM articulos WHERE id_tipo_art = 2");
-                      $con_paquetes->execute();
-                      $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
-                      foreach ($paquetes as $fila) {
-                        $id_articulo = $fila['id_articulo'];
-                        $nombre_A = $fila['nombre_A'];
-                        $id_tipo_art = $fila['id_tipo_art'];
-                        $id_estado = $fila['id_estado'];
-                        $descripcion = $fila['descripcion'];
-                        $cantidad = $fila['cantidad'];
-                        $valor = $fila['valor'];
+<section class="modal ">
+  <div class="modal__container">
+      
+      <a href="#" class="modal__close" id="cerrar">X</a>
+      <h2 class="modal__title">Registrar paquete</h2>
+      <form method="post" name="formreg" id="formreg" class="signup-form"  autocomplete="off"> 
+        <!--Username -->
+        <br>
+        <label for="nombre_paquete">Nombre de paquete</label>
+        <br>
+        <input type="varchar" name="nombre_paquete" id="nombre_paquete" class="form_inputs" placeholder="Nombre de articulo">
+        <br>
+        <br>
+        <select class="cont" name="id_tipo_art">
+            <option value ="">Seleccione Tipo de paquete</option>
+            
+            <?php
+                $control = $con -> prepare ("SELECT * from tipo_e");
+                $control -> execute();
+            while ($fila = $control->fetch(PDO::FETCH_ASSOC)) 
+            {
+                echo "<option value=" . $fila['id_tipo_e'] . ">"
+                . $fila['tipo_evento'] . "</option>";
+            } 
+            ?>
+        </select>
+     <br>           
+        <br>
+        <label for="lugar">lugar</label>
+        <br>
+        <input type="varchar" name="lugar" id="lugar" class="form_inputs" placeholder="descripcion de articulo">
+        <br>
+        <label for="cant_ninos">cantidad niños</label>
+        <br>
+        <input type="varchar" name="cant_ninos" id="cant_ninos" class="form_inputs" placeholder="descripcion de articulo">
+        <br>
+        <label for="hora_inicio">hora inicio</label>
+        <br>
+        <input type="varchar" name="hora_inicio" id="hora_inicio" class="form_inputs" placeholder="descripcion de articulo">
                         
-                    ?>
-                  <tr>
-                    <td><?php echo $id_articulo?></td>
-                    <td><?php echo $nombre_A?></td>
-                    <td><?php echo $id_estado?></td>
-                    <td><?php echo $descripcion?></td>
-                    <td><?php echo $cantidad?></td>
-                    <td><?php echo $valor?></td>
-                    <td><a href="" class="boton" onclick="window.open
-                     ('../actualizar y eliminar/articulos.php?id=<?php echo $id_articulo ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i></a></td>
+        <br>
+        <label for="contacto">contacto</label>
+        <br>
+        <input type="number" name="contacto" class="form_inputs" id="contacto" placeholder="Cantidad de articulo">
+        <br>
+        <label for="fecha">fecha de evento</label>
+        <br>
+        <input type="number" name="fecha" class="form_inputs" id="fecha" placeholder="Cantidad de articulo">
+        <br>
+        <label for="descripcion">descripcion</label>
+        <br>
+        <input type="number" name="descripcion" class="form_inputs" id="descripcion" placeholder="Cantidad de articulo">
+        <br>
+        <label for="valor_total">Valor</label>
+        <br>
+        <input type="number" name="valor_total" id="valor_total" class="form_inputs" placeholder="valor de articulo">
 
-                  </tr>
-                    <?php
-                      }
-                    ?>
-                  
-                 
+        <input type="submit" name="validar" value="Registro">
+        <input type="hidden" name="MM_insert" value="formreg">
+      </form>
+    </div>
+</section>
+
+<!-- Table with stripped rows -->
+<table class="table datatable">
+  <thead>
+    <tr>
+    <th><b>paquetes</b></th>
+      <th>lugar</th>
+      <th>cantidad de niños</th>
+      <th>hora inicio</th>
+      <th>contacto</th>
+      <th>fecha de evento</th>
+      <th>descripcion</th>
+      <th>valor</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+        $con_paquetes = $con->prepare("SELECT factura. id_factura,factura. fecha, eventos. id_paquetes, paquetes. nombre_paquete, eventos.lugar, eventos.cant_ninos, eventos.hora_inicio, eventos.contacto, factura.descripcion, factura.valor_total  FROM factura INNER JOIN eventos ON eventos.id_eventos = factura.id_eventos INNER JOIN paquetes ON paquetes.id_paquetes = eventos.id_paquetes WHERE id_tipo_e = 3");
+        $con_paquetes->execute();
+        $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($paquetes as $fila) {
+
+            $nombre_paquete = $fila['nombre_paquete'];
+          $lugar = $fila['lugar'];
+          $cant_ninos = $fila['cant_ninos'];
+          $hora_inicio = $fila['hora_inicio'];
+          $contacto = $fila['contacto'];
+          $fecha = $fila['fecha'];
+          $descripcion = $fila['descripcion'];
+          $valor_total = $fila['valor_total'];
+          
+      ?>
+      
+    <tr>
+    <td><?php echo $nombre_paquete?></td>
+      <td><?php echo $lugar?></td>
+      <td><?php echo $cant_ninos?></td>
+      <td><?php echo $hora_inicio?></td>
+      <td><?php echo $contacto?></td>
+      <td><?php echo $fecha?></td>
+      <td><?php echo $descripcion?></td>
+      <td><?php echo $valor_total?></td>
+      <td><a href="" class="boton" onclick="window.open
+       ('../actualizar y eliminar/articulos.php?id=<?php echo $id_articulo ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i></a></td>
+
+    </tr>
+      <?php
+        }
+      ?>
                   
                 </tbody>
               </table>

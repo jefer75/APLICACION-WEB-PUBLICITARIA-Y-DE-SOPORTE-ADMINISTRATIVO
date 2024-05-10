@@ -352,32 +352,32 @@
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="icons-bootstrap.html">
+            <a href="cumple.php">
               <i class="bi bi-circle"></i><span>Cumpleaños</span>
             </a>
           </li>
           <li>
-            <a href="icons-remix.html">
+            <a href="baby.php">
               <i class="bi bi-circle"></i><span>Baby Shower</span>
             </a>
           </li>
           <li>
-            <a href="icons-boxicons.html">
+            <a href="xv_anos.php">
               <i class="bi bi-circle"></i><span>XV Años</span>
             </a>
           </li>
           <li>
-            <a href="icons-boxicons.html">
+            <a href="comunion.php">
               <i class="bi bi-circle"></i><span>Primera Comunión</span>
             </a>
           </li>
           <li>
-            <a href="icons-boxicons.html">
+            <a href="matrimonio.php">
               <i class="bi bi-circle"></i><span>Matrimonio</span>
             </a>
           </li>
           <li>
-            <a href="icons-boxicons.html">
+            <a href="hallowen.php">
               <i class="bi bi-circle"></i><span>Hallowen</span>
             </a>
           </li>
