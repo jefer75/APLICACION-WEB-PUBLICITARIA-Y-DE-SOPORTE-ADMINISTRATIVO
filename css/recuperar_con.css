@@ -1,6 +1,5 @@
 .py-5{
   background-color: white;
-  margin-top: 5%;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -8,17 +7,22 @@
 }
 
 .bg-light{
-  width: 70vh;
+  width: 90vh;
   padding: 0;
   text-align: center;
   display: flex;
   justify-content: center;
-  align-items: center;
+  
 }
 
-.gmail{
-  width: 30vh;
+.inputs {
   
+  flex-direction: column;
+  
+}
+
+.inputs .form-floating {
+  width: 50vh;
 }
 
 .ingresar{
