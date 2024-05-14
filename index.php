@@ -99,17 +99,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="index.html" class="nav-item nav-link active">inicio</a>
+                    <a href="index.html" class="nav-item nav-link active">Inicio</a>
 
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Recreacion</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Recreación</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                            <a href="infantil.html" class="dropdown-item">Infanitl</a>
+                            <a href="infantil.html" class="dropdown-item">Infantil</a>
                             <a href="adultos.html" class="dropdown-item">Adultos</a>
                         </div>
                     </div>
 
-                    <a href="decoracion.html" class="nav-item nav-link">Decoracion</a>
+                    <a href="decoracion.html" class="nav-item nav-link">Decoración</a>
                     <a href="sobre_nosotros.html" class="nav-item nav-link">Sobre Nosotros</a>                    
                     <a href="contact.html" class="nav-item nav-link">Contactanos</a>
                 </div>
@@ -174,8 +174,8 @@
                                 <span class="bg-info"></span>
                             </div>
                             <div class="facility-text bg-info">
-                                <h3 class="text-info mb-3">Recreacion infantil</h3>
-                                <p class="mb-0">Son todas las dinamicas que realizamos con los niños para que ellos sean los que mas se divierten en su dia.</p>
+                                <h3 class="text-info mb-3">Recreación infantil</h3>
+                                <p class="mb-0">Son todas las dinámicas que realizamos con los niños para que ellos sean los que mas se divierten en su dia.</p>
                                 
                             </div>
                         </div>
@@ -188,8 +188,8 @@
                                 <span class="bg-warning"></span>
                             </div>
                             <div class="facility-text bg-warning">
-                                <h3 class="text-warning mb-3 ">Recreacion para adultos</h3>
-                                <p class="mb-0">Son aquellas actividades en las que incluimos a los adultos para que haga parte de la diversion</p>
+                                <h3 class="text-warning mb-3 ">Recreación para adultos</h3>
+                                <p class="mb-0">Son aquellas actividades en las que incluimos a los adultos para que haga parte de la diversión</p>
                                 
                             </div>
                         </div>
@@ -202,8 +202,8 @@
                                 <span class="bg-primary"></span>
                             </div>
                             <div class="facility-text bg-primary">
-                                <h3 class="text-primary mb-3 ">Decoracion</h3>
-                                <p class="mb-0">Nuestro equipo de trabajo esta especializado para decorar tu salon como tu desees.</p>
+                                <h3 class="text-primary mb-3 ">Decoración</h3>
+                                <p class="mb-0">Nuestro equipo de trabajo esta especializado para decorar tu salón como tu desees.</p>
                             </div>
                         </div>
                     </div>
@@ -216,8 +216,8 @@
                             </div>
                             <div class="facility-text bg-success">
                                 
-                                <h3 class="text-success mb-3">Logistica</h3>
-                                <p class="mb-0">El servicio de logistica consiste en ayudarte a atender de una buena manera a los invitados.</p>
+                                <h3 class="text-success mb-3">Logística</h3>
+                                <p class="mb-0">El servicio de logística consiste en ayudarte a atender de una buena manera a los invitados.</p>
                             </div>
                         </div>
                     </div>

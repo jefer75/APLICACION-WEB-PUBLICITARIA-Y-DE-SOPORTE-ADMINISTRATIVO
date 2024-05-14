@@ -127,7 +127,6 @@ header('Location: ../../../index.php');
                   <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                       <div class="h-100 d-flex flex-column justify-content-center p-5 contenido">
                           <h1 class="mb-4">Recuperar Contraseña</h1>
-                          <p>Recupera</p>
                           <form action="../../../controller/inicio.php" method="POST" name="form1">
                               <div class="row g-3 inputs">
                                 <div class="col-sm-6 user">
