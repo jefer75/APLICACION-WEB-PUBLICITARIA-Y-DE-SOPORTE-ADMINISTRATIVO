@@ -5,20 +5,20 @@
     $db = new DataBase();
     $con = $db -> conectar();
 
-    $cedula = $_SESSION['cedula'];
-    $con_nombre = $con->prepare("SELECT * FROM usuarios WHERE cedula = $cedula");
-    $con_nombre->execute();
-    $nombres = $con_nombre->fetchAll(PDO::FETCH_ASSOC);
-    foreach ($nombres as $fila) {
-      $nombre = $fila['nombre'];
-    }
+    // $cedula = $_SESSION['cedula'];
+    // $con_nombre = $con->prepare("SELECT * FROM usuarios WHERE cedula = $cedula");
+    // $con_nombre->execute();
+    // $nombres = $con_nombre->fetchAll(PDO::FETCH_ASSOC);
+    // foreach ($nombres as $fila) {
+    //   $nombre = $fila['nombre'];
+    // }
 
-    $con_empleados = $con->prepare("SELECT * FROM usuarios WHERE id_tipo_user = 3");
-    $con_empleados->execute();
-    $nombres = $con_nombre->fetchAll(PDO::FETCH_ASSOC);
-    foreach ($nombres as $fila) {
-      $nombre = $fila['nombre'];
-    }
+    // $con_empleados = $con->prepare("SELECT * FROM usuarios WHERE id_tipo_user = 3");
+    // $con_empleados->execute();
+    // $nombres = $con_nombre->fetchAll(PDO::FETCH_ASSOC);
+    // foreach ($nombres as $fila) {
+    //   $nombre = $fila['nombre'];
+    // }
 ?>
 <!DOCTYPE html>
 <html lang="en">

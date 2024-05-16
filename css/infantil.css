@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+.cuadro{
+  margin: 0 15vh 0 15vh;
+}
+
+.info{
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.con{
+  height: 260px;
+  max-width: 340px;
+  border-radius: 5vh;
+  margin: 0 20px;
+  margin-bottom: 15vh;
+  background: white;
+  transition: 0.4s;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+.con:hover{
+  height: 470px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+}
+.con .img{
+  height: 200px;
+  width: 100%;
+  
+}
+.con .img img{
+  height: 100%;
+  width: 100%;
+  border-radius: 5vh;
+  object-fit: cover;
+}
+.con .top-text{
+  padding: 2vh;
+}
+.con .top-text .name{
+  font-size: 25px;
+  font-weight: 600;
+  color: #202020;
+}
+.con .top-text p{
+  font-size: 20px;
+  font-weight: 600;
+  color: #e74c3c;
+  line-height: 20px;
+}
+.con .bottom-text{
+  padding: 0 20px 10px 20px;
+  margin-top: 5px;
+  margin-bottom: 10vh;
+  background: white;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.1s;
+}
+.con:hover .bottom-text{
+  opacity: 1;
+  visibility: visible;
+}
+.con .bottom-text .text{
+  text-align: justify;
+}
+.con .bottom-text .btn{
+  margin: 10px 0;
+  text-align: left;
+}
+.con .bottom-text .btn a{
+  text-decoration: none;
+  background: #e74c3c;
+  color: #f2f2f2;
+  padding: 5px 8px;
+  border-radius: 3px;
+  display: inline-flex;
+  transition: 0.2s;
+}
+.con .bottom-text .btn a:hover{
+  transform: scale(0.9);
+}
+/* @media screen and (max-width: 978px) {
+  .container{
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .con{
+    max-width: 700px;
+    margin: 20px 0;
+  }
+} */
