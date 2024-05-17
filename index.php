@@ -111,7 +111,7 @@
 
                     <a href="decoracion.html" class="nav-item nav-link">Decoración</a>
                     <a href="sobre_nosotros.html" class="nav-item nav-link">Sobre Nosotros</a>                    
-                    <a href="contact.html" class="nav-item nav-link">Contactanos</a>
+                    <a href="contact.php" class="nav-item nav-link">Contáctanos</a>
                 </div>
                 <a href="model/administrador/inicio/login.php" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Iniciar Sesion<i class="fa fa-arrow-right ms-3"></i></a>
             </div>
@@ -235,7 +235,7 @@
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                         <h1 class="mb-4">Aprende un poco más sobre nosotros.</h1>
-                        <p class="mb-4">En Arlequin Eventos, nuestro engoque esta en diferentes servicios para que tu celebracion sea muy especial, entre los cuales destaca la animacion, la cual es indispensable para que se respire un aire de dirvesion y momentos felices, luego tenemos la recreacion, que son todas las dinamicas que pueden hacer reir a carcajadas a tus invitados y por ultimo pero no menos importante tenemos la  decoracion, en la cual, vamos a dar nuestro mayor esfuerzo por que el ambiente no este solo en la animacion y recreacion sino que el lugar tambien transmita el mensaje de alegria y diversion que hara que el momento sea aun mas especial.</p>
+                        <p class="mb-4">En Arlequin Eventos, nuestro enfoque está en diferentes servicios para que tu celebración sea muy especial, entre los cuales destaca la animación, la cual es indispensable para que se respire un aire de dirvesión y momentos felices, luego tenemos la recreación, que son todas las dinámicas que pueden hacer reir a carcajadas a tus invitados y por último pero no menos importante tenemos la  decoración, en la cual, vamos a dar nuestro mayor esfuerzo por que el ambiente no este solo en la animación y recreación sino que el lugar tambien transmita el mensaje de alegría y diversión que hara que el momento sea aún más especial.</p>
                         <div class="row g-4 align-items-center">
                             <div class="col-sm-6">
                                 <a class="btn btn-primary rounded-pill py-3 px-5" href="about.html">Descubre más</a>
@@ -282,10 +282,10 @@
                         </div>
                         <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                             <div class="h-100 d-flex flex-column justify-content-center p-5">
-                                <h1 class="mb-4">Unete a nuestro equipo</h1>
-                                <p class="mb-4">Para ser parte de nuestro equipo es indispensable que estes dispuesto a aprender cosas nuevas, y arriezgarte a hacer cosas que probablemente nunca pensaste hacer, por lo que requerimos que seas un entusiasta de los niños
+                                <h1 class="mb-4">Únete a nuestro equipo</h1>
+                                <p class="mb-4">Para ser parte de nuestro equipo es indispensable que estes dispuesto a aprender cosas nuevas, y arriesgarte a hacer cosas que probablemente nunca pensaste hacer, por lo que requerimos que seas un entusiasta de los niños
                                 </p>
-                                <a class="btn btn-primary py-3 px-5" href="">Unete a la familia Arlequin<i class="fa fa-arrow-right ms-2"></i></a>
+                                <a class="btn btn-primary py-3 px-5" href="">Únete a la familia Arlequin<i class="fa fa-arrow-right ms-2"></i></a>
                             </div>
                         </div>
                     </div>
@@ -300,7 +300,7 @@
             <div class="container">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                     <h1 class="mb-3">Actividades Disponibles</h1>
-                    <p>Estas son solo algunas de las actividades mas divertidas que podriamos realizar en tu celebracion si decides confiar en Arlequin Eventos.</p>
+                    <p>Estas son solo algunas de las actividades más divertidas que podríamos realizar en tu celebración si decides confiar en Arlequin Eventos.</p>
                 </div>
                 <div class="row g-4">
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -309,7 +309,7 @@
                                 <img class="img-fluid rounded-circle" src="imagenes/contenido/img27.jpg" alt="">
                             </div>
                             <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                <a class="d-block text-center h3 mt-3 mb-4" href="">Recreacion infantil</a>
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Recreación infantil</a>
                                 
                                 <div class="row g-1">
                                     <div class="col-4">
@@ -320,7 +320,7 @@
                                     </div>
                                     <div class="col-4">
                                         <div class="border-top border-3 border-warning pt-2">
-                                            <h6 class="text-warning mb-1">Cantidad Maxima</h6>
+                                            <h6 class="text-warning mb-1">Cantidad Máxima</h6>
                                             <small>30 niños</small>
                                         </div>
                                     </div>
@@ -334,7 +334,7 @@
                                 <img class="img-fluid rounded-circle" src="imagenes/contenido/baby showe2.png" alt="">
                             </div>
                             <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                <a class="d-block text-center h3 mt-3 mb-4" href="">Recreacion Para Adultos</a>
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Recreación Para Adultos</a>
                                 <div class="row g-1">
                                     <div class="col-4">
                                         <div class="border-top border-3 border-primary pt-2">
@@ -437,7 +437,7 @@
                                     <div class="col-4">
                                         <div class="border-top border-3 border-primary pt-2">
                                             <h6 class="text-primary mb-1">Edad</h6>
-                                            <small>No tiene restriccion</small>
+                                            <small>No tiene restricción</small>
                                         </div>
                                     </div>
                                     <div class="col-4">
@@ -463,8 +463,8 @@
                     <div class="row g-0">
                         <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                             <div class="h-100 d-flex flex-column justify-content-center p-5">
-                                <h1 class="mb-4">Registrate</h1>
-                                <p>Reistrate para conocer más acerca de los paquetes y hacer tu reservacion</p>
+                                <h1 class="mb-4">Regístrate</h1>
+                                <p>Regístrate para conocer más acerca de los paquetes y hacer tu reservación</p>
                             
                                     <div class="row g-3">
                                         <div class="col-sm-6">
@@ -554,7 +554,7 @@
             <div class="container">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                     <h1 class="mb-3">Estos son algunos de nuestros más fieles clientes</h1>
-                    <p>Los siguientes comentarios los realizaron algunos de nuestros clientes mas recurrentes, los cuales nos ayudan no solo confiando en nostros como empresa, sino, tambien realizandonos criticas que nos ayudan a mejorar</p>
+                    <p>Los siguientes comentarios los realizaron algunos de nuestros clientes mas recurrentes, los cuales nos ayudan no solo confiando en nostros como empresa, sino, también realizando críticas que nos ayudan a mejorar</p>
                 </div>
                 <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
                     <div class="testimonial-item bg-light rounded p-5">
@@ -562,7 +562,7 @@
                         <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
                             <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg" style="width: 90px; height: 90px;">
                             <div class="ps-3">
-                                <h3 class="mb-1">Cliente anonimo</h3>
+                                <h3 class="mb-1">Cliente anónimo</h3>
                             </div>
                             <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
                         </div>
@@ -572,7 +572,7 @@
                         <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
                             <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-2.jpg" style="width: 90px; height: 90px;">
                             <div class="ps-3">
-                                <h3 class="mb-1">Cliente anonimo</h3>
+                                <h3 class="mb-1">Cliente anónimo</h3>
                             </div>
                             <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
                         </div>
@@ -582,7 +582,7 @@
                         <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
                             <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-3.jpg" style="width: 90px; height: 90px;">
                             <div class="ps-3">
-                                <h3 class="mb-1">cliente anonimo</h3>
+                                <h3 class="mb-1">cliente anónimo</h3>
                             </div>
                             <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
                         </div>
@@ -610,13 +610,13 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <h3 class="text-white mb-4">Acceso Rapido</h3>
+                        <h3 class="text-white mb-4">Acceso Rápido</h3>
                         <a class="btn btn-link text-white-50" href="#header">Inicio</a>
-                        <a class="btn btn-link text-white-50" href="">Recreacion Infantil</a>
-                        <a class="btn btn-link text-white-50" href="">Recreacion Adultos</a>
-                        <a class="btn btn-link text-white-50" href="">Decoracion</a>
-                        <a class="btn btn-link text-white-50" href="sobre_n.html">Sobre Nosotros</a>
-                        <a class="btn btn-link text-white-50" href="contact.html">Contactanos</a>
+                        <a class="btn btn-link text-white-50" href="infantil.html">Recreación Infantil</a>
+                        <a class="btn btn-link text-white-50" href="adultos.html">Recreación Adultos</a>
+                        <a class="btn btn-link text-white-50" href="decoracion.html">Decoración</a>
+                        <a class="btn btn-link text-white-50" href="sobre_nosotros.html">Sobre Nosotros</a>
+                        <a class="btn btn-link text-white-50" href="contact.php">Contáctanos</a>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">Galeria de Fotos</h3>
@@ -643,9 +643,9 @@
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">Nuevo Comentario</h3>
-                        <p>Danos tu opinion sobre nuestro servicio o nuestro sitio web.</p>
+                        <p>Danos tu opinión sobre nuestro servicio o nuestro sitio web.</p>
                         <div class="position-relative mx-auto" style="max-width: 400px;">
-                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Danos tu opnion">
+                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Danos tu opnión">
                             <br>
                             <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Enviar</button>
                         </div>
@@ -659,8 +659,8 @@
                             &copy; <a class="border-bottom" href="#">Arlequin Eventos</a>, All Right Reserved. 
 							
 							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-							Designed By <a class="border-bottom" href="https://htmlcodex.com">Elitech JYDT</a>
-                            <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">Elitech JYDT</a>
+							Designed By <a class="border-bottom" href="">Elitech JYDT</a>
+                            <br>Distributed By: <a class="border-bottom" href="" target="_blank">Elitech JYDT</a>
                         </div>
                         
                     </div>

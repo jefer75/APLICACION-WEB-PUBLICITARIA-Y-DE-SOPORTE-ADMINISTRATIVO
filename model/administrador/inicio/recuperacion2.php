@@ -87,7 +87,7 @@ if (isset($_POST['actualizar'])){
 </button>
 <div class="collapse navbar-collapse" id="navbarCollapse">
     <div class="navbar-nav mx-auto">
-        <a href="index.html" class="nav-item nav-link active">Inicio</a>
+        <a href="index.php" class="nav-item nav-link active">Inicio</a>
 
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Recreación</a>
@@ -99,7 +99,7 @@ if (isset($_POST['actualizar'])){
 
         <a href="../../../decoracion.html" class="nav-item nav-link">Decoración</a>
         <a href="../../../sobre_nosotros.html" class="nav-item nav-link">Sobre Nosotros</a>                    
-        <a href="../../../contact.html" class="nav-item nav-link">Contactanos</a>
+        <a href="../../../contact.php" class="nav-item nav-link">Contactanos</a>
     </div>
     <td>
     <form action="" method="POST">

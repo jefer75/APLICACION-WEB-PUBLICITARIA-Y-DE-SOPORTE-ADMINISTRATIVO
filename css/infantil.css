@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
 .cuadro{
-  margin: 0 15vh 0 15vh;
+  margin: 0 13vh 0 13vh;
 }
 
 .info{
@@ -36,7 +36,7 @@
   object-fit: cover;
 }
 .con .top-text{
-  padding: 2vh;
+  padding: 1vh;
 }
 .con .top-text .name{
   font-size: 25px;
