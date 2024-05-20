@@ -389,7 +389,7 @@ if(isset($_POST['cerrar_sesion']))
       <li>
         <a href="matrimonio.php">
           <i class="bi bi-circle"></i><span>Matrimonio</>
-        </a>span
+        </a>
       </li>
       <li>
         <a href="hallowen.php">

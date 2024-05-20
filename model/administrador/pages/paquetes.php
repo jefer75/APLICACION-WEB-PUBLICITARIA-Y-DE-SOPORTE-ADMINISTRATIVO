@@ -1,5 +1,48 @@
 <?php
 include 'plantilla.php';
+ 
+if (isset($_POST['registrar'])){
+
+  $nombre_paquete= $_POST['nombre_paquete'];
+  $edad_min = $_POST['edad_min'];
+  $edad_max= $_POST['edad_max'];
+  $valor= $_POST['valor'];  
+                  
+  $sql= $con -> prepare ("SELECT * FROM paquetes WHERE nombre_paquete='$nombre_paquete'");
+  $sql -> execute();
+  $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
+
+  if ($fila){
+    echo '<script>alert ("ESTE PAQUETE YA EXISTE ");</script>';
+    echo '<script>window.location="paquetes.php"</script>';
+  }
+
+  else if ($nombre_paquete=="" || $edad_min=="" || $edad_max=="" || $valor==""){
+    echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';  
+    echo '<script>window.location="paquetes.php"</script>';
+  }
+      
+  else{
+    $insert= $con -> prepare ("INSERT INTO paquetes(nombre_paquete, edad_min, edad_max, valor) VALUES ($nombre_paquete, $edad_min, $edad_max, $valor)");
+    $insert -> execute();
+    echo '<script> alert ("Registro realizado con exito");</script>';
+  }
+}
+
+if (isset($_POST['actualizar_btn'])){
+  
+
+  $nombre_paquete= $_POST['nombre_paquete'];
+  $edad_min = $_POST['edad_min'];
+  $edad_max= $_POST['edad_max'];
+  $valor= $_POST['valor'];  
+                        
+  $update= $con -> prepare ("UPDATE paquetes SET nombre_paquete='$nombre_paquete', edad_min='$edad_min', edad_max='$edad_max', valor='$valor' WHERE id_paquetes =1");
+  $update -> execute();
+  echo '<script> alert ("Registro actualizado exitosamente");</script>';
+  echo '<script> window.close(); </script>';
+                                        
+}
 ?>
 
 <title>Paquetes</title>
@@ -18,66 +61,45 @@ include 'plantilla.php';
             <div class="card-body">
               <h5 class="card-title"></h5>
 
-              <a href="" class="añadir">Añadir</a>
+              <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
+              
 
-              <section class="modal ">
-                   <div class="modal__container">
-                    
-                   <a href="paquetes.php" class="btn" style="background-color: green; color: white;" id="cerrar">X</a>
-                    <h2 class="modal__title">Registrar paquete</h2> 
+              <dialog class="añadir_cont" id="añadir_cont">
+                <button id="añadir_close" class="btn modal_close" onclick="closedialog();">X</button>
+
+                <h2 class="modal__title">Registrar paquete</h2> 
           <!-- Multi Columns Form -->
 
-          <form method="post" name="formreg" id="formreg"   class="row g-3"  autocomplete="off"> 
+                <form method="post" name="formreg" id="formreg"   class="row g-3"  autocomplete="off"> 
 
-            <div class="col-md-6">
+                <div class="col-md-6">
 
-              <label for="inputEmail5" class="form-label">Nombre Paquete</label>
+                  <label for="inputEmail5" class="form-label">Nombre Paquete</label>
 
-              <input  class="form-control" type="varchar" name="nombre_paquete"  placeholder="Nombre paquete">
-            </div>
+                  <input  class="form-control" type="text" name="nombre_paquete" pattern="[A-Za-z ]{4,15}" placeholder="Nombre de paquete">
+                </div>
 
-            <div class="col-md-6">
+                <div class="col-md-6">
+                  <label for="inputPassword5" class="form-label">Edad Minima</label>
+                  <input  class="form-control" type="varchar" name="edad_min"  placeholder="Edad minima">
+                </div>
 
-              <label for="inputPassword5" class="form-label">Edad Minima</label>
+                <div class="col-12">
+                  <label for="inputAddress5" class="form-label">Edad Maxima</label>
+                  <input  class="form-control" type="varchar" name="edad_max" placeholder="Edad maxima">
+                </div>
 
-              <input  class="form-control" type="varchar" name="edad_min"  placeholder="Edad_min">
+                <div class="col-12">
+                  <label for="inputAddress2" class="form-label">Valor</label>
+                  <input class="form-control" type="int" name="valor" pattern="[0-9]{1,15}" title="Solo se permiten numeros" placeholder="valor">
+                </div>
+                <div class="text-center">
+                  <tr>
+                  <input type="submit" name="registrar" value="Registro" class="btn btn-primary modal_close">
+                  </tr>
+                </div>
 
-            </div>
-
-            <div class="col-12">
-
-              <label for="inputAddress5" class="form-label">Edad Maxima</label>
-
-              <input  class="form-control" type="varchar" name="edad_max" placeholder="Edad_max">
-
-            </div>
-
-            <div class="col-12">
-
-              <label for="inputAddress2" class="form-label">Valor</label>
-
-              <input   class="form-control" type="int" name="valor" pattern="[0-9]{1,15}" title="Solo se permiten numeros" placeholder="valor">
-
-            </div>
-            <div class="text-center">
-
-            <tr>
-            <input type="submit" name="validar" value="Registro" class="btn btn-primary">
-
-
-
-
-            </tr>
-
-              <!-- <button type="submit" class="btn btn-primary">Submit</button>
-
- 
-
-              <button type="reset" class="btn btn-secondary">Reset</button> -->
-
-            </div>
-
-           </section>
+            </dialog>
 
               <!-- Table with stripped rows -->
               <form method="POST" action="">
@@ -112,7 +134,8 @@ include 'plantilla.php';
                     <td><?php echo $edad_max ?></td>
                     <td><?php echo $valor ?></td>
                     <td>
-                      <input type="submit" class="abrir_act" id_paquete ="<?php echo $id ?>" value="Actualizar" name="Actualizar">
+                      <a href="" class="boton" onclick="window.open
+                      ('../update/paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width= 600,height=500, toolbar=NO');void(null);">Click Aqui</a>
                     </td>
                   </tr>
                     <?php
@@ -122,70 +145,50 @@ include 'plantilla.php';
               </table>
               </form>
               <!-- Ventana modal de actualizar -->
-              <dialog class="modal_actualizar" id="modal_actualizar">
-              <form autocomplete="off" name="form_actualizar" method="POST">
-                <div class="modal_actualizar-body">
-                  
-                <?php                    
-                    $id_paquete = "<p id='output'></p>";
-                    echo $id_paquete;
-                    $con_paquetes = $con->prepare("SELECT * FROM paquetes where id_paquetes= 2");
-                    $con_paquetes->execute();
-                    $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($paquetes as $fila) {
-                      $id = $fila['id_paquetes'];
-                      $nombre_p_select= $fila['nombre_paquete'];
-                      $edad_min_select = $fila['edad_min'];
-                      $edad_max_select= $fila['edad_max'];
-                      $valor_select= $fila['valor'];  
-                    }
-                ?>
-
-                  <h2 class="modal__title">Actualizar paquete</h2>
-                  <form method="post" name="formreg" id="formreg" class="signup-form"  autocomplete="off">
-                    <br>
-                    <label for="nombre_paquete">Nombre Paquete</label>
-                    <br>
-                    <input type="text" name="nombre_paquete" pattern="[A-Za-z]+" title="(Solo se aceptan letras)" class="form_inputs" value="<?php echo $nombre_p_select ?>">
-                    <br>
-                    <label for="nombre_artistico">Edad Minima</label>
+              <!-- <dialog class="modal_actualizar" id="modal_actualizar">
+              
+                    <button class="act_cerrar" class="btn modal_close" onclick="closedialog();">X</button>
+                    <form autocomplete="off" name="form_actualizar" method="POST">
+                    <div class="modal_actualizar-body">
+                        
+                        <h2 class="modal__title">Actualizar paquete</h2>
                         <br>
-                        <input type="number" name="edad_min" class="form_inputs" value="<?php echo $edad_min_select?>">
+                        <label for="nombre_paquete">Nombre Paquete</label>
+                            <br>
+                            <input type="text" name="nombre_paquete" pattern="[A-Za-z]+" title="(Solo se aceptan letras)" class="form-control" value="<?php //echo $nombre_p_select ?>">
+                        <br>
+                        <label for="nombre_artistico">Edad Minima</label>
+                            <br>
+                            <input type="number" name="edad_min" class="form-control" value="<?php //echo $edad_min_select?>">
                         <br>
                         <label for="direccion">Edad Maxima</label>
                         <br>
-                        <input type="number" name="edad_max" class="form_inputs" value="<?php echo $edad_max_select?>">
+                        <input type="number" name="edad_max" class="form-control" value="<?php //echo $edad_max_select?>">
                         <br>
                         <label for="telefono">Valor</label>
                         <br>
-                        <td><input class="btn" style="background-color: gray; color: white;"
-                        type="number" name="valor" pattern="[0-9]{1,15}" class="btn" title="Solo se permiten numeros" value="<?php echo $valor_select ?>">
+                        <td><input class="btn" type="number" name="valor" pattern="[0-9]{1,15}" class="form-control" title="Solo se permiten numeros" value="<?php //echo $valor_select ?>">
                         <br>
                         <br>
                         <br>
-                        <input type="submit" name="actualizar" value="Registro" class="modal__close1">
+                        <input type="submit" name="actualizar_btn" value="Registro" class="act_cerrar boton">
                         <input type="hidden" name="MM_insert" value="formreg">
-                        <input type="submit" name="cerrar" value="Cerrar" onclick="cerrarModal();" id="cerrar_act" class="cerrar_act btn btn-secondary">  
-                      </div>
-                      
-                      <?php
-                              // if (isset($_POST['actualizar'])){
-
-                              //   $nombre_paquete= $_POST['nombre_paquete'];
-                              //   $edad_min = $_POST['edad_min'];
-                              //   $edad_max= $_POST['edad_max'];
-                              //   $valor= $_POST['valor'];  
                         
-                              //       $insert= $con -> prepare ("UPDATE paquetes SET nombre_paquete='$nombre_paquete', edad_min='$edad_min', edad_max='$edad_max', valor='$valor' WHERE id_paquetes = $id_paquete");
-                              //       $insert -> execute();
-                              //       echo '<script> alert ("Registro actualizado exitosamente");</script>';
-                              //       echo '<script> window.close(); </script>';
-                                        
-                              //   }
-                                                        
-                              ?>
+                    </div>
                     </form>
-              </dialog>
+                </dialog> -->
+              
+                  <?php
+                  
+                    if (isset($_POST['actualizar'])){
+                      
+
+                    }
+                   
+                ?>
+
+
+                  
               
             </div>
           </div>
@@ -214,13 +217,42 @@ include 'plantilla.php';
 
   <script>
     
-      
+
+//const act_abrir = document.querySelectorAll('.abrir_act');
+//const act_cerrar = document.getElementsByClassName('.act_cerrar');
+
+//sobre todos los elementos seleccionados
+$('.abrir_act').click(function(e) {
+        e.preventDefault();
         
+        var paquete = this.getAttribute('id_paquete');
+        //var action = 'identificador';
+        
+        
+        // $.ajax({
+        //     URL: 'paquetes.php',
+        //     type: 'POST',
+        //     async: true,
+        //     data: {descripcion:action, codigo_paquete:paquete},
+
+        //     correcto: function(response){
+        //         console.log(response)
+        //     },
+        //     erroneo: function(response){
+        //         console.log(response)
+        //     }
+        // })
+        //document.getElementById("output").innerText = paquete;
+        
+       
+    });     
+
 
 
   </script>
   <!-- Vendor JS Files -->
   <script src="../../../js/modal.js"></script>
+  <script src="paquetes.js"></script>
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.umd.js"></script>
