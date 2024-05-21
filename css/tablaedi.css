@@ -1,0 +1,42 @@
+
+    body {
+        font-family: Arial, sans-serif;
+        display: flex; /* Usamos flexbox para centrar verticalmente */
+        justify-content: center; /* Centramos horizontalmente */
+        align-items: center; /* Centramos verticalmente */
+        height: 100vh; /* Ajustamos la altura del cuerpo al 100% del viewport */
+    }
+
+    table.center {
+        border-collapse: collapse;
+    }
+
+    table.center td {
+        border: 2px solid rgb(41, 182, 247); /* Cambiamos el grosor del borde */
+        padding: 8px;
+        border-radius: 8px; /* Agregamos bordes curvados */
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        border: 2px solid rgb(24, 143, 212); /* Cambiamos el grosor del borde */
+        padding: 6px;
+        border-radius: 4px;
+    }
+
+    input[type="submit"] {
+        background-color: rgb(25, 163, 228);
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: darkblue;
+    }

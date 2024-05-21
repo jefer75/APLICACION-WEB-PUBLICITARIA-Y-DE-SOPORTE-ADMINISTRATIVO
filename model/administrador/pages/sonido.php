@@ -123,7 +123,6 @@
           </div>
 
          </section>
-
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>

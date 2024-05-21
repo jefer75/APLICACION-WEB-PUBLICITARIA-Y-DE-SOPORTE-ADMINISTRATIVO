@@ -505,6 +505,7 @@ h6,
     margin-right: 0;
     padding-right: 0;
     border-right: none;
+
 }
 
 .gallery {
@@ -626,4 +627,43 @@ h6,
       
     }
   }
+
+
+/* Estilo para los botones */
+.boton {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff; /* Azul */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  /* Estilo para los bordes de la tabla */
+  .table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #007bff; /* Azul */
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Estilo para resaltar la cabecera de la tabla */
+  .table thead th {
+    background-color: #007bff; /* Azul */
+    color: white;
+  }
+  
+  /* Cambiar color al botón cuando se pasa el mouse sobre él */
+  .boton:hover {
+    background-color: #0056b3; /* Azul más oscuro */
+  }
+  
 
