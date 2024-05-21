@@ -5,23 +5,26 @@
   
     if ((isset($_POST["MM_insert"]))&&($_POST["MM_insert"]=="formreg"))
    {
-    $nombre_paquete= $_POST['nombre_paquete'];
-    $edad_min= $_POST['edad_min'];
-    $edad_max= $_POST['edad_max'];
+    $id_tipo_art = $_POST['id_tipo_art'];
+    $$nombre_A = $_POST['Nombre_A'];
+    $id_estado = $_POST['id_estado'];
+    $descripcion = $_POST['descripcion']; 
+    $cantidad = $_POST['cantidad'];
     $valor= $_POST['valor'];
 
-     $sql= $con -> prepare ("SELECT * FROM paquetes WHERE nombre_paquete='$nombre_paquete'");
+
+     $sql= $con -> prepare ("SELECT * FROM articulos WHERE Nombre_A='$Nombre_A'");
      $sql -> execute();
      $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
 
      if ($fila){
         echo '<script>alert ("ESTE PAQUETE YA EXISTE //CAMBIELO//");</script>';
-        echo '<script>window.location="paquetes.php"</script>';
+        echo '<script>window.location="sonido.php"</script>';
      }
 
      else
    
-     if ($nombre_paquete=="" || $edad_min=="" || $edad_max=="" || $valor=="")
+     if ( $id_tipo_art=="" || $Nombre_A=="" || $id_estado=="" ||  $descripcion =="" ||  $cantidad =="" || $valor=="")
       {
          echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
          echo '<script>window.location="paquetes.php"</script>';
@@ -29,7 +32,7 @@
       
       else{
 
-        $insertSQL = $con->prepare("INSERT INTO paquetes(nombre_paquete, edad_min, edad_max, valor) VALUES('$nombre_paquete', '$edad_min', '$edad_max', '$valor')");
+        $insertSQL = $con->prepare("INSERT INTO articulos(Nombre_A, id_tipo_art, id_estado, descripcion, cantidad, valor) VALUES('$Nombre_A', '$id_tipo_art', '$id_estado', '$descripcion', '$cantidad', '$valor')");
         $insertSQL -> execute();
         echo '<script> alert("REGISTRO EXITOSO");</script>';
         echo '<script>window.location="paquetes.php"</script>';
@@ -37,69 +40,89 @@
     }
     ?>
 
-  <title>Articulos-sonido</title>
+<title>Paquetes</title>
 
-  <main id="main" class="main">
+<main id="main" class="main">
 
-    <div class="pagetitle">
-      <h1>Articulos</h1>
-      
-    </div><!-- End Page Title -->
+  <div class="pagetitle">
+    <h1>Sonido</h1>
 
-    <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
+  </div><!-- End Page Title -->
 
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Sonido</h5>
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"></h5>
 
-              <a href="" class="añadir">Añadir</a>
+            <a href="" class="añadir">Añadir</a>
 
-              <section class="modal ">
-                <div class="modal__container">
-                    
-                    <a href="#" class="modal__close" id="cerrar">X</a>
-                    <h2 class="modal__title">Registrar Articulo</h2>
-                    <form method="post" name="formreg" id="formreg" class="signup-form"  autocomplete="off"> 
-                      <!--Username -->
-                      <br>
-                      <label for="nombre_a">Nombre de articulo</label>
-                      <br>
-                      <input type="varchar" name="nombre_a" id="documento" class="form_inputs" placeholder="Nombre de articulo">
-                      <br>
-                      <label for="cantidad">Cantidad</label>
-                      <br>
-                      <input type="number" name="cantidad" id="nombres" class="form_inputs" placeholder="Cantidad de articulo">
-                      <br>
-                      <select class="cont" name="tipo_user">
-                          <option value ="">Seleccione Tipo de articulo</option>
-                          
-                          <?php
-                              $control = $con -> prepare ("SELECT * from tipo_articulo");
-                              $control -> execute();
-                          while ($fila = $control->fetch(PDO::FETCH_ASSOC)) 
-                          {
-                              echo "<option value=" . $fila['id_tipo_art'] . ">"
-                              . $fila['tipo_articulo'] . "</option>";
-                          } 
-                          ?>
-                      </select>
-                                      
-                      <br>
-                      <label for="cantidad">Descripcion</label>
-                      <br>
-                      <input type="varchar" name="cantidad" class="form_inputs" id="nombres" placeholder="Cantidad de articulo">
-                      <br>
-                      <label for="cantidad">Valor</label>
-                      <br>
-                      <input type="number" name="cantidad" id="nombres" class="form_inputs" placeholder="Cantidad de articulo">
+            <section class="modal ">
+                 <div class="modal__container">
+                  
+                 <a href="paquetes.php" class="btn" style="background-color: green; color: white;" id="cerrar">X</a>
+                  <h2 class="modal__title">Registrar Sonido</h2> 
+        <!-- Multi Columns Form -->
 
-                      <input type="submit" name="validar" value="Registro">
-                      <input type="hidden" name="MM_insert" value="formreg">
-                    </form>
-                  </div>
-              </section>
+        <form method="post" name="formreg" id="formreg"   class="row g-3"  autocomplete="off"> 
+
+          <div class="col-md-6">
+
+            <label for="inputEmail5" class="form-label">Nombre </label>
+
+            <input  class="form-control" type="varchar" name="Nombre_A"  placeholder="Nombre_A">
+          </div>
+
+          <div class="col-md-6">
+
+            <label for="inputPassword5" class="form-label">Estado</label>
+
+            <input  class="form-control" type="varchar" name="id_estado"  placeholder="id_estado">
+
+          </div>
+
+          <div class="col-12">
+
+            <label for="inputAddress5" class="form-label">Descripcion</label>
+
+            <input  class="form-control" type="varchar" name="descripcion" placeholder="descripcion">
+
+          </div>
+          <div class="col-12">
+
+            <label for="inputAddress5" class="form-label">Cantidad</label>
+
+            <input  class="form-control" type="varchar" name="cantidad " placeholder="cantidad ">
+
+          </div>
+
+          <div class="col-12">
+
+            <label for="inputAddress2" class="form-label">Valor</label>
+
+            <input   class="form-control" type="int" name="valor" pattern="[0-9]{1,15}" title="Solo se permiten numeros" placeholder="valor">
+
+          </div>
+          <div class="text-center">
+
+          <tr>
+          <input type="submit" name="validar" value="Registro" class="btn btn-primary">
+
+
+
+
+          </tr>
+
+            <!-- <button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+            <button type="reset" class="btn btn-secondary">Reset</button> -->
+
+          </div>
+
+         </section>
 
               <!-- Table with stripped rows -->
               <table class="table datatable">

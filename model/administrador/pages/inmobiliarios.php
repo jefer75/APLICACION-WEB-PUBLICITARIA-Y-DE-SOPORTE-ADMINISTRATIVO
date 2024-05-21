@@ -43,49 +43,78 @@ include 'plantilla.php';
 
     <div class="pagetitle">
       <h1>Articulos</h1>
+      <div class="pagetitle">
+    <h1>Inmobiliarios</h1>
       
     </div><!-- End Page Title -->
 
     <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"></h5>
 
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Inmobiliarios</h5>
+            <a href="" class="añadir">Añadir</a>
 
-              <a href="../registrar/paquetes.php" class="añadir">Añadir</a>
+            <section class="modal ">
+                 <div class="modal__container">
+                  
+                 <a href="paquetes.php" class="btn" style="background-color: green; color: white;" id="cerrar">X</a>
+                  <h2 class="modal__title">Complemento</h2> 
+        <!-- Multi Columns Form -->
 
-              <section class="modal ">
-                <div class="modal__container">
-                    
-                    <a href="#" class="modal__close" id="cerrar">X</a>
-                    <h2 class="modal__title">Registrar paquete</h2>
-                    <form method="post" name="formreg" id="formreg" class="signup-form"  autocomplete="off"> 
-                        <br>
-                        <label for="nombre_paquete">Nombre Paquete</label>
-                        <br>
-                        <input type="text" name="nombre_paquete" pattern="[A-Za-z]+" title="(Solo se aceptan letras)" class="form_inputs" placeholder="Nombre paquete">
-                        <br>
-                        <label for="nombre_artistico">Edad Minima</label>
-                        <br>
-                        <input type="number" name="edad_min" class="form_inputs" placeholder="Edad minima">
-                        <br>
-                        <label for="direccion">Edad Maxima</label>
-                        <br>
-                        <input type="number" name="edad_max" class="form_inputs" placeholder="Edad maxima">
-                        <br>
-                        <label for="telefono">Valor</label>
-                        <br>
-                        <input type="number" name="valor" pattern="[0-9]{1,15}" class="form_inputs" title="Solo se permiten numeros" placeholder="Precio">
-                        <br>
-                        <br>
-                        <br>
-                        <input type="submit" name="validar" value="Registro" class="modal__close">
-                        <input type="hidden" name="MM_insert" value="formreg">
-                        </form>
-                  </div>
-              </section>
+        <form method="post" name="formreg" id="formreg"   class="row g-3"  autocomplete="off"> 
+
+          <div class="col-md-6">
+
+            <label for="inputEmail5" class="form-label">Nombre </label>
+
+            <input  class="form-control" type="varchar" name="nombre_paquete"  placeholder="Nombre paquete">
+          </div>
+
+          <div class="col-md-6">
+
+            <label for="inputPassword5" class="form-label">Estado</label>
+
+            <input  class="form-control" type="varchar" name="edad_min"  placeholder="Edad_min">
+
+          </div>
+
+          <div class="col-12">
+
+            <label for="inputAddress5" class="form-label">descripcion</label>
+
+            <input  class="form-control" type="varchar" name="edad_max" placeholder="Edad_max">
+
+          </div>
+
+          <div class="col-12">
+
+            <label for="inputAddress2" class="form-label">Valor</label>
+
+            <input   class="form-control" type="int" name="valor" pattern="[0-9]{1,15}" title="Solo se permiten numeros" placeholder="valor">
+
+          </div>
+          <div class="text-center">
+
+          <tr>
+          <input type="submit" name="validar" value="Registro" class="btn btn-primary">
+
+
+
+
+          </tr>
+
+            <!-- <button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+            <button type="reset" class="btn btn-secondary">Reset</button> -->
+
+          </div>
+
+         </section>
 
               <!-- Table with stripped rows -->
               <table class="table datatable">

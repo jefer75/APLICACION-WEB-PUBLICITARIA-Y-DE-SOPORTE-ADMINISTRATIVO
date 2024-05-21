@@ -9,6 +9,7 @@
     border-radius: 1em;
 }
 
+
 .añadir:hover{
     background-color: wheat;
     color: black;
@@ -61,12 +62,11 @@
     --transform: translateY(0);
     --transition: transform .8s .8s;
 }
-
-.modal__container{
+.modal__container {
     margin: auto;
     width: 90%;
     max-width: 600px;
-    max-height: 90%;
+    max-height: 95%; /* Ajusta este valor según sea necesario */
     background-color: #fff;
     border-radius: 6px;
     padding: 2em 2em;
@@ -75,7 +75,7 @@
     place-items: center;
     grid-auto-columns: 100%;
     transform: var(--transform);
-    transition:var(--transition);
+    transition: var(--transition);
 }
 
 .modal__title{
