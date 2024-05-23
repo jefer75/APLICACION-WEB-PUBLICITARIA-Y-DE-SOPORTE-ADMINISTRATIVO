@@ -22,10 +22,10 @@ include 'plantilla.php';
 
               <a href="" class="añadir">Añadir</a>
 
-              <section class="modal ">
-                <div class="modal__container">
+              <dialog class="añadir_cont">
+                <div class="modal_container">
                     
-                    <a href="#" class="modal__close" id="cerrar">X</a>
+                    <a href="#" class="añadir_close" id="cerrar">X</a>
                     <h2 class="modal__title">Registrar Articulo</h2>
                     <form method="post" name="formreg" id="formreg" class="signup-form"  autocomplete="off"> 
                       <!--Username -->
@@ -65,50 +65,57 @@ include 'plantilla.php';
                       <input type="hidden" name="MM_insert" value="formreg">
                     </form>
                   </div>
-              </section>
+              </dialog>
 
               <!-- Table with stripped rows -->
               <table class="table datatable">
-                <thead>
+              <thead>
                   <tr>
-                    <th><b>ID</b></th>
+                  <th><b>ID</b></th>
                     <th>Nombre</th>
-                    <th>estado</th>
                     <th>descripcion</th>
                     <th>cantidad</th>
-                    <th>valor</th>
+                    <th>alquiler</th>
+                    <th>estado</th>
+                    <th>Accion</th>
                   </tr>
                 </thead>
                 <tbody>
-                  
                   <?php
-                      $con_paquetes = $con->prepare("SELECT * FROM articulos where id_tipo_art=2");
+                      $con_paquetes = $con->prepare("SELECT 
+                      articulos.id_articulo, articulos.nombre_A,
+                      articulos.descripcion, articulos.cantidad,
+                      articulos.valor, tipo_articulo.tipo_articulo,
+                      estados.estado
+                      FROM articulos
+                      INNER JOIN tipo_articulo ON tipo_articulo.id_tipo_art = articulos.id_tipo_art
+                      INNER JOIN estados ON estados.id_estado = articulos.id_estado WHERE articulos.id_tipo_art = 2");
                       $con_paquetes->execute();
                       $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
                       foreach ($paquetes as $fila) {
                         $id_articulo = $fila['id_articulo'];
                         $nombre_A = $fila['nombre_A'];
-                        $id_tipo_art = $fila['id_tipo_art'];
-                        $id_estado = $fila['id_estado'];
+                        $id_tipo_art = $fila['tipo_articulo'];
+                        $id_estado = $fila['estado'];
                         $descripcion = $fila['descripcion'];
                         $cantidad = $fila['cantidad'];
                         $valor = $fila['valor'];
-                      
-                  ?>
+                        
+                    ?>
                   <tr>
                     <td><?php echo $id_articulo?></td>
                     <td><?php echo $nombre_A?></td>
-                    <td><?php echo $id_estado?></td>
                     <td><?php echo $descripcion?></td>
                     <td><?php echo $cantidad?></td>
                     <td><?php echo $valor?></td>
+                    <td><?php echo $id_estado?></td>
                     <td><a href="" class="boton" onclick="window.open
-                    ('../actualizar y eliminar/articulos.php?id=<?php echo $id_articulo ?>','','width= 600,height=500, toolbar=NO');void(null);">Actualizar/Eliminar</a></td>
+                    ('../update/articulos.php?id=<?php echo $id_articulo ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i>Actualizar</a></td>
+
                   </tr>
                     <?php
                       }
                     ?>
-                  
                   
                  
                   
@@ -142,6 +149,7 @@ include 'plantilla.php';
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+  <script src="../../../js/modal.js"></script>
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.umd.js"></script>

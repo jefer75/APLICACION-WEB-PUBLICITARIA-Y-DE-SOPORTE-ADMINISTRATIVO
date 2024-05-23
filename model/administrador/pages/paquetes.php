@@ -44,9 +44,15 @@ if (isset($_POST['actualizar_btn'])){
                                         
 }
 ?>
-
+<head>
 <title>Paquetes</title>
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>
+<script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    </head>
   <main id="main" class="main">
 
     <div class="pagetitle">
@@ -102,48 +108,9 @@ if (isset($_POST['actualizar_btn'])){
             </dialog>
 
               <!-- Table with stripped rows -->
-              <form method="POST" action="">
-              <table class="table datatable">
-                <thead>
-                  <tr>
-                    <th><b>ID</b></th>
-                    <th>Nombre</th>
-                    <th>Edad minima</th>
-                    <th>Edad maxima</th>
-                    <th>Valor</th>
-                    <th>Actualizar</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php                   
-                    $con_paquetes = $con->prepare("SELECT * FROM paquetes");
-                    $con_paquetes->execute();
-                    $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($paquetes as $fila) {
-                      $id = $fila['id_paquetes'];
-                      $nombrep = $fila['nombre_paquete'];
-                      $edad_min = $fila['edad_min'];
-                      $edad_max = $fila['edad_max'];
-                      $valor = $fila['valor'];
-                  ?>
-                  <tr>
-                    <td><?php echo $id ?></td>
-                    <td><?php echo $nombrep ?></td>
-                    <td><?php echo $edad_min ?></td>
-                    <td><?php echo $edad_max ?></td>
-                    <td><?php echo $valor ?></td>
-                    <td>
-                      <a href="" class="boton" onclick="window.open
-                      ('../update/paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width= 600,height=500, toolbar=NO');void(null);">Click Aqui</a>
-                    </td>
-                  </tr>
-                    <?php
-                      }
-                    ?>
-                </tbody>
-              </table>
-              </form>
+              <?php include "../consultar/con_paquetes.php"; 
+            ?>
+              
               <!-- Ventana modal de actualizar -->
               <!-- <dialog class="modal_actualizar" id="modal_actualizar">
               

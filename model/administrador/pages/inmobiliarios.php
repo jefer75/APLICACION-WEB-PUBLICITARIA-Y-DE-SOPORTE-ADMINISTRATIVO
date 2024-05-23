@@ -89,27 +89,34 @@ include 'plantilla.php';
 
               <!-- Table with stripped rows -->
               <table class="table datatable">
-                <thead>
+              <thead>
                   <tr>
                   <th><b>ID</b></th>
                     <th>Nombre</th>
-                    <th>estado</th>
                     <th>descripcion</th>
                     <th>cantidad</th>
                     <th>valor</th>
-                    <th>Actualizar</th>
+                    <th>estado</th>
+                    <th>Accion</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                      $con_paquetes = $con->prepare("SELECT * FROM articulos WHERE id_tipo_art = 4");
+                      $con_paquetes = $con->prepare("SELECT 
+                      articulos.id_articulo, articulos.nombre_A,
+                      articulos.descripcion, articulos.cantidad,
+                      articulos.valor, tipo_articulo.tipo_articulo,
+                      estados.estado
+                      FROM articulos
+                      INNER JOIN tipo_articulo ON tipo_articulo.id_tipo_art = articulos.id_tipo_art
+                      INNER JOIN estados ON estados.id_estado = articulos.id_estado WHERE articulos.id_tipo_art = 4");
                       $con_paquetes->execute();
                       $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
                       foreach ($paquetes as $fila) {
                         $id_articulo = $fila['id_articulo'];
                         $nombre_A = $fila['nombre_A'];
-                        $id_tipo_art = $fila['id_tipo_art'];
-                        $id_estado = $fila['id_estado'];
+                        $id_tipo_art = $fila['tipo_articulo'];
+                        $id_estado = $fila['estado'];
                         $descripcion = $fila['descripcion'];
                         $cantidad = $fila['cantidad'];
                         $valor = $fila['valor'];
@@ -118,12 +125,12 @@ include 'plantilla.php';
                   <tr>
                     <td><?php echo $id_articulo?></td>
                     <td><?php echo $nombre_A?></td>
-                    <td><?php echo $id_estado?></td>
                     <td><?php echo $descripcion?></td>
                     <td><?php echo $cantidad?></td>
-                    <td><?php echo $valor?></td>
+                    <td><?php echo $alquiler?></td>
+                    <td><?php echo $id_estado?></td>
                     <td><a href="" class="boton" onclick="window.open
-                    ('../actualizar y eliminar/paquetes.php?id=<?php echo $id ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i></a></td>
+                    ('../update/articulos.php?id=<?php echo $id_articulo ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i>Actualizar</a></td>
 
                   </tr>
                     <?php
