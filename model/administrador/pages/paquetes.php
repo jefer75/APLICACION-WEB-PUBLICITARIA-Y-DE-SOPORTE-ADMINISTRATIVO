@@ -4,9 +4,9 @@ include 'plantilla.php';
 if (isset($_POST['registrar'])){
 
   $nombre_paquete= $_POST['nombre_paquete'];
-  $edad_min = $_POST['edad_min'];
-  $edad_max= $_POST['edad_max'];
-  $valor= $_POST['valor'];  
+  $edad_min = $_POST['minima'];
+  $edad_max= $_POST['maxima'];
+  $valor= $_POST['alquiler'];  
                   
   $sql= $con -> prepare ("SELECT * FROM paquetes WHERE nombre_paquete='$nombre_paquete'");
   $sql -> execute();
@@ -14,35 +14,20 @@ if (isset($_POST['registrar'])){
 
   if ($fila){
     echo '<script>alert ("ESTE PAQUETE YA EXISTE ");</script>';
-    echo '<script>window.location="paquetes.php"</script>';
   }
 
   else if ($nombre_paquete=="" || $edad_min=="" || $edad_max=="" || $valor==""){
     echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';  
-    echo '<script>window.location="paquetes.php"</script>';
   }
       
   else{
-    $insert= $con -> prepare ("INSERT INTO paquetes(nombre_paquete, edad_min, edad_max, valor) VALUES ($nombre_paquete, $edad_min, $edad_max, $valor)");
+    $insert= $con -> prepare ("INSERT INTO paquetes(nombre_paquete, edad_min, edad_max, valor) VALUES ('$nombre_paquete', $edad_min, $edad_max, '$valor')");
     $insert -> execute();
     echo '<script> alert ("Registro realizado con exito");</script>';
+    echo '<script>window.location="paquetes.php"</script>';
   }
 }
 
-if (isset($_POST['actualizar_btn'])){
-  
-
-  $nombre_paquete= $_POST['nombre_paquete'];
-  $edad_min = $_POST['edad_min'];
-  $edad_max= $_POST['edad_max'];
-  $valor= $_POST['valor'];  
-                        
-  $update= $con -> prepare ("UPDATE paquetes SET nombre_paquete='$nombre_paquete', edad_min='$edad_min', edad_max='$edad_max', valor='$valor' WHERE id_paquetes =1");
-  $update -> execute();
-  echo '<script> alert ("Registro actualizado exitosamente");</script>';
-  echo '<script> window.close(); </script>';
-                                        
-}
 ?>
 <head>
 <title>Paquetes</title>
@@ -53,51 +38,52 @@ if (isset($_POST['actualizar_btn'])){
 <script src="../../../js/jquery.min.js"></script>
     <script src="../../../js/bootstrap.min.js"></script>
     </head>
-  <main id="main" class="main">
 
-    <div class="pagetitle">
-      <h1>Paquetes</h1>
+<main id="main" class="main">
 
-    </div><!-- End Page Title -->
+<div class="pagetitle">
+  <h1>Paquetes</h1>
+  
+</div><!-- End Page Title -->
 
-    <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"></h5>
+<section class="section">
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Paquetes</h5>
 
               <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
               
-
               <dialog class="añadir_cont" id="añadir_cont">
                 <button id="añadir_close" class="btn modal_close" onclick="closedialog();">X</button>
 
                 <h2 class="modal__title">Registrar paquete</h2> 
           <!-- Multi Columns Form -->
 
-                <form method="post" name="formreg" id="formreg"   class="row g-3"  autocomplete="off"> 
+                <form method="post" name="formreg" id="formreg" class="row g-3"  autocomplete="off"> 
 
                 <div class="col-md-6">
 
                   <label for="inputEmail5" class="form-label">Nombre Paquete</label>
 
-                  <input  class="form-control" type="text" name="nombre_paquete" pattern="[A-Za-z ]{4,15}" placeholder="Nombre de paquete">
+                  <input  class="form-control" type="text" name="nombre_paquete" pattern="[A-Za-z ]{4,15}" placeholder="Nombre de paquete" required>
                 </div>
 
                 <div class="col-md-6">
                   <label for="inputPassword5" class="form-label">Edad Minima</label>
-                  <input  class="form-control" type="varchar" name="edad_min"  placeholder="Edad minima">
+                  <input  class="form-control" type="varchar" name="minima"  placeholder="Edad minima" required>
                 </div>
 
                 <div class="col-12">
                   <label for="inputAddress5" class="form-label">Edad Maxima</label>
-                  <input  class="form-control" type="varchar" name="edad_max" placeholder="Edad maxima">
+                  <input  class="form-control" type="varchar" name="maxima" placeholder="Edad maxima" required>
                 </div>
 
                 <div class="col-12">
                   <label for="inputAddress2" class="form-label">Valor</label>
-                  <input class="form-control" type="int" name="valor" pattern="[0-9]{1,15}" title="Solo se permiten numeros" placeholder="valor">
+                  <input class="form-control" type="number" name="alquiler" pattern="[0-9]{1,15}" title="Solo se permiten numeros" placeholder="valor" required>
                 </div>
                 <div class="text-center">
                   <tr>

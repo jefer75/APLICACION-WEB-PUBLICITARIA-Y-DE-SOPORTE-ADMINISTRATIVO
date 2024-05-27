@@ -56,12 +56,12 @@
 
               <a href="" class="añadir">Añadir</a>
 
-              <section class="modal ">
+              <section class="modal">
                 <div class="modal__container">
                     
                     <a href="#" class="modal__close" id="cerrar">X</a>
                     <h2 class="modal__title">Registrar Articulo</h2>
-                    <form method="post" name="formreg" id="formreg" class="signup-form"  autocomplete="off"> 
+                    <form method="post" name="formreg" id="formreg" class="signup-form" autocomplete="off"> 
                       <!--Username -->
                       <br>
                       <label for="nombre_a">Nombre de articulo</label>
@@ -103,7 +103,7 @@
 
               <!-- Table with stripped rows -->
               <table class="table datatable">
-                <<thead>
+                <thead>
                   <tr>
                   <th><b>ID</b></th>
                     <th>Nombre</th>
@@ -141,7 +141,7 @@
                     <td><?php echo $nombre_A?></td>
                     <td><?php echo $descripcion?></td>
                     <td><?php echo $cantidad?></td>
-                    <td><?php echo $alquiler?></td>
+                    <td><?php echo $valor?></td>
                     <td><?php echo $id_estado?></td>
                     <td><a href="" class="boton" onclick="window.open
                     ('../update/articulos.php?id=<?php echo $id_articulo ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i>Actualizar</a></td>
