@@ -111,14 +111,14 @@ header('Location: login.php');
                                     <div class="row g-3 inputs">
                                         <div class="col-sm-6 user" >
                                             <div class="form-floating">
-                                                <input type="text" class="form-control border-0"  name="cedula" placeholder="Cedula">
+                                                <input type="text" class="form-control border-0"  name="cedula" pattern="[0-9]{4,15}" title="Solo se permiten numeros, minimo 4 digitos"  placeholder="Cedula">
                                                 <label for="gname">Cedula</label>
                                             </div>
                                         </div>
                                     
                                         <div class="col-sm-6 user">
                                             <div class="form-floating">
-                                                <input type="password" class="form-control border-0" id="password" placeholder="Contraseña" name="contrasena">
+                                                <input type="password" class="form-control border-0" id="password"  pattern="[a-zA-Z0-9]{8,15}" title="La contraseña debe tener minimo 8 digitos" placeholder="Contraseña" name="contrasena">
                                                 <label for="fecha">Contraseña</label>
                                             </div>
                                         </div>
