@@ -51,7 +51,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="index.php" class="nav-item nav-link active">Inicio</a>
+                    <a href="index.php" class="nav-item nav-link">Inicio</a>
 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Recreación</a>
@@ -62,7 +62,7 @@
                     </div>
 
                     <a href="decoracion.php" class="nav-item nav-link">Decoración</a>
-                    <a href="sobre_nosotros.php" class="nav-item nav-link">Sobre Nosotros</a>                    
+                    <a href="sobre_nosotros.php" class="nav-item nav-link active">Sobre Nosotros</a>                    
                     <a href="contact.php" class="nav-item nav-link">Contáctanos</a>
                 </div>
                 <a href="model/administrador/inicio/login.php" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Iniciar Sesión<i class="fa fa-arrow-right ms-3"></i></a>
@@ -75,12 +75,9 @@
         <div class="container-xxl py-5 page-header position-relative mb-5">
             <div class="container py-5">
                 <h1 class="display-2 text-white animated slideInDown mb-4">Quienes Somos?</h1>
-                <nav aria-label="breadcrumb animated slideInDown">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Incio</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">Sobre Nosotros</li>
-                    </ol>
-                </nav>
+                <div class="col-sm-6">
+                                <a class="btn btn-primary rounded-pill py-3 px-5" href="#historia">Conoce más.</a>
+                            </div>
             </div>
         </div>
         <!-- Page Header End -->
@@ -94,9 +91,7 @@
                         <h1 class="mb-4">Enterate de más sobre nuestra identidad empresarial</h1>
                         <p class="mb-4">La empresa Arlequin Eventos fue creada en el año 2019, para el mes de octubre por Stephania Henao, quien es la fundadora y actual dueña de la empresa, cuenta con una administradora, la cual es Gloria Henao. Durante los ultimos 4 años ha brindado felicidad y alegria a sus clientes, se encuentra ubicada en la ciudad de ibague, sin embargo, tambien realiza eventos para municipios aledaños dentro del departamento. A lo largo de su existencia ha brindado la oportunidad a los jovenes de obtener su primer empleo, lo cual ayuda tanto al desarrollo personal, como al desarrollo economico.</p>
                         <div class="row g-4 align-items-center">
-                            <div class="col-sm-6">
-                                <a class="btn btn-primary rounded-pill py-3 px-5" href="">Read More</a>
-                            </div>
+                            
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center">
                                     <img class="rounded-circle flex-shrink-0" src="imagenes/logos/stephania.jpg" alt="" style="width: 45px; height: 45px;">
@@ -131,7 +126,7 @@
 <div class="container-xxl py-5">
     <div class="container" id="inicio">
         <div class="row g-4">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;" id="historia">
                 <h1 class="mb-3">Historia</h1>
                 <p>La empresa Arlequin Eventos fue creada en el año 2019, para el mes de octubre por Stephania Henao, quien es la fundadora y actual dueña de la empresa, cuenta con una administradora, la cual es Gloria Henao. Durante los ultimos 4 años ha brindado felicidad y alegria a sus clientes, se encuentra ubicada en la ciudad de ibague, sin embargo, tambien realiza eventos para municipios aledaños dentro del departamento. A lo largo de su existencia ha brindado la oportunidad a los jovenes de obtener su primer empleo, lo cual ayuda tanto al desarrollo personal, como al desarrollo economico.</p>
             </div>

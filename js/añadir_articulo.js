@@ -1,15 +1,3 @@
-const openModal = document.getElementById('añadir');
-const modal = document.getElementById('añadir_cont');
-const closeModal = document.getElementById('añadir_close');
-
-openModal.addEventListener('click', function() {
-    modal.showModal();
-});
-
-closeModal.addEventListener('click', function(){
-    modal.close();
-});
-
 document.addEventListener("DOMContentLoaded", function() {
     const showContainerButton = document.getElementById('showContainerButton');
     const containerWrapper = document.getElementById('containerWrapper');

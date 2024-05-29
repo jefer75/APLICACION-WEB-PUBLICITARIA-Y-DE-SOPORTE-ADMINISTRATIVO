@@ -56,7 +56,7 @@
 
            <!-- Navbar Start -->
            <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-            <img src="imagenes/logos/Logo Arlequin Color.png" class="logo">
+           <img src="../../../imagenes/logos/Logo Arlequin Color.png" class="logo">
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>

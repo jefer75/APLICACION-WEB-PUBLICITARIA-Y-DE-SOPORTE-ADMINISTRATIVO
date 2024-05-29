@@ -52,7 +52,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="index.php" class="nav-item nav-link active">Inicio</a>
+                    <a href="index.php" class="nav-item nav-link">Inicio</a>
 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Recreación</a>
@@ -62,7 +62,7 @@
                         </div>
                     </div>
 
-                    <a href="decoracion.php" class="nav-item nav-link">Decoración</a>
+                    <a href="decoracion.php" class="nav-item nav-link active">Decoración</a>
                     <a href="sobre_nosotros.php" class="nav-item nav-link">Sobre Nosotros</a>                    
                     <a href="contact.php" class="nav-item nav-link">Contáctanos</a>
                 </div>

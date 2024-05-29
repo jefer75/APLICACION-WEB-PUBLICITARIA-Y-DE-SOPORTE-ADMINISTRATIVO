@@ -14,7 +14,6 @@ if (isset($_POST["inicio"])) {
     $sql->execute();
     $fila = $sql->fetch();
 
-
     if(gettype($fila) == "array" && password_verify($contrasena, $fila['contrasena'])){
 
         $_SESSION['cedula'] = $fila['cedula'];
@@ -31,7 +30,7 @@ if (isset($_POST["inicio"])) {
          exit();
          }
          else if ($_SESSION['id_tipo_user'] == 3) {
-         header ("Location: ../model/empleado/usuario.php");
+         header ("Location: ../model/empleado/empleado.php");
          exit();
          }
    

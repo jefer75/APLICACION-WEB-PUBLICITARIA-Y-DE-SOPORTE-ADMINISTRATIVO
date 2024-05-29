@@ -144,14 +144,12 @@
                     <td><?php echo $valor?></td>
                     <td><?php echo $id_estado?></td>
                     <td><a href="" class="boton" onclick="window.open
-                    ('../update/articulos.php?id=<?php echo $id_articulo ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i>Actualizar</a></td>
+                    ('../actualizar/articulos.php?id=<?php echo $id_articulo ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i>Actualizar</a></td>
 
                   </tr>
                     <?php
                       }
                     ?>
-                  
-                 
                   
                 </tbody>
               </table>

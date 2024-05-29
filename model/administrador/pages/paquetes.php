@@ -32,12 +32,7 @@ if (isset($_POST['registrar'])){
 <head>
 <title>Paquetes</title>
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>
-<script src="../../../js/jquery.min.js"></script>
-    <script src="../../../js/bootstrap.min.js"></script>
-    </head>
+</head>
 
 <main id="main" class="main">
 
@@ -68,22 +63,22 @@ if (isset($_POST['registrar'])){
 
                   <label for="inputEmail5" class="form-label">Nombre Paquete</label>
 
-                  <input  class="form-control" type="text" name="nombre_paquete" pattern="[A-Za-z ]{4,15}" placeholder="Nombre de paquete" required>
+                  <input  class="form-control" type="text" name="nombre_paquete" pattern="[A-Za-z/s]{4,15}" title="Solo se aceptan letras" placeholder="Nombre de paquete" required>
                 </div>
 
                 <div class="col-md-6">
                   <label for="inputPassword5" class="form-label">Edad Minima</label>
-                  <input  class="form-control" type="varchar" name="minima"  placeholder="Edad minima" required>
+                  <input  class="form-control" type="text" pattern="[0-9]{1,3}" title="Solo se aceptan numeros, minimo 1" name="minima"  placeholder="Edad minima" required>
                 </div>
 
                 <div class="col-12">
                   <label for="inputAddress5" class="form-label">Edad Maxima</label>
-                  <input  class="form-control" type="varchar" name="maxima" placeholder="Edad maxima" required>
+                  <input  class="form-control" type="text" pattern="[0-9]{1,3}" title="Solo se aceptan numeros, minimo 1" name="maxima" placeholder="Edad maxima" required>
                 </div>
 
                 <div class="col-12">
                   <label for="inputAddress2" class="form-label">Valor</label>
-                  <input class="form-control" type="number" name="alquiler" pattern="[0-9]{1,15}" title="Solo se permiten numeros" placeholder="valor" required>
+                  <input class="form-control" type="text" name="alquiler" pattern="[0-9]{4,10}" title="Solo se permiten numeros, minimo 4 digitos" placeholder="valor" required>
                 </div>
                 <div class="text-center">
                   <tr>
@@ -93,55 +88,16 @@ if (isset($_POST['registrar'])){
 
             </dialog>
 
-              <!-- Table with stripped rows -->
+              
               <?php include "../consultar/con_paquetes.php"; 
-            ?>
-              
-              <!-- Ventana modal de actualizar -->
-              <!-- <dialog class="modal_actualizar" id="modal_actualizar">
-              
-                    <button class="act_cerrar" class="btn modal_close" onclick="closedialog();">X</button>
-                    <form autocomplete="off" name="form_actualizar" method="POST">
-                    <div class="modal_actualizar-body">
-                        
-                        <h2 class="modal__title">Actualizar paquete</h2>
-                        <br>
-                        <label for="nombre_paquete">Nombre Paquete</label>
-                            <br>
-                            <input type="text" name="nombre_paquete" pattern="[A-Za-z]+" title="(Solo se aceptan letras)" class="form-control" value="<?php //echo $nombre_p_select ?>">
-                        <br>
-                        <label for="nombre_artistico">Edad Minima</label>
-                            <br>
-                            <input type="number" name="edad_min" class="form-control" value="<?php //echo $edad_min_select?>">
-                        <br>
-                        <label for="direccion">Edad Maxima</label>
-                        <br>
-                        <input type="number" name="edad_max" class="form-control" value="<?php //echo $edad_max_select?>">
-                        <br>
-                        <label for="telefono">Valor</label>
-                        <br>
-                        <td><input class="btn" type="number" name="valor" pattern="[0-9]{1,15}" class="form-control" title="Solo se permiten numeros" value="<?php //echo $valor_select ?>">
-                        <br>
-                        <br>
-                        <br>
-                        <input type="submit" name="actualizar_btn" value="Registro" class="act_cerrar boton">
-                        <input type="hidden" name="MM_insert" value="formreg">
-                        
-                    </div>
-                    </form>
-                </dialog> -->
-              
+            ?>             
                   <?php
                   
                     if (isset($_POST['actualizar'])){
                       
-
                     }
                    
-                ?>
-
-
-                  
+                ?>                  
               
             </div>
           </div>
@@ -168,41 +124,7 @@ if (isset($_POST['registrar'])){
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <script>
-    
-
-//const act_abrir = document.querySelectorAll('.abrir_act');
-//const act_cerrar = document.getElementsByClassName('.act_cerrar');
-
-//sobre todos los elementos seleccionados
-$('.abrir_act').click(function(e) {
-        e.preventDefault();
-        
-        var paquete = this.getAttribute('id_paquete');
-        //var action = 'identificador';
-        
-        
-        // $.ajax({
-        //     URL: 'paquetes.php',
-        //     type: 'POST',
-        //     async: true,
-        //     data: {descripcion:action, codigo_paquete:paquete},
-
-        //     correcto: function(response){
-        //         console.log(response)
-        //     },
-        //     erroneo: function(response){
-        //         console.log(response)
-        //     }
-        // })
-        //document.getElementById("output").innerText = paquete;
-        
-       
-    });     
-
-
-
-  </script>
+  
   <!-- Vendor JS Files -->
   <script src="../../../js/modal.js"></script>
   <script src="paquetes.js"></script>

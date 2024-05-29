@@ -51,10 +51,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="index.php" class="nav-item nav-link active">Inicio</a>
+                    <a href="index.php" class="nav-item nav-link">Inicio</a>
 
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Recreación</a>
+                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Recreación</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
                             <a href="infantil.php" class="dropdown-item">Infantil</a>
                             <a href="adultos.php" class="dropdown-item">Adultos</a>
@@ -92,12 +92,7 @@
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                         <h1 class="mb-4">Bienvenidos</h1>
                         <p class="mb-4">Sumérgete en la emoción y la camaradería con Arlequin Eventos, donde te esperan una variedad de actividades diseñadas para sacar tu lado más aventurero. Desde desafiantes juegos de equipo que pondrán a prueba tu colaboración y coordinación, hasta competencias deportivas llenas de adrenalina y diversión, en nuestro espacio encontrarás la combinación perfecta entre emoción y entretenimiento para disfrutar en grupo.</p>
-                        <div class="row g-4 align-items-center">
-                            <div class="col-sm-6">
-                                <a class="btn btn-primary rounded-pill py-3 px-5" href="about.html">Descubre más</a>
-                            </div>
-                            
-                        </div>
+                        
                     </div>
                     <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
                         <div class="row">

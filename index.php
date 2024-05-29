@@ -10,6 +10,8 @@
    if ((isset($_POST["MM_insert"]))&&($_POST["MM_insert"]=="formreg"))
    {
     $nombre= $_POST['nombre'];
+    $apellido= $_POST['apellido'];
+    $nombre_comp = $nombre . " " . $apellido;
     $cedula= $_POST['cedula'];
     $celular= $_POST['celular'];
     $contrasena= $_POST['contrasena'];
@@ -39,7 +41,7 @@
 
         $pass_cifrado = password_hash($contrasena,PASSWORD_DEFAULT, array("pass"=>12));
         
-        $insertSQL = $con->prepare("INSERT INTO usuarios(cedula, nombre, celular, contrasena, correo, id_tipo_user, id_estado, nit) VALUES('$cedula', '$nombre', '$celular', '$pass_cifrado', '$correo', '$tipo_user', '$id_estado', '$nit')");
+        $insertSQL = $con->prepare("INSERT INTO usuarios(cedula, nombre, celular, contrasena, correo, id_tipo_user, id_estado, nit) VALUES('$cedula', '$nombre_comp', '$celular', '$pass_cifrado', '$correo', '$tipo_user', '$id_estado', '$nit')");
         $insertSQL -> execute();
         echo '<script> alert("REGISTRO EXITOSO");</script>';
         echo '<script>window.location="index.php"</script>';
@@ -470,60 +472,44 @@
                                         <div class="col-sm-6">
                                             <div class="form-floating">
                                                 
-                                                <input  class="form-control border-0" type="text" name="nombre" id="nombres" pattern="[a-zA-Z/s]+{1,40}" title="Solo se permiten letras" placeholder="Digite Nombre">
-                                                <label for="gname">Nombre completo</label>
+                                                <input  class="form-control border-0" type="text" name="nombre" id="nombres" pattern="[a-zA-Z/s]{3,40}" title="Solo se permiten letras, minimo 3 digitos" placeholder="Digite Nombre" required>
+                                                <label for="gname">Nombres</label>
                                             </div>
                                         </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-floating">
+                                                <input class="form-control border-0" type="text" name="apellido" placeholder="Apellidos" pattern="[a-zA-Z/s]{3,40}" title="Solo se permiten letras, minimo 3 digitos" required>
+                                                <label for="fecha">Apellidos</label>
+                                            </div>
+                                        </div>
+
                                         <div class="col-sm-6">
                                             <div class="form-floating">
                                     
-                                                <input class="form-control border-0"  type="number" name="cedula" id="documento" pattern="[0-9]{1,15}" title="Solo se permiten numeros" placeholder="Digite Documento">
+                                                <input class="form-control border-0"  type="text" name="cedula" id="documento" pattern="[0-9]{7,15}" title="Solo se permiten numeros, minimo 7 digitos" placeholder="Digite Documento" required>
                                                 <label for="cedula">N° Documento</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
                                                 
-                                                <input class="form-control border-0"   type="number" name="celular" id="telefono" pattern="[0-9]{1,15}" title="Solo se permiten numeros" placeholder="Digite Telefono">
-                                                <label for="cname">Telefono de Contacto</label>
+                                                <input class="form-control border-0"   type="text" name="celular" id="telefono" pattern="[0-9]{7,15}" title="Solo se permiten numeros, minimo 10 digitos" placeholder="Digite Telefono" required>
+                                                <label for="cname">Contacto</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input  class="form-control border-0"  type="email" name="correo" id="correo" placeholder="Digite Correo">
+                                                <input  class="form-control border-0"  type="email" name="correo" id="correo" placeholder="Digite Correo" required>
                                                 <label for="cage">Correo</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input class="form-control border-0"   type="password" name="contrasena" placeholder="Contraseña">
+                                                <input class="form-control border-0" pattern="[a-zA-Z0-9]{8,15}" title="La contraseña debe tener minimo 8 digitos" type="password" name="contrasena" placeholder="Contraseña" required>
                                                 <label for="fecha">Contraseña</label>
                                             </div>
-                                        </div>
-
-                                            <div class="col-sm-6">
-                                            <div class="form-floating">
-                                                <label  for="nit"></label>
-
-                                                <?php   
-             
-                                                $query = $con -> prepare("SELECT * FROM empresa where nit=123456789");
-                                                $query -> execute ();
-                                                $resultados = $query -> fetchAll(PDO::FETCH_ASSOC);
-
-                                                foreach ($resultados as $fila1){
-                                        ?>
-
-                                    <input class="form-control border-0" type="varchar" name="nombre_emp" value="<?php echo $fila1['nombre_emp']?>" readonly>
-                                            
-
-                                            <?php
-                                                    }
-                                                ?>
-                                            </div>
-                                        </div>
-
-
+                                        </div>                                        
                                         
                                         <div class="col-12">
                                             

@@ -31,10 +31,9 @@ if (isset($_POST['editar'])) {
     echo $id, $nombre, $min, $max, $valor;
     $resultado = mysqli_query($con, $consulta);
     
-    header("location:../pages/paquetes.php");
-    
-}
     echo "<script>alert('Su registro ha sido actualizado con éxito')</script>";
+    header("location:../pages/paquetes.php");
+}
 
     function eliminar()
     {
@@ -46,7 +45,6 @@ if (isset($_POST['editar'])) {
     //casos de registros
     $consulta = "DELETE FROM paquetes WHERE id_paquetes =$id";
     $resultado = mysqli_query($con, $consulta);
-    
+
     header("location:../pages/paquetes.php");
-    
 }

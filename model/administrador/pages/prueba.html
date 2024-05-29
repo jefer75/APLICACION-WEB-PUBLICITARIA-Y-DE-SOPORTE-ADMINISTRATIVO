@@ -3,30 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Crear Contenedor Dinámicamente</title>
+    <style>
+        .new-container {
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
+    <button id="abrir_modal">abrir modal</button>
+    <dialog id="contenido">
+
+        <button id="showContainerButton">Crear Contenedor</button>
+        
+    <div id="containerWrapper">
+        <!-- Aquí se agregarán los nuevos contenedores -->
+        <button id="cerrar">cerrar</button>
+    </div>
+</dialog>
     
-    <dialog id="midialogo">
-        <h1>
-            Este es el texto de prueba
-        </h1>
-        <button id="cerrar" onclick="closedialog();">cerrar</button>
-    </dialog>
-
-    <input type="submit" id="abrir" value="prueba" onclick="opendialog();">
     <script>
+        const openModal = document.getElementById('abrir_modal');
+const modal = document.getElementById('contenido');
+const closeModal = document.getElementById('cerrar');
 
-        const dialogo = document.getElementById('midialogo');
-        const abrir_ = document.getElementById('abrir');
-        const cerrar_ = document.getElementById('cerrar');
+openModal.addEventListener('click', function() {
+    modal.showModal();
+});
+
+closeModal.addEventListener('click', function(){
+    modal.close();
+});
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const showContainerButton = document.getElementById('showContainerButton');
+            const containerWrapper = document.getElementById('containerWrapper');
         
-        abrir_.addEventListener('click', function() {
-            dialogo.showModal();
-        });
+            showContainerButton.addEventListener('click', function() {
+                // Crear un nuevo contenedor
+                const newContainer = document.createElement('div');
+                newContainer.className = 'new-container';
         
-        cerrar_.addEventListener('click', function(){
-            dialogo.close();
+                // Añadir contenido al nuevo contenedor
+                newContainer.innerHTML = `
+                    <h2>Nuevo Contenedor</h2>
+                    <p>Este es un nuevo contenedor que se ha creado dinámicamente.</p>
+                `;
+        
+                // Añadir el nuevo contenedor al contenedor principal
+                containerWrapper.appendChild(newContainer);
+            });
         });
         
 

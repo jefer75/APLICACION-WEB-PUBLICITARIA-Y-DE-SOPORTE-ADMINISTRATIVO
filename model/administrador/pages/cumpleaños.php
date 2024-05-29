@@ -2,43 +2,11 @@
    
    include 'plantilla.php';
        
-    
-  
-    if ((isset($_POST["MM_insert"]))&&($_POST["MM_insert"]=="formreg"))
-   {
-          
-          $lugar = $_POST['lugar'];
-          $id_paquetes = $_POST['id_paquetes'];
-          $cant_ninos = $_POST['cant_ninos'];
-          $hora_inicio = $_POST['hora_inicio'];
-          $hora_fin = $_POST['hora_fin'];
-          $contacto = $_POST['contacto'];
-          $fecha_evento = $_POST['fecha_evento'];
-          $f_inicio = $_POST['f_inicio'];
-          $f_fin = $_POST['f_fin'];
-          $descripcion = $_POST['descripcion'];
-          
-
-   
-     if (  $lugar=="" || $cant_ninos==""  || $contacto=="" || $fecha_evento=="" || $descripcion=="" || $id_paquetes==""|| $hora_inicio==""|| $hora_fin==""|| $f_inicio==""|| $f_fin=="" )
-      {
-         echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
-         echo '<script>window.location="cumple.php"</script>';
-      }
-      
-      else{
-
-        $insertSQL = $con->prepare("INSERT INTO `eventos`( `lugar`, `cant_ninos`, `hora_inicio`, `contacto`, `fecha_evento`, `descripcion`, `id_paquetes`,  `hora_fin`, `f_inicio`, `f_fin`) VALUES( '$lugar', '$cant_ninos', '$hora_inicio', '$contacto', '$fecha_evento', '$descripcion', '$id_paquetes',  '$hora_fin', '$f_inicio', '$f_fin')");
-        $insertSQL -> execute();
-        echo '<script> alert("REGISTRO EXITOSO");</script>';
-        echo '<script>window.location="luces.php"</script>';
-     }  
-    }
     ?>
 
 
 
-  <title>Articulos</title>
+  <title>Ventas</title>
   
   <main id="main" class="main">
 
@@ -55,19 +23,37 @@
             <div class="card-body">
               <h5 class="card-title">cumpleaños</h5>
 
-              <a href="" class="añadir">Añadir</a>
+              <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
 
-<section class="modal ">
-  <div class="modal__container">
-      
-      <a href="#" class="modal__close" id="cerrar">X</a>
-      <h2 class="modal__title">Registrar paquete</h2>
-      <form method="post" name="formreg" id="formreg" class="signup-form"  autocomplete="off"> 
+    <dialog class="añadir_cont" id="añadir_cont">
+      <button id="añadir_close" class="btn modal_close" onclick="closedialog();">X</button>
+
+      <h2 class="modal__title">Registrar venta</h2> 
+      <form method="post" name="formreg" id="formreg" class="row g-3" action="" autocomplete="off">
         <!--Username -->
         <br>
         <br>
-        <select class="cont" name="id_tipo_art">
-            <option value ="">Seleccione Tipo de paquete</option>
+        <div class="col-md-6">
+        <label for="inputEmail5" class="form-label">Seleccione el paquete</label>
+        <select class="form-control" name="paquete">
+            <option value ="">Seleccione</option>
+            
+            <?php
+                $control = $con -> prepare ("SELECT * from paquetes Where id_paquetes != 0");
+                $control -> execute();
+            while ($fila = $control->fetch(PDO::FETCH_ASSOC)) 
+            {
+                echo "<option value=" . $fila['id_paquetes'] . ">"
+                . $fila['nombre_paquete'] . "</option>";
+            } 
+            ?>
+        </select>
+        </div>
+
+        <div class="col-md-6">
+        <label for="inputEmail5" class="form-label">Seleccione el tipo de evento</label>
+        <select class="form-control" name="tipo_e">
+            <option value ="">Seleccione</option>
             
             <?php
                 $control = $con -> prepare ("SELECT * from tipo_e");
@@ -79,55 +65,63 @@
             } 
             ?>
         </select>
-     <br>        
-     <label for="id_paquetes">paquete</label>
-        <br>
-        <input type="number" name="id_paquetes" id="id_paquetes" class="form_inputs" placeholder="paquete">
-        <br>   
-        <br>
-        <label for="lugar">lugar</label>
-        <br>
-        <input type="varchar" name="lugar" id="lugar" class="form_inputs" placeholder="lugar">
-        <br>
-        <label for="cant_ninos">cantidad niños</label>
-        <br>
-        <input type="number" name="cant_ninos" id="cant_ninos" class="form_inputs" placeholder="cantidad de niños">
-        <br>
-        <label for="contacto">contacto</label>
-        <br>
-        <input type="varchar" name="contacto" class="form_inputs" id="contacto" placeholder="contacto">
-        <br>
-        <label for="fecha_evento">fecha de evento</label>
-        <br>
-        <input type="date" name="fecha_evento" class="form_inputs" id="fecha_evento" placeholder="fecha del evento">
-        <br>
-        <label for="f_inicio">fecha de inicio</label>
-        <br>
-        <input type="date" name="f_inicio" class="form_inputs" id="f_inicio" placeholder="fecha del evento">
-        <br>
-        <label for="f_fin">fecha de fin</label>
-        <br>
-        <input type="date" name="f_fin" class="form_inputs" id="f_fin" placeholder="fecha del evento">
-        <br>
-        <label for="hora_inicio">hora inicio</label>
-        <br>
-        <input type="time" name="hora_inicio" id="hora_inicio" class="form_inputs" placeholder="hora inicio">               
-        <br>
-        <label for="hora_fin">hora fin</label>
-        <br>
-        <input type="time" name="hora_fin" class="form_inputs" id="hora_fin" placeholder="fecha del evento">
-        <br>
-        <label for="descripcion">descripcion</label>
-        <br>
-        <input type="varchar" name="descripcion" class="form_inputs" id="descripcion" placeholder="descripcion">
-        <br>
+        </div>
 
+        <div class="col-md-6">
+          <label for="inputPassword5" class="form-label">Cedula de cliente</label>
+          <input  class="form-control" type="text" name="cedula" pattern="[0-9]{7,12}" title="Solo se aceptan numeros" placeholder="Contacto" >
+        </div>
 
-        <input type="submit" name="validar" value="Registro">
-        <input type="hidden" name="MM_insert" value="formreg">
+        <div class="col-md-6">
+          <label for="inputPassword5" class="form-label">Lugar</label>
+          <input  class="form-control" type="text" name="lugar" pattern="[A-Za-z0-9#-/]{8,30}" title="Debe contener al menos 8 caracteres, incluyendo letras, números y caracteres especiales" placeholder="Lugar" >
+        </div>
+
+        <div class="col-md-6">
+          <label for="inputPassword5" class="form-label">Cantidad de  niños</label>
+          <input  class="form-control" type="text" name="cantidad" pattern="[0-9]{1,3}" title="Solo se aceptan numeros, minimo 1 caracter y maximo 3" placeholder="Cantidad de niños" >
+        </div>
+
+        <div class="col-md-6">
+          <label for="inputPassword5" class="form-label">Fecha de inicio</label>
+          <input  class="form-control" type="date" name="f_inicio"  placeholder="Fecha de inicio" >
+        </div>
+
+        <div class="col-md-6">
+          <label for="inputPassword5" class="form-label">Fecha de fin</label>
+          <input  class="form-control" type="date" name="f_fin"  placeholder="Fecha de fin" >
+        </div>
+
+        <div class="col-md-6">
+          <label for="inputPassword5" class="form-label">Hora de inicio</label>
+          <input  class="form-control" type="time" name="hora_inicio"  placeholder="Hora de inicio">
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword5" class="form-label">Hora de fin</label>
+          <input  class="form-control" type="time" name="hora_fin"  placeholder="Hora de fin" >
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword5" class="form-label">Descripcion</label>
+          <input  class="form-control" type="text" name="descripcion" pattern="[A-Za-z/s]{10,40}" title="Solo se aceptan letras, minimo 8 caracteres" placeholder="Descripcion">
+        </div>
+        
+        <div class="col-md-6">
+          <label for="inputPassword5" class="form-label">Contacto</label>
+          <input  class="form-control" type="text" name="contacto" pattern="[0-9]{9,11}" title="Solo se aceptan numeros" placeholder="Contacto" >
+        </div>
+      
+          <div class="text-center">
+            <tr>
+            <button class="btn" id="añadir_arti">Añadir articulo</button>
+
+            <div id="añadir_articulo"></div>
+
+            <input type="submit" name="registrar" value="Registro" class="btn btn-primary modal_close">
+            </tr>
+        </div>
       </form>
     </div>
-</section>
+</dialog>
 
 <!-- Table with stripped rows -->
 <table class="table datatable">
@@ -209,7 +203,7 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
+    <!-- Vendor JS Files -->
   <script src="../../../js/modal.js"></script>
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
