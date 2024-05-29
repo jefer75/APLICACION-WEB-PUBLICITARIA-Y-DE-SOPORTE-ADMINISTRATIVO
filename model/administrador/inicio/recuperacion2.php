@@ -131,14 +131,14 @@ header('Location: ../../../index.php');
                               <div class="row g-3 inputs">
                                 <div class="col-sm-6 user">
                                       <div class="form-floating">
-                                          <input class="form-control border-0 gmail" name= "cedula" type="number" placeholder="Cedula">
+                                          <input class="form-control border-0 gmail" name= "cedula" type="number" pattern="[0-9]{7,15}" title="Solo se permiten numeros, minimo 7 digitos" placeholder="Cedula">
                                           <label for="fecha">Cedula</label>
                                       </div>
                                   </div>
 
                                   <div class="col-sm-6 user">
                                       <div class="form-floating">
-                                      <input class="form-control border-0 gmail" name= "contrasena" type="password" placeholder="nueva Contraseña">
+                                      <input class="form-control border-0 gmail" name= "contrasena" type="password" pattern="[a-zA-Z0-9]{8,15}" title="La contraseña debe tener minimo 8 digitos" placeholder="nueva Contraseña">
                                           <span class="toggle-password" onclick="togglePasswordVisibility(this)"></span>
                                           <label for="fecha">Nueva Contraseña</label>
                                       </div>
@@ -146,7 +146,7 @@ header('Location: ../../../index.php');
 
                                   <div class="col-sm-6 user">
                                       <div class="form-floating">
-                                      <input class="form-control border-0 gmail"  name= "confirmar_contrasena" type="password" placeholder="Confirmar Contraseña">
+                                      <input class="form-control border-0 gmail"  name= "confirmar_contrasena" type="password" pattern="[a-zA-Z0-9]{8,15}" title="La contraseña debe tener minimo 8 digitos" placeholder="Confirmar Contraseña">
                                           <span class="focus-border"></span>
                                           <label for="fecha">Confirmar Contraseña</label>
                                       </div>
