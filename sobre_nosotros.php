@@ -130,84 +130,49 @@
                 <h1 class="mb-3">Historia</h1>
                 <p>La empresa Arlequin Eventos fue creada en el año 2019, para el mes de octubre por Stephania Henao, quien es la fundadora y actual dueña de la empresa, cuenta con una administradora, la cual es Gloria Henao. Durante los ultimos 4 años ha brindado felicidad y alegria a sus clientes, se encuentra ubicada en la ciudad de ibague, sin embargo, tambien realiza eventos para municipios aledaños dentro del departamento. A lo largo de su existencia ha brindado la oportunidad a los jovenes de obtener su primer empleo, lo cual ayuda tanto al desarrollo personal, como al desarrollo economico.</p>
             </div>
-            <div class="row g-4">
 
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="facility-item">
-                        <div class="facility-icon bg-info">
-                            <span class="bg-info"></span>
-                            <i class="fa fa-futbol teacher fa-3x text-info"></i>
-                            <span class="bg-info"></span>
+<div class="container-xxl py-5">
+            <div class="container">
+                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="testimonial-item bg-light rounded p-5">
+
+                        <p class="fs-5">Arlequin Eventos es una empresa en la cual nos encargamos de organizar eventos teniendo en cuenta elementos como la animación, la recreación y la logística. Entendemos que los recuerdos son valiosos, por ello, llevamos alegría a los momentos más importantes de nuestros clientes. Ofrecemos un servicio de calidad con calor humano.</p>
+                        <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
+                            
+                            <div class="ps-3">
+                                <h3 class="mb-1">Misión</h3>
+                            </div>
+                            <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
                         </div>
-                        <div class="facility-text bg-info">
-                        <h3 class="text-info mb-3">Mision</h3>
-                        <p class="mb-0">Arlequin Eventos es una empresa en la cual nos encargamos de organizar eventos teniendo en cuenta elementos como la animacion, la recreacion y la logistica. Entendemos que los recuerdos son valiosos, por ello, llevamos alegria a los momentos mas importantes de nuestros clientes. Ofrecemos un servicio de calidad con calor humano.</p>
-                        
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="facility-item">
-                    <div class="facility-icon bg-warning">
-                        <span class="bg-warning"></span>
-                        <i class="fa fa-home fa-3x text-warning"></i>
-                        <span class="bg-warning"></span>
+                    <div class="testimonial-item bg-light rounded p-5">
+                        <p class="fs-5">Posicionarse como lideres en diseño, planificacion, produccion y resultados de eventos que dejen en nuestros clientes recuerdos inolvidables de momentos especiales.</p>
+                        <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
+                            
+                            <div class="ps-3">
+                                <h3 class="mb-1">Visión</h3>
+                            </div>
+                            <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
+                        </div>
                     </div>
-                    <div class="facility-text bg-warning">
-                        <h3 class="text-warning mb-3 ">Vision</h3>
-                        <p class="mb-0">Posicionarse como lideres en diseño, planificacion, produccion y resultados de eventos que dejen en nuestros clientes recuerdos inolvidables de momentos especiales.</p>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="facility-item">
-                    <div class="facility-icon bg-primary">
-                        <span class="bg-primary"></span>
-                        <i class="fa fa-bus-alt fa-3x text-primary"></i>
-                        <span class="bg-primary"></span>
-                    </div>
-                    <div class="facility-text bg-primary">
-                        <h3 class="text-primary mb-3 ">Valores</h3>
-                        
-                        <ul class="mb-0">
+                    <div class="testimonial-item bg-light rounded p-5">
+                         <ul class="fs-5">
                             <li>Honestidada</li>
                             <li>Cumplimiento</li>
                             <li>Trabajo en equipo</li>
                             <li>Comunicacion</li>
                         </ul>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</div>
-<!-- Facilities End -->
-
-        <!-- Call To Action Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="bg-light rounded">
-                    <div class="row g-0">
-                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s" style="min-height: 400px;">
-                            <div class="position-relative h-100">
-                                <img class="position-absolute w-100 h-100 rounded" src="imagenes/contenido/equipo.jpg" style="object-fit: cover;">
+                        <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
+                            
+                            <div class="ps-3">
+                                <h3 class="mb-1">Valores</h3>
                             </div>
-                        </div>
-                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                            <div class="h-100 d-flex flex-column justify-content-center p-5">
-                                <h1 class="mb-4">Conviertete en Animador.</h1>
-                                <p class="mb-4">Para ser parte de nuestro equipo es indispensable que estes dispuesto a aprender cosas nuevas, y arriezgarte a hacer cosas que probablemente nunca pensaste hacer, por lo que requerimos que seas un entusiasta de los niños.
-                                </p>
-                                <a class="btn btn-primary py-3 px-5" href="">Postulate<i class="fa fa-arrow-right ms-2"></i></a>
-                            </div>
+                            <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Call To Action End -->
 
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
