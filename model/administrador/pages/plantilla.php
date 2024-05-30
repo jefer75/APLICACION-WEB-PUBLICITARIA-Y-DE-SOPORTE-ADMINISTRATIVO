@@ -13,17 +13,15 @@ foreach ($nombres as $fila) {
     $nombre = $fila['nombre'];
 }
 
-$con_empleados = $con->prepare("SELECT * FROM usuarios WHERE id_tipo_user = 3");
+$con_empleados = $con->prepare("SELECT * FROM usuarios WHERE id_tipo_user = 1");
 $con_empleados->execute();
 $nombres = $con_nombre->fetchAll(PDO::FETCH_ASSOC);
 foreach ($nombres as $fila) {
     $nombre = $fila['nombre'];
 }
 
-if(isset($_POST['cerrar_sesion']))
-{
+if (isset($_POST['cerrar_sesion'])) {
     session_destroy();
-
 
     header('location:../../../index.php');
 }
@@ -37,7 +35,7 @@ if(isset($_POST['cerrar_sesion']))
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  
+
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -74,7 +72,7 @@ if(isset($_POST['cerrar_sesion']))
 </head>
 
 <body>
-  
+
 
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
@@ -446,7 +444,7 @@ if(isset($_POST['cerrar_sesion']))
     </a>
   </li><!-- End F.A.Q Page Nav -->
   <form method="POST">
-      
+
       <li class="nav-item">
           <a class="nav-link collapsed" href="#">
               <i class="bi bi-box-arrow-right"></i>
@@ -455,7 +453,7 @@ if(isset($_POST['cerrar_sesion']))
             </a>
         </li><!-- End Blank Page Nav -->
     </form>
-        
+
 </ul>
 
 </aside><!-- End Sidebar-->

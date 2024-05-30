@@ -10,11 +10,12 @@ closeModal.addEventListener('click', function(){
     modal.close();
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    const showContainerButton = document.getElementById('showContainerButton');
-    const containerWrapper = document.getElementById('containerWrapper');
 
-    showContainerButton.addEventListener('click', function() {
+document.addEventListener("DOMContentLoaded", function() {
+    const generar = document.getElementById('añadir_art');
+    const contenedor = document.getElementById('contenido_art');
+
+    generar.addEventListener('click', function() {
         // Crear un nuevo contenedor
         const newContainer = document.createElement('div');
         newContainer.className = 'new-container';
@@ -57,6 +58,6 @@ document.addEventListener("DOMContentLoaded", function() {
         `;
 
         // Añadir el nuevo contenedor al contenedor principal
-        containerWrapper.appendChild(newContainer);
+        contenedor.appendChild(newContainer);
     });
 });
