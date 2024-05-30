@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../../../db/connection.php";
+require_once "../../db/connection.php";
 //include("../../../controller/validar_licencia.php");
 $db = new DataBase();
 $con = $db->conectar();
@@ -13,7 +13,7 @@ foreach ($nombres as $fila) {
     $nombre = $fila['nombre'];
 }
 
-$con_empleados = $con->prepare("SELECT * FROM usuarios WHERE id_tipo_user = 1");
+$con_empleados = $con->prepare("SELECT * FROM usuarios WHERE id_tipo_user = 3");
 $con_empleados->execute();
 $nombres = $con_nombre->fetchAll(PDO::FETCH_ASSOC);
 foreach ($nombres as $fila) {
@@ -50,17 +50,17 @@ if (isset($_POST['cerrar_sesion'])) {
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="../administrador/pages/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../administrador/pages/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../administrador/pages/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../administrador/pages/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="../administrador/pages/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="../administrador/pages/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../administrador/pages/assets/vendor/simple-datatables/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../css/tablas.css">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="../administrador/pages/assets/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -79,7 +79,7 @@ if (isset($_POST['cerrar_sesion'])) {
 
 <div class="d-flex align-items-center justify-content-between">
   <a href="index.html" class="logo d-flex align-items-center">
-    <img src="../../../imagenes/logos/Logo Arlequin Color.png" class="logo_arlequin">
+    <img src="../../imagenes/logos/Logo Arlequin Color.png" class="logo_arlequin">
   </a>
   <i class="bi bi-list toggle-sidebar-btn"></i>
 </div><!-- End Logo -->
@@ -332,110 +332,11 @@ if (isset($_POST['cerrar_sesion'])) {
   </li><!-- End Contact Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-      <i class="bi bi-layout-text-sidebar-reverse"></i><span>Articulos</span><i class="bi bi-chevron-down ms-auto"></i>
-    </a>
-    <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-      <li>
-        <a href="sonido.php">
-          <i class="bi bi-circle"></i><span>Sonido</span>
-        </a>
-      </li>
-      <li>
-        <a href="luces.php">
-          <i class="bi bi-circle"></i><span>Luces</span>
-        </a>
-      </li>
-      <li>
-        <a href="complementos.php">
-          <i class="bi bi-circle"></i><span>Complementos</span>
-        </a>
-      </li>
-      <li>
-        <a href="inmobiliarios.php">
-          <i class="bi bi-circle"></i><span>Inmobiliarios decoracion</span>
-        </a>
-      </li>
-    </ul>
-  </li><!-- End Charts Nav -->
-
-  <li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-      <i class="bi bi-cash-coin"></i><span>Ventas</span><i class="bi bi-chevron-down ms-auto"></i>
-    </a>
-    <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-      <li>
-        <a href="cumpleaños.php">
-          <i class="bi bi-circle"></i><span>Cumpleaños</span>
-        </a>
-      </li>
-      <li>
-        <a href="baby_shower.php">
-          <i class="bi bi-circle"></i><span>Baby Shower</span>
-        </a>
-      </li>
-      <li>
-        <a href="xv_años.php">
-          <i class="bi bi-circle"></i><span>XV Años</span>
-        </a>
-      </li>
-      <li>
-        <a href="comunion.php">
-          <i class="bi bi-circle"></i><span>Primera Comunión</span>
-        </a>
-      </li>
-      <li>
-        <a href="matrimonio.php">
-          <i class="bi bi-circle"></i><span>Matrimonio</>
-        </a>
-      </li>
-      <li>
-        <a href="hallowen.php">
-          <i class="bi bi-circle"></i><span>Hallowen</span>
-        </a>
-      </li>
-    </ul>
-  </li><!-- End Icons Nav -->
-
-  <li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-      <i class="bi bi-person"></i><span>Usuarios</span><i class="bi bi-chevron-down ms-auto"></i>
-    </a>
-    <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-      <li>
-        <a href="administradores.php">
-          <i class="bi bi-circle"></i><span>Administradores</span>
-        </a>
-      </li>
-      <li>
-        <a href="clientes.php">
-          <i class="bi bi-circle"></i><span>Clientes</span>
-        </a>
-      </li>
-      <li>
-        <a href="empleados.php">
-          <i class="bi bi-circle"></i><span>Empleados</span>
-        </a>
-      </li>
-    </ul>
-  </li><!-- Fin seccion de usuarios -->
-
-  <li class="nav-heading">Ayuda</li>
-
-  <li class="nav-item">
     <a class="nav-link collapsed" href="perfil.php">
       <i class="bi bi-person-circle"></i>
       <span>Perfil</span>
     </a>
   </li><!-- End Profile Page Nav -->
-
-
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="registrar.php">
-      <i class="bi bi-people"></i>
-      <span>Registrar</span>
-    </a>
-  </li><!-- End Register Page Nav -->
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="ayuda.php">

@@ -13,52 +13,11 @@
     </style>
 </head>
 <body>
-    <button id="abrir_modal">abrir modal</button>
-    <dialog id="contenido">
-
-        <button id="showContainerButton">Crear Contenedor</button>
+    <button id="añadir_art">Crear Contenedor</button>
         
-    <div id="containerWrapper">
-        <!-- Aquí se agregarán los nuevos contenedores -->
-        <button id="cerrar">cerrar</button>
-    </div>
-</dialog>
+    <div id="contenido_art">
+       
     
-    <script>
-        const openModal = document.getElementById('abrir_modal');
-const modal = document.getElementById('contenido');
-const closeModal = document.getElementById('cerrar');
-
-openModal.addEventListener('click', function() {
-    modal.showModal();
-});
-
-closeModal.addEventListener('click', function(){
-    modal.close();
-});
-
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const showContainerButton = document.getElementById('showContainerButton');
-            const containerWrapper = document.getElementById('containerWrapper');
-        
-            showContainerButton.addEventListener('click', function() {
-                // Crear un nuevo contenedor
-                const newContainer = document.createElement('div');
-                newContainer.className = 'new-container';
-        
-                // Añadir contenido al nuevo contenedor
-                newContainer.innerHTML = `
-                    <h2>Nuevo Contenedor</h2>
-                    <p>Este es un nuevo contenedor que se ha creado dinámicamente.</p>
-                `;
-        
-                // Añadir el nuevo contenedor al contenedor principal
-                containerWrapper.appendChild(newContainer);
-            });
-        });
-        
-
-    </script>
+    <script src="../../../js/modal.js"></script>
 </body>
 </html>
