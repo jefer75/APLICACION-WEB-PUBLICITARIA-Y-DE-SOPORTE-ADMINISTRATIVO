@@ -143,46 +143,47 @@
                             <div class="h-100 d-flex flex-column justify-content-center p-5">
                                 <h1 class="mb-4">Regístrate</h1>
                                 <p>Regístrate para conocer más acerca de los paquetes y hacer tu reservación</p>
-                            
-                                    <div class="row g-3">
+
+
+                                <div class="row g-3">
                                         <div class="col-sm-6">
                                             <div class="form-floating">
                                                 
-                                                <input  class="form-control border-0" type="text" name="nombre" id="nombres" pattern="[a-zA-Z/s]{3,40}" title="Solo se permiten letras, minimo 3 digitos" placeholder="Digite Nombre" required>
-                                                <label for="gname">Nombres</label>
+                                            <input class="form-control border-0" type="text" name="nombre" id="nombres" pattern="[a-zA-Z\s]{3,40}" title="Solo se permiten letras, mínimo 3 caracteres" placeholder="Digite Nombre" >
+                                            <label for="nombres">Nombres</label>
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6">
+                                      <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input class="form-control border-0" type="text" name="apellido" placeholder="Apellidos" pattern="[a-zA-Z/s]{3,40}" title="Solo se permiten letras, minimo 3 digitos" required>
-                                                <label for="fecha">Apellidos</label>
+                                                  <input class="form-control border-0" type="text" name="apellido" id="apellidos" placeholder="Apellidos" pattern="[a-zA-Z\s]{3,40}" title="Solo se permiten letras, mínimo 3 caracteres" oninput="this.value = this.value.replace(/[0-9]/g, '')">
+                                                  <label for="apellidos">Apellidos</label>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-floating">
                                     
-                                                <input class="form-control border-0"  type="text" name="cedula" id="documento" pattern="[0-9]{7,15}" title="Solo se permiten numeros, minimo 7 digitos" placeholder="Digite Documento" required>
+                                                <input class="form-control border-0"  type="text" name="cedula" id="documento" pattern="[0-9]{7,15}" title="Solo se permiten numeros, minimo 7 digitos" placeholder="Digite Documento">
                                                 <label for="cedula">N° Documento</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
                                                 
-                                                <input class="form-control border-0"   type="text" name="celular" id="telefono" pattern="[0-9]{7,15}" title="Solo se permiten numeros, minimo 10 digitos" placeholder="Digite Telefono" required>
+                                                <input class="form-control border-0"   type="text" name="celular" id="telefono" pattern="[0-9]{7,15}" title="Solo se permiten numeros, minimo 10 digitos" placeholder="Digite Telefono">
                                                 <label for="cname">Contacto</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input  class="form-control border-0"  type="email" name="correo" id="correo" placeholder="Digite Correo" required>
+                                                <input  class="form-control border-0"  type="email" name="correo" id="correo" placeholder="Digite Correo">
                                                 <label for="cage">Correo</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input class="form-control border-0" pattern="[a-zA-Z0-9]{8,15}" title="La contraseña debe tener minimo 8 digitos" type="password" name="contrasena" placeholder="Contraseña" required>
+                                                <input class="form-control border-0" pattern="[a-zA-Z0-9]{8,15}" title="La contraseña debe tener minimo 8 digitos" type="password" name="contrasena" placeholder="Contraseña">
                                                 <label for="fecha">Contraseña</label>
                                             </div>
                                         </div>                                        
