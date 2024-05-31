@@ -40,7 +40,7 @@ if (isset($_POST['registrar'])){
 <main id="main" class="main">
 
 <div class="pagetitle">
-  <h1>Paquetes</h1>
+  <h1>Decoracion</h1>
   
 </div><!-- End Page Title -->
 
@@ -50,7 +50,8 @@ if (isset($_POST['registrar'])){
 
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Paquetes</h5>
+          <h5 class="card-title">Imagenes</h5>
+            <p>Estas imagenes modifican a interaz publicitaria de decoracion</p>
 
               <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
               
@@ -94,33 +95,19 @@ if (isset($_POST['registrar'])){
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th><b>ID</b></th>
-                    <th>Nombre</th>
-                    <th>Edad minima</th>
-                    <th>Edad maxima</th>
-                    <th>Valor</th>
-                    <th>Actualizar</th>
-                    <th></th>
+                    <th>Imagen</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php      
-                    $con_paquetes = $con->prepare("SELECT * FROM paquetes");
-                    $con_paquetes->execute();
-                    $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($paquetes as $fila) {
-                      $id_paquete = $fila['id_paquetes'];
-                      $nombre_paquetes = $fila['nombre_paquete'];
-                      $edad_min = $fila['edad_min'];
-                      $edad_max = $fila['edad_max'];
-                      $valor = $fila['valor'];
-                  ?>
+                    $con_decoracion = $con->prepare("SELECT * FROM decoracion");
+                    $con_decoracion->execute();
+                    $imagenes = $con_decoracion->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($imagenes as $fila) {
+                      $imagen = $fila['imagen'];
+                    ?>
                   <tr>
-                    <td><?php echo $id_paquete ?></td>
-                    <td><?php echo $nombre_paquetes ?></td>
-                    <td><?php echo $edad_min ?></td>
-                    <td><?php echo $edad_max ?></td>
-                    <td>$<?php echo $valor ?></td>
+                    <td><?php echo $imagen ?></td>
                                                     
                       <td>
                         <a href="" class="btn btn-warning" onclick="window.open
@@ -157,7 +144,6 @@ if (isset($_POST['registrar'])){
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
   
   <!-- Vendor JS Files -->
   <script src="../../../js/modal.js"></script>
