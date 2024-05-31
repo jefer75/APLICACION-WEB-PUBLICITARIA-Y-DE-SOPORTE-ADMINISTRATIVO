@@ -60,11 +60,11 @@ $con = $db -> conectar();
             <div class="card-body">
               <h5 class="card-title"></h5>
 
-                        <form method="post" action="funciones/soni_excel.php">
-                            <button type="submit" name="soni_excel" class="btn btn-success">Descargar Excel</button>
-                        </form>
+              <input type="submit" class="añadir" id="añadir" value="Añadir"  onclick="opendialog();" >
 
-              <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
+              <form method="post" action="funciones/soni_excel.php">
+                            <button type="submit" name="soni_excel" class="btn btn-success"><i class="bi bi-download"></i></button>
+                        </form>
               
 
               <dialog class="añadir_cont" id="añadir_cont">
@@ -102,14 +102,21 @@ $con = $db -> conectar();
                 <div class="col-md-6">
                   <label for="inputPassword5" class="form-label">estado</label>
                   <br>
-            <select class="form-control" name="id_estado">
-                <option value="<?php echo htmlspecialchars($evento['id_estado']); ?>">Seleccione el estado</option>
-                <?php
-                $paquetes = $con->query("SELECT * FROM estados")->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($paquetes as $paquete) {
-                    echo "<option value='" . htmlspecialchars($paquete['id_estado']) . "'>" . htmlspecialchars($paquete['estado']) . "</option>";
-                }
-                ?>
+
+                  <select class="cont" name="id_estado">
+                    <option value ="<?php echo $fila['id_estado'] ?>"><?php echo $fila['id_estado'] ?></option>
+                    
+                    <?php
+                        $control = $con -> prepare ("SELECT * from estados");
+                        $control -> execute();
+                    while ($fila = $control->fetch(PDO::FETCH_ASSOC)) 
+                    {
+                        echo "<option value=" . $fila['id_estado'] . ">"
+                        . $fila['estado'] . "</option>";
+                    } 
+                    ?>
+                </select>
+           
                 </div>
 
                 <div class="co-md-6">
@@ -147,12 +154,13 @@ $con = $db -> conectar();
                     <th>cantidad</th>
                     <th>valor</th>
                     <th>Actualizar</th>
+
                   </tr>
                 </thead>
                 <tbody>
                   <?php
                        $con_paquetes = $con->prepare("SELECT articulos.id_articulo,tipo_articulo.id_tipo_art, tipo_articulo.tipo_articulo, estados.estado , articulos.nombre_A, articulos.descripcion,  articulos.cantidad,  articulos.valor
-                        FROM articulos INNER JOIN tipo_articulo ON tipo_articulo.id_tipo_art = articulos.id_tipo_art INNER JOIN estados ON estados.id_estado = articulos.id_estado where articulos.id_tipo_art= 1");
+                        FROM articulos INNER JOIN tipo_articulo ON tipo_articulo.id_tipo_art = articulos.id_tipo_art INNER JOIN estados ON estados.id_estado = articulos.id_estado  where articulos.id_tipo_art= 1");
                       $con_paquetes->execute();
                       $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
                       foreach ($paquetes as $fila) {
@@ -176,11 +184,10 @@ $con = $db -> conectar();
                     <td><a href="" class="boton" onclick="window.open
                     ('../actualizar/articulos.php?id=<?php echo $fila['id_articulo'] ?>','','width= 600,height=500, toolbar=NO');void(null);">Click Aqui</a>
 
-                  </tr>
-                    <?php
+<?php
                       }
-                    ?>
-                  
+                      ?>
+                  </tr>
                  
                   
                 </tbody>

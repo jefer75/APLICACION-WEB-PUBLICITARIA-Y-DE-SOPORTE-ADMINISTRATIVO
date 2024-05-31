@@ -112,14 +112,18 @@
             <label  class="form-label" for="id_estado">estado</label>
             <br>
             <select class="cont" name="id_estado">
-                <option value="<?php echo htmlspecialchars($evento['id_estado']); ?>">Seleccione el estado</option>
-                <?php
-                $paquetes = $con->query("SELECT * FROM estados")->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($paquetes as $paquete) {
-                    echo "<option value='" . htmlspecialchars($paquete['id_estado']) . "'>" . htmlspecialchars($paquete['estado']) . "</option>";
-                }
-                ?>
-            </select>
+                    <option value ="<?php echo $fila['id_estado'] ?>"><?php echo $fila['estado'] ?></option>
+                    
+                    <?php
+                        $control = $con -> prepare ("SELECT * from estados");
+                        $control -> execute();
+                    while ($fila = $control->fetch(PDO::FETCH_ASSOC)) 
+                    {
+                        echo "<option value=" . $fila['id_estado'] . ">"
+                        . $fila['estado'] . "</option>";
+                    } 
+                    ?>
+                </select>
 
             </div>
 
