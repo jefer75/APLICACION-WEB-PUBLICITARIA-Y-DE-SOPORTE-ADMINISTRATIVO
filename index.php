@@ -472,21 +472,22 @@
                                         <div class="col-sm-6">
                                             <div class="form-floating">
                                                 
-                                            <input class="form-control border-0" type="text" name="nombre" id="nombres" pattern="[a-zA-Z\s]{3,40}" title="Solo se permiten letras, mínimo 3 caracteres" placeholder="Digite Nombre" >
+                                            <input class="form-control border-0" type="text" name="nombre" id="nombres" pattern="[a-zA-Z\s]{1,18}" title="Solo se permiten letras, máximo 18 caracteres" placeholder="Digite Nombre" >
+
                                             <label for="nombres">Nombres</label>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                  <input class="form-control border-0" type="text" name="apellido" id="apellidos" placeholder="Apellidos" pattern="[a-zA-Z\s]{3,40}" title="Solo se permiten letras, mínimo 3 caracteres" oninput="this.value = this.value.replace(/[0-9]/g, '')">
+                                                  <input class="form-control border-0" type="text" name="apellido" id="apellidos" placeholder="Apellidos" pattern="[a-zA-Z\s]{1,18}" title="Solo se permiten letras, máximo 18 caracteres">
                                                   <label for="apellidos">Apellidos</label>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                 <input class="form-control border-0" type="text" name="cedula" id="documento" pattern="[0-9]{7,15}" title="Solo se permiten números, mínimo 7 dígitos" placeholder="Digite Documento">
+                                                 <input class="form-control border-0" type="text" name="cedula" id="documento" pattern="[0-9]{8,10}" title="Solo se permiten números, mínimo 8 dígitos" placeholder="Digite Documento">
                                                 <label for="documento">N° Documento</label>
                                             </div>
                                         </div>
@@ -501,16 +502,17 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input  class="form-control border-0"  type="email" name="correo" id="correo" placeholder="Digite Correo" >
+                                                <input  class="form-control border-0"  type="email" name="correo" id="correo" maxlength="23"  placeholder="Digite Correo" >
                                                 <label for="cage">Correo</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input class="form-control border-0" pattern="[a-zA-Z0-9]{8,15}" title="La contraseña debe tener minimo 8 digitos" type="password" name="contrasena" placeholder="Contraseña" >
+                                                 <input class="form-control border-0" pattern="[a-zA-Z0-9]{8,11}" title="La contraseña debe tener entre 8 y 11 caracteres alfanuméricos" type="password" name="contrasena" placeholder="Contraseña" >
                                                 <label for="fecha">Contraseña</label>
-                                            </div>
-                                        </div>                                        
+                                             </div>
+                                        </div>
+                                       
                                         
                                         <div class="col-12">
                                             

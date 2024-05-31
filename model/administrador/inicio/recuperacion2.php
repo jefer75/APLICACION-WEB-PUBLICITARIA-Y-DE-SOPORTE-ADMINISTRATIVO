@@ -138,7 +138,7 @@ header('Location: ../../../index.php');
 
                                   <div class="col-sm-6 user">
                                       <div class="form-floating">
-                                      <input class="form-control border-0 gmail" name= "contrasena" type="password" pattern="[a-zA-Z0-9]{8,15}" title="La contraseña debe tener minimo 8 digitos" placeholder="nueva Contraseña">
+                                      <input class="form-control border-0 gmail" name= "contrasena" type="password" pattern="[a-zA-Z0-9]{8,11}" title="La contraseña debe tener minimo 8 digitos y maximo 11" placeholder="nueva Contraseña">
                                           <span class="toggle-password" onclick="togglePasswordVisibility(this)"></span>
                                           <label for="fecha">Nueva Contraseña</label>
                                       </div>
@@ -146,7 +146,7 @@ header('Location: ../../../index.php');
 
                                   <div class="col-sm-6 user">
                                       <div class="form-floating">
-                                      <input class="form-control border-0 gmail"  name= "confirmar_contrasena" type="password" pattern="[a-zA-Z0-9]{8,15}" title="La contraseña debe tener minimo 8 digitos" placeholder="Confirmar Contraseña">
+                                      <input class="form-control border-0 gmail"  name= "confirmar_contrasena" type="password" pattern="[a-zA-Z0-9]{8,11}" title="La contraseña debe tener minimo 8 digitos y maximo 11" placeholder="Confirmar Contraseña">
                                           <span class="focus-border"></span>
                                           <label for="fecha">Confirmar Contraseña</label>
                                       </div>

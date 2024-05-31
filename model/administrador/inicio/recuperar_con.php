@@ -136,7 +136,7 @@
                                       <div class="col-sm-6 user">
                                             <div class="form-floating">
 
-                                                <input type="gmail" class="form-control border-0 gmail" id="correo" name="email" placeholder="Correo">
+                                                <input type="gmail" class="form-control border-0 gmail" id="correo" name="email"  maxlength="23" placeholder="Correo">
                                                 <label for="fecha">Correo</label>
                                             </div>
                                         </div>
