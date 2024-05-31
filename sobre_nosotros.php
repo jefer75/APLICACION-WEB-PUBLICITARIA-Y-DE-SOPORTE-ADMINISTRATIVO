@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
-    
+
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -62,7 +62,7 @@
                     </div>
 
                     <a href="decoracion.php" class="nav-item nav-link">Decoración</a>
-                    <a href="sobre_nosotros.php" class="nav-item nav-link active">Sobre Nosotros</a>                    
+                    <a href="sobre_nosotros.php" class="nav-item nav-link active">Sobre Nosotros</a>
                     <a href="contact.php" class="nav-item nav-link">Contáctanos</a>
                 </div>
                 <a href="model/administrador/inicio/login.php" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Iniciar Sesión<i class="fa fa-arrow-right ms-3"></i></a>
@@ -91,7 +91,7 @@
                         <h1 class="mb-4">Enterate de más sobre nuestra identidad empresarial</h1>
                         <p class="mb-4">La empresa Arlequin Eventos fue creada en el año 2019, para el mes de octubre por Stephania Henao, quien es la fundadora y actual dueña de la empresa, cuenta con una administradora, la cual es Gloria Henao. Durante los ultimos 4 años ha brindado felicidad y alegria a sus clientes, se encuentra ubicada en la ciudad de ibague, sin embargo, tambien realiza eventos para municipios aledaños dentro del departamento. A lo largo de su existencia ha brindado la oportunidad a los jovenes de obtener su primer empleo, lo cual ayuda tanto al desarrollo personal, como al desarrollo economico.</p>
                         <div class="row g-4 align-items-center">
-                            
+
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center">
                                     <img class="rounded-circle flex-shrink-0" src="imagenes/logos/stephania.jpg" alt="" style="width: 45px; height: 45px;">
@@ -121,7 +121,7 @@
         </div>
         <!-- About End -->
 
-        
+
 <!-- Facilities Start -->
 <div class="container-xxl py-5">
     <div class="container" id="inicio">
@@ -138,7 +138,7 @@
 
                         <p class="fs-5">Arlequin Eventos es una empresa en la cual nos encargamos de organizar eventos teniendo en cuenta elementos como la animación, la recreación y la logística. Entendemos que los recuerdos son valiosos, por ello, llevamos alegría a los momentos más importantes de nuestros clientes. Ofrecemos un servicio de calidad con calor humano.</p>
                         <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                            
+
                             <div class="ps-3">
                                 <h3 class="mb-1">Misión</h3>
                             </div>
@@ -148,7 +148,7 @@
                     <div class="testimonial-item bg-light rounded p-5">
                         <p class="fs-5">Posicionarse como lideres en diseño, planificacion, produccion y resultados de eventos que dejen en nuestros clientes recuerdos inolvidables de momentos especiales.</p>
                         <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                            
+
                             <div class="ps-3">
                                 <h3 class="mb-1">Visión</h3>
                             </div>
@@ -163,7 +163,6 @@
                             <li>Comunicacion</li>
                         </ul>
                         <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                            
                             <div class="ps-3">
                                 <h3 class="mb-1">Valores</h3>
                             </div>
@@ -237,13 +236,13 @@
         <div class="copyright">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom" href="#">Arlequin Eventos</a>, All Right Reserved. 
-                    
+                    &copy; <a class="border-bottom" href="#">Arlequin Eventos</a>, All Right Reserved.
+
                     <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                     Designed By <a class="border-bottom" href="https://htmlcodex.com">Elitech JYDT</a>
                     <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">Elitech JYDT</a>
                 </div>
-                
+
             </div>
         </div>
     </div>

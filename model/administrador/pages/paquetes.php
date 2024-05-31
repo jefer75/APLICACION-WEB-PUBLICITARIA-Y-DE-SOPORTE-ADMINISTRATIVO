@@ -1,44 +1,44 @@
 <?php
 include 'plantilla.php';
- 
-if (isset($_POST['registrar'])){
 
-  $nombre_paquete= $_POST['nombre_paquete'];
-  $edad_min = $_POST['minima'];
-  $edad_max= $_POST['maxima'];
-  $valor= $_POST['alquiler'];  
-                  
-  $sql= $con -> prepare ("SELECT * FROM paquetes WHERE nombre_paquete='$nombre_paquete'");
-  $sql -> execute();
-  $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
+if (isset($_POST['registrar'])) {
 
-  if ($fila){
-    echo '<script>alert ("ESTE PAQUETE YA EXISTE ");</script>';
-  }
+    $nombre_paquete = $_POST['nombre_paquete'];
+    $edad_min = $_POST['minima'];
+    $edad_max = $_POST['maxima'];
+    $valor = $_POST['alquiler'];
 
-  else if ($nombre_paquete=="" || $edad_min=="" || $edad_max=="" || $valor==""){
-    echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';  
-  }
-      
-  else{
-    $insert= $con -> prepare ("INSERT INTO paquetes(nombre_paquete, edad_min, edad_max, valor) VALUES ('$nombre_paquete', $edad_min, $edad_max, '$valor')");
-    $insert -> execute();
-    echo '<script> alert ("Registro realizado con exito");</script>';
-    echo '<script>window.location="paquetes.php"</script>';
-  }
+    $sql = $con->prepare("SELECT * FROM paquetes WHERE nombre_paquete='$nombre_paquete'");
+    $sql->execute();
+    $fila = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($fila) {
+        echo '<script>alert ("ESTE PAQUETE YA EXISTE ");</script>';
+    } else if ($nombre_paquete == "" || $edad_min == "" || $edad_max == "" || $valor == "") {
+        echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
+    } else {
+        $insert = $con->prepare("INSERT INTO paquetes(nombre_paquete, edad_min, edad_max, valor) VALUES ('$nombre_paquete', $edad_min, $edad_max, '$valor')");
+        $insert->execute();
+        echo '<script> alert ("Registro realizado con exito");</script>';
+        echo '<script>window.location="paquetes.php"</script>';
+    }
 }
 
 ?>
 <head>
 <title>Paquetes</title>
 
-</head>
+
+    <script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>
+<script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    </head>
 
 <main id="main" class="main">
 
 <div class="pagetitle">
   <h1>Paquetes</h1>
-  
+
 </div><!-- End Page Title -->
 
 <section class="section">
@@ -50,14 +50,14 @@ if (isset($_POST['registrar'])){
           <h5 class="card-title">Paquetes</h5>
 
               <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
-              
+
               <dialog class="añadir_cont" id="añadir_cont">
                 <button id="añadir_close" class="btn modal_close" onclick="closedialog();">X</button>
 
-                <h2 class="modal__title">Registrar paquete</h2> 
+                <h2 class="modal__title">Registrar paquete</h2>
           <!-- Multi Columns Form -->
 
-                <form method="post" name="formreg" id="formreg" class="row g-3"  autocomplete="off"> 
+                <form method="post" name="formreg" id="formreg" class="row g-3"  autocomplete="off">
 
                 <div class="col-md-6">
 
@@ -78,7 +78,7 @@ if (isset($_POST['registrar'])){
 
                 <div class="col-12">
                   <label for="inputAddress2" class="form-label">Valor</label>
-                  <input class="form-control" type="text" name="alquiler" pattern="[0-9]{4,10}" title="Solo se permiten numeros, minimo 4 digitos" placeholder="valor" required>
+                  <input class="form-control" type="text" name="alquiler" pattern="[0-9]{1,10}" title="Solo se permiten numeros" placeholder="valor" required>
                 </div>
                 <div class="text-center">
                   <tr>
@@ -88,17 +88,17 @@ if (isset($_POST['registrar'])){
 
             </dialog>
 
-              
-              <?php include "../consultar/con_paquetes.php"; 
-            ?>             
+
+              <?php include "../consultar/con_paquetes.php";
+?>
                   <?php
-                  
-                    if (isset($_POST['actualizar'])){
-                      
-                    }
-                   
-                ?>                  
-              
+
+if (isset($_POST['actualizar'])) {
+
+}
+
+?>
+
             </div>
           </div>
 
@@ -124,7 +124,7 @@ if (isset($_POST['registrar'])){
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  
+
   <!-- Vendor JS Files -->
   <script src="../../../js/modal.js"></script>
   <script src="paquetes.js"></script>
