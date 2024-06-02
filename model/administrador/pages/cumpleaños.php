@@ -112,9 +112,9 @@
       
           <div class="text-center">
             <tr>
-            <button class="btn" id="añadir_arti">Añadir articulo</button>
-
-            <div id="añadir_articulo"></div>
+            <button id="añadir_art">Crear Contenedor</button>
+        
+    <div id="contenido_art">
 
             <input type="submit" name="registrar" value="Registro" class="btn btn-primary modal_close">
             </tr>
@@ -122,6 +122,7 @@
       </form>
     </div>
 </dialog>
+
 
 <!-- Table with stripped rows -->
 <table class="table datatable">

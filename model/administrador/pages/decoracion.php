@@ -30,7 +30,7 @@ if (isset($_POST['registrar'])){
 
 ?>
 <head>
-<title>Paquetes</title>
+<title>Decoracion</title>
     
     <script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>
 <script src="../../../js/jquery.min.js"></script>
@@ -40,7 +40,7 @@ if (isset($_POST['registrar'])){
 <main id="main" class="main">
 
 <div class="pagetitle">
-  <h1>Paquetes</h1>
+  <h1>Decoracion</h1>
   
 </div><!-- End Page Title -->
 
@@ -50,39 +50,26 @@ if (isset($_POST['registrar'])){
 
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Paquetes</h5>
+          <h5 class="card-title">Imagenes</h5>
+            <p>Estas imagenes modifican a interaz publicitaria de decoracion, ten en cuentra que las imagenes largas se van a acortar</p>
 
               <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
               
               <dialog class="añadir_cont" id="añadir_cont">
                 <button id="añadir_close" class="btn modal_close" onclick="closedialog();">X</button>
 
-                <h2 class="modal__title">Registrar paquete</h2> 
+                <h2 class="modal__title">Insertar Imagen</h2> 
           <!-- Multi Columns Form -->
 
-                <form method="post" name="formreg" id="formreg" class="row g-3"  autocomplete="off"> 
-
+                <form action="../funciones/img_decoracion.php" method="post" class="row g-3" enctype="multipart/form-data" autocomplete="off">
                 <div class="col-md-6">
 
-                  <label for="inputEmail5" class="form-label">Nombre Paquete</label>
+                  <label for="inputEmail5" class="form-label">Imagen</label>
 
-                  <input  class="form-control" type="text" name="nombre_paquete" pattern="[A-Za-z/s]{4,15}" title="Solo se aceptan letras" placeholder="Nombre de paquete" required>
+                  <input  class="form-control" type="file" name="imagen" placeholder="subir imagen" required>
                 </div>
 
-                <div class="col-md-6">
-                  <label for="inputPassword5" class="form-label">Edad Minima</label>
-                  <input  class="form-control" type="text" pattern="[0,9]{1,3}" title="Solo se aceptan numeros, minimo 1" name="minima"  placeholder="Edad minima" required>
-                </div>
-
-                <div class="col-12">
-                  <label for="inputAddress5" class="form-label">Edad Maxima</label>
-                  <input  class="form-control" type="text" pattern="[0,9]{1,3}" title="Solo se aceptan numeros, minimo 1" name="maxima" placeholder="Edad maxima" required>
-                </div>
-
-                <div class="col-12">
-                  <label for="inputAddress2" class="form-label">Valor</label>
-                  <input class="form-control" type="text" name="alquiler" pattern="[0-9]{1,10}" title="Solo se permiten numeros" placeholder="valor" required>
-                </div>
+                
                 <div class="text-center">
                   <tr>
                   <input type="submit" name="registrar" value="Registro" class="btn btn-primary modal_close">
@@ -94,37 +81,23 @@ if (isset($_POST['registrar'])){
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th><b>ID</b></th>
-                    <th>Nombre</th>
-                    <th>Edad minima</th>
-                    <th>Edad maxima</th>
-                    <th>Valor</th>
-                    <th>Actualizar</th>
-                    <th></th>
+                    <th>Imagenes</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php      
-                    $con_paquetes = $con->prepare("SELECT * FROM paquetes");
-                    $con_paquetes->execute();
-                    $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($paquetes as $fila) {
-                      $id_paquete = $fila['id_paquetes'];
-                      $nombre_paquetes = $fila['nombre_paquete'];
-                      $edad_min = $fila['edad_min'];
-                      $edad_max = $fila['edad_max'];
-                      $valor = $fila['valor'];
-                  ?>
+                    $query = $con->prepare("SELECT * FROM decoracion");
+                    $query->execute();
+                    $imagenes = $query->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($imagenes as $imagen) {
+                    ?>
                   <tr>
-                    <td><?php echo $id_paquete ?></td>
-                    <td><?php echo $nombre_paquetes ?></td>
-                    <td><?php echo $edad_min ?></td>
-                    <td><?php echo $edad_max ?></td>
-                    <td>$<?php echo $valor ?></td>
-                                                    
+                    <td>
+                        <img class="imagenes_tablas" src="data:<?php echo $imagen['tipo']; ?>;base64,<?php echo base64_encode($imagen['datos']); ?>" alt="<?php echo htmlspecialchars($imagen['nombre']); ?>">
+                    </td>                                
                       <td>
                         <a href="" class="btn btn-warning" onclick="window.open
-                    ('../actualizar/paquetes.php?id=<?php echo $id_paquete ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i>Actualizar</a>
+                        ('../actualizar/decoracion.php?id=<?php echo $imagen['id_imagen'] ?>','','width= 450,height=350, toolbar=NO');void(null);"><i class="bi bi-trash"></i>Eliminar</a>
                         </td>
 
                       </td>
@@ -157,7 +130,6 @@ if (isset($_POST['registrar'])){
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
   
   <!-- Vendor JS Files -->
   <script src="../../../js/modal.js"></script>

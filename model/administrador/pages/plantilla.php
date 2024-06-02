@@ -1,11 +1,16 @@
 <?php
-session_start();
 require_once "../../../db/connection.php";
-//include("../../../controller/validar_licencia.php");
+session_start();
 $db = new DataBase();
 $con = $db->conectar();
-
 $cedula = $_SESSION['cedula'];
+
+if (!isset($cedula)){
+  //include("../../../controller/validar_licencia.php");
+  echo '<script>No has iniciado sesion</script>';
+  header("Location: ../inicio/login.php");
+  }
+
 $con_nombre = $con->prepare("SELECT * FROM usuarios WHERE cedula = $cedula");
 $con_nombre->execute();
 $nombres = $con_nombre->fetchAll(PDO::FETCH_ASSOC);
@@ -27,6 +32,9 @@ if(isset($_POST['cerrar_sesion']))
 
     header('location:../../../index.php');
 }
+ 
+
+    
 
 ?>
 
@@ -327,9 +335,9 @@ if(isset($_POST['cerrar_sesion']))
   </li><!-- End Contact Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="compras.php">
+    <a class="nav-link collapsed" href="decoracion.php">
       <i class="bi bi-cart-plus"></i>
-      <span>Compras</span>
+      <span>Decoracion</span>
     </a>
   </li><!-- End Contact Page Nav -->
 

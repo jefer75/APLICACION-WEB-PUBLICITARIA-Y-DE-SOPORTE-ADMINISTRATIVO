@@ -1,7 +1,3 @@
-
-
-
-
 <?php
        session_start();
        require_once("../../../db/connection.php");
@@ -172,30 +168,14 @@
             <td><input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="actualizar" value="Actualizar"></td>
                     <td><input type="submit" class="btn" style="background-color: gray; color: white;" name="eliminar" value="Eliminar"></td>
 
-
-
-
             </tr>
-
-              <!-- <button type="submit" class="btn btn-primary">Submit</button>
-
- 
-
-              <button type="reset" class="btn btn-secondary">Reset</button> -->
 
             </div>
 
           </form><!-- End Multi Columns Form -->
 
-
-
         </div>
-
       </div>
-
-
-
     </div>
-    
 </body>
 </html>

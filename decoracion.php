@@ -1,3 +1,12 @@
+<?php
+
+require_once("db/connection.php");
+// include("../../../controller/validarSesion.php");
+$db = new Database();
+$con = $db -> conectar();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -100,15 +109,17 @@
 
                         <section class="gallery">
                             <ul class="images">
-                              <li class="img"><img src="imagenes/contenido/img60.jpeg" alt="img"></li>
-                              <li class="img"><img src="imagenes/contenido/img54.jpeg" alt="img"></li>
-                              <li class="img"><img src="imagenes/contenido/img74.jpg" alt="img"></li>
-                              <li class="img"><img src="imagenes/contenido/img73.jpg" alt="img"></li>
-                              <li class="img"><img src="imagenes/contenido/img65.jpeg" alt="img"></li>
-                              <li class="img"><img src="imagenes/contenido/img69.jpg" alt="img"></li>
-                              <li class="img"><img src="imagenes/contenido/img71.jpg" alt="img"></li>
-                              <li class="img"><img src="imagenes/contenido/img67.jpeg" alt="img"></li>
-                              <li class="img"><img src="imagenes/contenido/img61.jpeg" alt="img"></li>
+                            <?php
+                            $query = $con->prepare("SELECT * FROM decoracion");
+                            $query->execute();
+                            $imagenes = $query->fetchAll(PDO::FETCH_ASSOC);
+                            foreach ($imagenes as $imagen) {
+                            ?>
+                                <li class="img">
+                                <img src="data:<?php echo $imagen['tipo']; ?>;base64,<?php echo base64_encode($imagen['datos']); ?>" alt="<?php echo htmlspecialchars($imagen['nombre']); ?>"></li>
+                            <?php
+                                }
+                            ?>
                               
                             </ul>
                           </section>
