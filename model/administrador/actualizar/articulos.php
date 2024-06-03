@@ -1,7 +1,3 @@
-
-
-
-
 <?php
        session_start();
        require_once("../../../db/connection.php");
@@ -75,7 +71,7 @@
 <link href="lib/animate/animate.min.css" rel="stylesheet">
 <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 <link href="../../../css/bootstrap.min.css" rel="stylesheet">
-<link href="../../../css/tablaedi.css" rel="stylesheet">
+
 
 </head>
 
