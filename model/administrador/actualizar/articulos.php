@@ -61,7 +61,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paquetes</title>
+<title>Articulos</title>
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -127,18 +127,21 @@
 
              <label  class="form-label" for="id_tipo_art">tipo articulo</label>
             <br>
-            <select class="cont" name="id_tipo_art">
-                <option value="<?php echo htmlspecialchars($evento['id_tipo_art']); ?>">Seleccione el tipo de articulo</option>
-                <?php
-                $paquetes = $con->query("SELECT * FROM tipo_articulo")->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($paquetes as $paquete) {
-                    echo "<option value='" . htmlspecialchars($paquete['id_tipo_art']) . "'>" . htmlspecialchars($paquete['tipo_articulo']) . "</option>";
-                }
-                ?>
-            </select>
-            </div>
 
-           
+            <select class="cont" name="id_tipo_art">
+                    <option value ="<?php echo $fila['id_tipo_art'] ?>"><?php echo $fila['tipo_articulo'] ?></option>
+                    
+                    <?php
+                        $control = $con -> prepare ("SELECT * from tipo_articulos");
+                        $control -> execute();
+                    while ($fila = $control->fetch(PDO::FETCH_ASSOC)) 
+                    {
+                        echo "<option value=" . $fila['id_tipo_art'] . ">"
+                        . $fila['tipo_articulo'] . "</option>";
+                    } 
+                    ?>
+                </select>
+            </div>
 
             <div class="col-12">
 
@@ -159,21 +162,12 @@
               <input type="number"  class="form-control" name="valor" value="<?php echo $fila['valor'] ?>"></td>      
             </div>
 
-           
-
-           
-
-         
-
             <div class="text-center">
 
             <tr>
 
             <td><input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="actualizar" value="Actualizar"></td>
                     <td><input type="submit" class="btn" style="background-color: gray; color: white;" name="eliminar" value="Eliminar"></td>
-
-
-
 
             </tr>
 
