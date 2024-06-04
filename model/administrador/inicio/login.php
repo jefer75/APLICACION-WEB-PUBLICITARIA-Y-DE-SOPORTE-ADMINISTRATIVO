@@ -109,7 +109,7 @@ header('Location: ../../../index.php');
                                     <div class="row g-3 inputs">
                                         <div class="col-sm-6 user" >
                                             <div class="form-floating">
-                                                <input type="text" class="form-control border-0"  name="cedula"  pattern="[0-9]{8,10}" title="Solo se permiten numeros, minimo 8 digitos" placeholder="Cedula">
+                                                <input type="text" class="form-control border-0"  name="cedula"  pattern="[0-9]{4,10}" title="Solo se permiten numeros, minimo 4 digitos" placeholder="Cedula">
                                                 <label for="gname">Cedula</label>
                                             </div>
                                         </div>

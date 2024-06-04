@@ -1,0 +1,40 @@
+.custom-table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 0 auto; /* Esto centra la tabla horizontalmente */
+}
+
+.custom-table th, .custom-table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid lightgray; /* Bordes delgados de color gris claro */
+}
+
+.custom-table th {
+    background-color: blue; /* Color de fondo de los títulos */
+    color: white; /* Color del texto de los títulos */
+}
+
+.custom-table td:first-child {
+    border-top-left-radius: 10px; /* Esquina superior izquierda curva */
+    border-bottom-left-radius: 10px; /* Esquina inferior izquierda curva */
+}
+
+.custom-table td:last-child {
+    border-top-right-radius: 10px; /* Esquina superior derecha curva */
+    border-bottom-right-radius: 10px; /* Esquina inferior derecha curva */
+}
+
+.hiper {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #3498db; /* Color de fondo azul */
+    color: #fff; /* Color del texto blanco */
+    border: none;
+    border-radius: 20px; /* Bordes curvos */
+    text-decoration: none; /* Quitar subrayado del enlace */
+}
+
+.hiper:hover {
+    background-color: #2980b9; /* Cambiar color de fondo al pasar el ratón */
+}

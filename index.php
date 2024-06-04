@@ -502,7 +502,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input  class="form-control border-0"  type="email" name="correo" id="correo" maxlength="23"  placeholder="Digite Correo" >
+                                                <input  class="form-control border-0"  type="email" name="correo" id="correo" maxlength="30"  placeholder="Digite Correo" >
                                                 <label for="cage">Correo</label>
                                             </div>
                                         </div>

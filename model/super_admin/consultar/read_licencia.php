@@ -13,14 +13,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Licencia</title>
-    <link rel="stylesheet" href="../../../css/tablas.css">
+    <link rel="stylesheet" href="../../../css/superadmin.css">
 </head>
 <body>
 <form action="" method="POST">
 
 <td>
-    <td><input type="submit" value="Regresar" name="regresar" id="regresar"></td>
-    <td><input type="submit" value="registrar" name="registrar" id="registrar"></td>
+    <td><input type="submit" value="Regresar" name="regresar" id="regresar" style="background-color: blue; color: white; border: none; padding: 10px 20px; border-radius: 15px; text-decoration: none; margin-top: 20px;"></td>
+    <td><input type="submit" value="registrar" name="registrar" id="registrar" style="background-color: blue; color: white; border: none; padding: 10px 20px; border-radius: 15px; text-decoration: none; margin-top: 20px;"></td>
 </tr>
 </form>
 <?php 
@@ -33,20 +33,20 @@ if (isset($_POST['regresar'])){
 }
 
 ?>
+
+
+</style>
     <div class="formulario">
-
-
-    <h1 class="title">Licencias</h1>
+<h1 class="card-title" style="font-family: 'Arial Rounded MT Bold', sans-serif; text-align: center; margin-top: 20px;">Licencias</h1>
         <form method="POST" action="">
-        <table>
-            <tr class="gris">
-
-            <td>Licencia</td>
-                <td>Nit</td>
-                <td>Fecha de inicio</td>
-                <td>Fecha de final</td>
-                <td>Estado</td>
-                <td>Actualizar/Eliminar</td>
+        <table class="custom-table">
+            <tr class="header-row">
+            <th>Licencia</th>
+                <th>Nit</th>
+                <th>Fecha de inicio</th>
+                <th>Fecha de final</th>
+                <th>Estado</th>
+                <th>Actualizar/Eliminar</th>
             </tr>
             
             <?php 
