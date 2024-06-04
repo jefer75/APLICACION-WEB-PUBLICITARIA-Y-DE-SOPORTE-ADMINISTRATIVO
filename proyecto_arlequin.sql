@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-03-2024 a las 13:25:38
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Tiempo de generación: 08-05-2024 a las 06:00:13
+-- Versión del servidor: 10.1.37-MariaDB
+-- Versión de PHP: 7.1.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -35,7 +36,7 @@ CREATE TABLE `articulos` (
   `descripcion` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `valor` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `articulos`
@@ -44,7 +45,7 @@ CREATE TABLE `articulos` (
 INSERT INTO `articulos` (`id_articulo`, `nombre_A`, `id_tipo_art`, `id_estado`, `descripcion`, `cantidad`, `valor`) VALUES
 (2, 'cabina de sonido', 1, 1, 0, 0, 0),
 (3, 'luces led', 2, 1, 0, 0, 0),
-(4, 'parlet', 0, 0, 0, 2, 0);
+(4, 'parlet', 2, 1, 0, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -57,7 +58,7 @@ CREATE TABLE `compras` (
   `fecha_c` date NOT NULL,
   `cedula` bigint(20) NOT NULL,
   `valor_total` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `compras`
@@ -79,7 +80,7 @@ CREATE TABLE `detalle_compra` (
   `id_articulo` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `valor_neto_c` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `detalle_compra`
@@ -100,7 +101,7 @@ CREATE TABLE `detalle_evento` (
   `id_evento` int(11) NOT NULL,
   `cedula` int(11) NOT NULL,
   `valor_neto` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `detalle_evento`
@@ -121,7 +122,7 @@ CREATE TABLE `detalle_factura` (
   `id_articulo` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `valor_neto` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -134,7 +135,7 @@ CREATE TABLE `empresa` (
   `nombre_emp` varchar(50) NOT NULL,
   `telefono` bigint(20) NOT NULL,
   `direccion` varchar(80) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `empresa`
@@ -152,7 +153,7 @@ INSERT INTO `empresa` (`nit`, `nombre_emp`, `telefono`, `direccion`) VALUES
 CREATE TABLE `estados` (
   `id_estado` int(11) NOT NULL,
   `estado` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `estados`
@@ -183,7 +184,7 @@ CREATE TABLE `eventos` (
   `hora_inicio` time NOT NULL,
   `hora_fin` time NOT NULL,
   `contacto` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `eventos`
@@ -204,7 +205,7 @@ CREATE TABLE `factura` (
   `id_evento` int(11) NOT NULL,
   `descripcion` varchar(80) NOT NULL,
   `valor_total` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -219,7 +220,7 @@ CREATE TABLE `licencia` (
   `fecha_ini` date NOT NULL,
   `fecha_fin` date NOT NULL,
   `id_estado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `licencia`
@@ -240,14 +241,16 @@ CREATE TABLE `paquetes` (
   `edad_min` int(11) NOT NULL,
   `edad_max` int(11) NOT NULL,
   `valor` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `paquetes`
 --
 
 INSERT INTO `paquetes` (`id_paquetes`, `nombre_paquete`, `edad_min`, `edad_max`, `valor`) VALUES
-(1, 'payasin', 2, 10, 100000);
+(1, 'payasin', 2, 10, 100000),
+(2, 'Mini', 2, 10, 80000),
+(3, 'Titiriloco', 5, 12, 120000);
 
 -- --------------------------------------------------------
 
@@ -258,7 +261,7 @@ INSERT INTO `paquetes` (`id_paquetes`, `nombre_paquete`, `edad_min`, `edad_max`,
 CREATE TABLE `tipo_articulo` (
   `id_tipo_art` int(11) NOT NULL,
   `tipo_articulo` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tipo_articulo`
@@ -266,7 +269,9 @@ CREATE TABLE `tipo_articulo` (
 
 INSERT INTO `tipo_articulo` (`id_tipo_art`, `tipo_articulo`) VALUES
 (1, 'Sonido'),
-(2, 'Luces');
+(2, 'Luces'),
+(3, 'Complementos'),
+(4, 'Inmobiliarios decoracion');
 
 -- --------------------------------------------------------
 
@@ -277,7 +282,7 @@ INSERT INTO `tipo_articulo` (`id_tipo_art`, `tipo_articulo`) VALUES
 CREATE TABLE `tipo_e` (
   `id_tipo_e` int(11) NOT NULL,
   `tipo_evento` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tipo_e`
@@ -300,7 +305,7 @@ INSERT INTO `tipo_e` (`id_tipo_e`, `tipo_evento`) VALUES
 CREATE TABLE `tipo_user` (
   `id_tipo_user` int(11) NOT NULL,
   `tipo_user` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tipo_user`
@@ -321,8 +326,8 @@ CREATE TABLE `trig` (
   `n_contrasena` varchar(50) DEFAULT NULL,
   `v_contrasena` varchar(50) DEFAULT NULL,
   `tipo` varchar(20) NOT NULL,
-  `fecha_creacion` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `trig`
@@ -366,7 +371,7 @@ CREATE TABLE `usuarios` (
   `id_estado` int(11) NOT NULL,
   `nit` bigint(20) NOT NULL,
   `token` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -546,13 +551,13 @@ ALTER TABLE `licencia`
 -- AUTO_INCREMENT de la tabla `paquetes`
 --
 ALTER TABLE `paquetes`
-  MODIFY `id_paquetes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_paquetes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_articulo`
 --
 ALTER TABLE `tipo_articulo`
-  MODIFY `id_tipo_art` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_tipo_art` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_e`

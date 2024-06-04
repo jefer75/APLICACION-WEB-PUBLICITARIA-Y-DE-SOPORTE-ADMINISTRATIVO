@@ -99,7 +99,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="index.html" class="nav-item nav-link active">Inicio</a>
+                    <a href="index.php" class="nav-item nav-link active">Inicio</a>
 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Recreación</a>
@@ -131,7 +131,10 @@
                                     <h1 class="display-2 text-white animated slideInDown mb-4">Arlequin Eventos</h1>
                                     <p class="fs-5 fw-medium text-white mb-4 pb-2">En Arlequín eventos, fusionamos la magia de la recreación, la emoción de la animación y la elegancia de la decoración para crear experiencias unicas y memorables.</p>
                                     <a href="#inicio" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Descubre</a>
+
                                     <a href="#registrate" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Registrate</a>
+
+
                                 </div>
                             </div>
                         </div>
@@ -147,6 +150,7 @@
                                     <p class="fs-5 fw-medium text-white mb-4 pb-2">Creemos que cada evento es una oportunidad para celebrar la vida y crear recuerdos duraderos. ¡Déjamos hacer brillar tu ocasión especial con nuestro toque mágico y creativo!</p>
                                     <a href="#inicio" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Descubre</a>
                                     <a href="#registrate" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Registrate</a>
+                                    <a href="#registrarse" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Registrate</a>
                                 </div>
                             </div>
                         </div>
@@ -459,6 +463,8 @@
         <!-- Appointment Start -->
         <div class="container-xxl py-5" id="registrate">
             <div class="container">
+        <div class="container-xxl py-5">
+            <div class="container" id="registrarse">
                 <div class="bg-light rounded">
                     <div class="row g-0">
                         <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">

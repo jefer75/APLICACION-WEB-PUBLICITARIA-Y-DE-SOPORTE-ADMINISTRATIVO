@@ -64,6 +64,7 @@ if (isset($_POST['verificar'])) {
 <div class="collapse navbar-collapse" id="navbarCollapse">
     <div class="navbar-nav mx-auto">
         <a href="index.php" class="nav-item nav-link active">Inicio</a>
+      
 
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Recreación</a>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <dialog id="midialogo">
+        <h1>
+            Este es el texto de prueba
+        </h1>
+        <button id="cerrar" onclick="closedialog();">cerrar</button>
+    </dialog>
+
+    <input type="submit" id="abrir" value="prueba" onclick="opendialog();">
+    <script>
+
+        const dialogo = document.getElementById('midialogo');
+        const abrir_ = document.getElementById('abrir');
+        const cerrar_ = document.getElementById('cerrar');
+        
+        abrir_.addEventListener('click', function() {
+            dialogo.showModal();
+        });
+        
+        cerrar_.addEventListener('click', function(){
+            dialogo.close();
+        });
+        
+
+    </script>
+</body>
+</html>

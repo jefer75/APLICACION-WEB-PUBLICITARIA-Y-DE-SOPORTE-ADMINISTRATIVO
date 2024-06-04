@@ -87,6 +87,7 @@ if (isset($_POST['actualizar'])){
 </button>
 <div class="collapse navbar-collapse" id="navbarCollapse">
     <div class="navbar-nav mx-auto">
+
         <a href="index.php" class="nav-item nav-link active">Inicio</a>
 
         <div class="nav-item dropdown">
