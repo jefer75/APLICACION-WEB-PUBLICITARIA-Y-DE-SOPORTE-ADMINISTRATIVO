@@ -56,31 +56,29 @@
 
            <!-- Navbar Start -->
            <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-            <img src="../../../imagenes/logos/Logo Arlequin Color.png" class="logo">
+           <img src="../../../imagenes/logos/Logo Arlequin Color.png" class="logo">
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="index.php" class="nav-item nav-link active">Inicio</a>
+                    <a href="../../../index.php" class="nav-item nav-link active">Inicio</a>
 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Recreación</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                            <a href="../../../infantil.html" class="dropdown-item">Infantil</a>
-                            <a href="../../../adultos.html" class="dropdown-item">Adultos</a>
+                            <a href="../../../infantil.php" class="dropdown-item">Infantil</a>
+                            <a href="../../../adultos.php" class="dropdown-item">Adultos</a>
                         </div>
                     </div>
 
-                    <a href="../../../decoracion.html" class="nav-item nav-link">Decoración</a>
-                    <a href="../../../sobre_nosotros.html" class="nav-item nav-link">Sobre Nosotros</a>                    
-                    <a href="../../../contact.php" class="nav-item nav-link">Contactanos</a>
+                    <a href="../../../decoracion.php" class="nav-item nav-link">Decoración</a>
+                    <a href="../../../sobre_nosotros.php" class="nav-item nav-link">Sobre Nosotros</a>                    
+                    <a href="../../../contact.php" class="nav-item nav-link">Contáctanos</a>
                 </div>
-                <td>
                 <form action="" method="POST">
                 <div class="contenido">
                 <td><input class="btn btn-primary rounded-pill px-3 d-none d-lg-block" type="submit" value="regresar" name="regresar" id="regresar"></td>
-                <!-- <td href="" class="btn btn-primary rounded-pill px-3 d-none d-lg-block"  value="regresar" name="regresar" id="regresar"></>> Regresar<i class="fa fa-arrow-right ms-3"></i></td> -->
             </div>
         </nav>
         <!-- Navbar End -->
@@ -118,7 +116,6 @@ header('Location: ../../../index.php');
                                     
                                         <div class="col-sm-6 user">
                                             <div class="form-floating">
-                                                <!-- <input type="password" class="form-control border-0" id="password" placeholder="Contraseña"> -->
                                                 <input type="password" class="form-control border-0" id="password" placeholder="Contraseña" name="contrasena">
                                                 <label for="fecha">Contraseña</label>
                                             </div>

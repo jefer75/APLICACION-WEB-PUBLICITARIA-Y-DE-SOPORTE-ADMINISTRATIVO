@@ -1,9 +1,9 @@
 .añadir{
     background-color:#198754;
     color: white;
-    width: 15vh;
-    padding: 2%;
-    margin: 2%;
+    width: 10vh;
+    padding: 1%;
+    margin: 1%;
     float: right;
     text-decoration: none;
     border-radius: 1em;
@@ -70,4 +70,13 @@
 
 .modal label{
     margin-bottom: 2%;
+}
+
+.añadir_cont{
+    border-radius: 2vh;
+    border: 0;
+    padding: 10vh;
+}
+.modal__close, .añadir_cont h2{
+    text-align: center;
 }

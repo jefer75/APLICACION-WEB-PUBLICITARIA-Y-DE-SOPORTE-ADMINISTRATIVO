@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
     session_start();
     require_once("db/connection.php");
@@ -45,19 +46,37 @@
      }  
     }
     ?>
+=======
+>>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
+<<<<<<< HEAD
     <title>Contactanos</title>
+=======
+    <title>Recreación Adultos</title>
+>>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
+<<<<<<< HEAD
     <!-- Favicon -->
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
      <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+=======
+<<<<<<<< HEAD:adultos.html
+     <!-- Favicon -->
+     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
+     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+========
+    <!-- Favicon -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+>>>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f:contact.php
+>>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,11 +117,23 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
+<<<<<<< HEAD
                     <a href="index.php" class="nav-item nav-link active">Inicio</a>
+=======
+<<<<<<<< HEAD:adultos.html
+                    <a href="index.php" class="nav-item nav-link active">Inicio</a>
+========
+                    <a href="index.php" class="nav-item nav-link">Inicio</a>
+>>>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f:contact.php
+>>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f
 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Recreación</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
+<<<<<<< HEAD
+=======
+<<<<<<<< HEAD:adultos.html
+>>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f
                             <a href="infantil.html" class="dropdown-item">Infantil</a>
                             <a href="adultos.html" class="dropdown-item">Adultos</a>
                         </div>
@@ -111,6 +142,19 @@
                     <a href="decoracion.html" class="nav-item nav-link">Decoración</a>
                     <a href="sobre_nosotros.html" class="nav-item nav-link">Sobre Nosotros</a>                    
                     <a href="contact.php" class="nav-item nav-link">Contáctanos</a>
+<<<<<<< HEAD
+=======
+========
+                            <a href="infantil.php" class="dropdown-item">Infantil</a>
+                            <a href="adultos.php" class="dropdown-item">Adultos</a>
+                        </div>
+                    </div>
+
+                    <a href="decoracion.php" class="nav-item nav-link">Decoración</a>
+                    <a href="sobre_nosotros.php" class="nav-item nav-link">Sobre Nosotros</a>                    
+                    <a href="contact.php" class="nav-item nav-link active">Contáctanos</a>
+>>>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f:contact.php
+>>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f
                 </div>
                 <a href="model/administrador/inicio/login.php" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Iniciar Sesión<i class="fa fa-arrow-right ms-3"></i></a>
             </div>
@@ -120,15 +164,25 @@
         <!-- Page Header End -->
         <div class="container-xxl py-5 page-header position-relative mb-5">
             <div class="container py-5">
+<<<<<<< HEAD
                 <h1 class="display-2 text-white animated slideInDown mb-4">Contáctanos</h1>
                 <nav aria-label="breadcrumb animated slideInDown">
                   
+=======
+                <h1 class="display-2 text-white animated slideInDown mb-4">Recreación para Adultos</h1>
+                <nav aria-label="breadcrumb animated slideInDown">
+                    <ol class="breadcrumb">
+                       
+                        <li class="breadcrumb-item text-white active" aria-current="page">Experiencias recreativas exclusivas para adultos: diversión y relajación en un solo lugar.</li>
+                    </ol>
+>>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f
                 </nav>
             </div>
         </div>
         <!-- Page Header End -->
 
 
+<<<<<<< HEAD
         <!-- Contact Start -->
         <div class="container-xxl py-5">
             <div class="container">
@@ -252,6 +306,41 @@
 
   
         <!-- Footer Start -->
+=======
+        <!-- About Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <h1 class="mb-4">Bienvenidos</h1>
+                        <p class="mb-4">Sumérgete en la emoción y la camaradería con Arlequin Eventos, donde te esperan una variedad de actividades diseñadas para sacar tu lado más aventurero. Desde desafiantes juegos de equipo que pondrán a prueba tu colaboración y coordinación, hasta competencias deportivas llenas de adrenalina y diversión, en nuestro espacio encontrarás la combinación perfecta entre emoción y entretenimiento para disfrutar en grupo.</p>
+                        <div class="row g-4 align-items-center">
+                            <div class="col-sm-6">
+                                <a class="btn btn-primary rounded-pill py-3 px-5" href="about.html">Descubre más</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <img class="img-fluid w-75 rounded-circle bg-light p-3" src="imagenes/contenido/img115.jpg" alt="">
+                            </div>
+                            <div class="col-6 text-start" style="margin-top: -150px;">
+                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="imagenes/contenido/img77.jpeg" alt="">
+                            </div>
+                            <div class="col-6 text-end" style="margin-top: -150px;">
+                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="imagenes/contenido/img83.jpeg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Call To Action End -->
+
+
+>>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
                 <div class="row g-5">
@@ -268,13 +357,21 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
+<<<<<<< HEAD
                     <h3 class="text-white mb-4">Acceso Rápido</h3>
+=======
+                        <h3 class="text-white mb-4">Acceso Rápido</h3>
+>>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f
                         <a class="btn btn-link text-white-50" href="index.php">Inicio</a>
                         <a class="btn btn-link text-white-50" href="infantil.html">Recreación Infantil</a>
                         <a class="btn btn-link text-white-50" href="adultos.html">Recreación Adultos</a>
                         <a class="btn btn-link text-white-50" href="decoracion.html">Decoración</a>
                         <a class="btn btn-link text-white-50" href="sobre_nosotros.html">Sobre Nosotros</a>
+<<<<<<< HEAD
                         <a class="btn btn-link text-white-50" href="contact.php">Contáctanos</a>
+=======
+                        <a class="btn btn-link text-white-50" href="contact.html">Contáctanos</a>
+>>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">Galeria de Fotos</h3>

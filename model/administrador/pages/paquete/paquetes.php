@@ -82,7 +82,7 @@ if (isset($_POST['actualizar_btn'])){
                     <tbody>
                         <?php
                         require_once "../../../../db/connection.php ";
-                        $result = mysqli_query($conexion, "SELECT * FROM tipo_articulo");
+                        $result = mysqli_query($conexion, "SELECT * FROM tipo_articulo where id=");
                         while ($fila = mysqli_fetch_assoc($result)) :
                         ?>
                             <tr>
@@ -97,12 +97,8 @@ if (isset($_POST['actualizar_btn'])){
                                         <i class="fa fa-edit "></i>
                                     </button>
 
-                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#eliminar<?php echo $fila['id_tipo_art']; ?>">
-                                        <i class="fa fa-trash "></i>
-                                    </button>
                                 </td>
                                 <?php include "../includes/editar.php"; ?>
-                            <?php include "../includes/eliminar.php"; ?>
                             <?php endwhile; ?>
                             </tr>
                     </tbody>

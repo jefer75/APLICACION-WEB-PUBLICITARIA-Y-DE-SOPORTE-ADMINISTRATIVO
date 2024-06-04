@@ -62,22 +62,34 @@ if (isset($_POST['verificar'])) {
     <span class="navbar-toggler-icon"></span>
 </button>
 <div class="collapse navbar-collapse" id="navbarCollapse">
+<<<<<<< HEAD
     <div class="navbar-nav mx-auto">
         <a href="index.php" class="nav-item nav-link active">Inicio</a>
       
+=======
+                <div class="navbar-nav mx-auto">
+                    <a href="../../../index.php" class="nav-item nav-link active">Inicio</a>
+>>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f
 
-        <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Recreación</a>
-            <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                <a href="../../../infantil.html" class="dropdown-item">Infantil</a>
-                <a href="../../../adultos.html" class="dropdown-item">Adultos</a>
-            </div>
-        </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Recreación</a>
+                        <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
+                            <a href="../../../infantil.php" class="dropdown-item">Infantil</a>
+                            <a href="../../../adultos.php" class="dropdown-item">Adultos</a>
+                        </div>
+                    </div>
 
+<<<<<<< HEAD
         <a href="../../../decoracion.html" class="nav-item nav-link">Decoración</a>
         <a href="../../../sobre_nosotros.html" class="nav-item nav-link">Sobre Nosotros</a>                    
         <a href="../../../contact.php" class="nav-item nav-link">Contactanos</a>
     </div>
+=======
+                    <a href="../../../decoracion.php" class="nav-item nav-link">Decoración</a>
+                    <a href="../../../sobre_nosotros.php" class="nav-item nav-link">Sobre Nosotros</a>                    
+                    <a href="../../../contact.php" class="nav-item nav-link">Contáctanos</a>
+                </div>
+>>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f
     <td>
     <form action="" method="POST">
     <div class="contenido">

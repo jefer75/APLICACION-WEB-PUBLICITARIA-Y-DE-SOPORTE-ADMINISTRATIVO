@@ -2,8 +2,6 @@
    
    include 'plantilla.php';
        
-    
-  
     if ((isset($_POST["MM_insert"]))&&($_POST["MM_insert"]=="formreg"))
    {
           
@@ -38,7 +36,7 @@
 
 
 
-  <title>Articulos</title>
+  <title>Ventas-Matrimonios</title>
   
   <main id="main" class="main">
 

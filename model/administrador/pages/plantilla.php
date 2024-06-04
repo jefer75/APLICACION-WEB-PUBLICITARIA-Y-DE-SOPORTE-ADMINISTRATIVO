@@ -6,6 +6,13 @@ $db = new DataBase();
 $con = $db->conectar();
 
 $cedula = $_SESSION['cedula'];
+
+if( $cedula == null || $cedua = ''){
+
+  header("Location: ../inicio/login.php");
+  die();
+  
+}
 $con_nombre = $con->prepare("SELECT * FROM usuarios WHERE cedula = $cedula");
 $con_nombre->execute();
 $nombres = $con_nombre->fetchAll(PDO::FETCH_ASSOC);
@@ -52,17 +59,17 @@ if(isset($_POST['cerrar_sesion']))
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="../assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="../assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../css/tablas.css">
 
   <!-- Template Main CSS File -->
-  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -327,9 +334,9 @@ if(isset($_POST['cerrar_sesion']))
   </li><!-- End Contact Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="compras.php">
+    <a class="nav-link collapsed" href="decoracion.php">
       <i class="bi bi-cart-plus"></i>
-      <span>Compras</span>
+      <span>Decoracion</span>
     </a>
   </li><!-- End Contact Page Nav -->
 
@@ -338,6 +345,13 @@ if(isset($_POST['cerrar_sesion']))
       <i class="bi bi-layout-text-sidebar-reverse"></i><span>Articulos</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
     <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+    <li>
+        <a href="arti.php">
+          <i class="bi bi-circle"></i><span>Articulos</span>
+        </a>
+      </li>
+
       <li>
         <a href="sonido.php">
           <i class="bi bi-circle"></i><span>Sonido</span>

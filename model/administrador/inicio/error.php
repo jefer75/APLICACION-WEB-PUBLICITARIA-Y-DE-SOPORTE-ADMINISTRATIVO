@@ -124,19 +124,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="index.html" class="nav-item nav-link active">Inicio</a>
+                    <a href="../../../index.php" class="nav-item nav-link active">Inicio</a>
 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Recreación</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                            <a href="../../../infantil.html" class="dropdown-item">Infantil</a>
-                            <a href="../../../adultos.html" class="dropdown-item">Adultos</a>
+                            <a href="../../../infantil.php" class="dropdown-item">Infantil</a>
+                            <a href="../../../adultos.php" class="dropdown-item">Adultos</a>
                         </div>
                     </div>
 
-                    <a href="../../../decoracion.html" class="nav-item nav-link">Decoración</a>
-                    <a href="../../../sobre_nosotros.html" class="nav-item nav-link">Sobre Nosotros</a>                    
-                    <a href="../../../contact.html" class="nav-item nav-link">Contactanos</a>
+                    <a href="../../../decoracion.php" class="nav-item nav-link">Decoración</a>
+                    <a href="../../../sobre_nosotros.php" class="nav-item nav-link">Sobre Nosotros</a>                    
+                    <a href="../../../contact.php" class="nav-item nav-link">Contáctanos</a>
                 </div>
                 <td>
                 <form action="" method="POST">
@@ -158,8 +158,14 @@
       </form>
     </div><!-- End Search Bar -->
 
+<<<<<<< HEAD
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
+=======
+if (isset($_POST['regresar'])){
+header('Location: login.php');
+}
+>>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f
 
 <<<<<<< HEAD
         <li class="nav-item d-block d-lg-none">

@@ -3,33 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Crear Contenedor Dinámicamente</title>
+    <style>
+        .new-container {
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
+    <button id="añadir_art">Crear Contenedor</button>
+        
+    <div id="contenido_art">
+       
     
-    <dialog id="midialogo">
-        <h1>
-            Este es el texto de prueba
-        </h1>
-        <button id="cerrar" onclick="closedialog();">cerrar</button>
-    </dialog>
-
-    <input type="submit" id="abrir" value="prueba" onclick="opendialog();">
-    <script>
-
-        const dialogo = document.getElementById('midialogo');
-        const abrir_ = document.getElementById('abrir');
-        const cerrar_ = document.getElementById('cerrar');
-        
-        abrir_.addEventListener('click', function() {
-            dialogo.showModal();
-        });
-        
-        cerrar_.addEventListener('click', function(){
-            dialogo.close();
-        });
-        
-
-    </script>
+    <script src="../../../js/modal.js"></script>
 </body>
 </html>
