@@ -240,7 +240,7 @@
                         <p class="mb-4">En Arlequin Eventos, nuestro enfoque está en diferentes servicios para que tu celebración sea muy especial, entre los cuales destaca la animación, la cual es indispensable para que se respire un aire de dirvesión y momentos felices, luego tenemos la recreación, que son todas las dinámicas que pueden hacer reir a carcajadas a tus invitados y por último pero no menos importante tenemos la  decoración, en la cual, vamos a dar nuestro mayor esfuerzo por que el ambiente no este solo en la animación y recreación sino que el lugar tambien transmita el mensaje de alegría y diversión que hara que el momento sea aún más especial.</p>
                         <div class="row g-4 align-items-center">
                             <div class="col-sm-6">
-                                <a class="btn btn-primary rounded-pill py-3 px-5" href="about.html">Descubre más</a>
+                                <a class="btn btn-primary rounded-pill py-3 px-5" href="sobre_nosotros.php">Descubre más</a>
                             </div>
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center">
