@@ -18,33 +18,39 @@ $con = $db -> conectar();
     $cantidad = $_POST['cantidad'];
     $valor= $_POST['valor'];
 
-
-     $sql= $con -> prepare ("SELECT * FROM articulos WHERE nombre_A='$nombre_A'");
-     $sql -> execute();
-     $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
-
-     if ($fila){
-        echo '<script>alert ("ESTE PAQUETE YA EXISTE //CAMBIELO//");</script>';
-        echo '<script>window.location="sonido.php"</script>';
-     }
-
-     else
-   
-     if ( $id_tipo_art =="" || $nombre_A =="" || $id_estado =="" ||  $descripcion =="" ||  $cantidad =="" || $valor =="")
-      {
-         echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
-         echo '<script>window.location="sonido.php"</script>';
+     // Validación de campos vacíos
+     if (empty($id_tipo_art) || empty($nombre_A) || empty($id_estado) || empty($descripcion) || empty($cantidad) || empty($valor)) {
+      echo '<script>alert("EXISTEN DATOS VACIOS");</script>';
+      echo '<script>window.location="complementos.php"</script>';
+  } else if ($cantidad <= 0 || $valor <= 0) {  
+      echo '<script>alert("CANTIDAD Y VALOR DEBEN SER MAYORES A 0");</script>';
+      echo '<script>window.location="complementos.php.php"</script>';
+  } else {
+      $sql = $con->prepare("SELECT * FROM articulos WHERE nombre_A = :nombre_A");
+      $sql->bindParam(':nombre_A', $nombre_A);
+      $sql->execute();
+      $fila = $sql->fetch(PDO::FETCH_ASSOC);
+  
+      if ($fila) {
+          echo '<script>alert("ESTE ARTICULO YA EXISTE //CAMBIELO//");</script>';
+          echo '<script>window.location="complementos.php"</script>';
+      } else {
+          $insertSQL = $con->prepare("INSERT INTO articulos (nombre_A, id_tipo_art, id_estado, descripcion, cantidad, valor) VALUES (:nombre_A, :id_tipo_art, :id_estado, :descripcion, :cantidad, :valor)");
+          $insertSQL->bindParam(':nombre_A', $nombre_A);
+          $insertSQL->bindParam(':id_tipo_art', $id_tipo_art);
+          $insertSQL->bindParam(':id_estado', $id_estado);
+          $insertSQL->bindParam(':descripcion', $descripcion);
+          $insertSQL->bindParam(':cantidad', $cantidad);
+          $insertSQL->bindParam(':valor', $valor);
+          $insertSQL->execute();
+  
+          echo '<script>alert("REGISTRO EXITOSO");</script>';
+          echo '<script>window.location="luces.php"</script>';
       }
-      
-      else{
-
-        $insertSQL = $con->prepare("INSERT INTO articulos(nombre_A, id_tipo_art, id_estado, descripcion, cantidad, valor) VALUES('$nombre_A', '$id_tipo_art', '$id_estado', '$descripcion', '$cantidad', '$valor')");
-        $insertSQL -> execute();
-        echo '<script> alert("REGISTRO EXITOSO");</script>';
-        echo '<script>window.location="sonido.php"</script>';
-     }  
     }
-    ?>
+      }
+      ?>
+  
 
 <title>articulos</title>
 
@@ -56,82 +62,59 @@ $con = $db -> conectar();
   </div><!-- End Page Title -->
 
   <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"></h5>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
 
-              <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
-              
+                        <form method="post" action="funciones/artiexcel.php">
+                            <button type="submit" name="arti_excel" class="btn btn-success">
+                                <i class="bi bi-download"></i>
+                            </button>
+                        </form>
 
-              <dialog class="añadir_cont" id="añadir_cont">
-                <button id="añadir_close" class="btn modal_close" onclick="closedialog();">X</button>
-
-                <h2 class="modal__title">Registrar articulo</h2> 
-          <!-- Multi Columns Form -->
-
-                <form method="post" name="formreg" id="formreg"   class="row g-3"  autocomplete="off"> 
-
-               <div class="col-md-6">
-
-                  <label for="inputEmail5" class="form-label">tipo articulo</label>
-
-                  <br>
-            <select class="form-control" name="id_tipo_art">
-                <option value="<?php echo htmlspecialchars($evento['id_tipo_art']); ?>">Seleccione el tipo de articulo</option>
-                <?php
-                $paquetes = $con->query("SELECT * FROM tipo_articulo")->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($paquetes as $paquete) {
-                    echo "<option value='" . htmlspecialchars($paquete['id_tipo_art']) . "'>" . htmlspecialchars($paquete['tipo_articulo']) . "</option>";
-                }
-                ?>
-            </select>
-                </div>
-               
-
-                <div class="col-md-6">
-
-                  <label for="inputEmail5" class="form-label">Nombre articulo</label>
-
-                  <input  class="form-control" type="text" name="nombre_A" pattern="[A-Za-z ]{4,15}" placeholder="Nombre de articulo">
-                </div>
-
-                <div class="col-md-6">
-                  <label for="inputPassword5" class="form-label">estado</label>
-                  <br>
-            <select class="form-control" name="id_estado">
-                <option value="<?php echo htmlspecialchars($evento['id_estado']); ?>">Seleccione el estado</option>
-                <?php
-                $paquetes = $con->query("SELECT * FROM estados")->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($paquetes as $paquete) {
-                    echo "<option value='" . htmlspecialchars($paquete['id_estado']) . "'>" . htmlspecialchars($paquete['estado']) . "</option>";
-                }
-                ?>
-                </div>
-
-                <div class="co-md-6">
-                  <label for="inputEmail5" class="form-label">descripcion</label>
-                  <input  class="form-control" type="text" name="descripcion" placeholder="descripcion">
-                </div>
-
-                <div class="col-12">
-                  <label for="inputAddress5" class="form-label">cantidad</label>
-                  <input  class="form-control" type="varchar" name="cantidad" placeholder="cantidad">
-                </div>
-
-                <div class="col-12">
-                  <label for="inputAddress2" class="form-label">Valor</label>
-                  <input class="form-control" type="int" name="valor" pattern="[0-9]{1,15}" title="Solo se permiten numeros" placeholder="valor">
-                </div>
-                
-                <div class="text-center">
-                  <tr>
-                  <input type="submit" name="registrar" value="Registro" class="btn btn-primary modal_close">
-                  </tr>
-                </div>
-
-            </dialog>
+                        <dialog class="añadir_cont" id="añadir_cont">
+                        <button id="añadir_close" class="btn modal_close" onclick="closedialog();">X</button>
+                        <h2 class="modal__title">Registrar artículo</h2>
+                        <form method="post" name="formreg" id="formreg" class="row g-3" autocomplete="off">
+                            <div class="col-md-6">
+                                <label for="inputTipoArticulo" class="form-label">Tipo Articulos</label>
+                                <select class="form-control" name="id_tipo_art">
+                                    <option value="">Seleccione el tipo de articulo</option>
+                                    <?php
+                                    $control = $con-> prepare ("SELECT * FROM tipo_articulo");
+                                    $control -> execute();
+                                    while ($fila = $control->fetch(PDO::FETCH_ASSOC))  
+                                    {
+                                        echo "<option value='" . $fila['id_tipo_art'] . "'>" . $fila['tipo_articulo'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputNombreArticulo" class="form-label">Nombre articulo</label>
+                                <input class="form-control" type="text" name="nombre_A" pattern="[A-Za-z ]{4,15}" placeholder="Nombre de articulo">
+                            </div>
+                         
+                            <div class="col-md-6">
+                                <label for="inputDescripcion" class="form-label">Descripción</label>
+                                <input class="form-control" type="text" name="descripcion" placeholder="Descripción">
+                            </div>
+                            <div class="col-12">
+                                <label for="inputCantidad" class="form-label">Cantidad</label>
+                                <input class="form-control" type="number" name="cantidad" placeholder="Cantidad" min="1">
+                            </div>
+                            <div class="col-12">
+                                <label for="inputValor" class="form-label">Valor</label>
+                                <input class="form-control" type="number" name="valor" pattern="[0-9]{1,15}" title="Solo se permiten números" placeholder="Valor" min="1">
+                            </div>
+                            <div class="text-center">
+                                <input type="submit" name="registrar" value="Registro" class="btn btn-primary modal_close">
+                            </div>
+                        </form>
+                    </dialog>
 
               <!-- Table with stripped rows -->
               <table class="table datatable">
@@ -171,8 +154,10 @@ $con = $db -> conectar();
                     <td><?php echo $descripcion?></td>
                     <td><?php echo $cantidad?></td>
                     <td><?php echo $valor?></td>
-                    <td><a href="" class="boton" onclick="window.open
-                    ('../actualizar/articulos.php?id=<?php echo $fila['id_articulo'] ?>','','width= 600,height=500, toolbar=NO');void(null);">Click Aqui</a>
+                    <td>
+                    <a href="#" class="boton" onclick="window.open('../actualizar/articulos.php?id=<?php echo $fila['id_articulo']; ?>','','width=800,height=750,toolbar=NO');void(null);">
+                      <i class="bi bi-arrow-clockwise"></i>
+                    </a>
 
                   </tr>
                     <?php

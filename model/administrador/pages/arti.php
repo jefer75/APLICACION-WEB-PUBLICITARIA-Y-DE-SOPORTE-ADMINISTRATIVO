@@ -29,7 +29,7 @@ if (isset($_POST["registrar"])) {
       $fila = $sql->fetch(PDO::FETCH_ASSOC);
 
       if ($fila) {
-          echo '<script>alert("ESTE PAQUETE YA EXISTE //CAMBIELO//");</script>';
+          echo '<script>alert("ESTE ARTICULO YA EXISTE //CAMBIELO//");</script>';
           echo '<script>window.location="sonido.php"</script>';
       } else {
           $insertSQL = $con->prepare("INSERT INTO articulos (nombre_A, id_tipo_art, id_estado, descripcion, cantidad, valor) VALUES (:nombre_A, :id_tipo_art, :id_estado, :descripcion, :cantidad, :valor)");
