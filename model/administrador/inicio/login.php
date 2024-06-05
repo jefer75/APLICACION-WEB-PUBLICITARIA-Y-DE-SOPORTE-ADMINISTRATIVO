@@ -96,18 +96,53 @@
                             <div class="h-100 d-flex flex-column justify-content-center p-5 contenido">
                                 <h1 class="mb-4">Iniciar Sesión</h1>
                                 <p>Inicia Sesión para hacer tu reservacion</p>
+                                <script>
+    // Función para validar cédula
+    function validarCedula() {
+        var cedulaInput = document.getElementById('cedula').value;
+        var regex = /^\d{8,10}$/; // Expresión regular para validar cédula con un mínimo de 8 y un máximo de 10 dígitos
+
+        // Verificar si la cédula cumple con la expresión regular
+        if (!regex.test(cedulaInput)) {
+            alert("Por favor ingresa una cédula válida.");
+            return false;
+        }
+        return true;
+    }
+
+    // Función para validar contraseña
+    function validarContrasena() {
+        var contrasenaInput = document.getElementById('contrasena').value;
+
+        // Verificar si la contraseña tiene entre 8 y 11 caracteres
+        if (contrasenaInput.length < 8 || contrasenaInput.length > 11) {
+            alert("La contraseña debe tener entre 8 y 11 caracteres.");
+            return false;
+        }
+        return true;
+    }
+
+    // Función para validar el formulario antes de enviarlo
+    function validarFormulario() {
+        return validarCedula() && validarContrasena();
+    }
+
+    // Agregar eventos de escucha para validar cédula y contraseña al perder el foco de los campos correspondientes
+    document.getElementById('cedula').addEventListener('blur', validarCedula);
+    document.getElementById('contrasena').addEventListener('blur', validarContrasena);
+</script>
                                 <form action="../../../controller/inicio.php" method="POST" name="form1">
                                     <div class="row g-3 inputs">
                                         <div class="col-sm-6 user" >
                                             <div class="form-floating">
-                                                <input type="text" class="form-control border-0"  name="cedula"  pattern="[0-9]{4,10}" title="Solo se permiten numeros, minimo 4 digitos" placeholder="Cedula">
+                                                <input type="text" class="form-control border-0"  name="cedula"  placeholder="Cedula">
                                                 <label for="gname">Cedula</label>
                                             </div>
                                         </div>
                                     
                                         <div class="col-sm-6 user">
                                             <div class="form-floating">
-                                                <input type="password" class="form-control border-0" id="password" pattern="[a-zA-Z0-9]{8,11}" title="La contraseña debe tener minimo 8 digitos y maximo 11" placeholder="Contraseña" name="contrasena">
+                                                <input type="password" class="form-control border-0" id="password"  placeholder="Contraseña" name="contrasena">
                                                 <label for="fecha">Contraseña</label>
                                             </div>
                                         </div>
@@ -125,11 +160,14 @@
                                 <img class="position-absolute w-100 h-100 rounded" src="../../../imagenes/contenido/img23.jpg" style="object-fit: cover;">
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
         <!-- Appointment End -->
+
+        
 
         <!-- Vendor JS Files -->
         <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
@@ -142,7 +180,11 @@
         <script src="assets/vendor/php-email-form/validate.js"></script>
 
         <!-- Template Main JS File -->
-        <script src="assets/js/main.js"></script>
+       
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+
+
     </div>
 
 </body>
