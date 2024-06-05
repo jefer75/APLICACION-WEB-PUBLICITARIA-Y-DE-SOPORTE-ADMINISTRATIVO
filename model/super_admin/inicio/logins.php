@@ -31,7 +31,29 @@
     }
 
 </style>
+<script>
+        function validarFormulario() {
+            // Obtener los valores de los campos
+            var cedula = document.forms["form1"]["cedula"].value;
+            var contrasena = document.forms["form1"]["contrasena"].value;
 
+            // Validación de la cédula
+            var cedulaRegex = /^\d{8,10}$/;
+            if (!cedulaRegex.test(cedula)) {
+                alert("La cédula debe contener solo números y tener entre 8 y 10 dígitos.");
+                return false;
+            }
+
+            // Validación de la contraseña
+            if (contrasena.length < 9 || contrasena.length > 11) {
+                alert("La contraseña debe tener entre 9 y 11 caracteres.");
+                return false;
+            }
+
+            // Si todas las validaciones pasan, permitir el envío del formulario
+            return true;
+        }
+    </script>
 
 <body>    
 <!DOCTYPE html>
@@ -58,7 +80,13 @@
     .enlaces {
         color: blue !important; /* Color del texto azul */
     }
+    .error {
+            color: red;
+            font-size: 0.9em;
+        }
 </style>
+
+
 </head>
 <body>
 <div class="container-xxl py-5">
@@ -73,14 +101,14 @@
                             <div class="row g-3 inputs">
                                 <div class="col-sm-6 user" >
                                     <div class="form-floating">
-                                        <input type="text" class="form-control border-0"  name="cedula"  pattern="[0-9]{4,10}" title="Solo se permiten numeros, minimo 4 digitos" placeholder="Cedula">
+                                        <input type="text" class="form-control border-0"  name="cedula"   placeholder="Cedula">
                                         <label for="gname">Cedula</label>
                                     </div>
                                 </div>
                             
                                 <div class="col-sm-6 user">
                                     <div class="form-floating">
-                                        <input type="password" class="form-control border-0" id="password" pattern="[a-zA-Z0-9]{8,11}" title="La contraseña debe tener minimo 8 digitos y maximo 11" placeholder="Contraseña" name="contrasena">
+                                        <input type="password" class="form-control border-0" id="password" placeholder="Contraseña" name="contrasena">
                                         <label for="fecha">Contraseña</label>
                                     </div>
                                 </div>
