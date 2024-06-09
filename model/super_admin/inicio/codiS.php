@@ -52,10 +52,30 @@ if (isset($_POST['recuperar'])) {
 
           <div class="row g-3 inputs">
             <div class="col-sm-6 user">
-              <div class="form-floating">
-                <input class="form-control border-0 gmail" name="codigo" id="c" type="text" placeholder="Código">
-                <label for="c">Código</label>
-              </div>
+            <div class="form-floating">
+    <input class="form-control border-0 gmail" name="codigo" id="c" type="text" placeholder="Código">
+    <label for="c">Código</label>
+</div>
+
+<script>
+    // Obtenemos el input de código
+    var codigoInput = document.getElementById('c');
+
+    // Agregamos un event listener para el evento 'input'
+    codigoInput.addEventListener('input', function() {
+        // Obtenemos el valor actual del input
+        var valor = this.value;
+
+        // Removemos cualquier carácter que no sea letra o número
+        valor = valor.replace(/[^a-zA-Z0-9]/g, '');
+
+        // Limitamos el valor a 4 caracteres
+        valor = valor.slice(0, 4);
+
+        // Actualizamos el valor del input
+        this.value = valor;
+    });
+</script>
             </div>
             <div class="col-12">
             <button type="submit" name="recuperar" class="btn btn-primary w-100 py-3 ingresar" style="background-color: blue; border-color: white;">Ingresar</button>

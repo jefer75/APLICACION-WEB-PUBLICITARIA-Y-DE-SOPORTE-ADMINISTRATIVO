@@ -14,21 +14,34 @@
         <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="../../../css/styloslogin.css" rel="stylesheet" />
+        <link href="../../../css/styloslogi.css" rel="stylesheet" />
       
         
     </head>
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
     <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-
+   
     
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container px-4 px-lg-5">
-            
-                <a class="navbar-brand" href="crud/views/index.php" >REGRESAR</a>
+            <style>
+    /* Estilo para el enlace */
+    .link-custom {
+        font-weight: bolder; /* Hace que la letra sea aún más gruesa */
+        font-size: x-large; /* Hace que la letra sea aún más grande */
+        color: white; /* Color blanco por defecto */
+        text-decoration: none; /* Quita el subrayado por defecto del enlace */
+    }
+
+    /* Estilo para los enlaces cuando se pasa el mouse por encima */
+  
+</style>
+
+<a href="crud/views/index.php" class="link-custom">REGRESAR</a>
+
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -36,9 +49,23 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         
-                        <a name="" id="" class="nav-link" href="../consultar/read_empresa.php" role="button">Empresas</a>
-                        <a name="" id=""  class="nav-link" href="../consultar/read_licencia.php" role="button">Licencia</a>
-                        <a name="" id="" class="nav-link" href="logins.php" role="button">Salir </a>
+                    <style>
+    /* Estilo para los enlaces */
+    .nav-link {
+        color: white !important; /* Color blanco */
+        text-decoration: none; /* Quita el subrayado por defecto del enlace */
+        font-size: larger; /* Tamaño de letra más grande */
+    }
+
+
+    /* Estilo para los enlaces cuando se pasa el mouse por encima */
+  
+</style>
+
+<a name="" id="" class="nav-link" href="../consultar/read_empresa.php" role="button">Empresas</a>
+<a name="" id="" class="nav-link" href="../consultar/read_licencia.php" role="button">Licencia</a>
+<a name="" id="" class="nav-link" href="logins.php" role="button">Salir</a>
+
                         
                     </ul>
                 </div>
@@ -58,7 +85,7 @@
         </header>
        
         <!-- Footer-->
-        <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Your Website 2023</div></footer>
+        <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">ARLEQUIN EVENTOS &copy;  2024</div></footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
