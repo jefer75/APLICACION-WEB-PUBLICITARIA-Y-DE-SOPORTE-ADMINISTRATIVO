@@ -97,10 +97,7 @@
   <div class="card-body">
             <form autocomplete="off" name="form_actualizar" method="POST">
 
-                <tr>
-                    <td>Nit</td>
-                    <td><input type="int" class="form-control" name="nit" value="<?php echo $fila['nit'] ?>" readonly></td>                 
-                </tr>
+               
 
                 
                 <tr>

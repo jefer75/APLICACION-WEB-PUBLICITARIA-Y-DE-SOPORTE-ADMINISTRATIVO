@@ -38,7 +38,7 @@
                         
                         <a name="" id="" class="nav-link" href="../consultar/read_empresa.php" role="button">Empresas</a>
                         <a name="" id=""  class="nav-link" href="../consultar/read_licencia.php" role="button">Licencia</a>
-                        <a name="" id="" class="nav-link" href="../../../index.php" role="button">Salir </a>
+                        <a name="" id="" class="nav-link" href="logins.php" role="button">Salir </a>
                         
                     </ul>
                 </div>

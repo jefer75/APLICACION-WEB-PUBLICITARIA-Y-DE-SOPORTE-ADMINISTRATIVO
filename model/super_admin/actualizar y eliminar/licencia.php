@@ -94,21 +94,11 @@
   <div class="card-body">
             <form autocomplete="off" name="form_actualizar" method="POST">
 
-                <tr>
-                    <td>id_licencia</td>
-                    <td><input type="int"   class="form-control"  name="id_licencia" value="<?php echo $fila['id_licencia'] ?>" readonly></td>                 
-                </tr>
+                
+                
+               
 
                 
-                <tr>
-                    <td>Licencia</td>
-                    <td><input type="varchar"  class="form-control"  name="licencia" value="<?php echo $fila['licencia'] ?>" readonly></td>                 
-                </tr>
-
-                <tr>
-                    <td>Nit</td>
-                    <td><input type="varchar"  class="form-control"  name="nit" value="<?php echo $fila['nit'] ?>" readonly></td>                 
-                </tr>
 
                 <tr>
                     <td>Fecha de inicio</td>

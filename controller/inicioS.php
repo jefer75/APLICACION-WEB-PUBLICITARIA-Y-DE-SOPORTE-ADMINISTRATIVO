@@ -6,17 +6,16 @@ session_start();
 
 if (isset($_POST["inicio"])) {
 
-    $cedula = $_POST["cedula"];
+    $correo = $_POST["correo"];
     
-    $contrasena = htmlentities(addslashes($_POST['contrasena']));
+    
 
-    $sql = $con->prepare("SELECT*FROM usuarios where cedula = '$cedula'");
+    $sql = $con->prepare("SELECT*FROM usuarios where corrreo= '$correo'");
     $sql->execute();
     $fila = $sql->fetch();
 
-    if(gettype($fila) == "array" && password_verify($contrasena, $fila['contrasena'])){
-
-        $_SESSION['cedula'] = $fila['cedula'];
+    
+        $_SESSION['correo'] = $fila['correo'];
         $_SESSION['id_tipo_user'] = $fila ['id_tipo_user'];
         echo "contraseña:",$contrasena;
         if ($_SESSION['id_tipo_user'] == 1) {
@@ -40,4 +39,4 @@ if (isset($_POST["inicio"])) {
             header("location: ../model/administrador/inicio/error.php");
             exit();
         }
-    }
+    

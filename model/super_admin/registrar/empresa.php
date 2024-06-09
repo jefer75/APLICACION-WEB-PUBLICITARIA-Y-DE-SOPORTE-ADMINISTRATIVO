@@ -69,6 +69,7 @@
         }
     </style>
 </head>
+<br>
 <body style="background-color: white;">
     <a class="btn-regresar" href="../consultar/read_empresa.php" style="background-color: blue; color: white; border: none; padding: 10px 20px; border-radius: 15px; text-decoration: none; margin-top: 70px; margin-left: 10px;">Regresar</a>
     

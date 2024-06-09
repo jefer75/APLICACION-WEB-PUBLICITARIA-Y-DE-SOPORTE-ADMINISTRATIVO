@@ -4,99 +4,156 @@
     //include("../../../controller/validar_licencia.php");
     $db = new DataBase();
     $con = $db -> conectar();
+
+
+
+    if (isset($_POST['recuperar']))
+    {
+
+      $correo=$_POST['email'];
+
+    if ($correo==""){
+      echo '<script>alert("Digite el correo")</script>';
+    }
+    else {
+    
+     $sql= $con -> prepare ("SELECT * FROM usuarios WHERE correo='$correo'");
+     $sql -> execute();
+     $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
+
+    if($fila){
+    $digitos ="sakur02ue859y2u389rhdewirh102385y1285013289";
+    $longitud= 4;
+    $codigo= substr(str_shuffle($digitos), 0, $longitud);
+
+     $insert= $con -> prepare ("UPDATE usuarios SET token='$codigo' Where correo='$correo'");
+     $insert -> execute();
+     $fila1 = $insert -> fetchAll(PDO::FETCH_ASSOC);
+
+    //codigo de envio de correo
+    $paracorreo = "$correo";
+    $titulo ="Codigo de verificacion";
+    $msj = "Su codigo de verificacion es: '$codigo'";
+    $tucorreo="From:aeventos986@gmail.com";
+
+    if(mail($paracorreo, $titulo, $msj, $tucorreo))
+    {
+      echo '<script> alert ("Su codigo ha sido enviado al correo anteriormente digitado");</script>';
+      echo '<script>window.location="codiS.php"</script>';
+    }
+    }
+    else{
+        echo '<script> alert ("El correo digitado no esta registrado");</script>';
+    }
+    } 
+  }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesion</title>
-    
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <title>Restablecer</title>
+      <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
+        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Template Stylesheet -->
-    <link href="../../../css/style.css" rel="stylesheet">
-    <link href="../../../css/login.css" rel="stylesheet">
-    <style>
-       body {
-        background-color: #fff; /* Fondo blanco */
-    }
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+        
+        <!-- Icon Font Stylesheet -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    .container-xxl {
-        background-color: lightblue; /* Fondo azul claro */
-        padding: 20px; /* Añadir un poco de espacio interno */
-        border-radius: 10px; /* Agregar bordes redondeados */
-    }
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-    .bg-light {
-        background-color: lightblue !important; /* Fondo azul claro */
-    }
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
 
-    .enlaces {
-        color: blue !important; /* Color del texto azul */
-    }
-    .error {
-            color: red;
-            font-size: 0.9em;
+        <!-- Template Stylesheet -->
+        <link href="../../../css/style.css" rel="stylesheet">
+        <link href="../../../css/recuperar_con.css" rel="stylesheet">
+
+    </head>
+    <body >
+
+
+   
+                   
+          <td>
+          <form action="" method="POST">
+          <div class="contenido">
+         
+      </div>
+      </nav>
+      <!-- Navbar End -->
+
+
+      <?php 
+
+      if (isset($_POST['regresar'])){
+      header('Location: ../../../index.php');
+      }
+
+      ?>
+
+
+<div class="container-xxl py-5" >
+
+            
+                <div class="bg-light rounded" >
+                  
+                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s" >
+                            <div class="h-100 d-flex flex-column justify-content-center p-5 contenido">
+                            <h1 style="font-family: 'Arial Rounded MT Bold', sans-serif;">Digite su Correo</h1>
+
+                               
+                                <form action="../../../controller/inicio.php" method="POST" name="form1">
+                                    <div class="row g-3 inputs">
+                                    <div class="col-sm-6 user">
+                                    <div class="form-floating">
+    <input type="email" class="form-control border-0 gmail" id="correo" name="email" placeholder="Correo">
+    <label for="correo">Correo</label>
+</div>
+
+<script>
+    // Función para validar correo electrónico
+    function validarCorreo() {
+        var correoInput = document.getElementById('correo').value;
+        var regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/; // Expresión regular para validar el formato del correo
+
+        // Verificar si el correo cumple con la expresión regular y si tiene máximo 30 caracteres
+        if (!regex.test(correoInput) || correoInput.length > 30) {
+            alert("Por favor ingresa un correo válido que contenga '@' y '.' y que tenga un máximo de 30 caracteres.");
+            return false;
         }
-    </style>
-</head>
-<body>    
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="bg-light rounded">
-                <div class="row g-0">
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="h-100 d-flex flex-column justify-content-center p-5 contenido">
-                            <h1 class="mb-4">Iniciar Sesión</h1>
-                            <form action="../../../controller/inicioS.php" method="POST" name="form1" id="myForm">
-                                <div class="row g-3 inputs">
-                                    <div class="col-sm-6 user">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control border-0" name="cedula" id="cedula" placeholder="Cedula">
-                                            <label for="cedula">Cedula</label>
+        return true;
+    }
+
+    // Agregar evento de escucha para validar correo al perder el foco
+    document.getElementById('correo').addEventListener('blur', validarCorreo);
+</script>
+
+                                    </div>
+
+                                        
+                                        <div class="col-12">
+                                        <button type="submit" name="recuperar" class="btn btn-primary w-100 py-3 ingresar" style="background-color: blue; color: white; border: 1px solid white;">Ingresar</button>
+
+
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 user">
-                                        <div class="form-floating">
-                                            <input type="password" class="form-control border-0" id="password" placeholder="Contraseña" name="contrasena">
-                                            <label for="password">Contraseña</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <button type="submit" name="inicio" class="btn btn-primary w-100 py-3 ingresar">Ingresar</button>
-                                        <a href="recuperar_con.php" class="enlaces" id="contra">Olvide la contraseña</a>
-                                    </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
-                        <div class="position-relative h-100">
-                            <img class="position-absolute w-100 h-100 rounded" src="../../../imagenes/contenido/img23.jpg" style="object-fit: cover;">
-                        </div>
-                    </div>
+                       
+                    
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Include JavaScript file -->
-    <script src="../../../js/validacionS.js"></script>
-
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/chart.js/chart.umd.js"></script>
-    <script src="assets/vendor/echarts/echarts.min.js"></script>
-    <script src="assets/vendor/quill/quill.js"></script>
-    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
 </body>
 </html>
