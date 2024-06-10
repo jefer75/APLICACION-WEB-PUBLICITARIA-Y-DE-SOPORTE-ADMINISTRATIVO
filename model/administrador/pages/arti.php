@@ -94,15 +94,15 @@ if (isset($_POST["registrar"])) {
                             </div>
                             <div class="col-md-6">
                                 <label for="inputNombreArticulo" class="form-label">Nombre articulo</label>
-                                <input class="form-control" type="text" name="nombre_A" pattern="[A-Za-z ]{4,15}" placeholder="Nombre de articulo" required>
+                                <input class="form-control" type="text" name="nombre_A" pattern="[A-Za-z ]{4,15}" title="Solo se permite letras" placeholder="Nombre de articulo" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="inputDescripcion" class="form-label">Descripción</label>
-                                <input class="form-control" type="text" name="descripcion" placeholder="Descripción" required>
+                                <input class="form-control" type="text" name="descripcion" title="Solo se permiten letras" placeholder="Descripción" required>
                             </div>
                             <div class="col-12">
                                 <label for="inputCantidad" class="form-label">Cantidad</label>
-                                <input class="form-control" type="number" name="cantidad" placeholder="Cantidad" min="1" required>
+                                <input class="form-control" type="number" name="cantidad" placeholder="Cantidad" title="Solo se permite números"  min="1" required>
                             </div>
                             <div class="col-12">
                                 <label for="inputValor" class="form-label">Valor</label>

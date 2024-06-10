@@ -30,7 +30,7 @@
 
       if ($suma <= 0 || $valor <= 0) {  
         echo '<script>alert("CANTIDAD Y VALOR DEBEN SER MAYORES A 0");</script>';
-        echo '<script>window.location="sonido.php"</script>';
+        echo '<script>window.location="articulos.php"</script>';
       }
        else {
         

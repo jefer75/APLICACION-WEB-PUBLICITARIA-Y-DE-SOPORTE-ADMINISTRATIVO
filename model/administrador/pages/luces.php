@@ -22,10 +22,10 @@ $con = $db -> conectar();
     // Validación de campos vacíos
   if (empty($id_tipo_art) || empty($nombre_A) || empty($id_estado) || empty($descripcion) || empty($cantidad) || empty($valor)) {
     echo '<script>alert("EXISTEN DATOS VACIOS");</script>';
-    echo '<script>window.location="sonido.php"</script>';
+    echo '<script>window.location="luces.php"</script>';
 } else if ($cantidad <= 0 || $valor <= 0) {  
     echo '<script>alert("CANTIDAD Y VALOR DEBEN SER MAYORES A 0");</script>';
-    echo '<script>window.location="sonido.php"</script>';
+    echo '<script>window.location="luces.php"</script>';
 } else {
     $sql = $con->prepare("SELECT * FROM articulos WHERE nombre_A = :nombre_A");
     $sql->bindParam(':nombre_A', $nombre_A);
@@ -49,6 +49,7 @@ $con = $db -> conectar();
         echo '<script>window.location="luces.php"</script>';
     }
   }
+  
     }
     ?>
 
