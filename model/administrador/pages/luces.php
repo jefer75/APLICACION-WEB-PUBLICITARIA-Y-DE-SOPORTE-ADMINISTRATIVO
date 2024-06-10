@@ -53,12 +53,12 @@ $con = $db -> conectar();
     ?>
 
 
-<title>articulos</title>
+<title>Articulos</title>
 
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Sonido</h1>
+    <h1>Luces</h1>
 
   </div><!-- End Page Title -->
 
@@ -70,8 +70,8 @@ $con = $db -> conectar();
                         <h5 class="card-title"></h5>
                         <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
 
-                        <form method="post" action="funciones/artiexcel.php">
-                            <button type="submit" name="arti_excel" class="btn btn-success">
+                        <form method="post" action="funciones/luc_excel.php">
+                            <button type="submit" name="luc_excel" class="btn btn-success">
                                 <i class="bi bi-download"></i>
                             </button>
                         </form>

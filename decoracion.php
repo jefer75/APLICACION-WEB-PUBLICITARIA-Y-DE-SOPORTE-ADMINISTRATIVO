@@ -62,15 +62,10 @@
                             <a href="infantil.php" class="dropdown-item">Infantil</a>
                             <a href="adultos.php" class="dropdown-item">Adultos</a>
                         </div>
-                    </div>
+                    </div>               
 
-<<<<<<< HEAD:decoracion.html
-                    <a href="decoracion.html" class="nav-item nav-link">Decoración</a>
-                    <a href="sobre_nosotros.html" class="nav-item nav-link">Sobre Nosotros</a>                    
-=======
                     <a href="decoracion.php" class="nav-item nav-link active">Decoración</a>
                     <a href="sobre_nosotros.php" class="nav-item nav-link">Sobre Nosotros</a>                    
->>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f:decoracion.php
                     <a href="contact.php" class="nav-item nav-link">Contáctanos</a>
                 </div>
                 <a href="model/administrador/inicio/login.php" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Iniciar Sesión<i class="fa fa-arrow-right ms-3"></i></a>
@@ -205,7 +200,6 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-<<<<<<< HEAD
                         <h3 class="text-white mb-4">Acceso Rápido</h3>
                         <a class="btn btn-link text-white-50" href="index.php">Inicio</a>
                         <a class="btn btn-link text-white-50" href="infantil.html">Recreación Infantil</a>
@@ -213,15 +207,7 @@
                         <a class="btn btn-link text-white-50" href="decoracion.html">Decoración</a>
                         <a class="btn btn-link text-white-50" href="sobre_nosotros.html">Sobre Nosotros</a>
                         <a class="btn btn-link text-white-50" href="contact.php">Contáctanos</a>
-=======
-                        <h3 class="text-white mb-4">Acceso Rapido</h3>
-                        <a class="btn btn-link text-white-50" href="#header">Inicio</a>
-                        <a class="btn btn-link text-white-50" href="">Recreacion Infantil</a>
-                        <a class="btn btn-link text-white-50" href="">Recreacion Adultos</a>
-                        <a class="btn btn-link text-white-50" href="">Decoracion</a>
-                        <a class="btn btn-link text-white-50" href="sobre_n.html">Sobre Nosotros</a>
-                        <a class="btn btn-link text-white-50" href="contact.html">Contactanos</a>
->>>>>>> aaa1f57c7864a85a7ff2ec9fb069aa51be1785ca
+
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">Galeria de Fotos</h3>
@@ -248,15 +234,9 @@
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">Nuevo Comentario</h3>
-<<<<<<< HEAD
                         <p>Danos tu opinión sobre nuestro servicio o nuestro sitio web.</p>
                         <div class="position-relative mx-auto" style="max-width: 400px;">
                             <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Danos tu opnión">
-=======
-                        <p>Danos tu opinion sobre nuestro servicio o nuestro sitio web.</p>
-                        <div class="position-relative mx-auto" style="max-width: 400px;">
-                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Danos tu opnion">
->>>>>>> aaa1f57c7864a85a7ff2ec9fb069aa51be1785ca
                             <br>
                             <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Enviar</button>
                         </div>
@@ -267,19 +247,11 @@
                 <div class="copyright">
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-<<<<<<< HEAD
-                            &copy; <a class="border-bottom" href="index.php">Arlequin Eventos</a>, All Right Reserved. 
-							
-							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-							Designed By <a class="border-bottom" href="">Elitech JYDT</a>
-                            <br>Distributed By: <a class="border-bottom" href="" target="_blank">Elitech JYDT</a>
-=======
                             &copy; <a class="border-bottom" href="#">Arlequin Eventos</a>, All Right Reserved. 
 							
 							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
 							Designed By <a class="border-bottom" href="https://htmlcodex.com">Elitech JYDT</a>
                             <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">Elitech JYDT</a>
->>>>>>> aaa1f57c7864a85a7ff2ec9fb069aa51be1785ca
                         </div>
                         
                     </div>
