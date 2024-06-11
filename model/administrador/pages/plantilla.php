@@ -1,10 +1,11 @@
 <?php
-require_once "../../../db/connection.php";
 session_start();
+require_once "../../../db/connection.php";
+//include("../../../controller/validar_licencia.php");
 $db = new DataBase();
 $con = $db->conectar();
-$cedula = $_SESSION['cedula'];
 
+$cedula = $_SESSION['cedula'];
 if (!isset($cedula)){
   //include("../../../controller/validar_licencia.php");
   echo '<script>No has iniciado sesion</script>';
@@ -32,9 +33,6 @@ if(isset($_POST['cerrar_sesion']))
 
     header('location:../../../index.php');
 }
- 
-
-    
 
 ?>
 
@@ -335,9 +333,16 @@ if(isset($_POST['cerrar_sesion']))
   </li><!-- End Contact Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="decoracion.php">
+    <a class="nav-link collapsed" href="actividades.php">
+      <i class="bi bi-gift-fill"></i>
+      <span>actividades</span>
+    </a>
+  </li><!-- End Contact Page Nav -->
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="compras.php">
       <i class="bi bi-cart-plus"></i>
-      <span>Decoracion</span>
+      <span>Compras</span>
     </a>
   </li><!-- End Contact Page Nav -->
 
@@ -433,7 +438,7 @@ if(isset($_POST['cerrar_sesion']))
   <li class="nav-heading">Ayuda</li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="perfil.php">
+    <a class="nav-link collapsed" href="users-profile.php">
       <i class="bi bi-person-circle"></i>
       <span>Perfil</span>
     </a>

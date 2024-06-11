@@ -133,13 +133,32 @@
                                 <p>Recupera tu contraseña</p>
                                 <form action="../../../controller/inicio.php" method="POST" name="form1">
                                     <div class="row g-3 inputs">
-                                      <div class="col-sm-6 user">
-                                            <div class="form-floating">
+                                    <div class="col-sm-6 user">
+                                    <div class="form-floating">
+    <input type="email" class="form-control border-0 gmail" id="correo" name="email" placeholder="Correo">
+    <label for="correo">Correo</label>
+</div>
 
-                                                <input type="gmail" class="form-control border-0 gmail" id="correo" name="email" placeholder="Correo">
-                                                <label for="fecha">Correo</label>
-                                            </div>
-                                        </div>
+<script>
+    // Función para validar correo electrónico
+    function validarCorreo() {
+        var correoInput = document.getElementById('correo').value;
+        var regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/; // Expresión regular para validar el formato del correo
+
+        // Verificar si el correo cumple con la expresión regular y si tiene máximo 30 caracteres
+        if (!regex.test(correoInput) || correoInput.length > 30) {
+            alert("Por favor ingresa un correo válido que contenga '@' y '.' y que tenga un máximo de 30 caracteres.");
+            return false;
+        }
+        return true;
+    }
+
+    // Agregar evento de escucha para validar correo al perder el foco
+    document.getElementById('correo').addEventListener('blur', validarCorreo);
+</script>
+
+                                    </div>
+
                                         
                                         <div class="col-12">
                                         <button type="submit" name="recuperar" class="btn btn-primary w-100 py-3 ingresar">Restablecer</button>

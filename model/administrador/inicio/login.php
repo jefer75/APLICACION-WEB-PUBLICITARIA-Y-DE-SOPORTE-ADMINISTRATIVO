@@ -1,11 +1,26 @@
 <?php
-    session_start();
-    require_once ("../../../db/connection.php");
-    //include("../../../controller/validar_licencia.php");
-    $db = new DataBase();
-    $con = $db -> conectar();
-    
-?>
+     session_start();
+     require_once ("../../../db/connection.php");
+     //include("../../../controller/validar_licencia.php");
+     $db = new DataBase();
+     $con = $db -> conectar();
+     
+     // Consulta para obtener el NIT de la empresa con licencia activa
+     $sql_nit = $con->prepare("SELECT nit FROM licencia WHERE id_estado = 1");
+     $sql_nit->execute();
+     $fila_nit = $sql_nit->fetch ();
+
+     if ($fila_nit){
+         $nit = $fila_nit['nit'];
+    }
+ 
+     $sql = $con->prepare("SELECT id_estado FROM licencia WHERE nit = :nit");
+     $sql->bindParam(':nit', $nit, PDO::PARAM_INT);
+     $sql->execute();
+     $fila = $sql->fetch(PDO::FETCH_ASSOC);
+     
+     if ($fila && $fila['id_estado'] == 1) {
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,24 +54,11 @@
 
 </head>
 
-<?php
-    $nit=123456789;
-
-
-    $sql= $con -> prepare ("select * FROM licencia WHERE licencia !='' AND id_estado = 1 AND nit = $nit");
-    $sql -> execute();
-    $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
-
-    if ($fila){
-      ?>    
-
 <body>
-
-   <div class="container-xxl bg-white p-0">
-
-           <!-- Navbar Start -->
-           <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-           <img src="../../../imagenes/logos/Logo Arlequin Color.png" class="logo">
+    <div class="container-xxl bg-white p-0">
+        <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+            <img src="../../../imagenes/logos/Logo Arlequin Color.png" class="logo">
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -77,27 +79,16 @@
                     <a href="../../../contact.php" class="nav-item nav-link">Contáctanos</a>
                 </div>
                 <form action="" method="POST">
-                <div class="contenido">
-                <td><input class="btn btn-primary rounded-pill px-3 d-none d-lg-block" type="submit" value="regresar" name="regresar" id="regresar"></td>
+                    <div class="contenido">
+                        <td><input class="btn btn-primary rounded-pill px-3 d-none d-lg-block" type="submit" value="regresar" name="regresar" id="regresar"></td>
+                    </div>
+                </form>
             </div>
         </nav>
         <!-- Navbar End -->
 
-
-</form>
-
-</tr>
-</form>
-<?php 
-
-if (isset($_POST['regresar'])){
-header('Location: ../../../index.php');
-}
-
-?>
-
-     <!-- Appointment Start -->
-     <div class="container-xxl py-5">
+        <!-- Appointment Start -->
+        <div class="container-xxl py-5">
             <div class="container">
                 <div class="bg-light rounded">
                     <div class="row g-0">
@@ -105,25 +96,60 @@ header('Location: ../../../index.php');
                             <div class="h-100 d-flex flex-column justify-content-center p-5 contenido">
                                 <h1 class="mb-4">Iniciar Sesión</h1>
                                 <p>Inicia Sesión para hacer tu reservacion</p>
+                                <script>
+    // Función para validar cédula
+    function validarCedula() {
+        var cedulaInput = document.getElementById('cedula').value;
+        var regex = /^\d{8,10}$/; // Expresión regular para validar cédula con un mínimo de 8 y un máximo de 10 dígitos
+
+        // Verificar si la cédula cumple con la expresión regular
+        if (!regex.test(cedulaInput)) {
+            alert("Por favor ingresa una cédula válida.");
+            return false;
+        }
+        return true;
+    }
+
+    // Función para validar contraseña
+    function validarContrasena() {
+        var contrasenaInput = document.getElementById('contrasena').value;
+
+        // Verificar si la contraseña tiene entre 8 y 11 caracteres
+        if (contrasenaInput.length < 8 || contrasenaInput.length > 11) {
+            alert("La contraseña debe tener entre 8 y 11 caracteres.");
+            return false;
+        }
+        return true;
+    }
+
+    // Función para validar el formulario antes de enviarlo
+    function validarFormulario() {
+        return validarCedula() && validarContrasena();
+    }
+
+    // Agregar eventos de escucha para validar cédula y contraseña al perder el foco de los campos correspondientes
+    document.getElementById('cedula').addEventListener('blur', validarCedula);
+    document.getElementById('contrasena').addEventListener('blur', validarContrasena);
+</script>
                                 <form action="../../../controller/inicio.php" method="POST" name="form1">
                                     <div class="row g-3 inputs">
                                         <div class="col-sm-6 user" >
                                             <div class="form-floating">
-                                                <input type="text" class="form-control border-0"  name="cedula" placeholder="Cedula">
+                                                <input type="text" class="form-control border-0"  name="cedula"  placeholder="Cedula">
                                                 <label for="gname">Cedula</label>
                                             </div>
                                         </div>
                                     
                                         <div class="col-sm-6 user">
                                             <div class="form-floating">
-                                                <input type="password" class="form-control border-0" id="password" placeholder="Contraseña" name="contrasena">
+                                                <input type="password" class="form-control border-0" id="password"  placeholder="Contraseña" name="contrasena">
                                                 <label for="fecha">Contraseña</label>
                                             </div>
                                         </div>
                                         
                                         <div class="col-12">
-                                        <button type="submit" name="inicio" class="btn btn-primary w-100 py-3 ingresar">Ingresar</button>
-                                        <a href="recuperar_con.php" class="enlaces" id="contra">Olvide la contraseña</a>
+                                            <button type="submit" name="inicio" class="btn btn-primary w-100 py-3 ingresar">Ingresar</button>
+                                            <a href="recuperar_con.php" class="enlaces" id="contra">Olvide la contraseña</a>
                                         </div>
                                     </div>
                                 </form>
@@ -134,55 +160,44 @@ header('Location: ../../../index.php');
                                 <img class="position-absolute w-100 h-100 rounded" src="../../../imagenes/contenido/img23.jpg" style="object-fit: cover;">
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <!-- Vendor JS Files -->
-  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="assets/vendor/echarts/echarts.min.js"></script>
-  <script src="assets/vendor/quill/quill.js"></script>
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
         <!-- Appointment End -->
 
+        
 
-    
-            <!-- <div class="login-box">
+        <!-- Vendor JS Files -->
+        <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/vendor/chart.js/chart.umd.js"></script>
+        <script src="assets/vendor/echarts/echarts.min.js"></script>
+        <script src="assets/vendor/quill/quill.js"></script>
+        <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+        <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+        <script src="assets/vendor/php-email-form/validate.js"></script>
 
-            <form method="POST" name="form1" id="form1" action="../../../controller/inicio.php" autocomplete="off" class="registration"> 
-                <h1>👋  Iniciar Sesion</h1>
-              
-                <div class="user-box">
-                <input type="text" name="cedula" required>
-                <label>Documento</label>
-                </div>
-                
-                <div class="user-box">
-                <input type="password" name="contrasena" required>
-                <label>Contraseña</label>
-                </div>
-              
-                <button type="submit" name="inicio" value="validar" class="ingresar">Ingresar</button>
-              
-                <a href="../registrar/registro_user.php #usuarios" class="enlaces">Registrarse</a>
-                <a href="recuperar_con.php" class="enlaces" id="contra">Olvide la contraseña</a>
-          </form>    -->
+        <!-- Template Main JS File -->
+       
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+
+
+    </div>
+
 </body>
 </html>
 
 <?php
+         } else {
+            echo '<script>alert("Error: La licencia está inactiva o no existe. Para poder activar la Licencia comunicarse a este correo ortiztatiana1416@gmail.com "); window.location.href="../../../index.php";</script>';
+            exit();
+        }
+    
+
+    if (isset($_POST['regresar'])){
+        header('Location: ../../../index.php');
     }
-     else {
-         header ("Location: ../../../index.php");
-         exit();
-     }
 ?>

@@ -1,3 +1,7 @@
+
+
+
+
 <?php
        session_start();
        require_once("../../../db/connection.php");
@@ -6,7 +10,7 @@
        $con = $db -> conectar();
 
    //empieza la consulta
-   $sql = $con -> prepare("SELECT * FROM articulos WHERE id_articulo='".$_GET['id']."'");
+   $sql = $con -> prepare("SELECT * FROM paquetes WHERE id_paquetes='".$_GET['id']."'");
    $sql -> execute();
    $fila = $sql -> fetch ();
 
@@ -14,14 +18,13 @@
 
    if (isset($_POST['actualizar'])){
 
-       $id_tipo_art= $_POST['id_tipo_art'];
-       $nombre_A = $_POST['nombre_A'];
-       $id_estado= $_POST['id_estado'];
-       $descripcion= $_POST['descripcion'];
-       $cantidad = $_POST['cantidad'];
-       $valor= $_POST['valor'];
+    $nombre_paquete = $_POST['nombre_paquete'];
+    $edad_min = $_POST['edad_min'];
+    $edad_max = $_POST['edad_max'];
+    $valor= $_POST['valor'];
+
        
-           $insert= $con -> prepare ("UPDATE articulos SET  nombre_A='$nombre_A', id_estado='$id_estado', descripcion='$descripcion', id_tipo_art='$id_tipo_art' , cantidad='$cantidad', valor='$valor' WHERE id_articulo = '".$_GET['id']."'");
+           $insert= $con -> prepare ("UPDATE paquetes SET  nombre_paquete='$nombre_paquete', edad_min='$edad_min', edad_max='$edad_max', valor='$valor' WHERE id_paquetes = '".$_GET['id']."'");
            $insert -> execute();
            echo '<script> alert ("Registro actualizado exitosamente");</script>';
            echo '<script> window.close(); </script>';
@@ -30,15 +33,13 @@
 
        else if (isset($_POST['eliminar'])){
           
-      
-           $id_tipo_art= $_POST['id_tipo_art'];
-           $nombre_A = $_POST['nombre_A'];
-           $id_estado= $_POST['id_estado'];
-           $descripcion= $_POST['descripcion'];
-           $cantidad = $_POST['cantidad'];
-           $valor= $_POST['valor'];
+        $nombre_paquete = $_POST['nombre_paquete'];
+        $edad_min = $_POST['edad_min'];
+        $edad_max = $_POST['edad_max'];
+        $valor= $_POST['valor'];
+    
        
-               $insert= $con -> prepare ("DELETE FROM articulos WHERE id_articulo = '".$_GET['id']."'");
+               $insert= $con -> prepare ("DELETE FROM paquetes WHERE id_paquetes = '".$_GET['id']."'");
                $insert -> execute();
                echo '<script> alert ("Registro actualizado exitosamente");</script>';
                echo '<script> window.close(); </script>';
@@ -83,7 +84,7 @@
 
         <div class="card-body">
 
-          <h5 class="card-title">Ventas</h5>
+          <h5 class="card-title">paquetes</h5>
 
 
 
@@ -97,56 +98,24 @@
 
             <div class="col-md-6">
 
-              <label for="inputEmail5" class="form-label">Nombre Articulo</label>
+              <label for="inputEmail5" class="form-label">Nombre paquete</label>
 
-              <input  name="nombre_A"  class="form-control" value="<?php echo $fila['nombre_A'] ?>" >    
-
-            </div>
-
-            <div class="col-md-6">
-
-            <label  class="form-label" for="id_estado">estado</label>
-            <br>
-            <select class="cont" name="id_estado">
-                <option value="<?php echo htmlspecialchars($evento['id_estado']); ?>">Seleccione el estado</option>
-                <?php
-                $paquetes = $con->query("SELECT * FROM estados")->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($paquetes as $paquete) {
-                    echo "<option value='" . htmlspecialchars($paquete['id_estado']) . "'>" . htmlspecialchars($paquete['estado']) . "</option>";
-                }
-                ?>
-            </select>
+              <input  name="nombre_paquete"  class="form-control" value="<?php echo $fila['nombre_paquete'] ?>" >    
 
             </div>
 
-             <div class="col-md-6">
-
-             <label  class="form-label" for="id_tipo_art">tipo articulo</label>
-            <br>
-            <select class="cont" name="id_tipo_art">
-                <option value="<?php echo htmlspecialchars($evento['id_tipo_art']); ?>">Seleccione el tipo de articulo</option>
-                <?php
-                $paquetes = $con->query("SELECT * FROM tipo_articulo")->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($paquetes as $paquete) {
-                    echo "<option value='" . htmlspecialchars($paquete['id_tipo_art']) . "'>" . htmlspecialchars($paquete['tipo_articulo']) . "</option>";
-                }
-                ?>
-            </select>
-            </div>
-
-           
 
             <div class="col-12">
 
-              <label for="inputAddress2" class="form-label">Descripcion</label>
-              <input type="varchar" class="form-control"  name="descripcion" value="<?php echo $fila['descripcion']?>" >
+              <label for="inputAddress2" class="form-label">edad minima</label>
+              <input type="number"" class="form-control"  name="edad_min" value="<?php echo $fila['edad_min']?>" >
 
             </div>
             
             <div class="col-12">
 
-              <label for="inputAddress2" class="form-label">Cantidad</label>
-              <input type="number" class="form-control"  name="cantidad" value="<?php echo $fila['cantidad'] ?>">
+              <label for="inputAddress2" class="form-label">edad maxima</label>
+              <input type="number"class="form-control"  name="edad_max" value="<?php echo $fila['edad_max'] ?>">
 
             </div>
             <div class="col-12">
@@ -154,7 +123,13 @@
               <label for="inputAddress2" class="form-label">Valor</label>
               <input type="number"  class="form-control" name="valor" value="<?php echo $fila['valor'] ?>"></td>      
             </div>
+
+           
+
+           
+
          
+
             <div class="text-center">
 
             <tr>
@@ -162,14 +137,30 @@
             <td><input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="actualizar" value="Actualizar"></td>
                     <td><input type="submit" class="btn" style="background-color: gray; color: white;" name="eliminar" value="Eliminar"></td>
 
+
+
+
             </tr>
+
+              <!-- <button type="submit" class="btn btn-primary">Submit</button>
+
+ 
+
+              <button type="reset" class="btn btn-secondary">Reset</button> -->
 
             </div>
 
           </form><!-- End Multi Columns Form -->
 
+
+
         </div>
+
       </div>
+
+
+
     </div>
+    
 </body>
 </html>

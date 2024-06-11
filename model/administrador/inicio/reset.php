@@ -1,26 +1,33 @@
 <?php
 session_start();
-require_once "../../../db/connection.php";
-// include("../../../controller/validarSesion.php");
+require_once("../../../db/connection.php");
 $db = new Database();
 $con = $db->conectar();
 
 if (isset($_POST['verificar'])) {
     $codigo = $_POST['codigo'];
 
-    $sql = $con->prepare("SELECT * FROM usuarios WHERE token='$codigo'");
+    // Utilizar consultas preparadas para evitar SQL Injection
+    $sql = $con->prepare("SELECT * FROM usuarios WHERE token=:codigo");
+    $sql->bindParam(':codigo', $codigo);
     $sql->execute();
-    $fila = $sql->fetchAll(PDO::FETCH_ASSOC);
+    $fila = $sql->fetch(PDO::FETCH_ASSOC);
 
     if ($fila) {
-        echo '<script> alert ("Su codigo ha sido verificado correctamente");</script>';
-        echo '<script>window.location="recuperacion2.php"</script>';
+        // El código es válido, redirigir a la página de recuperación
+        echo '<script>alert("Su código ha sido verificado correctamente");';
+        echo 'window.location.href = "recuperacion2.php";</script>';
     } else {
-        echo '<script> alert ("El codigo digitado no coincide con el codigo enviado");</script>';
-        echo '<script>window.location="reset.php"</script>';
+        // El código no coincide, mostrar mensaje de error y redirigir a la página de reset
+        echo '<script>alert("El código digitado no coincide con el código enviado");';
+        echo 'window.location.href = "reset.php";</script>';
     }
 }
 ?>
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -103,22 +110,20 @@ header('Location: ../../../index.php');
                   <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                       <div class="h-100 d-flex flex-column justify-content-center p-5 contenido">
                           <h1 class="mb-4">Restablecer Contraseña</h1>
-                          <form action="../../../controller/inicio.php" method="POST" name="form1">
-                              <div class="row g-3 inputs">
-                                <div class="col-sm-6 user">
-                                      <div class="form-floating">
+                          <form action="../../../controller/validar_codigo.php" method="POST" name="form1">
+    <div class="row g-3 inputs">
+        <div class="col-sm-6 user">
+            <div class="form-floating">
+                <input class="form-control border-0 gmail" name="codigo" id="c" type="text" placeholder="Código">
+                <label for="codigo">Código</label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="submit" name="verificar" class="btn btn-primary w-100 py-3 ingresar">Restablecer</button>
+        </div>
+    </div>
+</form>
 
-                                          <!-- <input type="gmail" class="form-control border-0 gmail" id="correo" name="email" placeholder="Correo"> -->
-                                          <input class="form-control border-0 gmail" name= "codigo" id="c" type="varchar" placeholder="codigo">
-                                          <label for="fecha">Codigo</label>
-                                      </div>
-                                  </div>
-                                  
-                                  <div class="col-12">
-                                  <button type="submit" name="recuperar" class="btn btn-primary w-100 py-3 ingresar">Restablecer</button>
-                                  </div>
-                              </div>
-                          </form>
                       </div>
                   </div>
                  

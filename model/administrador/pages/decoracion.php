@@ -1,33 +1,6 @@
 <?php
 include 'plantilla.php';
  
-if (isset($_POST['registrar'])){
-
-  $nombre_paquete= $_POST['nombre_paquete'];
-  $edad_min = $_POST['minima'];
-  $edad_max= $_POST['maxima'];
-  $valor= $_POST['alquiler'];  
-                  
-  $sql= $con -> prepare ("SELECT * FROM paquetes WHERE nombre_paquete='$nombre_paquete'");
-  $sql -> execute();
-  $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
-
-  if ($fila){
-    echo '<script>alert ("ESTE PAQUETE YA EXISTE ");</script>';
-  }
-
-  else if ($nombre_paquete=="" || $edad_min=="" || $edad_max=="" || $valor==""){
-    echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';  
-  }
-      
-  else{
-    $insert= $con -> prepare ("INSERT INTO paquetes(nombre_paquete, edad_min, edad_max, valor) VALUES ('$nombre_paquete', $edad_min, $edad_max, '$valor')");
-    $insert -> execute();
-    echo '<script> alert ("Registro realizado con exito");</script>';
-    echo '<script>window.location="paquetes.php"</script>';
-  }
-}
-
 ?>
 <head>
 <title>Decoracion</title>
@@ -36,8 +9,13 @@ if (isset($_POST['registrar'])){
 <script src="../../../js/jquery.min.js"></script>
     <script src="../../../js/bootstrap.min.js"></script>
     </head>
-
 <main id="main" class="main">
+
+    <style>
+      table img{
+        width: 40vh;
+      }
+    </style>
 
 <div class="pagetitle">
   <h1>Decoracion</h1>
