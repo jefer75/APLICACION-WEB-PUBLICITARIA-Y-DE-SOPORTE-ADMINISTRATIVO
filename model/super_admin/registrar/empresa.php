@@ -81,25 +81,26 @@
                     <br>
          
     <script>
-        function validarNIT() {
-            var nit = document.forms["formreg"]["nit"].value;
-            var nitRegex = /^\d{1,10}(-\d{1})?(\.\d{1,2})?$/; // Permite números, un guion y hasta dos puntos
+      function validarNIT() {
+    var nit = document.forms["formreg"]["nit"].value;
+    var nitRegex = /^[\d.-]{1,20}$/; // Permite números, puntos y guiones, hasta 20 caracteres
 
-            if (!nitRegex.test(nit)) {
-                alert("El NIT debe contener solo números, un guion y hasta dos puntos, con un máximo de 10 caracteres en total.");
-                return false;
-            }
-            return true;
-        }
+    if (!nitRegex.test(nit)) {
+        alert("El NIT debe contener solo números, puntos, guiones y hasta un máximo de 20 caracteres.");
+        return false;
+    }
+    return true;
+}
+
 
         function validarNombreEmpresa() {
             var nombre = document.forms["formreg"]["nombre_emp"].value;
-            var nombreRegex = /^[A-Za-z\s]{1,20}$/; // Solo letras y espacios, máximo 20 caracteres
+            var nombreRegex = /^[A-Za-z\s]{1,30}$/; // Solo letras y espacios, máximo 20 caracteres
 
             // Contar espacios
             var spaceCount = (nombre.split(" ").length - 1);
             if (!nombreRegex.test(nombre) || spaceCount > 2) {
-                alert("El nombre de la empresa debe contener solo letras y hasta dos espacios, con un máximo de 20 caracteres.");
+                alert("El nombre de la empresa debe contener solo letras y hasta dos espacios, con un máximo de 30 caracteres.");
                 return false;
             }
             return true;
@@ -117,15 +118,24 @@
         }
 
         function validarDireccion() {
-            var direccion = document.forms["formreg"]["direccion"].value;
-            var direccionRegex = /^[A-Za-z0-9\s]{1,30}$/; // Letras, números y espacios, máximo 30 caracteres
+    var direccion = document.forms["formreg"]["direccion"].value;
+    var direccionRegex = /^[A-Za-z0-9#\- ]{1,37}$/; // Letras, números, #, -, y espacios, máximo 37 caracteres
 
-            if (!direccionRegex.test(direccion)) {
-                alert("La dirección debe contener solo letras, números y espacios, con un máximo de 30 caracteres.");
-                return false;
-            }
-            return true;
-        }
+    // Contar la cantidad de guiones en la dirección
+    var guiones = (direccion.match(/-/g) || []).length;
+
+    // Contar la cantidad de caracteres especiales (#) en la dirección
+    var caracteresEspeciales = (direccion.match(/#/g) || []).length;
+
+    // Contar la cantidad de espacios en la dirección
+    var espacios = (direccion.match(/ /g) || []).length;
+
+    if (guiones > 3 || caracteresEspeciales > 2 || espacios > 5 || !direccionRegex.test(direccion)) {
+        alert("La dirección debe contener solo letras, números, hasta 3 guiones, hasta 2 caracteres especiales '#' y hasta 5 espacios, con un máximo de 37 caracteres.");
+        return false;
+    }
+    return true;
+}
 
         function validarFormulario(event) {
             if (!validarNIT() || !validarNombreEmpresa() || !validarTelefono() || !validarDireccion()) {

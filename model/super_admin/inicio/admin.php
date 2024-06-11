@@ -40,7 +40,7 @@
   
 </style>
 
-<a href="crud/views/index.php" class="link-custom">REGRESAR</a>
+<a href="logins.php" class="link-custom">REGRESAR</a>
 
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
