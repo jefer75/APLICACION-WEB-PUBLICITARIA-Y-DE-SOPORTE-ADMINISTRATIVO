@@ -66,8 +66,8 @@ $con = $db -> conectar();
                         <h5 class="card-title"></h5>
                         <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
 
-                        <form method="post" action="funciones/artiexcel.php">
-                            <button type="submit" name="arti_excel" class="btn btn-success">
+                        <form method="post" action="funciones/soni_excel.php">
+                            <button type="submit" name="soni_excel" class="btn btn-success">
                                 <i class="bi bi-download"></i>
                             </button>
                         </form>
