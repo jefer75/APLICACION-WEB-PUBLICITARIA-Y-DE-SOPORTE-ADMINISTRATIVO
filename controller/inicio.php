@@ -30,7 +30,7 @@ if (isset($_POST["inicio"])) {
          exit();
          }
          else if ($_SESSION['id_tipo_user'] == 3) {
-         header ("Location: ../model/empleado/empleado.php");
+         header ("Location: ../model/empleado/plantilla.php");
          exit();
          }
    
