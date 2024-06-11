@@ -1,3 +1,12 @@
+<?php
+
+require_once("db/connection.php");
+// include("../../../controller/validarSesion.php");
+$db = new Database();
+$con = $db -> conectar();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,15 +46,7 @@
 
 <body>
     <div class="container-xxl bg-white p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
-
-
+       
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
             <img src="imagenes/logos/Logo Arlequin Color.png" class="logo">
@@ -102,15 +103,17 @@
 
                         <section class="gallery">
                             <ul class="images">
-                              <li class="img"><img src="imagenes/contenido/img60.jpeg" alt="img"></li>
-                              <li class="img"><img src="imagenes/contenido/img54.jpeg" alt="img"></li>
-                              <li class="img"><img src="imagenes/contenido/img74.jpg" alt="img"></li>
-                              <li class="img"><img src="imagenes/contenido/img73.jpg" alt="img"></li>
-                              <li class="img"><img src="imagenes/contenido/img65.jpeg" alt="img"></li>
-                              <li class="img"><img src="imagenes/contenido/img69.jpg" alt="img"></li>
-                              <li class="img"><img src="imagenes/contenido/img71.jpg" alt="img"></li>
-                              <li class="img"><img src="imagenes/contenido/img67.jpeg" alt="img"></li>
-                              <li class="img"><img src="imagenes/contenido/img61.jpeg" alt="img"></li>
+                            <?php
+                            $query = $con->prepare("SELECT * FROM decoracion");
+                            $query->execute();
+                            $imagenes = $query->fetchAll(PDO::FETCH_ASSOC);
+                            foreach ($imagenes as $imagen) {
+                            ?>
+                                <li class="img">
+                                <img src="data:<?php echo $imagen['tipo']; ?>;base64,<?php echo base64_encode($imagen['datos']); ?>" alt="<?php echo htmlspecialchars($imagen['nombre']); ?>"></li>
+                            <?php
+                                }
+                            ?>
                               
                             </ul>
                           </section>

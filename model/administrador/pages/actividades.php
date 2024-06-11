@@ -7,21 +7,22 @@ $con = $db -> conectar();
 
     include 'plantilla.php';
 
-    if (isset($_POST["registrar"])){
+    if (isset($_POST['registrar'])){
 
-    $nombre_paquete = $_POST['nombre_paquete'];
-    $edad_min = $_POST['edad_min'];
-    $edad_max = $_POST['edad_max'];
-    $valor= $_POST['valor'];
+    $id_actividad= $_POST['id_actividad'];
+    $nombre = $_POST['nombre'];
+    $descripcion = $_POST['descripcion'];
+    $imagen = $_POST['imagen'];
+   
 
 
-     $sql= $con -> prepare ("SELECT * FROM paquetes WHERE nombre_paquete='$nombre_paquete'");
+     $sql= $con -> prepare ("SELECT * FROM actividades WHERE id_actividad='$id_actividad'");
      $sql -> execute();
      $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
 
      if ($fila){
         echo '<script>alert ("ESTE PAQUETE YA EXISTE //CAMBIELO//");</script>';
-        echo '<script>window.location="paquetes.php"</script>';
+        echo '<script>window.location="actividades.php"</script>';
      }
 
      else
@@ -29,7 +30,7 @@ $con = $db -> conectar();
      if ( $nombre_paquete =="" || $edad_min =="" || $edad_max =="" || $valor =="")
       {
          echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
-         echo '<script>window.location="paquetes.php"</script>';
+         echo '<script>window.location="actividades.php"</script>';
       }
       
       else{
@@ -37,17 +38,24 @@ $con = $db -> conectar();
         $insertSQL = $con->prepare("INSERT INTO paquetes(nombre_paquete , edad_min , edad_max ,  valor) VALUES('$nombre_paquete', '$edad_min', '$edad_max', '$valor')");
         $insertSQL -> execute();
         echo '<script> alert("REGISTRO EXITOSO");</script>';
-        echo '<script>window.location="paquetes.php"</script>';
+        echo '<script>window.location="actividades.php"</script>';
      }  
     }
     ?>
 
-<title>paquetes</title>
+<title>actividades</title>
 
 <main id="main" class="main">
 
+<style>
+    table img{
+        width: 35vh;
+    }
+
+</style>
+
   <div class="pagetitle">
-    <h1>paquetes</h1>
+    <h1>Actividades</h1>
 
   </div><!-- End Page Title -->
 
@@ -64,44 +72,43 @@ $con = $db -> conectar();
               <dialog class="añadir_cont" id="añadir_cont">
                 <button id="añadir_close" class="btn modal_close" onclick="closedialog();">X</button>
 
-                <h2 class="modal__title">Registrar paquetes</h2> 
+                <h2 class="modal__title">Registrar actividad</h2> 
           <!-- Multi Columns Form -->
 
-                <form method="post" name="formreg" id="formreg"   class="row g-3"  autocomplete="off"> 
+                <form method="post" name="formreg" action="../funciones/reg_actividades.php"  class="row g-3"  autocomplete="off" enctype="multipart/form-data"> 
 
-              
+             
                
 
                 <div class="col-md-6">
 
-                  <label for="inputEmail5" class="form-label">Nombre paquete</label>
+                  <label for="inputEmail5" class="form-label">Nombre</label>
 
-                  <input  class="form-control" type="text" name="nombre_paquete" pattern="[A-Za-z ]{4,15}" placeholder="Nombre de paquete">
+                  <input  class="form-control" type="text" name="nombre" pattern="[A-Za-z/s]{4,10}" placeholder="Nombre actividad ">
                 </div>
 
                
 
                 <div class="co-md-6">
-                  <label for="inputEmail5" class="form-label">edad minima</label>
-                  <input  class="form-control" type="text" name="edad_min" placeholder="edad minima">
+                  <label for="inputEmail5" class="form-label">Descripcion</label>
+                  <input  class="form-control" type="text" name="descripcion" placeholder=" descripcion del paquete">
                 </div>
 
-                <div class="col-12">
-                  <label for="inputAddress5" class="form-label">edad maxima</label>
-                  <input  class="form-control" type="varchar" name="edad_max" placeholder="edad maxima">
+                <div class="co-md-6">
+                  <label for="inputEmail5" class="form-label">Imagen</label>
+                  <input  class="form-control" type="file" name="imagen" placeholder="subir imagen" >
                 </div>
 
-                <div class="col-12">
-                  <label for="inputAddress2" class="form-label">Valor</label>
-                  <input class="form-control" type="int" name="valor" pattern="[0-9]{1,15}" title="Solo se permiten numeros" placeholder="valor">
-                </div>
+                
+
+                
                 
                 <div class="text-center">
                   <tr>
                   <input type="submit" name="registrar" value="Registro" class="btn btn-primary modal_close">
                   </tr>
                 </div>
-
+              </form>
             </dialog>
 
               <!-- Table with stripped rows -->
@@ -109,38 +116,31 @@ $con = $db -> conectar();
                 <thead>
                   <tr>
                   
-                  
-                    <th>Nombre del paquete</th>
-                    <th>edad minima</th>
-                    <th>edad maxima</th>
-                    <th>valor</th>
-                    <th>Actualizar</th>
-                    <th>detalles</th>
+                    <th>Actividades</th>
+                    <th>Descripcion</th>
+                    <th>Imagen</th>
+                    
+                    
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                       $con_paquetes = $con->prepare("SELECT * FROM paquetes");
-                      $con_paquetes->execute();
-                      $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
-                      foreach ($paquetes as $fila) {
+                       $actividades = $con->prepare("SELECT * FROM actividades");
+                       $actividades->execute();
+                       $actividades = $actividades->fetchAll(PDO::FETCH_ASSOC);
+                       foreach ($actividades as $fila) {
                        
-                        $nombre_paquete = $fila['nombre_paquete'];
-                        $edad_min = $fila['edad_min'];
-                        $edad_max = $fila['edad_max'];
-                        $valor= $fila['valor'];
-                        
+                        $id_actividad = $fila['id_actividad'];
+                        $nombre = $fila['nombre'];
+                        $descripcion = $fila['descripcion'];
+                       
                     ?>
                   <tr>
                     
-                  <td><?php echo $nombre_paquete?></td>
-                    <td><?php echo $edad_min?></td>
-                    <td><?php echo $edad_max?></td>
-                    <td><?php echo $valor?></td>
-                    <td><a href="" class="boton" onclick="window.open
-                    ('../actualizar/act_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width= 600,height=500, toolbar=NO');void(null);">Click Aqui</a>
-                    <td><a href="" class="boton" onclick="window.open
-                    ('../consultar/detalle_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width= 600,height=500, toolbar=NO');void(null);">detalles</a>
+                  <td><?php echo $nombre?></td>
+                    <td><?php echo $descripcion?></td>
+                    <td> <img src="data:<?php echo $fila['tipos']; ?>;base64,<?php echo base64_encode($fila['datos']); ?>" alt="<?php echo htmlspecialchars($fila['nombre_img']);?>"></td>
+                    
 
                   </tr>
                     <?php

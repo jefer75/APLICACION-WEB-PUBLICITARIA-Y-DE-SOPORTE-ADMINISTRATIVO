@@ -1,43 +1,21 @@
 <?php
 include 'plantilla.php';
  
-if (isset($_POST['registrar'])){
-
-  $nombre_paquete= $_POST['nombre_paquete'];
-  $edad_min = $_POST['minima'];
-  $edad_max= $_POST['maxima'];
-  $valor= $_POST['alquiler'];  
-                  
-  $sql= $con -> prepare ("SELECT * FROM paquetes WHERE nombre_paquete='$nombre_paquete'");
-  $sql -> execute();
-  $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
-
-  if ($fila){
-    echo '<script>alert ("ESTE PAQUETE YA EXISTE ");</script>';
-  }
-
-  else if ($nombre_paquete=="" || $edad_min=="" || $edad_max=="" || $valor==""){
-    echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';  
-  }
-      
-  else{
-    $insert= $con -> prepare ("INSERT INTO paquetes(nombre_paquete, edad_min, edad_max, valor) VALUES ('$nombre_paquete', $edad_min, $edad_max, '$valor')");
-    $insert -> execute();
-    echo '<script> alert ("Registro realizado con exito");</script>';
-    echo '<script>window.location="paquetes.php"</script>';
-  }
-}
-
 ?>
 <head>
-<title>Paquetes</title>
+<title>Decoracion</title>
     
     <script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>
 <script src="../../../js/jquery.min.js"></script>
     <script src="../../../js/bootstrap.min.js"></script>
     </head>
-
 <main id="main" class="main">
+
+    <style>
+      table img{
+        width: 40vh;
+      }
+    </style>
 
 <div class="pagetitle">
   <h1>Decoracion</h1>
@@ -51,39 +29,25 @@ if (isset($_POST['registrar'])){
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Imagenes</h5>
-            <p>Estas imagenes modifican a interaz publicitaria de decoracion</p>
+            <p>Estas imagenes modifican a interaz publicitaria de decoracion, ten en cuentra que las imagenes largas se van a acortar</p>
 
               <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
               
               <dialog class="añadir_cont" id="añadir_cont">
                 <button id="añadir_close" class="btn modal_close" onclick="closedialog();">X</button>
 
-                <h2 class="modal__title">Registrar paquete</h2> 
+                <h2 class="modal__title">Insertar Imagen</h2> 
           <!-- Multi Columns Form -->
 
-                <form method="post" name="formreg" id="formreg" class="row g-3"  autocomplete="off"> 
-
+                <form action="../funciones/img_decoracion.php" method="post" class="row g-3" enctype="multipart/form-data" autocomplete="off">
                 <div class="col-md-6">
 
-                  <label for="inputEmail5" class="form-label">Nombre Paquete</label>
+                  <label for="inputEmail5" class="form-label">Imagen</label>
 
-                  <input  class="form-control" type="text" name="nombre_paquete" pattern="[A-Za-z/s]{4,15}" title="Solo se aceptan letras" placeholder="Nombre de paquete" required>
+                  <input  class="form-control" type="file" name="imagen" placeholder="subir imagen" required>
                 </div>
 
-                <div class="col-md-6">
-                  <label for="inputPassword5" class="form-label">Edad Minima</label>
-                  <input  class="form-control" type="text" pattern="[0,9]{1,3}" title="Solo se aceptan numeros, minimo 1" name="minima"  placeholder="Edad minima" required>
-                </div>
-
-                <div class="col-12">
-                  <label for="inputAddress5" class="form-label">Edad Maxima</label>
-                  <input  class="form-control" type="text" pattern="[0,9]{1,3}" title="Solo se aceptan numeros, minimo 1" name="maxima" placeholder="Edad maxima" required>
-                </div>
-
-                <div class="col-12">
-                  <label for="inputAddress2" class="form-label">Valor</label>
-                  <input class="form-control" type="text" name="alquiler" pattern="[0-9]{1,10}" title="Solo se permiten numeros" placeholder="valor" required>
-                </div>
+                
                 <div class="text-center">
                   <tr>
                   <input type="submit" name="registrar" value="Registro" class="btn btn-primary modal_close">
@@ -95,23 +59,23 @@ if (isset($_POST['registrar'])){
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>Imagen</th>
+                    <th>Imagenes</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php      
-                    $con_decoracion = $con->prepare("SELECT * FROM decoracion");
-                    $con_decoracion->execute();
-                    $imagenes = $con_decoracion->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($imagenes as $fila) {
-                      $imagen = $fila['imagen'];
+                    $query = $con->prepare("SELECT * FROM decoracion");
+                    $query->execute();
+                    $imagenes = $query->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($imagenes as $imagen) {
                     ?>
                   <tr>
-                    <td><?php echo $imagen ?></td>
-                                                    
+                    <td>
+                        <img class="imagenes_tablas" src="data:<?php echo $imagen['tipo']; ?>;base64,<?php echo base64_encode($imagen['datos']); ?>" alt="<?php echo htmlspecialchars($imagen['nombre']); ?>">
+                    </td>                                
                       <td>
                         <a href="" class="btn btn-warning" onclick="window.open
-                    ('../actualizar/paquetes.php?id=<?php echo $id_paquete ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i>Actualizar</a>
+                        ('../actualizar/decoracion.php?id=<?php echo $imagen['id_imagen'] ?>','','width= 450,height=350, toolbar=NO');void(null);"><i class="bi bi-trash"></i>Eliminar</a>
                         </td>
 
                       </td>

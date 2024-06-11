@@ -1,3 +1,12 @@
+<?php
+
+require_once("db/connection.php");
+// include("../../../controller/validarSesion.php");
+$db = new Database();
+$con = $db -> conectar();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,14 +44,6 @@
 
 <body>
     <div class="container-xxl bg-white p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
-
 
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
@@ -93,152 +94,50 @@
                     <h1 class="mb-3">Bienvenidos</h1>
                     <p>Arlequín Eventos se destaca por poner la diversión y la alegría en el centro de cada evento infantil que organiza. A través de una variedad de actividades emocionantes y seguras, como juegos al aire libre y desafíos creativos en grupo, se asegura de crear experiencias inolvidables para los niños. Su equipo de animadores capacitados no solo estimula la imaginación de los pequeños, sino que también promueve la cooperación y garantiza momentos de risas y entretenimiento en un ambiente seguro y supervisado. Cada evento se convierte en una aventura mágica que deja recuerdos duraderos en los niños y sus familias.</p>
                 </div>
-                </div></div>
+            </div>
+        </div>
 
         <!-- recreacio -->
+         
         <div class="cuadro">
-
+            
         <div class="info">
-            <div class="con">
-               <div class="img">
-                  <img src="imagenes/contenido/img91.jpeg">
-               </div>
-               <div class="top-text">
-                    <h3>Pintucaritas 🎨</h3>
-                  
-               </div>
-               <div class="bottom-text">
-                  <div class="text">
-                    Nuestro servicio de pintacaritas transforma rostros en lienzos vivientes llenos de color y diversión. Con diseños creativos y seguros, nuestros artistas hacen realidad los sueños de los niños, convirtiendo cada evento en una experiencia mágica y llena de alegría.
-                  </div>
-                  <div class="btn">
-                     <a href="imagenes/contenido/img91.jpeg">Ver Imagen</a>
-                  </div>
-               </div>
-            </div>
-            <div class="con">
-                <div class="img">
-                   <img src="imagenes/contenido/img10.jpg">
-                </div>
-                <div class="top-text">
-                     <h3>Recreación 🤹‍♂️</h3>
-                   
-                </div>
-                <div class="bottom-text">
-                   <div class="text">
-                     En nuestra área de recreación infantil, la emoción es constante. Desde juegos al aire libre hasta desafíos creativos, cada actividad está diseñada para estimular la imaginación y promover la diversión en un ambiente seguro. ¡La aventura espera en nuestro espacio de recreación para niños!
-                   </div>
-                   <div class="btn">
-                      <a href="imagenes/contenido/img10.jpg">Ver Imagen</a>
-                   </div>
-                </div>
-             </div>
-            <div class="con">
-               <div class="img">
-                  <img src="imagenes/contenido/img34.jpg">
-               </div>
-               <div class="top-text">
-                  <h3>Show de Payasitos 🤡</h3>
-               </div>
-               <div class="bottom-text">
-                  <div class="text">
-                    Nuestro show de payasitos es diversión garantizada para toda la familia! Con su humor travieso y travesuras encantadoras, hacen reír a grandes y chicos por igual. ¡Una experiencia llena de risas y alegría que todos recordarán.
-                  </div>
-                  <div class="btn">
-                     <a href="imagenes/contenido/img34.jpg">Ver Imagen</a>
-                  </div>
-               </div>
-            </div>
-         </div>
+            <?php
+                       $actividades = $con->prepare("SELECT * FROM actividades");
+                       $actividades->execute();
+                       $actividades = $actividades->fetchAll(PDO::FETCH_ASSOC);
+                       foreach ($actividades as $fila) {
+                       
+                        $nombre = $fila['nombre'];
+                        $descripcion = $fila['descripcion'];
+                        $nombre_img = $fila['nombre_img'];
+                        $tipos = $fila['tipos'];
+                        $datos = $fila['datos'];
+                       
+                    ?>
 
-        <div class="info">
             <div class="con">
                <div class="img">
-                  <img src="imagenes/contenido/img37.jpg">
+               <img class="imagenes_tablas" src="data:<?php echo $fila['tipos']; ?>;base64,<?php echo base64_encode($fila['datos']); ?>" alt="<?php echo htmlspecialchars($fila['nombre_img']); ?>">
                </div>
                <div class="top-text">
-                    <h3>Show de Magia 🎩✨</h3>
-                  
+                    <h3><?php echo $nombre?></h3>
+                
                </div>
                <div class="bottom-text">
                   <div class="text">
-                    Déjate sorprender por nuestro espectáculo de magia, donde la cartomagia y la misteriosa caja mágica te dejarán sin aliento! Disfruta de trucos fascinantes que desafían la lógica y la imaginación en cada acto. ¡Una experiencia única llena de asombro y diversión para todos
+                  <p><?php echo $descripcion?></p>
                   </div>
                   <div class="btn">
-                     <a href="imagenes/contenido/img37.jpg">Ver Imagen</a>
+                     <a href="model/administrador/inicio/login.php">Conoce más</a>
                   </div>
                </div>
             </div>
-            <div class="con">
-               <div class="img">
-                  <img src="imagenes/contenido/img76.jpeg">
-               </div>
-               <div class="top-text">
-                  <h3>Show de Titeres  🎭</h3>
-               </div>
-               <div class="bottom-text">
-                  <div class="text">
-                    Disfruta de un espectáculo mágico con títeres que cobran vida. Con personajes encantadores y emocionantes historias, cada actuación es una aventura para toda la familia. ¡Déjate llevar por la magia de los títeres y crea recuerdos inolvidables!
-                  </div>
-                  <div class="btn">
-                     <a href="imagenes/contenido/img76.jpeg">Ver Imagen</a>
-                  </div>
-               </div>
-            </div>
-            <div class="con">
-               <div class="img">
-                  <img src="imagenes/contenido/img113.jpg">
-               </div>
-               <div class="top-text">
-                  <h3>Globoflexia 🎈</h3>
-               </div>
-               <div class="bottom-text">
-                  <div class="text">
-                    Déjate sorprender por nuestro espectáculo de globoflexia! Con habilidades impresionantes, nuestro artista transforma simples globos en figuras encantadoras que cautivan a grandes y pequeños. Disfruta de una experiencia llena de color y diversión que hará brillar tu evento.
-                  </div>
-                  <div class="btn">
-                     <a href="imagenes/contenido/img113.jpg">Ver Imagen</a>
-                  </div>
-               </div>
-            </div>
+            <?php
+              }
+            ?>
          </div>
-
-         <div class="info">
-            <div class="con">
-               <div class="img">
-                  <img src="imagenes/contenido/img116.jpg">
-               </div>
-               <div class="top-text">
-                    <h3>Personaje ✨</h3>
-                  
-               </div>
-               <div class="bottom-text">
-                  <div class="text">
-                    Imagina la emoción cuando los personajes favoritos de tus niños cobran vida en su fiesta! Desde princesas hasta superhéroes, nuestros invitados especiales llenarán el evento de diversión y magia. Con juegos, bailes y muchas sorpresas, ¡cada momento será inolvidable en la fiesta de tu pequeño!
-                  </div>
-                  <div class="btn">
-                     <a href="imagenes/contenido/img116.jpg">Ver Imagen</a>
-                  </div>
-               </div>
-            </div>
-            <div class="con">
-               <div class="img">
-                  <img src="imagenes/contenido/img142.jpeg">
-               </div>
-               <div class="top-text">
-                  <h3>Hora Loca 🎉🕺💃</h3>
-               </div>
-               <div class="bottom-text">
-                  <div class="text">
-                    ¡Prepárate para una hora loca llena de diversión y energía! Con música vibrante, bailes contagiosos y accesorios coloridos, nuestra hora loca transforma cualquier evento en una fiesta inolvidable. ¡Deja que nuestros animadores te hagan bailar, reír y disfrutar al máximo!
-                  </div>
-                  <div class="btn">
-                     <a href="imagenes/contenido/img142.jpeg">Ver Imagen</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-
+    
         </div>
 
         <!-- fin recre -->
