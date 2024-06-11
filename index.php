@@ -537,16 +537,16 @@
         var contrasena = document.getElementById('contrasena').value;
 
         // Validar nombre
-        var regexNombre = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,20}( [a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,20})?$/;
+        var regexNombre = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,28}( [a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,28})?$/;
         if (!regexNombre.test(nombre)) {
             alert("Por favor ingresa un nombre válido.");
             return false;
         }
 
         // Validar apellido
-        var regexApellido = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,20}( [a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,20})?$/;
+        var regexApellido = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,28}( [a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,28})?$/;
         if (!regexApellido.test(apellido)) {
-            alert("Por favor ingresa un apellido válido.");
+            alert("Por favor ingresa un apellido válido no se permite puntos ni comas.");
             return false;
         }
 
