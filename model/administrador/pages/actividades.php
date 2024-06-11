@@ -49,13 +49,13 @@ $con = $db -> conectar();
 
 <style>
     table img{
-        width: 50vh;
+        width: 35vh;
     }
 
 </style>
 
   <div class="pagetitle">
-    <h1>actividades</h1>
+    <h1>Actividades</h1>
 
   </div><!-- End Page Title -->
 
@@ -75,41 +75,28 @@ $con = $db -> conectar();
                 <h2 class="modal__title">Registrar actividad</h2> 
           <!-- Multi Columns Form -->
 
-                <form method="post" name="formreg" id="formreg"   class="row g-3"  autocomplete="off"> 
+                <form method="post" name="formreg" action="../funciones/reg_actividades.php"  class="row g-3"  autocomplete="off" enctype="multipart/form-data"> 
 
-              <div class="col-md-6">
-
-                  <label for="inputEmail5" class="form-label">paquete </label>
-
-                  <select class="form-control" name="id_paquetes">
-                <option value="<?php echo htmlspecialchars($evento['id_paquetes']); ?>">Seleccione el paquete</option>
-                <?php
-                $paquetes = $con->query("SELECT * FROM paquetes")->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($paquetes as $paquete) {
-                    echo "<option value='" . htmlspecialchars($paquete['id_paquetes']) . "'>" . htmlspecialchars($paquete['nombre_paquete']) . "</option>";
-                }
-                ?>
-            </select>
-                </div>
+             
                
 
                 <div class="col-md-6">
 
-                  <label for="inputEmail5" class="form-label">nombre </label>
+                  <label for="inputEmail5" class="form-label">Nombre</label>
 
-                  <input  class="form-control" type="text" name="Nombre" pattern="[A-Za-z ]{4,15}" placeholder="Nombre actividad ">
+                  <input  class="form-control" type="text" name="nombre" pattern="[A-Za-z/s]{4,10}" placeholder="Nombre actividad ">
                 </div>
 
                
 
                 <div class="co-md-6">
-                  <label for="inputEmail5" class="form-label">descripcion</label>
+                  <label for="inputEmail5" class="form-label">Descripcion</label>
                   <input  class="form-control" type="text" name="descripcion" placeholder=" descripcion del paquete">
                 </div>
 
                 <div class="co-md-6">
-                  <label for="inputEmail5" class="form-label">imagen</label>
-                  <input  class="form-control" type="file" name="imagen" placeholder="subir imagen" required>
+                  <label for="inputEmail5" class="form-label">Imagen</label>
+                  <input  class="form-control" type="file" name="imagen" placeholder="subir imagen" >
                 </div>
 
                 
@@ -121,7 +108,7 @@ $con = $db -> conectar();
                   <input type="submit" name="registrar" value="Registro" class="btn btn-primary modal_close">
                   </tr>
                 </div>
-
+              </form>
             </dialog>
 
               <!-- Table with stripped rows -->
@@ -129,11 +116,9 @@ $con = $db -> conectar();
                 <thead>
                   <tr>
                   
-                  
-                    <th>paquete</th>
-                    <th>actividades</th>
-                    <th>descripcion</th>
-                    <th>imagen</th>
+                    <th>Actividades</th>
+                    <th>Descripcion</th>
+                    <th>Imagen</th>
                     
                     
                   </tr>
@@ -152,10 +137,9 @@ $con = $db -> conectar();
                     ?>
                   <tr>
                     
-                  <td><?php echo $id_actividad?></td>
                   <td><?php echo $nombre?></td>
                     <td><?php echo $descripcion?></td>
-                    <td> <img src="data:<?php echo $fila['tipos']; ?>;base64,<?php echo base64_encode($fila['datos']); ?>" alt="<?php echo htmlspecialchars($fila['nombre_img']); ?>"></td>
+                    <td> <img src="data:<?php echo $fila['tipos']; ?>;base64,<?php echo base64_encode($fila['datos']); ?>" alt="<?php echo htmlspecialchars($fila['nombre_img']);?>"></td>
                     
 
                   </tr>

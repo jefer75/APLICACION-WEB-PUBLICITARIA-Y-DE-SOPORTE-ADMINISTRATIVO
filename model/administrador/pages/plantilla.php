@@ -352,6 +352,11 @@ if(isset($_POST['cerrar_sesion']))
     </a>
     <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
+        <a href="arti.php">
+          <i class="bi bi-circle"></i><span>Articulos</span>
+        </a>
+      </li>
+      <li>
         <a href="sonido.php">
           <i class="bi bi-circle"></i><span>Sonido</span>
         </a>

@@ -56,7 +56,7 @@
 
         <div class="card-body">
 
-          <h5 class="card-title">detalle</h5>
+          <h5 class="card-title">Actividades disponibles</h5>
 
 
 
@@ -70,7 +70,6 @@
 
             <div class="col-md-6">
 
-              <label for="inputEmail5" class="form-label">actividades</label>
 <br>
               <form action="procesar_seleccion.php" method="post">
 
@@ -84,8 +83,8 @@
                        
                         
                     ?>
-              <label for="opcion3"
-              ><input type="checkbox" name="nombre" value="<?php  echo $nombre?>" > <?php  echo $nombre?> </label><br>
+              <label for="opcion3">
+                <p><?php  echo $nombre?></p>
               <?php
              
                       }
