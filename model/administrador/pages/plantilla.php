@@ -298,7 +298,7 @@ if(isset($_POST['cerrar_sesion']))
         <li>
           <a class="dropdown-item d-flex align-items-center" href="#">
             <i class="bi bi-box-arrow-right"></i>
-            <span>Cerrar Sesión</span>
+            <input class="dropdown-item d-flex align-items-center"  type="submit" name="cerrar_sesion" value="Cerrar Sesión">
           </a>
         </li>
 
@@ -336,13 +336,6 @@ if(isset($_POST['cerrar_sesion']))
     <a class="nav-link collapsed" href="actividades.php">
       <i class="bi bi-gift-fill"></i>
       <span>actividades</span>
-    </a>
-  </li><!-- End Contact Page Nav -->
-
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="compras.php">
-      <i class="bi bi-cart-plus"></i>
-      <span>Compras</span>
     </a>
   </li><!-- End Contact Page Nav -->
 
@@ -468,8 +461,7 @@ if(isset($_POST['cerrar_sesion']))
       <li class="nav-item">
           <a class="nav-link collapsed" href="#">
               <i class="bi bi-box-arrow-right"></i>
-              <span>Cerrar Sesion</span>
-              <input type="submit" name="cerrar_sesion" value="cerrar sesion">
+              <input class="nav-link collapsed"  type="submit" name="cerrar_sesion" value="Cerrar Sesión">
             </a>
         </li><!-- End Blank Page Nav -->
     </form>
