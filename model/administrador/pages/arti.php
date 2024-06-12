@@ -67,7 +67,9 @@ if (isset($_POST["registrar"])) {
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title"></h5>
-                        <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
+                        <a type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();"> 
+                        <i class="bi bi-plus-circle"></i>
+                        </a>
 
                         <form method="post" action="funciones/artiexcel.php">
                             <button type="submit" name="arti_excel" class="btn btn-success">

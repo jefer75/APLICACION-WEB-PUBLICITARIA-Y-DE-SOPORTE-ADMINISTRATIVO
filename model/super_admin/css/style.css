@@ -11,7 +11,25 @@
 body {
   height: 100vh;
   width: 100%;
-  background: linear-gradient(to bottom, rgba(96, 195, 235, 0.671) 26%, white 95%);
+  animation: backgroundColorChange 10s infinite;
+}
+
+@keyframes backgroundColorChange {
+  0% {
+    background-color: #a8d0e6;
+  }
+  25% {
+    background-color: #6baed6;
+  }
+  50% {
+    background-color: #3182bd;
+  }
+  75% {
+    background-color: #08519c;
+  }
+  100% {
+    background-color: #a8d0e6;
+  }
 }
 
 .header {
@@ -67,7 +85,6 @@ body {
   margin-right: 30px;
 }
 
-
 .navbar .buttons .signup {
   border: 1px solid black;
   padding: 10px 20px;
@@ -100,15 +117,23 @@ body {
   font-size: 2.5rem;
   margin-bottom: 20px;
 }
-
+/* color texto */
 .hero p {
   font-size: 1.2rem;
   margin-bottom: 20px;
-  color: #9e9e9e;
+  color: #000000;
 }
 
 .hero-section .img img {
   width: 517px;
+  border-radius: 50%; /* Make the image round */
+  border: 5px solid #47b2e4; /* Add a border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow */
+  transition: transform 0.3s ease; /* Add a transition for transform */
+}
+
+.hero-section .img img:hover {
+  transform: scale(1.05); /* Scale up the image on hover */
 }
 
 .hero-section .buttons {
@@ -131,6 +156,7 @@ body {
 
 .buttons .join {
   background-color: #47b2e4;
+  color: white;
 }
 
 .hero-section .buttons .learn {
@@ -140,6 +166,7 @@ body {
 
 .hero-section .buttons a:hover {
   background-color: #47b2e4;
+  color: white;
 }
 
 /* Hamburger menu styles */
