@@ -1,9 +1,9 @@
 .añadir{
     background-color:#198754;
     color: white;
-    width: 20vh;
-    padding: 2%;
-    margin: 2%;
+  
+    padding: 1%;
+    margin: 1%;
     float: right;
     text-decoration: none;
     border-radius: 1em;
@@ -16,9 +16,9 @@
 
 .boton{
     background-color:#0d6efd;
-    color: white;
-    padding: 5%;
-    margin: 5% 0 5% 10%;
+    color: aliceblue;
+    padding: 4%;
+    margin: 5% 5% 5% 19%;
     border-radius: 1em;
 }
 .boton:hover{
@@ -79,9 +79,4 @@
 }
 .modal__close, .añadir_cont h2{
     text-align: center;
-}
-
-.imagenes_tablas{
-    width: 25vh;
-    border-radius: 2vh;
 }
