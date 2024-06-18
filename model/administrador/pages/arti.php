@@ -67,7 +67,9 @@ if (isset($_POST["registrar"])) {
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title"></h5>
-                        <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
+                        <a type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();"> 
+                        <i class="bi bi-plus-circle"></i>
+                        </a>
 
                         <form method="post" action="funciones/artiexcel.php">
                             <button type="submit" name="arti_excel" class="btn btn-success">
@@ -146,7 +148,7 @@ if (isset($_POST["registrar"])) {
                                     <td><?php echo htmlspecialchars($fila['valor']); ?></td>
                                     <td>
                                         <a href="#" class="boton" onclick="window.open('../actualizar/articulos.php?id=<?php echo $fila['id_articulo']; ?>','','width=800,height=750,toolbar=NO');void(null);">
-                                            <i class="bi bi-arrow-clockwise"></i>
+                                            <i class="bi bi-pencil-square"></i>
                                         </a>
                                     </td>
                                 </tr>
