@@ -47,7 +47,7 @@ $con = $db -> conectar();
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>paquetes</h1>
+    <h1>Paquetes</h1>
 
   </div><!-- End Page Title -->
 
@@ -56,7 +56,7 @@ $con = $db -> conectar();
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title"></h5>
+              <h5 class="card-title">Disponibles</h5>
 
               <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
               
@@ -140,7 +140,7 @@ $con = $db -> conectar();
                     <td><a href="" class="boton" onclick="window.open
                     ('../actualizar/act_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width= 600,height=500, toolbar=NO');void(null);">Click Aqui</a>
                     <td><a href="" class="boton" onclick="window.open
-                    ('../consultar/detalle_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width= 600,height=500, toolbar=NO');void(null);">detalles</a>
+                    ('../detalles/detalle_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width= 600,height=500, toolbar=NO');void(null);">detalles</a>
 
                   </tr>
                     <?php

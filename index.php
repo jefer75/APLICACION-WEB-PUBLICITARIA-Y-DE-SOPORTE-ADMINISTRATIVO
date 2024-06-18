@@ -234,7 +234,7 @@
                         <p class="mb-4">En Arlequin Eventos, nuestro enfoque está en diferentes servicios para que tu celebración sea muy especial, entre los cuales destaca la animación, la cual es indispensable para que se respire un aire de dirvesión y momentos felices, luego tenemos la recreación, que son todas las dinámicas que pueden hacer reir a carcajadas a tus invitados y por último pero no menos importante tenemos la  decoración, en la cual, vamos a dar nuestro mayor esfuerzo por que el ambiente no este solo en la animación y recreación sino que el lugar tambien transmita el mensaje de alegría y diversión que hara que el momento sea aún más especial.</p>
                         <div class="row g-4 align-items-center">
                             <div class="col-sm-6">
-                                <a class="btn btn-primary rounded-pill py-3 px-5" href="sobre_nosotros.php">Descubre más</a>
+                                <a class="btn btn-primary rounded-pill py-3 px-5" href="about.html">Descubre más</a>
                             </div>
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center">
@@ -451,79 +451,132 @@
         </div>
         <!-- Classes End -->
 
-        <form method="post" name="formreg" id="formreg" class="signup-form"  autocomplete="off"> 
-        <!-- Appointment Start -->
-        <div class="container-xxl py-5" id="registrate">
-            <div class="container">
-                <div class="bg-light rounded">
-                    <div class="row g-0">
-                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                            <div class="h-100 d-flex flex-column justify-content-center p-5">
-                                <h1 class="mb-4">Regístrate</h1>
-                                <p>Regístrate para conocer más acerca de los paquetes y hacer tu reservación</p>
-                            
-                                    <div class="row g-3">
-                                        <div class="col-sm-6">
-                                            <div class="form-floating">
-                                                
-                                                <input  class="form-control border-0" type="text" name="nombre" id="nombres" pattern="[a-zA-Z/s]{3,40}" title="Solo se permiten letras, minimo 3 digitos" placeholder="Digite Nombre" required>
-                                                <label for="gname">Nombres</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-floating">
-                                                <input class="form-control border-0" type="text" name="apellido" placeholder="Apellidos" pattern="[a-zA-Z/s]{3,40}" title="Solo se permiten letras, minimo 3 digitos" required>
-                                                <label for="fecha">Apellidos</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-floating">
-                                    
-                                                <input class="form-control border-0"  type="text" name="cedula" id="documento" pattern="[0-9]{7,15}" title="Solo se permiten numeros, minimo 7 digitos" placeholder="Digite Documento" required>
-                                                <label for="cedula">N° Documento</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-floating">
-                                                
-                                                <input class="form-control border-0"   type="text" name="celular" id="telefono" pattern="[0-9]{7,15}" title="Solo se permiten numeros, minimo 10 digitos" placeholder="Digite Telefono" required>
-                                                <label for="cname">Contacto</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-floating">
-                                                <input  class="form-control border-0"  type="email" name="correo" id="correo" placeholder="Digite Correo" required>
-                                                <label for="cage">Correo</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-floating">
-                                                <input class="form-control border-0" pattern="[a-zA-Z0-9]{8,15}" title="La contraseña debe tener minimo 8 digitos" type="password" name="contrasena" placeholder="Contraseña" required>
-                                                <label for="fecha">Contraseña</label>
-                                            </div>
-                                        </div>                                        
-                                        
-                                        <div class="col-12">
-                                            
-                                            <input class="btn btn-primary w-100 py-3"   type="submit" name="registrarse" value="Registro">
-                                            <input   type="hidden" name="MM_insert" value="formreg">
+<form method="post" name="formreg" id="formreg" class="signup-form" autocomplete="off" onsubmit="return validarFormulario()">
+    <!-- Appointment Start -->
+    <div class="container-xxl py-5" id="registrate">
+        <div class="container">
+            <div class="bg-light rounded">
+                <div class="row g-0">
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                        <div class="h-100 d-flex flex-column justify-content-center p-5">
+                            <h1 class="mb-4">Regístrate</h1>
+                            <p>Regístrate para conocer más acerca de los paquetes y hacer tu reservación</p>
+                        
+                                <div class="row g-3">
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input class="form-control border-0" type="text" name="nombre" id="nombres" placeholder="Digite Nombre">
+                                            <label for="nombres">Nombres</label>
                                         </div>
                                     </div>
-                               
-                            </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input class="form-control border-0" type="text" name="apellido" id="apellidos" placeholder="Apellidos">
+                                            <label for="apellidos">Apellidos</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input class="form-control border-0" type="text" name="cedula" id="documento" placeholder="Digite Documento">
+                                            <label for="documento">N° Documento</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input class="form-control border-0" type="text" name="celular" id="telefono" placeholder="Digite Telefono">
+                                            <label for="cname">Contacto</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input class="form-control border-0" type="email" name="correo" id="correo" placeholder="Digite Correo">
+                                            <label for="cage">Correo</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input class="form-control border-0" type="password" name="contrasena" id="contrasena" placeholder="Contraseña">
+                                            <label for="fecha">Contraseña</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <input class="btn btn-primary w-100 py-3" type="submit" name="registrarse" value="Registro">
+                                        <input type="hidden" name="MM_insert" value="formreg">
+                                    </div>
+                                </div>
+                            
                         </div>
-                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
-                            <div class="position-relative h-100">
-                                <img class="position-absolute w-100 h-100 rounded" src="imagenes/contenido/img19.jpg" style="object-fit: cover;">
-                            </div>
+                    </div>
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
+                        <div class="position-relative h-100">
+                            <img class="position-absolute w-100 h-100 rounded" src="imagenes/contenido/img19.jpg" style="object-fit: cover;">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
- </form>
+    </div>
+</form>
+
+<script>
+    function validarFormulario() {
+        var nombre = document.getElementById('nombres').value;
+        var apellido = document.getElementById('apellidos').value;
+        var documento = document.getElementById('documento').value;
+        var contacto = document.getElementById('telefono').value;
+        var correo = document.getElementById('correo').value;
+        var contrasena = document.getElementById('contrasena').value;
+
+        // Validar nombre
+        var regexNombre = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,28}( [a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,28})?$/;
+        if (!regexNombre.test(nombre)) {
+            alert("Por favor ingresa un nombre válido.");
+            return false;
+        }
+
+        // Validar apellido
+        var regexApellido = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,28}( [a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,28})?$/;
+        if (!regexApellido.test(apellido)) {
+            alert("Por favor ingresa un apellido válido no se permite puntos ni comas.");
+            return false;
+        }
+
+        // Validar documento
+        var regexDocumento = /^\d{8,10}$/;
+        if (!regexDocumento.test(documento)) {
+            alert("Por favor ingresa un número de documento válido.");
+            return false;
+        }
+
+        // Validar contacto
+        var regexContacto = /^\d{1,10}$/;
+        if (!regexContacto.test(contacto)) {
+            alert("Por favor ingresa un número de contacto válido.");
+            return false;
+        }
+
+        // Validar correo
+        var regexCorreo = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+        if (!regexCorreo.test(correo)) {
+            alert("Por favor ingresa una dirección de correo válida.");
+            return false;
+        }
+
+        // Validar contraseña
+        if (contrasena.length < 8 || contrasena.length > 11) {
+            alert("La contraseña debe tener entre 8 y 11 caracteres.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+
+
         <!-- Appointment End -->
 
 

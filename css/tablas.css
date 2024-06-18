@@ -80,3 +80,8 @@
 .modal__close, .añadir_cont h2{
     text-align: center;
 }
+
+.imagenes_tablas{
+    width: 25vh;
+    border-radius: 2vh;
+}

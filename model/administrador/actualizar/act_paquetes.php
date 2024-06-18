@@ -97,6 +97,7 @@
           <div class="text-center">
             <tr>
               <td><input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="actualizar" value="Actualizar"></td>
+              <td><input class="btn" style="background-color: gray; color: white;" type="submit" name="eliminar" value="Eliminar"></td>
           </tr>
         </div>
 

@@ -57,7 +57,7 @@
 
                   <div class="pt-4 pb-2">
                     <h5 class="card-title text-center pb-0 fs-4">Crear cuenta</h5>
-                    <p class="text-center small">Ingresa tus datos</p>
+                    <p class="text-center small">Ingresa los datos</p>
                   </div>
 
                   <form class="row g-3 needs-validation" name="formreg" id="formreg" method="POST">
