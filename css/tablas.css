@@ -1,7 +1,7 @@
 .añadir{
     background-color:#198754;
     color: white;
-    width: 10vh;
+  
     padding: 1%;
     margin: 1%;
     float: right;
@@ -16,9 +16,9 @@
 
 .boton{
     background-color:#0d6efd;
-    color: white;
-    padding: 5%;
-    margin: 5% 0 5% 0%;
+    color: aliceblue;
+    padding: 4%;
+    margin: 5% 5% 5% 19%;
     border-radius: 1em;
 }
 .boton:hover{

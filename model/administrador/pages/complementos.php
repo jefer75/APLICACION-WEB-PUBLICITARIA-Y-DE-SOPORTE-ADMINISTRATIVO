@@ -65,10 +65,11 @@ $con = $db -> conectar();
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-body">
+                <div class="card-body">
                         <h5 class="card-title"></h5>
-                        <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
-
+                        <a type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();"> 
+                        <i class="bi bi-plus-circle"></i>
+                        </a>
                         <form method="post" action="funciones/com_excel.php">
                             <button type="submit" name="com_excel" class="btn btn-success">
                                 <i class="bi bi-download"></i>
@@ -156,7 +157,7 @@ $con = $db -> conectar();
                     <td><?php echo $valor?></td>
                     <td>
                     <a href="#" class="boton" onclick="window.open('../actualizar/articulos.php?id=<?php echo $fila['id_articulo']; ?>','','width=800,height=750,toolbar=NO');void(null);">
-                      <i class="bi bi-arrow-clockwise"></i>
+                      <i class="bi bi-pencil-square"></i>
                     </a>
 
                   </tr>

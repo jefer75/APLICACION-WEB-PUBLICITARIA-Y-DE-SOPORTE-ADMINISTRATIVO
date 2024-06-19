@@ -138,9 +138,23 @@
                 <br>
                 <input class="cont"    type="time" name="hora_fin" value="<?php echo $fila['hora_fin'] ?>">
                 <br>
-                <label for="contacto"></label>
+
+                <select class="cont" name="cedula">
+                    <option value ="<?php echo $fila['cedula'] ?>"><?php echo $fila['cedula'] ?></option>
+                    
+                    <?php
+                        $control = $con -> prepare ("SELECT * from paquetes");
+                        $control -> execute();
+                    while ($fila = $control->fetch(PDO::FETCH_ASSOC)) 
+                    {
+                        echo "<option value=" . $fila['id_paquetes'] . ">"
+                        . $fila['nombre_paquete'] . "</option>";
+                    } 
+                    ?>
+                </select>
+                <label for="contacto">Cliente</label>
                 <br>
-                <input class="cont" type="int" name="contacto" value="<?php echo $fila['contacto'] ?>">
+                <input class="cont" type="int" name="contacto" value="<?php echo $fila['cedula'] ?>">
                 <br>
 
                 <td><input type="submit" name="actualizar" value="Actualizar"></td>

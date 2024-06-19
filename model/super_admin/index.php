@@ -4,18 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ELITECH</title>
+  <link rel="icon" href="https://images.emojiterra.com/google/noto-emoji/unicode-15/bw/512px/1f9d1-1f4bb.png">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="header">
     <nav class="navbar">
       <h2 class="logo"><a href="#">ELITECH JYDT</a></h2>
-      <input type="checkbox" id="menu-toggle">
-      <label for="menu-toggle" id="hamburger-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-          <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </label>
       <div class="buttons">
         <a href="inicio/logins.php" class="signup">Iniciar Sesión</a>
       </div>

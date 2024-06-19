@@ -14,29 +14,12 @@ body {
   animation: backgroundColorChange 10s infinite;
 }
 
-@keyframes backgroundColorChange {
-  0% {
-    background-color: #a8d0e6;
-  }
-  25% {
-    background-color: #6baed6;
-  }
-  50% {
-    background-color: #3182bd;
-  }
-  75% {
-    background-color: #08519c;
-  }
-  100% {
-    background-color: #a8d0e6;
-  }
-}
-
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  border-bottom: 1px solid black; /* Agregamos una línea de borde inferior */
 }
 
 .navbar {
@@ -46,6 +29,8 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px 15px;
+  background-color: white; /* Cambiamos el color de fondo */
+  color: black; /* Cambiamos el color del texto */
 }
 
 .navbar .logo a {
@@ -136,38 +121,6 @@ body {
   transform: scale(1.05); /* Scale up the image on hover */
 }
 
-.hero-section .buttons {
-  margin-top: 40px;
-}
-
-.hero-section .buttons a {
-  text-decoration: none;
-  color: black;
-  padding: 12px 24px;
-  border-radius: 0.375rem;
-  font-weight: 600;
-  transition: 0.2s ease;
-  display: inline-block;
-}
-
-.hero-section .buttons a:not(:last-child) {
-  margin-right: 15px;
-}
-
-.buttons .join {
-  background-color: #47b2e4;
-  color: white;
-}
-
-.hero-section .buttons .learn {
-  border: 1px solid black;
-  border-radius: 0.375rem;
-}
-
-.hero-section .buttons a:hover {
-  background-color: #47b2e4;
-  color: white;
-}
 
 /* Hamburger menu styles */
 #menu-toggle {

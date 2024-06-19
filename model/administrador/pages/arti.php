@@ -148,7 +148,7 @@ if (isset($_POST["registrar"])) {
                                     <td><?php echo htmlspecialchars($fila['valor']); ?></td>
                                     <td>
                                         <a href="#" class="boton" onclick="window.open('../actualizar/articulos.php?id=<?php echo $fila['id_articulo']; ?>','','width=800,height=750,toolbar=NO');void(null);">
-                                            <i class="bi bi-arrow-clockwise"></i>
+                                            <i class="bi bi-pencil-square"></i>
                                         </a>
                                     </td>
                                 </tr>

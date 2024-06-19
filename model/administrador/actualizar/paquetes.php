@@ -92,7 +92,7 @@
 
                 <tr>
                     <td><input type="submit" name="actualizar" value="Actualizar"></td>
-                    <td><input type="submit" name="eliminar" value="Eliminar"></td>
+                    <td><input class="btn" style="background-color: gray; color: white;" type="submit" name="eliminar" value="Eliminar"></td>
                 </tr>
             </form>
         </table>

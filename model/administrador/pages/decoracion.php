@@ -1,6 +1,5 @@
 <?php
 include 'plantilla.php';
- 
 ?>
 <head>
 <title>Decoracion</title>
@@ -9,13 +8,8 @@ include 'plantilla.php';
 <script src="../../../js/jquery.min.js"></script>
     <script src="../../../js/bootstrap.min.js"></script>
     </head>
-<main id="main" class="main">
 
-    <style>
-      table img{
-        width: 40vh;
-      }
-    </style>
+<main id="main" class="main">
 
 <div class="pagetitle">
   <h1>Decoracion</h1>
@@ -74,9 +68,12 @@ include 'plantilla.php';
                         <img class="imagenes_tablas" src="data:<?php echo $imagen['tipo']; ?>;base64,<?php echo base64_encode($imagen['datos']); ?>" alt="<?php echo htmlspecialchars($imagen['nombre']); ?>">
                     </td>                                
                       <td>
-                        <a href="" class="btn btn-warning" onclick="window.open
+                        <a href="#" class="btn btn-warning" onclick="window.open
                         ('../actualizar/decoracion.php?id=<?php echo $imagen['id_imagen'] ?>','','width= 450,height=350, toolbar=NO');void(null);"><i class="bi bi-trash"></i>Eliminar</a>
+
+                    </a>
                         </td>
+                        
 
                       </td>
                         <?php } ?>
