@@ -7,19 +7,25 @@
 
    //empieza la consulta
   
-   
+   $sql = $con -> prepare("SELECT articulos.id_articulo, articulos.id_tipo_art, tipo_articulo.tipo_articulo, articulos.id_estado,  estados.estado, articulos.nombre_A, articulos.descripcion, articulos.cantidad, articulos.valor
+   FROM articulos
+   INNER JOIN tipo_articulo ON tipo_articulo.id_tipo_art = articulos.id_tipo_art
+   INNER JOIN estados ON estados.id_estado = articulos.id_estado WHERE id_articulo='".$_GET['id']."'");
+   $sql->execute();
+   $fila = $sql->fetchAll(PDO::FETCH_ASSOC);
+   foreach ($fila as $fila) {
+ //  foreach ($fila as $fila) {
+   $id_tipo_art = $fila['id_tipo_art'];
+   $tipo_art = $fila['tipo_articulo'];
+   $id_estado = $fila['id_estado'];
+   $estado = $fila['estado'];
+   $cantidad = $fila['cantidad'];
 
    //declaracion de variables de campos en la tabla
 
    if (isset($_POST['actualizar'])){
 
-    $sql = $con -> prepare(" SELECT * FROM articulos WHERE id_articulo='".$_GET['id']."'");
-    $sql->execute();
-    $fila = $sql->fetchAll(PDO::FETCH_ASSOC);
-    foreach ($fila as $fila) {
-  //  foreach ($fila as $fila) {
-    $cantidad = $fila['cantidad'];
-  }
+    
 
        $id_tipo_art= $_POST['id_tipo_art'];
        $nombre_A = $_POST['nombre_A'];
@@ -28,9 +34,8 @@
        $suma = $_POST['suma'];
        $valor= $_POST['valor'];
 
-      if ($suma <= 0 || $valor <= 0) {  
+      if ($valor <= 0) {  
         echo '<script>alert("CANTIDAD Y VALOR DEBEN SER MAYORES A 0");</script>';
-        echo '<script>window.location="articulos.php"</script>';
       }
        else {
         
@@ -87,20 +92,7 @@
 
           <form autocomplete="off"class="row g-3" name="form_actualizar" method="POST">
 
-          <?php
-          $sql = $con -> prepare("SELECT articulos.id_articulo, articulos.id_tipo_art, tipo_articulo.tipo_articulo, articulos.id_estado,  estados.estado, articulos.nombre_A, articulos.descripcion, articulos.cantidad, articulos.valor
-          FROM articulos
-          INNER JOIN tipo_articulo ON tipo_articulo.id_tipo_art = articulos.id_tipo_art
-          INNER JOIN estados ON estados.id_estado = articulos.id_estado WHERE id_articulo='".$_GET['id']."'");
-          $sql->execute();
-          $fila = $sql->fetchAll(PDO::FETCH_ASSOC);
-          foreach ($fila as $fila) {
-        //  foreach ($fila as $fila) {
-          $id_tipo_art = $fila['id_tipo_art'];
-          $tipo_art = $fila['tipo_articulo'];
-          $id_estado = $fila['id_estado'];
-
-            ?>
+          
             <div class="col-md-6">
 
               <label for="inputEmail5" class="form-label">Nombre Articulo</label>
@@ -111,26 +103,26 @@
 
             
 
-            <div class="col-12">
+            <div class="col-6">
 
               <label for="inputAddress2" class="form-label">Descripcion</label>
               <input type="varchar" class="form-control"  name="descripcion" value="<?php echo $fila['descripcion']?>" >
 
             </div>
             
-            <div class="col-12">
+            <div class="col-6">
 
               <label for="inputAddress2" class="form-label">Cantidad Actual</label>
               <input type="number" class="form-control"  readonly value="<?php echo $fila['cantidad'] ?>" min="1">
 
             </div>
-            <div class="col-12">
+            <div class="col-6">
 
               <label for="inputAddress2" class="form-label">Añadir Compra</label>
-              <input type="number" class="form-control"  name="suma" placeholder="cantidad añadida" min="1">
+              <input type="number" class="form-control"  name="suma" placeholder="Cantidad añadida" min="1">
 
             </div>
-            <div class="col-12">
+            <div class="col-6">
 
               <label for="inputAddress2" class="form-label">Valor</label>
               <input type="number"  class="form-control" name="valor" value="<?php echo $fila['valor'] ?>" min="1"></td>      
@@ -139,9 +131,9 @@
             <div class="col-md-6">
                                 <label for="inputTipoArticulo" class="form-label">Estado</label>
                                 <select class="form-control" name="id_estado">
-                                    <option value="<?php echo $fila['id_estado'] ?>"><?php echo $fila['estado'] ?></option>
+                                    <option value="<?php echo $id_estado ?>"><?php echo $estado ?></option>
                                     <?php
-                                    $control = $con-> prepare ("SELECT * FROM estados WHERE id_estado != $id_estado");
+                                    $control = $con-> prepare ("SELECT * FROM estados WHERE id_estado != $id_estado AND estado = 'Activo' or estado='inactivo'");
                                     $control -> execute();
                                     while ($fila = $control->fetch(PDO::FETCH_ASSOC))  
                                     {

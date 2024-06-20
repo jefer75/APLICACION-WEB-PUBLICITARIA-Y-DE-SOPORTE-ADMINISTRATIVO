@@ -4,43 +4,43 @@ session_start();
 $db = new DataBase();
 $con = $db->conectar();
 
-if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
-    $nombre = $_FILES['imagen']['name'];
-    $tipo = $_FILES['imagen']['type'];
-    $datos = file_get_contents($_FILES['imagen']['tmp_name']);
-    $tamaño = $_FILES['imagen']['size'];
-
-    // Lista de tipos de archivos permitidos
-    $tiposPermitidos = ['image/png', 'image/jpeg', 'image/jpg'];
+if (!empty($_POST['registrar'])) {
     
-    // Verificar el tamaño del archivo (5 MB)
-    $maxTamaño = 5 * 1024 * 1024; // 5 MB
+    $imagen=$_FILES['imagen']['tmp_name'];
+    $nombre=$_FILES['imagen']['name'];
+    $formato=strtolower(pathinfo($nombre,PATHINFO_EXTENSION));
+    $peso=$_FILES['imagen']['size'];
+    $carpeta="../../../imagenes/registradas/decoracion/";
 
-    if ($tamaño > $maxTamaño) {
-        echo '<script>alert("El archivo es demasiado grande. El tamaño máximo permitido es de 5 MB.");</script>';
-        echo '<script>window.location="../pages/decoracion.php"</script>';
-    } elseif (in_array($tipo, $tiposPermitidos)) {
-        // Preparar la declaración SQL
-        $insert = $con->prepare("INSERT INTO decoracion (nombre, tipo, datos) VALUES (:nombre, :tipo, :datos)");
-        // Enlazar los parámetros
-        $insert->bindParam(':nombre', $nombre);
-        $insert->bindParam(':tipo', $tipo);
-        $insert->bindParam(':datos', $datos, PDO::PARAM_LOB);
+    if ($formato=="jpg" || $formato=="jpeg" || $formato=="png") {
+        
+        $insertSQL = $con->prepare("INSERT INTO decoracion(imagen) VALUES('')");
+        $insertSQL -> execute();
 
-        // Ejecutar la declaración
-        if ($insert->execute()) {
-            echo '<script>alert("Imagen subida correctamente");</script>';
+        $sql= $con -> prepare ("SELECT * FROM decoracion 
+        WHERE imagen=''");
+        $sql -> execute();
+        $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
+        foreach($fila as $fila){
+            $id_registrado=$fila['id_imagen'];
+        }
+
+        $direccion=$carpeta.$id_registrado.".".$formato;
+
+        $insertSQL = $con->prepare("UPDATE decoracion SET imagen='$direccion' WHERE id_imagen = $id_registrado");
+        $insertSQL -> execute();
+
+        if (move_uploaded_file($imagen,$direccion)) {
+            echo '<script>alert ("La imagen ha sido guardad exitosamente");</script>';
             echo '<script>window.location="../pages/decoracion.php"</script>';
         } else {
-            echo '<script>alert("Error al subir la imagen.");</script>';
+            echo '<script>alert ("Error al guardar la imagen en el almacenamiento");</script>';
             echo '<script>window.location="../pages/decoracion.php"</script>';
         }
     } else {
-        echo '<script>alert("Tipo de archivo incompatible, solo se aceptan PNG, JPG y JPEG");</script>';
+        echo '<script>alert ("El formato del archivo no corresponde");</script>';
         echo '<script>window.location="../pages/decoracion.php"</script>';
     }
-} else {
-    echo '<script>alert("Error al subir imagen, por favor intente de nuevo");</script>';
-    echo '<script>window.location="../pages/decoracion.php"</script>';
+
 }
 ?>

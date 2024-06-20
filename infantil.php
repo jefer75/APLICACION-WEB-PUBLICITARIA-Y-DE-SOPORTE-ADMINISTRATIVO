@@ -110,15 +110,12 @@ $con = $db -> conectar();
                        
                         $nombre = $fila['nombre'];
                         $descripcion = $fila['descripcion'];
-                        $nombre_img = $fila['nombre_img'];
-                        $tipos = $fila['tipos'];
-                        $datos = $fila['datos'];
-                       
+                        $imagen = $fila['imagen'];
                     ?>
 
             <div class="con">
                <div class="img">
-               <img class="imagenes_tablas" src="data:<?php echo $fila['tipos']; ?>;base64,<?php echo base64_encode($fila['datos']); ?>" alt="<?php echo htmlspecialchars($fila['nombre_img']); ?>">
+               <img class="imagenes_tablas" src="model/administrador/pages/<?php echo $imagen?>">
                </div>
                <div class="top-text">
                     <h3><?php echo $nombre?></h3>

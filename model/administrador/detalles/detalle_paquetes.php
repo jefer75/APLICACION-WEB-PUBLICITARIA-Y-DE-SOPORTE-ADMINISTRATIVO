@@ -49,12 +49,9 @@
 
 
     else if (isset($_POST['eliminar'])){
-          
-      
+           
       $id_actividades = $_POST['valor'];
      
-      
-  
           $insert= $con -> prepare ("DELETE FROM detalle_paquete WHERE id_paquetes = $act AND id_actividad = $id_actividades");
           $insert -> execute();
           echo '<script> alert ("se elimino la actividad");</script>';

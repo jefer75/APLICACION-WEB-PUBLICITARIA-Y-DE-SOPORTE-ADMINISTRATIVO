@@ -1,7 +1,37 @@
 <?php
   include "plantilla.php";
 
-  
+  if (isset($_POST['registrar'])){
+            
+    $terminos = $_POST['terminos'];
+    
+    $fecha_actual=date('Y-m-d');
+    $tipo_e = $_POST['tipo_evento'];
+    $paquete = $_POST['paquete'];
+    $cliente = $_POST['cliente'];
+    $lugar = $_POST['lugar'];
+    $cant_ninos = $_POST['cantidad'];
+    $f_inicio = $_POST['f_inicio'];
+    $f_fin = $_POST['f_fin'];
+    $hora_inicio = $_POST['hora_inicio'];
+    $hora_fin = $_POST['hora_fin'];
+    $edad = $_POST['edad'];
+    $descripcion = $_POST['descripcion'];
+    $estado = 6;
+    
+     if ($paquete=="" || $tipo_e=="" || $cliente=="" || $lugar=="" || $cant_ninos==""|| $f_inicio=="" || $f_fin==""|| $hora_inicio=="" || $hora_fin==""|| $descripcion=="")
+     {
+        echo '<script>alert ("Por favor llene todos los campos");</script>';
+        echo '<script>window.location="registro_venta.php"</script>';
+     }   
+     else{
+        
+        $insertSQL = $con->prepare("INSERT INTO `eventos`(`fecha_evento`, `id_paquetes`, `id_tipo_e`, `lugar`, `cant_ninos`, `f_inicio`, `f_fin`, `hora_inicio`, `hora_fin`, edad_home, `descripcion`, `cedula`, `id_estado`) VALUES ('$fecha_actual', $paquete, $tipo_e, '$lugar', $cant_ninos, '$f_inicio', '$f_fin', '$hora_inicio', '$hora_fin', '$edad', '$descripcion', $cliente, $estado)");
+          $insertSQL -> execute();
+          echo '<script>alert ("Reserva Registrada Exitosamente");</script>';
+          echo '<script>window.location="pendientes.php"</script>';
+         }  
+}
     ?>
 
   <title>Registro de reserva</title>
@@ -19,7 +49,7 @@
                     <p class="text-center small">Ingresa los datos</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" action="prueba.php" name="formreg" id="formreg" method="POST">
+                  <form class="row g-3 needs-validation" name="formreg" id="formreg" method="POST">
                     
                     <div class="col-md-4">
                         <label class="form-label">Seleccione el tipo de evento</label>
@@ -33,8 +63,8 @@
                             {
                                 echo "<option value=" . $fila['id_tipo_e'] . ">"
                                 . $fila['tipo_evento'] . "</option>";
-                                } 
-                                ?>
+                            } 
+                        ?>
                         </select>
                     </div>
                     
@@ -111,13 +141,13 @@
                     </div>
                     <div class="col-md-6">
                       <label for="yourPassword" class="form-label">Edad del Homenageado</label>
-                      <input type="number" name="cantidad" min="1" max="120"  class="form-control" >
+                      <input type="number" name="edad" min="1" max="120"  class="form-control" placeholder="Edad">
                       <div class="invalid-feedback">Ingresa la cantidad de niños</div>
                     </div>
                     <div class="col-md-6">
                       <label for="yourUsername" class="form-label">Descripcion</label>
                       <div class="input-group has-validation">
-                        <input type="text" name="descripcion" class="form-control" placeholder="Fecha de inicio" >
+                        <input type="text" name="descripcion" class="form-control" placeholder="Descripcion" >
                         <div class="invalid-feedback">Ingresa tu email</div>
                       </div>
                     </div>

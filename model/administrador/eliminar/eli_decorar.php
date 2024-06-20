@@ -6,7 +6,16 @@ $db = new Database();
 $con = $db -> conectar();
 
 if (isset($_POST['aceptar'])){
+    
+    $sql= $con -> prepare ("SELECT * FROM decoracion WHERE id_imagen='".$_GET['id']."'");
+    $sql -> execute();
+    $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
+    foreach($fila as $fila){
+        $direccion=$fila['imagen'];
+    }
 
+    unlink($direccion);
+    
     $sql = $con -> prepare("DELETE FROM decoracion WHERE id_imagen='".$_GET['id']."'");
     $sql -> execute();
 

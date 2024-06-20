@@ -1,55 +1,7 @@
 <?php
-
-require_once("../../../db/connection.php");
-// include("../../../controller/validarSesion.php");
-$db = new Database();
-$con = $db -> conectar();
-
-    include 'plantilla.php';
-
-    
-  
-    if (isset($_POST["registrar"])){
-
-    $id_tipo_art = $_POST['id_tipo_art'];
-    $nombre_A = $_POST['nombre_A'];
-    $id_estado = $_POST['id_estado'];
-    $descripcion = $_POST['descripcion']; 
-    $cantidad = $_POST['cantidad'];
-    $valor= $_POST['valor'];
-
-     // Validación de campos vacíos
-     if (empty($id_tipo_art) || empty($nombre_A) || empty($id_estado) || empty($descripcion) || empty($cantidad) || empty($valor)) {
-      echo '<script>alert("EXISTEN DATOS VACIOS");</script>';
-      echo '<script>window.location="complementos.php"</script>';
-  } else if ($cantidad <= 0 || $valor <= 0) {  
-      echo '<script>alert("CANTIDAD Y VALOR DEBEN SER MAYORES A 0");</script>';
-      echo '<script>window.location="complementos.php.php"</script>';
-  } else {
-      $sql = $con->prepare("SELECT * FROM articulos WHERE nombre_A = :nombre_A");
-      $sql->bindParam(':nombre_A', $nombre_A);
-      $sql->execute();
-      $fila = $sql->fetch(PDO::FETCH_ASSOC);
-  
-      if ($fila) {
-          echo '<script>alert("ESTE ARTICULO YA EXISTE //CAMBIELO//");</script>';
-          echo '<script>window.location="complementos.php"</script>';
-      } else {
-          $insertSQL = $con->prepare("INSERT INTO articulos (nombre_A, id_tipo_art, id_estado, descripcion, cantidad, valor) VALUES (:nombre_A, :id_tipo_art, :id_estado, :descripcion, :cantidad, :valor)");
-          $insertSQL->bindParam(':nombre_A', $nombre_A);
-          $insertSQL->bindParam(':id_tipo_art', $id_tipo_art);
-          $insertSQL->bindParam(':id_estado', $id_estado);
-          $insertSQL->bindParam(':descripcion', $descripcion);
-          $insertSQL->bindParam(':cantidad', $cantidad);
-          $insertSQL->bindParam(':valor', $valor);
-          $insertSQL->execute();
-  
-          echo '<script>alert("REGISTRO EXITOSO");</script>';
-          echo '<script>window.location="complementos.php"</script>';
-      }
-    }
-      }
-      ?>
+include 'plantilla.php';
+include '../funciones/reg_articulos.php';
+?>
   
 
 <title>Articulos</title>
@@ -102,11 +54,11 @@ $con = $db -> conectar();
                                 <label for="inputDescripcion" class="form-label">Descripción</label>
                                 <input class="form-control" type="text" name="descripcion" placeholder="Descripción">
                             </div>
-                            <div class="col-12">
+                            <div class="col-6">
                                 <label for="inputCantidad" class="form-label">Cantidad</label>
                                 <input class="form-control" type="number" name="cantidad" placeholder="Cantidad" min="1">
                             </div>
-                            <div class="col-12">
+                            <div class="col-6">
                                 <label for="inputValor" class="form-label">Valor</label>
                                 <input class="form-control" type="number" name="valor" pattern="[0-9]{1,15}" title="Solo se permiten números" placeholder="Valor" min="1">
                             </div>
@@ -127,41 +79,36 @@ $con = $db -> conectar();
                     <th>descripcion</th>
                     <th>cantidad</th>
                     <th>valor</th>
-                    <th>Actualizar</th>
+                    <th>Codigo de barras</th>
+                    <th>Editar</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                       $con_paquetes = $con->prepare("SELECT articulos.id_articulo,tipo_articulo.id_tipo_art, tipo_articulo.tipo_articulo, estados.estado , articulos.nombre_A, articulos.descripcion,  articulos.cantidad,  articulos.valor
+                       $con_fila = $con->prepare("SELECT articulos.id_articulo,tipo_articulo.id_tipo_art, tipo_articulo.tipo_articulo, estados.estado , articulos.nombre_A, articulos.descripcion,  articulos.cantidad,  articulos.valor, articulos.barcode
                         FROM articulos INNER JOIN tipo_articulo ON tipo_articulo.id_tipo_art = articulos.id_tipo_art INNER JOIN estados ON estados.id_estado = articulos.id_estado where articulos.id_tipo_art= 3");
-                      $con_paquetes->execute();
-                      $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
-                      foreach ($paquetes as $fila) {
-                       
-                        $id_tipo_art = $fila['tipo_articulo'];
-                        $nombre_A = $fila['nombre_A'];
-                        $id_estado = $fila['estado'];
-                        $descripcion = $fila['descripcion'];
-                        $cantidad = $fila['cantidad'];
-                        $valor = $fila['valor'];
-                        
-                    ?>
-                  <tr>
-                    
-                  <td><?php echo $id_tipo_art?></td>
-                    <td><?php echo $nombre_A?></td>
-                    <td><?php echo $id_estado?></td>
-                    <td><?php echo $descripcion?></td>
-                    <td><?php echo $cantidad?></td>
-                    <td><?php echo $valor?></td>
-                    <td>
-                    <a href="#" class="boton" onclick="window.open('../actualizar/articulos.php?id=<?php echo $fila['id_articulo']; ?>','','width=800,height=750,toolbar=NO');void(null);">
-                      <i class="bi bi-arrow-clockwise"></i>
-                    </a>
-
-                  </tr>
-                    <?php
-                      }
+                      $con_fila->execute();
+                      $fila = $con_fila->fetchAll(PDO::FETCH_ASSOC);
+                      foreach ($fila as $fila) {
+                        ?>
+                        <tr>
+                            <td><?php echo $fila['tipo_articulo']; ?></td>
+                            <td><?php echo $fila['nombre_A']; ?></td>
+                            <td><?php echo $fila['estado']; ?></td>
+                            <td><?php echo $fila['descripcion']; ?></td>
+                            <td><?php echo $fila['cantidad']; ?></td>
+                            <td><?php echo $fila['valor']; ?></td>
+                            <td>
+                                <img src="<?php echo $fila['barcode']?>">
+</td>
+                            <td>
+                                <a href="#" class="boton" onclick="window.open('../actualizar/articulos.php?id=<?php echo $fila['id_articulo']; ?>','','width=800,height=750,toolbar=NO');void(null);">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <?php
+                    }
                     ?>
                   
                  

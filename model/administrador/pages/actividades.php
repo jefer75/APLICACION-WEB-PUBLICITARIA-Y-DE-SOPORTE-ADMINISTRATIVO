@@ -1,47 +1,7 @@
 <?php
-
-require_once("../../../db/connection.php");
-// include("../../../controller/validarSesion.php");
-$db = new Database();
-$con = $db -> conectar();
-
     include 'plantilla.php';
-
-    if (isset($_POST['registrar'])){
-
-    $id_actividad= $_POST['id_actividad'];
-    $nombre = $_POST['nombre'];
-    $descripcion = $_POST['descripcion'];
-    $imagen = $_POST['imagen'];
-   
-
-
-     $sql= $con -> prepare ("SELECT * FROM actividades WHERE id_actividad='$id_actividad'");
-     $sql -> execute();
-     $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
-
-     if ($fila){
-        echo '<script>alert ("ESTE PAQUETE YA EXISTE //CAMBIELO//");</script>';
-        echo '<script>window.location="actividades.php"</script>';
-     }
-
-     else
-   
-     if ( $nombre_paquete =="" || $edad_min =="" || $edad_max =="" || $valor =="")
-      {
-         echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
-         echo '<script>window.location="actividades.php"</script>';
-      }
-      
-      else{
-
-        $insertSQL = $con->prepare("INSERT INTO paquetes(nombre_paquete , edad_min , edad_max ,  valor) VALUES('$nombre_paquete', '$edad_min', '$edad_max', '$valor')");
-        $insertSQL -> execute();
-        echo '<script> alert("REGISTRO EXITOSO");</script>';
-        echo '<script>window.location="actividades.php"</script>';
-     }  
-    }
-    ?>
+    include '../funciones/reg_actividades.php';
+?>
 
 <title>actividades</title>
 
@@ -75,10 +35,7 @@ $con = $db -> conectar();
                 <h2 class="modal__title">Registrar actividad</h2> 
           <!-- Multi Columns Form -->
 
-                <form method="post" name="formreg" action="../funciones/reg_actividades.php"  class="row g-3"  autocomplete="off" enctype="multipart/form-data"> 
-
-             
-               
+                <form method="post" name="formreg" action="../funciones/reg_actividades.php"  class="row g-3"  autocomplete="off" enctype="multipart/form-data">
 
                 <div class="col-md-6">
 
@@ -119,8 +76,8 @@ $con = $db -> conectar();
                     <th>Actividades</th>
                     <th>Descripcion</th>
                     <th>Imagen</th>
-                    
-                    
+                    <th>Actualizar</th>
+                    <th>Eliminar</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -139,9 +96,16 @@ $con = $db -> conectar();
                     
                   <td><?php echo $nombre?></td>
                     <td><?php echo $descripcion?></td>
-                    <td> <img src="data:<?php echo $fila['tipos']; ?>;base64,<?php echo base64_encode($fila['datos']); ?>" alt="<?php echo htmlspecialchars($fila['nombre_img']);?>"></td>
+                    <td> <img src="<?php echo $fila['imagen']?>"></td>
                     
-
+                    <td>
+                      <a href="#" class="boton" onclick="window.open('../actualizar/actividades.php?id=<?php echo $id_actividad ?>','','width=800,height=750,toolbar=NO');void(null);">
+                      <i class="bi bi-pencil"></i>
+                      </a>
+                    </td>
+                    <td>    
+                      <a href="#" class="btn btn-warning" onclick="window.open ('../eliminar/eli_actividades.php?id=<?php echo $id_actividad ?>','','width= 450,height=350, toolbar=NO');void(null);"><i class="bi bi-trash"></i></a>
+                    </td>
                   </tr>
                     <?php
                       }
