@@ -30,3 +30,19 @@ sidebarToggle.addEventListener("click", () => {
         localStorage.setItem("status", "open");
     }
 })
+
+function buscarEnPagina() {
+    var input, filtro, elementos, i, txtValue;
+    input = document.getElementById("busqueda");
+    filtro = input.value.toUpperCase();
+    elementos = document.querySelectorAll(".buscarable");
+
+    elementos.forEach(function(elemento) {
+        txtValue = elemento.textContent || elemento.innerText;
+        if (txtValue.toUpperCase().indexOf(filtro) > -1) {
+            elemento.style.display = "";
+        } else {
+            elemento.style.display = "none";
+        }
+    });
+}

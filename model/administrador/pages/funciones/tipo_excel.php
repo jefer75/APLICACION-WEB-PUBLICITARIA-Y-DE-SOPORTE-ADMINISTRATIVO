@@ -8,33 +8,27 @@ $con = $db->conectar();
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-if (isset($_POST['paque_excel'])) {
+if (isset($_POST['tipo_excel'])) {
     $spreadsheet = new Spreadsheet();
     $sheet = $spreadsheet->getActiveSheet();
 
     // Agrega los encabezados de columna
-    $sheet->setCellValue('B1', 'Nombre del Paquete');
-    $sheet->setCellValue('C1', 'Edad Mínima');
-    $sheet->setCellValue('D1', 'Edad Máxima');
-    $sheet->setCellValue('E1', 'Valor');
+    $sheet->setCellValue('B1', 'Tipo de Evento');
 
-    $stmt = $con->prepare("SELECT nombre_paquete, edad_min, edad_max, valor FROM paquetes");
+    $stmt = $con->prepare("SELECT tipo_evento FROM tipo_e");
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Llena la hoja de cálculo con los datos
     $row = 2;
     foreach ($result as $data) {
-        $sheet->setCellValue('B' . $row, $data['nombre_paquete']);
-        $sheet->setCellValue('C' . $row, $data['edad_min']);
-        $sheet->setCellValue('D' . $row, $data['edad_max']);
-        $sheet->setCellValue('E' . $row, $data['valor']);
+        $sheet->setCellValue('B' . $row, $data['tipo_evento']);
         $row++;
     }
 
     // Establecer encabezados para la descarga
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header('Content-Disposition: attachment;filename="Paquetes.xlsx"');
+    header('Content-Disposition: attachment;filename="Tipos de Eventos.xlsx"');
     header('Cache-Control: max-age=0');
     header('Cache-Control: max-age=1');
     header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');

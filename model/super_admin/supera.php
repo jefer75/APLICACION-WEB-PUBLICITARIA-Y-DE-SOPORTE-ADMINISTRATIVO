@@ -26,9 +26,14 @@ include 'plantilla.php';
             <div class="activity">
                 <div class="title">
                     <i class="uil uil-user"></i>
-                    <span class="text">Administradores</span>
+                    <span class="text">Super Administradores</span>
                 </div>
                 <div class="formulario">
+                <br>
+                <a class="hiper" href="" onclick="window.open
+                ('registrar/suadmin.php?id=','','width=850, height=500, toolbar=NO'); void(null);">
+                <i class="uil uil-plus"></i>
+            </a>
                 <form method="POST" action="">
                 
                 <table class="custom-table">
@@ -37,16 +42,14 @@ include 'plantilla.php';
                             <th>Nombre</th>
                             <th>Telefono</th>
                             <th>Correo</th>
-                            <th>Empresa</th>
                             <th>Estado</th>
                             <th>Accion</th>
                         </tr>
                         <?php
-                            $con_paquetes = $con->prepare("SELECT usuarios.cedula, usuarios.nombre AS nombre_usuario, usuarios.celular, usuarios.correo, estados.estado, empresa.nombre_emp
+                            $con_paquetes = $con->prepare("SELECT usuarios.cedula, usuarios.nombre AS nombre_usuario, usuarios.celular, usuarios.correo, estados.estado
                             FROM usuarios
                             INNER JOIN estados ON estados.id_estado = usuarios.id_estado
-                            INNER JOIN empresa ON empresa.nit = usuarios.nit
-                            WHERE usuarios.id_tipo_user = 1;");
+                            WHERE usuarios.id_tipo_user = 4;");
                             $con_paquetes->execute();
                             $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
                             foreach ($paquetes as $fila) {
@@ -54,7 +57,6 @@ include 'plantilla.php';
                                 $nombre = $fila['nombre_usuario'];
                                 $celular = $fila['celular'];
                                 $correo = $fila['correo'];
-                                $empresa = $fila['nombre_emp'];
                                 $estado = $fila['estado'];
                             ?>
                         <tr>
@@ -62,10 +64,9 @@ include 'plantilla.php';
                                 <td><?php echo $nombre ?></td>
                                 <td><?php echo $celular ?></td>
                                 <td><?php echo $correo ?></td>
-                                <td><?php echo $empresa ?></td>
                                 <td><?php echo $estado?></td>
                                 <td><a href="" class="boton" onclick="window.open
-                                ('actualizar y eliminar/admin.php?id=<?php echo $cedula ?>','','width= 600,height=400, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i>
+                                ('actualizar y eliminar/admin.php?id=<?php echo $cedula ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i>
                                 <i class="uil uil-edit"></i>
                                 </a></td>
 

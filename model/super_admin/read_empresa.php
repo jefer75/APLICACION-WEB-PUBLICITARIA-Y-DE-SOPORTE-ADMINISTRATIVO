@@ -1,9 +1,4 @@
 <?php
-    session_start();
-    require_once("../../db/connection.php");
-    // include("../../../controller/validarSesion.php");
-    $db = new Database();
-    $con = $db -> conectar();
     include 'plantilla.php';
 ?>
 
@@ -20,9 +15,17 @@
             
             <!--<img src="images/profile.jpg" alt="">-->
         </div>
-        <br> <br>
+        <div class="dash-content">
+        <div class="activity">
+                <div class="title">
+                    <i class="uil uil-building"></i>
+                    <span class="text">Empresas</span>
+                </div>
     <div class="formulario">
-    <h1 class="card-title" style="font-family: 'Arial Rounded MT Bold', sans-serif; text-align: center; margin-top: 20px;">Empresas</h1>
+    <a class="hiper" href="" onclick="window.open
+            ('registrar/empresa.php?id=<?php echo $fila['nit'] ?>','','width=700, height=600, toolbar=NO'); void(null);">
+            <i class="uil uil-plus"></i>
+            </a>
         <form method="POST" action="">
             <table class="custom-table">
                 <tr class="header-row">
@@ -72,4 +75,5 @@
     </form>               
 
     </div>
+    
     </section>

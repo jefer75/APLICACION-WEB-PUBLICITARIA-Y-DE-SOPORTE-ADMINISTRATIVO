@@ -82,22 +82,12 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formreg")) {
     <link href="../../../css/style.css" rel="stylesheet">
 </head>
 <body style="background-color: white;">
-    <form action="" method="POST">
-        <td>
-            <td><input type="submit" value="Regresar" name="regresar" id="regresar" style="background-color: blue; color: white; border: none; padding: 5px 10px; border-radius: 15px; text-decoration: none; margin-top: 20px; margin-left: 10px;"></td>
-        </td>
-    </form>
-    <?php
-    if (isset($_POST['regresar'])) {
-        header('Location: ../consultar/read_licencia.php');
-    }
-    ?>
+
     <h2 class="card-title" style="font-family: 'Arial Rounded MT Bold', sans-serif; text-align: center; margin-top: 20px;">Registrar Licencia</h2>
     <div class="col-lg-6" style="margin-top: 20px; margin-left: auto; margin-right: auto;">
         <div class="container" style="text-align: center;">
             <div class="card">
                 <div class="card-body">
-                    <br>
                     <form method="post" name="formreg" id="formreg" class="signup-form" autocomplete="off">
                         <label class="form-label" for="licencia">Licencia</label>
                         <br>

@@ -60,7 +60,7 @@ $con = $db -> conectar();
                         <a type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();"> 
                         <i class="bi bi-plus-circle"></i>
                         </a>
-
+                          
                         <form method="post" action="funciones/paque_excel.php">
                             <button type="submit" name="paque_excel" class="btn btn-success">
                                 <i class="bi bi-download"></i>

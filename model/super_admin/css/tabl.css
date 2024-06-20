@@ -12,7 +12,7 @@
 
 .custom-table th {
     background-color: #f2f2f2;
-    color: #007bff;
+    color:  #0056b3;
 }
 
 .custom-table tr:nth-child(even) {
@@ -26,10 +26,60 @@
 /* Estilos específicos para el enlace */
 .hiper {
     text-decoration: none;
-    color: #007bff; /* Color azul según Bootstrap */
+    color: #007bffbd; /* Color azul según Bootstrap */
 }
 
 .hiper:hover {
     text-decoration: underline;
-    color: #0056b3; /* Color azul más oscuro al pasar el mouse */
+    color: #0057b3c5; /* Color azul más oscuro al pasar el mouse */
+}
+
+.hiper {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bffdc;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.hiper i {
+    margin-left: 2%;
+}
+
+.hiper::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: width 0.3s, height 0.3s;
+}
+
+.hiper:hover::before {
+    width: 0;
+    height: 0;
+}
+
+.hiper:hover {
+    background-color: #f8f9fae5;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hiper:active {
+    transform: scale(0.95);
+    background-color: #fafafa;
 }

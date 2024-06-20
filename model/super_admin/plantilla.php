@@ -1,3 +1,33 @@
+<?php
+session_start();
+require_once "../../db/connection.php";
+//include("../../../controller/validar_licencia.php");
+$db = new DataBase();
+$con = $db->conectar();
+
+$cedula = $_SESSION['cedula'];
+if (!isset($cedula)){
+  //include("../../../controller/validar_licencia.php");
+  echo '<script>No has iniciado sesion</script>';
+  header("Location: ../inicio/login.php");
+  }
+
+$con_nombre = $con->prepare("SELECT * FROM usuarios WHERE cedula = $cedula");
+$con_nombre->execute();
+$nombres = $con_nombre->fetchAll(PDO::FETCH_ASSOC);
+foreach ($nombres as $fila) {
+    $nombre = $fila['nombre'];
+}
+
+$con_empleados = $con->prepare("SELECT * FROM usuarios WHERE id_tipo_user = 4");
+$con_empleados->execute();
+$nombres = $con_nombre->fetchAll(PDO::FETCH_ASSOC);
+foreach ($nombres as $fila) {
+    $nombre = $fila['nombre'];
+}
+
+?>
+
 <!DOCTYPE html>
 <!-- Coding By CodingNepal - codingnepalweb.com -->
 <html lang="en">
@@ -38,18 +68,15 @@
                     <i class="uil uil-file-bookmark-alt"></i>
                     <span class="link-name">Licencia</span>
                 </a></li>
+                <li><a href="supera.php">
+                    <i class="uil uil-users-alt"></i>
+                    <span class="link-name">Super Administradores</span>
+                </a></li>
                 <li><a href="registrarAS.php">
-                    <i class="uil uil-users-alt "></i>
-                    <span class="link-name">Registro Usuario</span>
+                    <i class="uil uil-user-plus "></i>
+                    <span class="link-name">Registro Admin</span>
                 </a></li>
-                <li><a href="#">
-                    <i class="uil uil-comments"></i>
-                    <span class="link-name">Comment</span>
-                </a></li>
-                <li><a href="#">
-                    <i class="uil uil-share"></i>
-                    <span class="link-name">Share</span>
-                </a></li>
+                
             </ul>
             
             <ul class="logout-mode">
@@ -74,5 +101,6 @@
     </nav>
     
     <script src="admin.js"></script>
+    
 </body>
 </html>

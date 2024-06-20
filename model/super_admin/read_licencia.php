@@ -1,10 +1,5 @@
 <?php
-session_start();
-require_once("../../db/connection.php");
 include 'plantilla.php';
-
-$db = new Database();
-$con = $db->conectar();
 
 $query = $con->prepare("SELECT l.*, e.estado, emp.nombre_emp
                         FROM licencia l 
@@ -32,10 +27,18 @@ $resultados = $query->fetchAll(PDO::FETCH_ASSOC);
             
             <!--<img src="images/profile.jpg" alt="">-->
         </div>
-        <br> <br>
+        <div class="dash-content">
+        <div class="activity">
+                <div class="title">
+                    <i class="uil uil-file-bookmark-alt"></i>
+                    <span class="text">Licencias</span>
+                </div>
  
     <div class="formulario">
-        <h1 class="card-title" style="font-family: 'Arial Rounded MT Bold', sans-serif; text-align: center; margin-top: 20px;">Licencias</h1>
+    <a class="hiper" href="" onclick="window.open
+            ('registrar/licencia.php?id=<?php echo $fila['nit'] ?>','','width=750, height=650, toolbar=NO'); void(null);">
+            <i class="uil uil-plus"></i>
+            </a>
         <form method="POST" action="">
             <table class="custom-table">
                 <tr class="header-row">

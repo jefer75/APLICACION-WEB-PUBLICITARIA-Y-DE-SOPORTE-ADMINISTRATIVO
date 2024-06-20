@@ -55,7 +55,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Forms / Layouts - NiceAdmin Bootstrap Template</title>
+  <title>Empresa</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -77,7 +77,7 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="../..7..//css/style.css" rel="stylesheet">
+  <link href="../../../css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -96,10 +96,6 @@
 <div class="card">
   <div class="card-body">
             <form autocomplete="off" name="form_actualizar" method="POST">
-
-               
-
-                
                 <tr>
                     <td>Nombre de empresa</td>
                     <td><input type="varchar" class="form-control" name="nombre_emp" value="<?php echo $fila['nombre_emp'] ?>"></td>                 

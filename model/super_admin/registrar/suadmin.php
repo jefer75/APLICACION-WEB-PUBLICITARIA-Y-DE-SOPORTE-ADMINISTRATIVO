@@ -1,5 +1,9 @@
 <?php
-include 'plantilla.php'; 
+session_start();
+require_once "../../../db/connection.php";
+//include("../../../controller/validar_licencia.php");
+$db = new DataBase();
+$con = $db->conectar();
 
 if (isset($_POST["MM_insert"]) && $_POST["MM_insert"] == "formreg") {
     $nombre = $_POST['nombre'];
@@ -9,9 +13,8 @@ if (isset($_POST["MM_insert"]) && $_POST["MM_insert"] == "formreg") {
     $celular = $_POST['celular'];
     $contrasena = $_POST['contrasena'];
     $correo = $_POST['correo'];
-    $tipo_user= 1;
+    $tipo_user= 4;
     $id_estado = 1;
-    $nit = $_POST['nit'];
 
     $sql = $con->prepare("SELECT * FROM usuarios WHERE cedula=:cedula");
     $sql->bindParam(':cedula', $cedula);
@@ -24,8 +27,8 @@ if (isset($_POST["MM_insert"]) && $_POST["MM_insert"] == "formreg") {
 
     $pass_cifrado = password_hash($contrasena, PASSWORD_DEFAULT);
 
-    $insertSQL = $con->prepare("INSERT INTO usuarios(cedula, nombre, celular, contrasena, correo, id_tipo_user, id_estado, nit) 
-                               VALUES(:cedula, :nombre_comp, :celular, :pass_cifrado, :correo, :tipo_user, :id_estado, :nit)");
+    $insertSQL = $con->prepare("INSERT INTO usuarios(cedula, nombre, celular, contrasena, correo, id_tipo_user, id_estado) 
+                               VALUES(:cedula, :nombre_comp, :celular, :pass_cifrado, :correo, :tipo_user, :id_estado)");
     $insertSQL->bindParam(':cedula', $cedula);
     $insertSQL->bindParam(':nombre_comp', $nombre_comp);
     $insertSQL->bindParam(':celular', $celular);
@@ -33,7 +36,6 @@ if (isset($_POST["MM_insert"]) && $_POST["MM_insert"] == "formreg") {
     $insertSQL->bindParam(':correo', $correo);
     $insertSQL->bindParam(':tipo_user', $tipo_user);
     $insertSQL->bindParam(':id_estado', $id_estado);
-    $insertSQL->bindParam(':nit', $nit);
     $insertSQL->execute();
 
     echo '<script> alert ("Registro exitoso");</script>';
@@ -41,12 +43,12 @@ if (isset($_POST["MM_insert"]) && $_POST["MM_insert"] == "formreg") {
 ?>
 
 
-    <link rel="stylesheet" href="css/regis.css">
+    <link rel="stylesheet" href="../css/regis.css">
 </head>
 <body>
 <section class="dashboard">
     <div class="container" id="registrate">
-        <h1>Registrar Administradores</h1>
+        <h1>Registrar Super Administradores</h1>
         <form method="post" name="formreg" id="formreg" class="signup-form" autocomplete="off" onsubmit="return validarFormulario()">
             <div class="form-row">
                 <div class="form-column">
@@ -91,21 +93,6 @@ if (isset($_POST["MM_insert"]) && $_POST["MM_insert"] == "formreg") {
                     </div>
                 </div>
 
-                <div class="form-column full-width">
-                    <div class="form-floating">
-                    <select class="form-control" name="nit">
-                        <option value="">Seleccione Empresa</option>
-                        <?php
-                        $control = $con->prepare("SELECT * FROM empresa WHERE nit");
-                        $control->execute();
-                        while ($fila = $control->fetch(PDO::FETCH_ASSOC)) {
-                            echo "<option value='" . $fila['nit'] . "'>"
-                                . $fila['nombre_emp'] . "</option>";
-                        }
-                        ?>
-                    </select>
-                    </div>
-                </div>
             </div>
 
             <button class="btn btn-primary" type="submit" name="registrarse">Registro</button>
