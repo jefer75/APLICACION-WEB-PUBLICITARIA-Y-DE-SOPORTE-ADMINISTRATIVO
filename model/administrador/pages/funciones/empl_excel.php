@@ -8,7 +8,7 @@ $con = $db->conectar();
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-if (isset($_POST['cli_excel'])) {
+if (isset($_POST['empl_excel'])) {
     $spreadsheet = new Spreadsheet();
     $sheet = $spreadsheet->getActiveSheet();
 
@@ -21,7 +21,7 @@ if (isset($_POST['cli_excel'])) {
     $sheet->setCellValue('F1', 'Estado');
 
     $stmt = $con->prepare("SELECT usuarios.cedula, usuarios.nombre, usuarios.celular, usuarios.correo, estados.estado FROM usuarios
-                      INNER JOIN estados ON estados.id_estado = usuarios.id_estado WHERE id_tipo_user = 2");
+                      INNER JOIN estados ON estados.id_estado = usuarios.id_estado WHERE id_tipo_user = 3");
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -40,7 +40,7 @@ if (isset($_POST['cli_excel'])) {
 
     // Establecer encabezados para la descarga
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header('Content-Disposition: attachment;filename="Clientes.xlsx"');
+    header('Content-Disposition: attachment;filename="Empleados.xlsx"');
     header('Cache-Control: max-age=0');
     header('Cache-Control: max-age=1');
     header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); 

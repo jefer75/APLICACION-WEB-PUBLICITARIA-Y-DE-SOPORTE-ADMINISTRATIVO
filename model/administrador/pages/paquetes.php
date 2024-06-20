@@ -55,10 +55,17 @@ $con = $db -> conectar();
       <div class="row">
         <div class="col-lg-12">
           <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Disponibles</h5>
-
-              <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
+          <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <a type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();"> 
+                        <i class="bi bi-plus-circle"></i>
+                        </a>
+                          
+                        <form method="post" action="funciones/paque_excel.php">
+                            <button type="submit" name="paque_excel" class="btn btn-success">
+                                <i class="bi bi-download"></i>
+                            </button>
+                        </form>
               
 
               <dialog class="añadir_cont" id="añadir_cont">
@@ -138,8 +145,11 @@ $con = $db -> conectar();
                     <td><?php echo $edad_max?></td>
                     <td><?php echo $valor?></td>
                     <td><a href="" class="boton" onclick="window.open
-                    ('../actualizar/act_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width= 600,height=500, toolbar=NO');void(null);">Click Aqui</a>
-                    <td><a href="" class="boton" onclick="window.open
+                    ('../actualizar/act_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width= 600,height=500, toolbar=NO');void(null);">
+                     <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <td>
+                      <a href="" class="boton" onclick="window.open
                     ('../detalles/detalle_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width= 600,height=500, toolbar=NO');void(null);">detalles</a>
 
                   </tr>

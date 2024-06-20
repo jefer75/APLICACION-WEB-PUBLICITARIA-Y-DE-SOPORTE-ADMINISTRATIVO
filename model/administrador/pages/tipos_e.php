@@ -52,8 +52,15 @@ $con = $db -> conectar();
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Disponibles</h5>
+                        <a type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();"> 
+                        <i class="bi bi-plus-circle"></i>
+                        </a>
 
-              <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
+                        <form method="post" action="funciones/tipo_excel.php">
+                            <button type="submit" name="tipo_excel" class="btn btn-success">
+                                <i class="bi bi-download"></i>
+                            </button>
+                        </form>
               
 
               <dialog class="añadir_cont" id="añadir_cont">
