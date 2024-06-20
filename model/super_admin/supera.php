@@ -6,8 +6,15 @@ include 'plantilla.php';
 ?>
     <title>ELITECH</title>
     <link rel="stylesheet" href="css/tabl.css">
+    <script>
+        function centrar() {
+            iz=(screen.width-document.body.clientWidth) / 2;
+            de=(screen.height-document.body.clientHeight) / 3;
+            moveTo(iz,de);
+        }
+    </script>
 </head>
-<body>
+<body onload="centrar();" style="background-color: white;"></body>
 
     <section class="dashboard">
         <div class="top">
@@ -66,7 +73,7 @@ include 'plantilla.php';
                                 <td><?php echo $correo ?></td>
                                 <td><?php echo $estado?></td>
                                 <td><a href="" class="boton" onclick="window.open
-                                ('actualizar y eliminar/admin.php?id=<?php echo $cedula ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i>
+                                ('actualizar y eliminar/admin.php?id=<?php echo $cedula ?>','','width= 800,height=700, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i>
                                 <i class="uil uil-edit"></i>
                                 </a></td>
 

@@ -9,7 +9,7 @@ $cedula = $_SESSION['cedula'];
 if (!isset($cedula)){
   //include("../../../controller/validar_licencia.php");
   echo '<script>No has iniciado sesion</script>';
-  header("Location: ../inicio/login.php");
+  header("Location: inicio/logins.php");
   }
 
 $con_nombre = $con->prepare("SELECT * FROM usuarios WHERE cedula = $cedula");

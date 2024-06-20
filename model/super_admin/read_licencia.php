@@ -36,8 +36,8 @@ $resultados = $query->fetchAll(PDO::FETCH_ASSOC);
  
     <div class="formulario">
     <a class="hiper" href="" onclick="window.open
-            ('registrar/licencia.php?id=<?php echo $fila['nit'] ?>','','width=750, height=650, toolbar=NO'); void(null);">
-            <i class="uil uil-plus"></i>
+                ('registrar/licencia.php?id=','','width=850, height=500, toolbar=NO'); void(null);">
+                <i class="uil uil-plus"></i>
             </a>
         <form method="POST" action="">
             <table class="custom-table">
@@ -48,8 +48,7 @@ $resultados = $query->fetchAll(PDO::FETCH_ASSOC);
                     <th>Fecha de final</th>
                     <th>Empresa</th>
                     <th>Estado</th>
-                    <th>Actualizar</th>
-                    <th>Eliminar</th>
+                    <th>Acción</th>
                 </tr>
 
                 <?php foreach ($resultados as $fila) : ?>
@@ -60,11 +59,7 @@ $resultados = $query->fetchAll(PDO::FETCH_ASSOC);
                         <td><?php echo $fila['fecha_fin'] ?></td>
                         <td><?php echo $fila['nombre_emp'] ?></td>
                         <td><?php echo $fila['estado'] ?></td>
-                        <td><a class="hiper" href="" onclick="window.open('actualizar y eliminar/licencia.php?id=<?php echo $fila['nit'] ?>','','width=500, height=400, toolbar=NO'); void(null);"><i class="uil uil-edit"></i>
-                        </a>
-                        </td>
-                        <td>
-                        <a class="hiper" href="" onclick="window.open('actualizar y eliminar/licencia.php?id=<?php echo $fila['nit'] ?>','','width=500, height=400, toolbar=NO'); void(null);"><i class="uil uil-trash-alt "></i>
+                        <td><a class="hiper" href="" onclick="window.open('actualizar y eliminar/licencia.php?id=<?php echo $fila['nit'] ?>','','width=500, height=460, toolbar=NO'); void(null);"><i class="uil uil-edit"></i>
                         </a>
                         </td>
                     </tr>

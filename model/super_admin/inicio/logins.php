@@ -33,7 +33,7 @@
     //codigo de envio de correo
     $paracorreo = "$correo";
     $titulo ="Codigo de verificacion";
-    $msj = "Su codigo de verificacion es: '$codigo'";
+    $msj = "Su codigo de verificacion es: $codigo";
     $tucorreo="From:aeventos986@gmail.com";
 
     if(mail($paracorreo, $titulo, $msj, $tucorreo))
@@ -83,7 +83,7 @@
         <div class="container" >
             <div class="contenido-interior" >
                 <h1 style="font-family: 'Arial Rounded MT Bold', sans-serif;">Digite su Correo</h1>
-                    <form action="../../../controller/inicio.php" method="POST" name="form1">
+                    <form method="POST" name="form1">
                          <div class="row g-3 inputs">
                             <div class="col-sm-6 user">
                                 <div class="form-floating">

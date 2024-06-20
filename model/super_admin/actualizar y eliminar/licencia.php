@@ -102,7 +102,7 @@
 
                 <tr>
                     <td>Fecha de inicio</td>
-                    <td><input type="int"  class="form-control"  name="fecha_ini" value="<?php echo $fila['fecha_ini'] ?>" readonly></td>                 
+                    <td><input type="date"  class="form-control"  name="fecha_ini" value="<?php echo $fila['fecha_ini'] ?>" readonly></td>                 
                 </tr>
 
                 

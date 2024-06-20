@@ -18,7 +18,7 @@ if (isset($_POST['recuperar'])) {
     // Si se encuentra el código, redirige a la página de administrador
     if ($fila) {
         echo '<script>alert("Su código ha sido verificado correctamente");</script>';
-        echo '<script>window.location="admin.php"</script>';
+        header("Location: ../admin.php");
     } else {
         // Si el código no coincide, muestra una alerta y redirige a la página de inicio de sesión
         echo '<script>alert("El código digitado no coincide con el código enviado");</script>';
@@ -58,7 +58,7 @@ if (isset($_POST['recuperar'])) {
           <div class="row g-3 inputs">
             <div class="col-sm-6 user">
             <div class="form-floating">
-    <input class="form-control border-0 gmail" name="codigo" id="c" type="text" placeholder="Código">
+    <input class="form-control border-0 gmail" name="codigo" id="c" type="password" placeholder="Código">
 </div>
 
 <script>

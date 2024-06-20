@@ -64,8 +64,7 @@ include 'plantilla.php';
                                 <td><?php echo $correo ?></td>
                                 <td><?php echo $empresa ?></td>
                                 <td><?php echo $estado?></td>
-                                <td><a href="" class="boton" onclick="window.open
-                                ('actualizar y eliminar/admin.php?id=<?php echo $cedula ?>','','width= 600,height=400, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i>
+                                <td><a href="" class="hiper" onclick="window.open('actualizar y eliminar/admin.php?id=<?php echo $cedula ?>','','width= 600,height=400, toolbar=NO');void(null);">
                                 <i class="uil uil-edit"></i>
                                 </a></td>
 

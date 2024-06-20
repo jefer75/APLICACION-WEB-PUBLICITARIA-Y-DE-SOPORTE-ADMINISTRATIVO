@@ -23,9 +23,10 @@
                 </div>
     <div class="formulario">
     <a class="hiper" href="" onclick="window.open
-            ('registrar/empresa.php?id=<?php echo $fila['nit'] ?>','','width=700, height=600, toolbar=NO'); void(null);">
-            <i class="uil uil-plus"></i>
+                ('registrar/empresa.php?id=','','width=850, height=500, toolbar=NO'); void(null);">
+                <i class="uil uil-plus"></i>
             </a>
+
         <form method="POST" action="">
             <table class="custom-table">
                 <tr class="header-row">
@@ -33,8 +34,7 @@
                     <th>Nombre de empresa</th>
                     <th>Telefono</th>
                     <th>Direccion</th>
-                    <th>Actualizar</th>
-                    <th>Eliminar</th>
+                    <th>Acción</th>
                 </tr>
                 
                 <?php 
@@ -53,15 +53,8 @@
             </td>
             <td>
             <a class="hiper" href="" onclick="window.open
-            ('actualizar y eliminar/empresa.php?id=<?php echo $fila['nit'] ?>','','width=500, height=400, toolbar=NO'); void(null);">
+            ('actualizar y eliminar/empresa.php?id=<?php echo $fila['nit'] ?>','','width=500, height=460, toolbar=NO'); void(null);">
             <i class="uil uil-edit"></i>
-            </a>
-            </td>
-
-            <td>
-            <a class="hiper" href="" onclick="window.open
-            ('actualizar y eliminar/empresa.php?id=<?php echo $fila['nit'] ?>','','width=500, height=400, toolbar=NO'); void(null);">
-            <i class="uil uil-trash-alt "></i>
             </a>
             </td>
             
