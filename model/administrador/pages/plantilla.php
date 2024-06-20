@@ -419,11 +419,7 @@ if(isset($_POST['cerrar_sesion']))
       <i class="bi bi-person"></i><span>Usuarios</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
     <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-      <li>
-        <a href="administradores.php">
-          <i class="bi bi-circle"></i><span>Administradores</span>
-        </a>
-      </li>
+      
       <li>
         <a href="clientes.php">
           <i class="bi bi-circle"></i><span>Clientes</span>

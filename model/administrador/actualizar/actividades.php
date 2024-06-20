@@ -1,7 +1,3 @@
-
-
-
-
 <?php
        session_start();
        require_once("../../../db/connection.php");
@@ -10,7 +6,7 @@
        $con = $db -> conectar();
 
    //empieza la consulta
-   $sql = $con -> prepare("SELECT * FROM paquetes WHERE id_paquetes='".$_GET['id']."'");
+   $sql = $con -> prepare("SELECT * FROM actividades WHERE id_actividad='".$_GET['id']."'");
    $sql -> execute();
    $fila = $sql -> fetch ();
 
@@ -18,19 +14,47 @@
 
    if (isset($_POST['actualizar'])){
 
-    $nombre_paquete = $_POST['nombre_paquete'];
-    $edad_min = $_POST['edad_min'];
-    $edad_max = $_POST['edad_max'];
-    $valor= $_POST['valor'];
+    $nombre_act = $_POST['nombre'];
+    $descripcion = $_POST['descripcion'];
+    
+    $imagen=$_FILES['imagen']['tmp_name'];
+    $nombre=$_FILES['imagen']['name'];
+    $formato=strtolower(pathinfo($nombre,PATHINFO_EXTENSION));
+    $peso=$_FILES['imagen']['size'];
+    $carpeta="../../../imagenes/registradas/actividades/";
 
-       
-           $insert= $con -> prepare ("UPDATE paquetes SET  nombre_paquete='$nombre_paquete', edad_min='$edad_min', edad_max='$edad_max', valor='$valor' WHERE id_paquetes = '".$_GET['id']."'");
+    
+    if ($formato=="jpg" || $formato=="jpeg" || $formato=="png") {
+
+           $insert= $con -> prepare ("UPDATE actividades SET nombre='$nombre_act', descripcion='$descripcion', imagen='' WHERE id_actividades = '".$_GET['id']."'");
            $insert -> execute();
            echo '<script> alert ("Registro actualizado exitosamente");</script>';
            echo '<script> window.close(); </script>';
-               
+           $sql= $con -> prepare ("SELECT * FROM actividades WHERE imagen=''");
+           $sql -> execute();
+           $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
+           foreach($fila as $fila){
+               $id_registrado=$fila['id_actividad'];
+           }
+   
+           $direccion=$carpeta.$id_registrado.".".$formato;
+   
+           $insertSQL = $con->prepare("UPDATE actividades SET imagen='$direccion' WHERE id_actividad = $id_registrado");
+           $insertSQL -> execute();
+   
+           if (move_uploaded_file($imagen,$direccion)) {
+               echo '<script>alert ("La imagen ha sido guardad exitosamente");</script>';
+               echo '<script>window.close()</script>';
+           } else {
+               echo '<script>alert ("Error al guardar la imagen en el almacenamiento");</script>';
+           }
+       } else {
+           echo '<script>alert ("El formato del archivo no corresponde");</script>';
        }
-
+   
+           
+       }
+    
         ?>
 
 
@@ -69,25 +93,28 @@
           <form autocomplete="off"class="row g-3" name="form_actualizar" method="POST">
           <div class="col-md-6">
 
+          <div class="col-md-6">
+
 <label for="inputEmail5" class="form-label">Nombre</label>
 
-<input  class="form-control" type="text" name="nombre" pattern="[A-Za-z/s]{4,10}" value="<?php echo $fila['']?>" placeholder="Nombre actividad ">
+<input  class="form-control" type="text" name="nombre" value="<?php echo $fila['nombre']?>" pattern="[A-Za-z/s]{4,10}" placeholder="Nombre actividad ">
 </div>
+
+
 
 <div class="co-md-6">
 <label for="inputEmail5" class="form-label">Descripcion</label>
-<input  class="form-control" type="text" name="descripcion" placeholder=" descripcion del paquete">
+<input  class="form-control" type="text" name="descripcion" value="<?php echo $fila['descripcion']?>" placeholder=" descripcion del paquete">
 </div>
 
 <div class="co-md-6">
 <label for="inputEmail5" class="form-label">Imagen</label>
-<input  class="form-control" type="file" name="imagen" placeholder="subir imagen" >
+<input  class="form-control" type="file" name="imagen">
 </div>
           <div class="text-center">
             <tr>
               <td><input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="actualizar" value="Actualizar"></td>
-              <td><input class="btn" style="background-color: gray; color: white;" type="submit" name="eliminar" value="Eliminar"></td>
-          </tr>
+            </tr>
         </div>
 
           </form><!-- End Multi Columns Form -->

@@ -27,6 +27,12 @@
               <h5 class="card-title"></h5>
 
               <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
+
+              <form method="post" action="funciones/act_excel.php">
+                            <button type="submit" name="act_excel" class="btn btn-success">
+                                <i class="bi bi-download"></i>
+                            </button>
+                        </form>
               
 
               <dialog class="añadir_cont" id="añadir_cont">
