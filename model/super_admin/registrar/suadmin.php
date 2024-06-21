@@ -49,61 +49,110 @@ if (isset($_POST["MM_insert"]) && $_POST["MM_insert"] == "formreg") {
 }
 ?>
 
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Super Administradores</title>
     <link rel="stylesheet" href="../css/regis.css">
 </head>
 <body>
-<section class="dashboard">
-    <div class="container" id="registrate">
-        <h1>Registrar Super Administradores</h1>
-        <form method="post" name="formreg" id="formreg" class="signup-form" autocomplete="off" onsubmit="return validarFormulario()">
-            <div class="form-row">
-                <div class="form-column">
-                    <div class="form-floating">
-                        <label for="nombres">Nombres</label>
-                        <input class="form-control" type="text" name="nombre" id="nombres" placeholder="Digite Nombre" required>
+    <section class="dashboard">
+        <div class="container" id="registrate">
+            <h1>Registrar Super Administradores</h1>
+            <form method="post" name="formreg" id="formreg" class="signup-form" autocomplete="off" onsubmit="return validarFormulario()">
+                <div class="form-row">
+                    <div class="form-column">
+                        <div class="form-floating">
+                            <label for="nombres">Nombres</label>
+                            <input class="form-control" type="text" name="nombre" id="nombres" placeholder="Digite Nombre" required>
+                        </div>
+                    </div>
+
+                    <div class="form-column">
+                        <div class="form-floating">
+                            <label for="apellidos">Apellidos</label>
+                            <input class="form-control" type="text" name="apellido" id="apellidos" placeholder="Apellidos" required>
+                        </div>
+                    </div>
+
+                    <div class="form-column">
+                        <div class="form-floating">
+                            <label for="documento">N° Documento</label>
+                            <input class="form-control" type="text" name="cedula" id="documento" placeholder="Digite Documento" required>
+                        </div>
+                    </div>
+
+                    <div class="form-column">
+                        <div class="form-floating">
+                            <label for="telefono">Contacto</label>
+                            <input class="form-control" type="text" name="celular" id="telefono" placeholder="Digite Telefono" required>
+                        </div>
+                    </div>
+
+                    <div class="form-column">
+                        <div class="form-floating">
+                            <label for="correo">Correo</label>
+                            <input class="form-control" type="email" name="correo" id="correo" placeholder="Digite Correo" required>
+                        </div>
+                    </div>
+
+                    <div class="form-column">
+                        <div class="form-floating">
+                            <label for="contrasena">Contraseña</label>
+                            <input class="form-control" type="password" name="contrasena" id="contrasena" placeholder="Contraseña" required>
+                        </div>
                     </div>
                 </div>
 
-                <div class="form-column">
-                    <div class="form-floating">
-                        <label for="apellidos">Apellidos</label>
-                        <input class="form-control" type="text" name="apellido" id="apellidos" placeholder="Apellidos" required>
-                    </div>
-                </div>
+                <button class="btn btn-primary" type="submit" name="registrarse">Registro</button>
+                <input type="hidden" name="MM_insert" value="formreg">
+            </form>
+        </div>
+    </section>
 
-                <div class="form-column">
-                    <div class="form-floating">
-                        <label for="documento">N° Documento</label>
-                        <input class="form-control" type="text" name="cedula" id="documento" placeholder="Digite Documento" required>
-                    </div>
-                </div>
+    <script>
+        function validarFormulario() {
+            var nombres = document.getElementById('nombres').value.trim();
+            var apellidos = document.getElementById('apellidos').value.trim();
+            var documento = document.getElementById('documento').value.trim();
+            var telefono = document.getElementById('telefono').value.trim();
+            var correo = document.getElementById('correo').value.trim();
+            var contrasena = document.getElementById('contrasena').value.trim();
 
-                <div class="form-column">
-                    <div class="form-floating">
-                        <label for="telefono">Contacto</label>
-                        <input class="form-control" type="text" name="celular" id="telefono" placeholder="Digite Telefono" required>
-                    </div>
-                </div>
+            // Validación de nombres y apellidos (solo letras y espacios, máximo 30 caracteres)
+            if (!/^[a-zA-Z\s]{1,30}$/.test(nombres) || !/^[a-zA-Z\s]{1,30}$/.test(apellidos)) {
+                alert('Los nombres y apellidos deben contener solo letras y espacios, con un máximo de 30 caracteres cada uno.');
+                return false;
+            }
 
-                <div class="form-column">
-                    <div class="form-floating">
-                        <label for="correo">Correo</label>
-                        <input class="form-control" type="email" name="correo" id="correo" placeholder="Digite Correo" required>
-                    </div>
-                </div>
+            // Validación de documento (solo números, mínimo 8 y máximo 10 caracteres)
+            if (!/^\d{8,10}$/.test(documento)) {
+                alert('El número de documento debe contener solo números y tener entre 8 y 10 caracteres.');
+                return false;
+            }
 
-                <div class="form-column">
-                    <div class="form-floating">
-                        <label for="contrasena">Contraseña</label>
-                        <input class="form-control" type="password" name="contrasena" id="contrasena" placeholder="Contraseña" required>
-                    </div>
-                </div>
+            // Validación de teléfono (solo números, exactamente 10 caracteres)
+            if (!/^\d{10}$/.test(telefono)) {
+                alert('El teléfono debe contener exactamente 10 dígitos numéricos.');
+                return false;
+            }
 
-            </div>
+            // Validación de correo electrónico (formato de correo válido)
+            if (!/\S+@\S+\.\S+/.test(correo)) {
+                alert('El correo electrónico no tiene un formato válido.');
+                return false;
+            }
 
-            <button class="btn btn-primary" type="submit" name="registrarse">Registro</button>
-            <input type="hidden" name="MM_insert" value="formreg">
-        </form>
-    </div>
-</section>
+            // Validación de contraseña (mínimo 8 y máximo 11 caracteres)
+            if (contrasena.length < 8 || contrasena.length > 11) {
+                alert('La contraseña debe tener entre 8 y 11 caracteres.');
+                return false;
+            }
+
+            return true; // Si todas las validaciones pasan, se envía el formulario
+        }
+    </script>
+</body>
+</html>

@@ -40,7 +40,12 @@ if (isset($_POST["MM_insert"]) && $_POST["MM_insert"] == "formreg") {
 }
 ?>
 
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Administradores</title>
     <link rel="stylesheet" href="css/regis.css">
 </head>
 <body>
@@ -92,17 +97,16 @@ if (isset($_POST["MM_insert"]) && $_POST["MM_insert"] == "formreg") {
 
                 <div class="form-column full-width">
                     <div class="form-floating">
-                    <select class="form-control" name="nit">
-                        <option value="">Seleccione Empresa</option>
-                        <?php
-                        $control = $con->prepare("SELECT * FROM empresa WHERE nit");
-                        $control->execute();
-                        while ($fila = $control->fetch(PDO::FETCH_ASSOC)) {
-                            echo "<option value='" . $fila['nit'] . "'>"
-                                . $fila['nombre_emp'] . "</option>";
-                        }
-                        ?>
-                    </select>
+                        <select class="form-control" name="nit" id="nit" required>
+                            <option value="">Seleccione Empresa</option>
+                            <?php
+                            $control = $con->prepare("SELECT * FROM empresa");
+                            $control->execute();
+                            while ($fila = $control->fetch(PDO::FETCH_ASSOC)) {
+                                echo "<option value='" . $fila['nit'] . "'>" . $fila['nombre_emp'] . "</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -111,4 +115,64 @@ if (isset($_POST["MM_insert"]) && $_POST["MM_insert"] == "formreg") {
             <input type="hidden" name="MM_insert" value="formreg">
         </form>
     </div>
-</section>
+
+    <script>
+        function validarFormulario() {
+            var nombresInput = document.getElementById('nombres');
+            var apellidosInput = document.getElementById('apellidos');
+            var documentoInput = document.getElementById('documento');
+            var telefonoInput = document.getElementById('telefono');
+            var correoInput = document.getElementById('correo');
+            var contrasenaInput = document.getElementById('contrasena');
+            var nitInput = document.getElementById('nit');
+
+            // Validación de nombres y apellidos
+            if (!validarTexto(nombresInput.value)) {
+                alert('Ingrese un nombre válido (solo letras y espacios).');
+                return false;
+            }
+            if (!validarTexto(apellidosInput.value)) {
+                alert('Ingrese apellidos válidos (solo letras y espacios).');
+                return false;
+            }
+
+            // Validación de documento (cedula)
+            if (!/^\d{8,10}$/.test(documentoInput.value)) {
+                alert('El número de documento debe contener solo números y tener entre 8 y 10 caracteres.');
+                return false;
+            }
+
+            // Validación de teléfono
+            if (!/^\d{10}$/.test(telefonoInput.value)) {
+                alert('El número de teléfono debe contener solo números y tener exactamente 10 dígitos.');
+                return false;
+            }
+
+            // Validación de correo electrónico
+            if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/.test(correoInput.value)) {
+                alert('Ingrese un correo electrónico válido.');
+                return false;
+            }
+
+            // Validación de contraseña
+            var contrasenaValue = contrasenaInput.value.trim();
+            if (contrasenaValue.length < 8 || contrasenaValue.length > 11) {
+                alert('La contraseña debe tener entre 8 y 11 caracteres.');
+                return false;
+            }
+
+            // Validación de empresa seleccionada
+            if (nitInput.value === '') {
+                alert('Seleccione una empresa.');
+                return false;
+            }
+
+            return true;
+        }
+
+        function validarTexto(texto) {
+            return /^[a-zA-Z\s]{1,20}$/.test(texto);
+        }
+    </script>
+</body>
+</html>
