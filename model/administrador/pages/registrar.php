@@ -91,7 +91,7 @@
                      <br>
 
                     <?php
-                        $control = $con -> prepare ("SELECT * from tipo_user");
+                        $control = $con -> prepare ("SELECT * from tipo_user WHERE id_tipo_user= 2 OR id_tipo_user=3");
                         $control -> execute();
                     while ($fila = $control->fetch(PDO::FETCH_ASSOC)) 
                     {

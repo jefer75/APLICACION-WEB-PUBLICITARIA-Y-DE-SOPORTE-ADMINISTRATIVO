@@ -61,10 +61,6 @@
                   <label for="inputEmail5" class="form-label">Imagen</label>
                   <input  class="form-control" type="file" name="imagen" placeholder="subir imagen" >
                 </div>
-
-                
-
-                
                 
                 <div class="text-center">
                   <tr>
@@ -105,7 +101,7 @@
                     <td> <img src="<?php echo $fila['imagen']?>"></td>
                     
                     <td>
-                      <a href="#" class="boton" onclick="window.open('../actualizar/actividades.php?id=<?php echo $id_actividad ?>','','width=800,height=750,toolbar=NO');void(null);">
+                      <a href="#" class="boton" onclick="window.open('../actualizar/actividades.php?id=<?php echo $id_actividad ?>','','width=500,height=450,toolbar=NO');void(null);">
                       <i class="bi bi-pencil"></i>
                       </a>
                     </td>

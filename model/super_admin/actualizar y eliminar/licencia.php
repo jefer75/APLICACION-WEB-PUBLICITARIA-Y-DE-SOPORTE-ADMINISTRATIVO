@@ -5,6 +5,13 @@
         $db = new Database();
         $con = $db -> conectar();
 
+    // Verificar si el usuario ha iniciado sesión
+$cedula = $_SESSION['cedula'];
+if (!isset($_SESSION['cedula'])) {
+    header("Location: ../inicio/logins.php");
+    exit;
+}
+
     //empieza la consulta
     $sql = $con -> prepare("SELECT * FROM licencia WHERE id_licencia='".$_GET['id']."'");
     $sql -> execute();

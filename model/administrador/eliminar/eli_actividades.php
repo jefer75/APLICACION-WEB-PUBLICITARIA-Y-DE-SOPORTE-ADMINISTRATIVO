@@ -18,7 +18,7 @@ if (isset($_POST['aceptar'])){
     
     $sql = $con -> prepare("DELETE FROM actividades WHERE id_actividad='".$_GET['id']."'");
     $sql -> execute();
-
+    echo '<script> alert ("Actividad eliminada con exito");</script>';
     echo '<script> window.close(); </script>';
 }
 else if (isset($_POST['cancelar'])){
@@ -90,7 +90,7 @@ else if (isset($_POST['cancelar'])){
 </head>
 <body onload="centrar()">
     <h1>Se eliminara la actividad de la interfaz de recreacion infantil</h1>
-    <h1>Deseas continuar?</h1>
+    <h1>¿Deseas continuar?</h1>
     <form name="eliminar_imagen" method="POST">
         <input type="submit" name="aceptar" value="Aceptar" class="aceptar">
         <input type="submit" name="cancelar" value="Cancelar" class="cancelar">

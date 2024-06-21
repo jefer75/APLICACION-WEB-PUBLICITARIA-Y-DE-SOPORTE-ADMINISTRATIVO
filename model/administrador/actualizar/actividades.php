@@ -10,6 +10,8 @@
    $sql -> execute();
    $fila = $sql -> fetch ();
 
+   $id_actividad=$fila['id_actividad'];
+   $direccion_antigua=$fila['imagen'];
    //declaracion de variables de campos en la tabla
 
    if (isset($_POST['actualizar'])){
@@ -24,37 +26,42 @@
     $carpeta="../../../imagenes/registradas/actividades/";
 
     
-    if ($formato=="jpg" || $formato=="jpeg" || $formato=="png") {
+    if ($imagen!="") {
+      
+      if ($formato=="jpg" || $formato=="jpeg" || $formato=="png") {
+      
+        try {
+          unlink($direccion_antigua);
+        } catch (\Throwable $th) {
+          //throw $th;
+        }
 
-           $insert= $con -> prepare ("UPDATE actividades SET nombre='$nombre_act', descripcion='$descripcion', imagen='' WHERE id_actividades = '".$_GET['id']."'");
-           $insert -> execute();
-           echo '<script> alert ("Registro actualizado exitosamente");</script>';
-           echo '<script> window.close(); </script>';
-           $sql= $con -> prepare ("SELECT * FROM actividades WHERE imagen=''");
-           $sql -> execute();
-           $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
-           foreach($fila as $fila){
-               $id_registrado=$fila['id_actividad'];
-           }
+        $direccion=$carpeta.$id_actividad.".".$formato;
+
+        $insert= $con -> prepare ("UPDATE actividades SET nombre='$nombre_act', descripcion='$descripcion', imagen='$direccion' WHERE id_actividad = $id_actividad");
+        $insert -> execute();
+        echo '<script> alert ("Registro actualizado exitosamente");</script>';
+        echo '<script> window.close(); </script>';
    
-           $direccion=$carpeta.$id_registrado.".".$formato;
-   
-           $insertSQL = $con->prepare("UPDATE actividades SET imagen='$direccion' WHERE id_actividad = $id_registrado");
-           $insertSQL -> execute();
-   
-           if (move_uploaded_file($imagen,$direccion)) {
-               echo '<script>alert ("La imagen ha sido guardad exitosamente");</script>';
-               echo '<script>window.close()</script>';
-           } else {
-               echo '<script>alert ("Error al guardar la imagen en el almacenamiento");</script>';
-           }
+        if (move_uploaded_file($imagen,$direccion)) {
+          echo '<script>alert ("La imagen ha sido guardad exitosamente");</script>';
+          echo '<script>window.close()</script>';
+        } else {
+          echo '<script>alert ("Error al guardar la imagen en el almacenamiento");</script>';
+        }
+
        } else {
            echo '<script>alert ("El formato del archivo no corresponde");</script>';
        }
-   
-           
-       }
-    
+
+    } else {
+      $insert= $con -> prepare ("UPDATE actividades SET nombre='$nombre_act', descripcion='$descripcion' WHERE id_actividad = $id_actividad");
+        $insert -> execute();
+        echo '<script> alert ("Registro actualizado exitosamente");</script>';
+        echo '<script> window.close(); </script>';
+    }
+  
+  }
         ?>
 
 
@@ -90,7 +97,7 @@
         <div class="card-body">
 
           <h5 class="card-title">paquetes</h5>
-          <form autocomplete="off"class="row g-3" name="form_actualizar" method="POST">
+          <form autocomplete="off"class="row g-3" enctype="multipart/form-data"  name="form_actualizar" method="POST">
           <div class="col-md-6">
 
           <div class="col-md-6">
