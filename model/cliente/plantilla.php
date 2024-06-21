@@ -322,14 +322,20 @@ if (isset($_POST['cerrar_sesion'])) {
       <i class="bi bi-gift-fill"></i>
       <span>Paquetes</span>
     </a>
-  </li><!-- End Contact Page Nav -->
-
+  </li>
   <li class="nav-item">
-    <a class="nav-link collapsed" href="evento.php">
-      <i class="bi bi-cart-plus"></i>
-      <span>Eventos</span>
+    <a class="nav-link collapsed" href="registro_venta.php">
+      <i class="bi bi-gift-fill"></i>
+      <span>Hacer Reservación</span>
     </a>
-  </li><!-- End Contact Page Nav -->
+  </li><!<!-- End Contact Page Nav -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="pendientes.php">
+      <i class="bi bi-gift-fill"></i>
+      <span>Reservas Pendientes</span>
+    </a>
+  </li>
+ <!-- End Contact Page Nav -->
 
   
   <li class="nav-item">
