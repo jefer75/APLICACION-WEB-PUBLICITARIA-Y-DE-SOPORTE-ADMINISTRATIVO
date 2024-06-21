@@ -15,10 +15,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../../../css/bootstrap.min.css" rel="stylesheet">
 
@@ -26,36 +22,9 @@
     <link href="../../../css/style.css" rel="stylesheet">
     <link href="../../../css/recuperar_con.css" rel="stylesheet">
 
-    <style>
-        .input_valid {
-            border: 2px solid transparent; /* Borde inicial transparente */
-        }
-        .valid-input {
-            border-color: #0c0; /* Borde verde para entrada válida */
-        }
-        .invalid-input {
-            border-color: #f00; /* Borde rojo para entrada inválida */
-        }
-        .validation-message {
-            font-size: 14px;
-            color: #f00;
-            display: none;
-            margin-top: 5px;
-        }
-        .valid-feedback, .invalid-feedback {
-            display: none;
-            font-size: 15px;
-            margin-top: 5px;
-        }
-        .valid-feedback::before {
-            content: '✔ ';
-            color: #0c0;
-        }
-        .invalid-feedback::before {
-            content: '❌ ';
-            color: #f00;
-        }
-    </style>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -92,20 +61,8 @@
 </nav>
 <!-- Navbar End -->
 
-
-<?php 
-
-if (isset($_POST['regresar'])){
-    header('Location: ../../../index.php');
-}
-
-?>
-
-
 <div class="container-xxl py-5">
-      
     <div class="bg-light rounded">
-        
         <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
             <div class="h-100 d-flex flex-column justify-content-center p-5 contenido">
                 <h1 class="mb-4">Recuperar Contraseña</h1>
@@ -113,112 +70,156 @@ if (isset($_POST['regresar'])){
                     <div class="row g-3 inputs">
                         <div class="col-sm-6 user">
                             <div class="form-floating">
-                                <input class="form-control border-0 gmail" name="cedula" type="number" pattern="[0-9]{7,15}" title="Solo se permiten números, mínimo 7 dígitos" placeholder="Cedula">
-                                <label for="fecha">Cédula</label>
-                                <div class="valid-feedback">Válido</div>
-                                <div class="invalid-feedback">Inválido</div>
-                                <div class="validation-message"></div>
+                                <input class="form-control border-0 gmail" name="cedula" id="cedula" type="text" placeholder="Cédula">
+                                <label for="cedula">Cédula</label>
+                                <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert" style="display: none;">
+                                    La cédula debe contener entre 8 y 11 dígitos numéricos.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
                             </div>
                         </div>
 
                         <div class="col-sm-6 user">
                             <div class="form-floating">
-                                <input class="form-control border-0 gmail" name="contrasena" type="password" pattern="[a-zA-Z0-9]{8,11}" title="La contraseña debe tener mínimo 8 dígitos y máximo 11" placeholder="Nueva Contraseña">
+                                <input class="form-control border-0 gmail" name="contrasena" id="contrasena" type="password" placeholder="Nueva Contraseña">
                                 <span class="toggle-password" onclick="togglePasswordVisibility(this)"></span>
-                                <label for="fecha">Nueva Contraseña</label>
-                                <div class="valid-feedback">Válido</div>
-                                <div class="invalid-feedback">Inválido</div>
-                                <div class="validation-message"></div>
+                                <label for="contrasena">Nueva Contraseña</label>
+                                <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert" style="display: none;">
+                                    La contraseña debe tener entre 8 y 11 caracteres.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
                             </div>
                         </div>
 
                         <div class="col-sm-6 user">
                             <div class="form-floating">
-                                <input class="form-control border-0 gmail" name="confirmar_contrasena" type="password" pattern="[a-zA-Z0-9]{8,11}" title="La contraseña debe tener mínimo 8 dígitos y máximo 11" placeholder="Confirmar Contraseña">
-                                <span class="focus-border"></span>
-                                <label for="fecha">Confirmar Contraseña</label>
-                                <div class="valid-feedback">Válido</div>
-                                <div class="invalid-feedback">Inválido</div>
-                                <div class="validation-message"></div>
+                                <input class="form-control border-0 gmail" name="confirmar_contrasena" id="confirmar_contrasena" type="password" placeholder="Confirmar Contraseña">
+                                <label for="confirmar_contrasena">Confirmar Contraseña</label>
+                                <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert" style="display: none;">
+                                    Las contraseñas no coinciden.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="col-12">
-                            <button type="submit" name="actualizar" class="btn btn-primary w-100 py-3 ingresar">Actualizar</button>
-                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" name="actualizar" class="btn btn-primary w-100 py-3 ingresar">Actualizar</button>
                     </div>
                 </form>
             </div>
         </div>
-       
     </div>
 </div>
-</div>
 
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+
+<!-- Script de validación de formulario -->
 <script>
-    document.getElementById('cedula').addEventListener('input', function() {
-        var input = this.value.trim();
-        var validationMessage = this.parentElement.querySelector('.validation-message');
-        var validFeedback = this.parentElement.querySelector('.valid-feedback');
-        var invalidFeedback = this.parentElement.querySelector('.invalid-feedback');
+    document.addEventListener('DOMContentLoaded', function() {
+        // Validación de la formulario
+        document.getElementById('form1').addEventListener('submit', function(event) {
+            if (!validarContraseñas()) {
+                event.preventDefault();
+            }
+        });
 
-        
-        if (/^\d{8,10}$/.test(input)) {
-            this.classList.remove('invalid-input');
-            this.classList.add('valid-input');
-            validFeedback.style.display = 'block';
-            invalidFeedback.style.display = 'none';
-            validationMessage.textContent = '';
-        } else {
-            this.classList.remove('valid-input');
-            this.classList.add('invalid-input');
-            invalidFeedback.style.display = 'block';
-            validFeedback.style.display = 'none';
-            validationMessage.textContent = 'El campo Cédula debe contener minimo 8 y maximo 11 dígitos numéricos.';
-        }
+        // Validación de la cédula
+        document.getElementById('cedula').addEventListener('input', function() {
+            var cedula = this.value.trim();
+            var alerta = this.parentElement.querySelector('.alert-danger');
+
+            if (/^\d{8,11}$/.test(cedula)) {
+                this.classList.remove('is-invalid');
+                alerta.style.display = 'none';
+            } else {
+                this.classList.add('is-invalid');
+                alerta.style.display = 'block';
+            }
+        });
+
+        // Validación de la contraseña
+        document.getElementById('contrasena').addEventListener('input', function() {
+            var contrasena = this.value.trim();
+            var alerta = this.parentElement.querySelector('.alert-danger');
+
+            if (contrasena.length >= 8 && contrasena.length <= 11) {
+                this.classList.remove('is-invalid');
+                alerta.style.display = 'none';
+            } else {
+                this.classList.add('is-invalid');
+                alerta.style.display = 'block';
+            }
+        });
+
+        // Validación de confirmar contraseña
+        document.getElementById('confirmar_contrasena').addEventListener('input', function() {
+            var confirmarContrasena = this.value.trim();
+            var contrasena = document.getElementById('contrasena').value.trim();
+            var alerta = this.parentElement.querySelector('.alert-danger');
+
+            if (confirmarContrasena === contrasena) {
+                this.classList.remove('is-invalid');
+                alerta.style.display = 'none';
+            } else {
+                this.classList.add('is-invalid');
+                alerta.style.display = 'block';
+            }
+        });
     });
 
-  
-    document.getElementById('contrasena').addEventListener('input', function() {
-        var input = this.value.trim();
-        var validationMessage = this.parentElement.querySelector('.validation-message');
-        var validFeedback = this.parentElement.querySelector('.valid-feedback');
-        var invalidFeedback = this.parentElement.querySelector('.invalid-feedback');
-        if (input.length >= 8 && input.length <= 11) {
-            this.classList.remove('invalid-input');
-            this.classList.add('valid-input');
-            validFeedback.style.display = 'block';
-            invalidFeedback.style.display = 'none';
-            validationMessage.textContent = '';
+    // Función para alternar la visibilidad de la contraseña
+    function togglePasswordVisibility(element) {
+        var passwordInput = element.previousElementSibling;
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            element.classList.add('visible');
         } else {
-            this.classList.remove('valid-input');
-            this.classList.add('invalid-input');
-            invalidFeedback.style.display = 'block';
-            validFeedback.style.display = 'none';
-            validationMessage.textContent = 'La contraseña debe tener minimo 8 y maximo 11 caracteres.';
+            passwordInput.type = 'password';
+            element.classList.remove('visible');
         }
-    });
+    }
 
+    // Validar todo el formulario antes de enviar
+    function validarContraseñas() {
+        var cedula = document.getElementById('cedula').value.trim();
+        var contrasena = document.getElementById('contrasena').value.trim();
+        var confirmarContrasena = document.getElementById('confirmar_contrasena').value.trim();
+        var cedulaAlerta = document.getElementById('cedula').parentElement.querySelector('.alert-danger');
+        var contrasenaAlerta = document.getElementById('contrasena').parentElement.querySelector('.alert-danger');
+        var confirmarContrasenaAlerta = document.getElementById('confirmar_contrasena').parentElement.querySelector('.alert-danger');
 
-    document.getElementById('contrasena').addEventListener('input', function() {
-        var input = this.value.trim();
-        var validationMessage = this.parentElement.querySelector('.validation-message');
-        var validFeedback = this.parentElement.querySelector('.valid-feedback');
-        var invalidFeedback = this.parentElement.querySelector('.invalid-feedback');
-        if (input.length >= 8 && input.length <= 11) {
-            this.classList.remove('invalid-input');
-            this.classList.add('valid-input');
-            validFeedback.style.display = 'block';
-            invalidFeedback.style.display = 'none';
-            validationMessage.textContent = '';
+        var cedulaValida = /^\d{8,11}$/.test(cedula);
+        var contrasenaValida = contrasena.length >= 8 && contrasena.length <= 11;
+        var coincidenContrasenas = confirmarContrasena === contrasena;
+
+        if (!cedulaValida) {
+            document.getElementById('cedula').classList.add('is-invalid');
+            cedulaAlerta.style.display = 'block';
         } else {
-            this.classList.remove('valid-input');
-            this.classList.add('invalid-input');
-            invalidFeedback.style.display = 'block';
-            validFeedback.style.display = 'none';
-            validationMessage.textContent = 'La contraseña debe tener al menos minimo 8 y maximo 11 caracteres.';
+            document.getElementById('cedula').classList.remove('is-invalid');
+            cedulaAlerta.style.display = 'none';
         }
-    });
+
+        if (!contrasenaValida) {
+            document.getElementById('contrasena').classList.add('is-invalid');
+            contrasenaAlerta.style.display = 'block';
+        } else {
+            document.getElementById('contrasena').classList.remove('is-invalid');
+            contrasenaAlerta.style.display = 'none';
+        }
+
+        if (!coincidenContrasenas) {
+            document.getElementById('confirmar_contrasena').classList.add('is-invalid');
+            confirmarContrasenaAlerta.style.display = 'block';
+        } else {
+            document.getElementById('confirmar_contrasena').classList.remove('is-invalid');
+            confirmarContrasenaAlerta.style.display = 'none';
+        }
+
+        return cedulaValida && contrasenaValida && coincidenContrasenas;
+    }
 </script>
 
 </body>
