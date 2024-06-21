@@ -100,56 +100,98 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body onload="centrar();" style="background-color: white;">
 
 <div class="col-lg-6" style="margin-top: 20px; margin-left: auto; margin-right: auto;">
-<div class="container" style="text-align: center;">
-<div class="card">
-  <div class="card-body">
-    
-        <table class="center">
-            <form autocomplete="off" name="form_actualizar" method="POST">
-                <tr>
-                    <td>Cedula</td>
-                    <td><input name="cedula" class="form-control" value="<?php echo $fila['cedula'] ?>" readonly></td>
-                </tr>
+    <div class="container" style="text-align: center;">
+        <div class="card">
+            <div class="card-body">
+                <table class="center">
+                    <form autocomplete="off" name="form_actualizar" method="POST" onsubmit="return validarFormulario()">
+                        <tr>
+                            <td>Cédula</td>
+                            <td><input name="cedula" id="cedula" class="form-control" value="<?php echo htmlspecialchars($fila['cedula']) ?>" readonly></td>
+                        </tr>
 
-                <tr>
-                    <td>Nombre</td>
-                    <td><input name="nombre" class="form-control" value="<?php echo $fila['nombre'] ?>"></td>                 
-                </tr>
+                        <tr>
+                            <td>Nombre</td>
+                            <td><input name="nombre" id="nombre" class="form-control" value="<?php echo htmlspecialchars($fila['nombre']) ?>"></td>
+                        </tr>
 
-                <tr>
-                    <td>Celular</td>
-                    <td><input type="celular" class="form-control" name="celular" value="<?php echo $fila['celular'] ?>"></td>                 
-                </tr>
+                        <tr>
+                            <td>Celular</td>
+                            <td><input type="tel" id="celular" class="form-control" name="celular" value="<?php echo htmlspecialchars($fila['celular']) ?>"></td>
+                        </tr>
 
-                <tr>
-                    <td>Correo</td>
-                    <td><input type="correo" class="form-control" name="correo" value="<?php echo $fila['correo'] ?>"></td>                 
-                </tr>
+                        <tr>
+                            <td>Correo</td>
+                            <td><input type="email" id="correo" class="form-control" name="correo" value="<?php echo htmlspecialchars($fila['correo']) ?>"></td>
+                        </tr>
 
-                <tr>
-                    <td>Estado</td>
-                    <td>
-                        <select class="form-control" name="id_estado">
-                            <option value="">Seleccione Estado</option>
-                            <?php
-                            $sql_estados = $con->prepare("SELECT * FROM estados");
-                            $sql_estados->execute();
-                            while ($fila_estado = $sql_estados->fetch(PDO::FETCH_ASSOC)) {
-                                $selected = ($fila['id_estado'] == $fila_estado['id_estado']) ? 'selected' : '';
-                                echo "<option value='" . $fila_estado['id_estado'] . "' $selected>"
-                                    . $fila_estado['estado'] . "</option>";
-                            }
-                            ?>
-                        </select>
-                    </td>              
-                </tr>
-                
-                <tr>
-                    <td><input type="submit" style="background-color: blue; color: white; border: none; padding: 8px 16px; border-radius: 5px;" name="actualizar" value="Actualizar"></td>
-                    <td><input type="submit" style="background-color: grey; color: white; border: none; padding: 8px 16px; border-radius: 5px;" name="eliminar" value="Eliminar"></td>
-                </tr>
-            </form>
-        </table>
-    
+                        <tr>
+                            <td>Estado</td>
+                            <td>
+                                <select class="form-control" name="id_estado">
+                                    <option value="">Seleccione Estado</option>
+                                    <?php
+                                    $sql_estados = $con->prepare("SELECT * FROM estados");
+                                    $sql_estados->execute();
+                                    while ($fila_estado = $sql_estados->fetch(PDO::FETCH_ASSOC)) {
+                                        $selected = ($fila['id_estado'] == $fila_estado['id_estado']) ? 'selected' : '';
+                                        echo "<option value='" . $fila_estado['id_estado'] . "' $selected>"
+                                            . $fila_estado['estado'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><input type="submit" style="background-color: blue; color: white; border: none; padding: 8px 16px; border-radius: 5px;" name="actualizar" value="Actualizar"></td>
+                            <td><input type="submit" style="background-color: grey; color: white; border: none; padding: 8px 16px; border-radius: 5px;" name="eliminar" value="Eliminar"></td>
+                        </tr>
+                    </form>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function validarFormulario() {
+        var cedulaInput = document.getElementById('cedula');
+        var nombreInput = document.getElementById('nombre');
+        var celularInput = document.getElementById('celular');
+        var correoInput = document.getElementById('correo');
+
+        // Validación de cédula
+        var cedulaValue = cedulaInput.value.trim();
+        if (!/^\d{8,10}$/.test(cedulaValue)) {
+            alert('La cédula debe contener solo números y tener entre 8 y 10 caracteres.');
+            return false; // Evita que el formulario se envíe
+        }
+
+        // Validación de nombre
+        var nombreValue = nombreInput.value.trim();
+        if (!/^[a-zA-Z\s]{1,20}$/.test(nombreValue)) {
+            alert('El nombre debe contener solo letras y un espacio, con un máximo de 20 caracteres.');
+            return false; // Evita que el formulario se envíe
+        }
+
+        // Validación de celular
+        var celularValue = celularInput.value.trim();
+        if (!/^\d{10}$/.test(celularValue)) {
+            alert('El número de celular debe contener solo números y tener exactamente 10 dígitos.');
+            return false; // Evita que el formulario se envíe
+        }
+
+        // Validación de correo electrónico
+        var correoValue = correoInput.value.trim();
+        if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/.test(correoValue)) {
+            alert('El correo electrónico ingresado no es válido.');
+            return false; // Evita que el formulario se envíe
+        }
+
+        return true; // Permite el envío del formulario si todas las validaciones son exitosas
+    }
+</script>
+
 </body>
 </html>

@@ -86,35 +86,60 @@
 
         <div class="card-body">
 
-          <h5 class="card-title">Articulos</h5>
+        <h5 class="card-title">Articulos</h5>
 
-          <!-- Multi Columns Form -->
+<form autocomplete="off" class="row g-3" name="form_actualizar" method="POST">
 
-          <form autocomplete="off"class="row g-3" name="form_actualizar" method="POST">
-
-          
-          <div class="col-md-6">
-            <label for="nombreArticulo" class="form-label">Nombre del Artículo</label>
-            <input class="form-control" type="text" name="nombre_A" id="nombreArticulo" value="<?php echo htmlspecialchars($fila['nombre_A'] ?? ''); ?>" placeholder="Nombre del artículo" required>
-            <div id="error_nombreArticulo" class="invalid-feedback">
-                El nombre del artículo solo letras y máximo tres espacios.
-            </div>
+    <div class="col-md-6">
+        <label for="nombreArticulo" class="form-label">Nombre del Artículo</label>
+        <input class="form-control" type="text" name="nombre_A" id="nombreArticulo" value="<?php echo htmlspecialchars($fila['nombre_A'] ?? ''); ?>" placeholder="Nombre del artículo" required>
+        <div id="error_nombreArticulo" class="invalid-feedback">
+            El nombre del artículo debe contener solo letras y máximo tres espacios.
         </div>
-        <div class="col-6">
-            <label for="descripcion" class="form-label">Descripción</label>
-            <input class="form-control" type="text" name="descripcion" id="descripcion" value="<?php echo htmlspecialchars($fila['descripcion'] ?? ''); ?>" placeholder="Descripción del artículo" required>
-            <div id="error_descripcion" class="invalid-feedback">
-                La descripción no puede estar vacía y debe contener máximo 80 caracteres.
-            </div>
-        </div>
-   
+    </div>
 
+    <div class="col-6">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <input class="form-control" type="text" name="descripcion" id="descripcion" value="<?php echo htmlspecialchars($fila['descripcion'] ?? ''); ?>" placeholder="Descripción del artículo" required>
+        <div id="error_descripcion" class="invalid-feedback">
+            La descripción no puede estar vacía y debe contener máximo 80 caracteres.
+        </div>
+    </div>
+
+    <div class="col-6">
+        <label for="cantidadActual" class="form-label">Cantidad Actual</label>
+        <input type="number" class="form-control" id="cantidadActual" readonly value="<?php echo htmlspecialchars($fila['cantidad'] ?? ''); ?>" min="1" max="500">
+    </div>
+
+    <div class="col-6">
+        <label for="suma" class="form-label">Añadir Compra</label>
+        <input type="number" class="form-control" id="suma" name="suma" placeholder="Cantidad añadida">
+        <div id="error_suma" class="invalid-feedback">
+            La cantidad añadida debe ser del 1 al 500.
+        </div>
+    </div>
+
+    <div class="col-6">
+        <label for="valor" class="form-label">Valor de alquiler</label>
+        <input type="number" class="form-control" id="valor" name="valor" value="<?php echo htmlspecialchars($fila['valor'] ?? ''); ?>" min="1" max="99999999">
+        <div id="error_valor" class="invalid-feedback">
+            El valor debe ser un número válido y no puede exceder los 8 dígitos.
+        </div>
+    </div>
+
+
+</form>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-        // Referencias a los elementos del formulario
+    document.addEventListener('DOMContentLoaded', function() {
         var nombreArticuloInput = document.getElementById('nombreArticulo');
+        var descripcionInput = document.getElementById('descripcion');
+        var sumaInput = document.getElementById('suma');
+        var valorInput = document.getElementById('valor');
         var errorNombreArticulo = document.getElementById('error_nombreArticulo');
+        var errorDescripcion = document.getElementById('error_descripcion');
+        var errorSuma = document.getElementById('error_suma');
+        var errorValor = document.getElementById('error_valor');
 
         // Validación para nombre del artículo
         nombreArticuloInput.addEventListener('input', function() {
@@ -131,7 +156,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 errorNombreArticulo.style.display = 'block';
             }
         });
-  
 
         // Validación para descripción (máximo 80 caracteres)
         descripcionInput.addEventListener('input', function() {
@@ -145,61 +169,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 errorDescripcion.style.display = 'block';
             }
         });
-    });
-</script>
-            
-<div class="col-6">
-            <label for="cantidadActual" class="form-label">Cantidad Actual</label>
-            <input type="number" class="form-control" id="cantidadActual" readonly value="<?php echo htmlspecialchars($fila['cantidad'] ?? ''); ?>" min="1" max="500">
-        </div>
-        <div class="col-6">
-            <label for="suma" class="form-label">Añadir Compra</label>
-            <input type="number" class="form-control" id="suma" name="suma" placeholder="Cantidad añadida" >
-            <div id="error_suma" class="invalid-feedback">
-                La cantidad añadida debe ser del 1 al 500.
-            </div>
-        </div>
-        <div class="col-6">
-            <label for="valor" class="form-label">Valor de alquiler</label>
-            <input type="number" class="form-control" id="valor" name="valor" value="<?php echo htmlspecialchars($fila['valor'] ?? ''); ?>" min="1" max="99999999">
-            <div id="error_valor" class="invalid-feedback">
-                El valor debe ser un número válido y no puede exceder los 8 dígitos.
-            </div>
-        </div>
-   
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Referencias a los elementos del formulario
-        var cantidadActualInput = document.getElementById('cantidadActual');
-        var sumaInput = document.getElementById('suma');
-        var valorInput = document.getElementById('valor');
-        var errorSuma = document.getElementById('error_suma');
-        var errorValor = document.getElementById('error_valor');
 
         // Validación para campo "Añadir Compra"
         sumaInput.addEventListener('input', function() {
             var suma = sumaInput.value.trim();
 
-            if (/^\d{1,3}$/.test(suma)) {
-                sumaInput.classList.remove('is-invalid');
-                errorSuma.style.display = 'none';
-            } else {
-                sumaInput.classList.add('is-invalid');
-                errorSuma.style.display = 'block';
-            }
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-        // Referencias a los elementos del formulario
-        var sumaInput = document.getElementById('suma');
-        var errorSuma = document.getElementById('error_suma');
-
-        // Validación para campo suma
-        sumaInput.addEventListener('input', function() {
-            var suma = sumaInput.value.trim();
-
-            // Verificar si la suma está dentro del rango y es un número válido
-            if (isValidNumber(suma) && suma >= 1 && suma <= 500) {
+            if (/^\d{1,3}$/.test(suma) && suma >= 1 && suma <= 500) {
                 sumaInput.classList.remove('is-invalid');
                 errorSuma.style.display = 'none';
             } else {
@@ -208,11 +183,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Función para validar que sea un número válido
-        function isValidNumber(value) {
-            return /^\d+$/.test(value);
-        }
-    });
         // Validación para campo "Valor de alquiler"
         valorInput.addEventListener('input', function() {
             var valor = valorInput.value.trim();
@@ -225,8 +195,49 @@ document.addEventListener('DOMContentLoaded', function() {
                 errorValor.style.display = 'block';
             }
         });
+
+        // Evento submit del formulario
+        document.forms['form_actualizar'].addEventListener('submit', function(event) {
+            var nombreArticulo = nombreArticuloInput.value.trim();
+            var descripcion = descripcionInput.value.trim();
+            var suma = sumaInput.value.trim();
+            var valor = valorInput.value.trim();
+
+            // Validar que todos los campos cumplan con las validaciones
+            var isValid = true;
+
+            if (!/^[A-Za-z]+(?:\s+[A-Za-z]+){0,2}$/.test(nombreArticulo) || nombreArticulo.length < 4 || nombreArticulo.length > 30) {
+                nombreArticuloInput.classList.add('is-invalid');
+                errorNombreArticulo.style.display = 'block';
+                isValid = false;
+            }
+
+            if (descripcion.length === 0 || descripcion.length > 80) {
+                descripcionInput.classList.add('is-invalid');
+                errorDescripcion.style.display = 'block';
+                isValid = false;
+            }
+
+            if (!/^\d{1,3}$/.test(suma) || suma < 1 || suma > 500) {
+                sumaInput.classList.add('is-invalid');
+                errorSuma.style.display = 'block';
+                isValid = false;
+            }
+
+            if (!/^\d{1,8}$/.test(valor)) {
+                valorInput.classList.add('is-invalid');
+                errorValor.style.display = 'block';
+                isValid = false;
+            }
+
+            // Si no es válido, detenemos el envío del formulario
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
     });
 </script>
+
 
             <div class="col-md-6">
                                 <label for="inputTipoArticulo" class="form-label">Estado</label>
@@ -261,6 +272,11 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="text-center">
 
             <tr>
+                
+    <div class="text-center">
+
+<td><input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="actualizar" value="Actualizar"></td>
+</div>
 
             <td><input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="actualizar" value="Actualizar"></td>
 

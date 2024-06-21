@@ -62,44 +62,47 @@
   <div class="card">
         <div class="card-body">
 
-          <h5 class="card-title">Tipos de Evento</h5>
-          <form autocomplete="off"class="row g-3" name="form_actualizar" method="POST">
-          <div class="col-md-6">
-            <label for="inputEmail5" class="form-label">Nombre</label>
-            <input class="form-control" type="text" name="tipo_evento" id="tipoEventoInput" value="<?php echo $fila['tipo_evento'] ?>" placeholder="Nombre del evento">
-            <div id="error_tipo_evento" class="invalid-feedback">
-                El nombre del evento debe contener solo letras y máximo dos espacios, con un máximo de 20 caracteres.
-            </div>
+        <h5 class="card-title">Tipos de Evento</h5>
+<form autocomplete="off" class="row g-3" name="form_actualizar" method="POST">
+
+    <div class="col-md-6">
+        <label for="inputEmail5" class="form-label">Nombre</label>
+        <input class="form-control" type="text" name="tipo_evento" id="tipoEventoInput" value="<?php echo htmlspecialchars($fila['tipo_evento']) ?>" placeholder="Nombre del evento">
+        <div id="error_tipo_evento" class="invalid-feedback">
+            El nombre del evento debe contener solo letras y máximo dos espacios, con un máximo de 20 caracteres.
         </div>
+    </div>
 
+    <div class="text-center">
+        <input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="actualizar" value="Actualizar">
+        <input class="btn" style="background-color: gray; color: white;" type="submit" name="eliminar" value="Eliminar">
+    </div>
 
+</form>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var tipoEventoInput = document.getElementById('tipoEventoInput');
         var errorTipoEvento = document.getElementById('error_tipo_evento');
 
-        tipoEventoInput.addEventListener('input', function() {
+        document.forms['form_actualizar'].addEventListener('submit', function(event) {
             var tipoEvento = tipoEventoInput.value.trim();
 
             // Validar que el tipo de evento contenga solo letras y máximo dos espacios, con un máximo de 20 caracteres
-            if (/^[A-Za-z ]{1,20}$/.test(tipoEvento) && !/\s{3,}/.test(tipoEvento)) {
-                tipoEventoInput.classList.remove('is-invalid');
-                errorTipoEvento.style.display = 'none';
-            } else {
+            if (!/^[A-Za-z ]{1,20}$/.test(tipoEvento) || /\s{3,}/.test(tipoEvento)) {
+                // Si la validación falla, detenemos el envío del formulario
+                event.preventDefault();
                 tipoEventoInput.classList.add('is-invalid');
                 errorTipoEvento.style.display = 'block';
+            } else {
+                // Si la validación es exitosa, quitamos cualquier indicación de error
+                tipoEventoInput.classList.remove('is-invalid');
+                errorTipoEvento.style.display = 'none';
             }
         });
     });
 </script>
 
-          <div class="text-center">
-            <tr>
-              <td><input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="actualizar" value="Actualizar"></td>
-              <td><input class="btn" style="background-color: gray; color: white;" type="submit" name="eliminar" value="Eliminar"></td>
-          </tr>
-        </div>
 
           </form><!-- End Multi Columns Form -->
         </div>

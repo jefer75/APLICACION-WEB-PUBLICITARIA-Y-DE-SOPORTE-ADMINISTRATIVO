@@ -4,11 +4,12 @@
     <title>ELITECH</title>
     <link rel="stylesheet" href="css/tabl.css">
 </head>
+
 <body>
 
 
 
-        <div class="dash-content">
+        <div class="dash-content"  >
             
             <div class="activity">
                 <div class="title">

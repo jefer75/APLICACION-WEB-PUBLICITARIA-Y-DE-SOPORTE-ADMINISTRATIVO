@@ -60,7 +60,8 @@
                     <p class="text-center small">Ingresa los datos</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" name="formreg" id="formreg" method="POST">
+                  <form class="row g-3 needs-validation" name="formreg" id="formreg" method="POST" novalidate>
+
                   <div class="col-12">
     <label for="cedula" class="form-label">Cédula</label>
     <input type="text" class="form-control" id="cedula" name="cedula">
@@ -88,65 +89,68 @@
 </div>
 
 <script>
-    // Validación de cédula (solo números y entre 8 y 10 caracteres)
-    document.getElementById('cedula').addEventListener('blur', function() {
-        var cedulaInput = this;
-        var cedulaValue = cedulaInput.value.trim();
-        var feedback = cedulaInput.nextElementSibling;
+   document.getElementById('formreg').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evitar el envío automático del formulario
 
-        if (!/^\d{8,10}$/.test(cedulaValue)) {
-            cedulaInput.classList.add('is-invalid');
-            feedback.style.display = 'block';
-        } else {
-            cedulaInput.classList.remove('is-invalid');
-            feedback.style.display = 'none';
-        }
-    });
+    // Realizar todas las validaciones aquí
+    var cedulaInput = document.getElementById('cedula');
+    var nombreInput = document.getElementById('nombre');
+    var celularInput = document.getElementById('celular');
+    var correoInput = document.getElementById('correo');
 
-    // Validación de nombre (solo letras y un espacio, máximo 20 caracteres)
-    document.getElementById('nombre').addEventListener('blur', function() {
-        var nombreInput = this;
-        var nombreValue = nombreInput.value.trim();
-        var feedback = nombreInput.nextElementSibling;
+    var cedulaValue = cedulaInput.value.trim();
+    var nombreValue = nombreInput.value.trim();
+    var celularValue = celularInput.value.trim();
+    var correoValue = correoInput.value.trim();
 
-        if (!/^[A-Za-z\s]{1,20}$/.test(nombreValue)) {
-            nombreInput.classList.add('is-invalid');
-            feedback.style.display = 'block';
-        } else {
-            nombreInput.classList.remove('is-invalid');
-            feedback.style.display = 'none';
-        }
-    });
+    var isValid = true;
 
-    // Validación de celular (exactamente 10 números)
-    document.getElementById('celular').addEventListener('blur', function() {
-        var celularInput = this;
-        var celularValue = celularInput.value.trim();
-        var feedback = celularInput.nextElementSibling;
+    // Validación de cédula
+    if (!/^\d{8,10}$/.test(cedulaValue)) {
+        cedulaInput.classList.add('is-invalid');
+        cedulaInput.nextElementSibling.style.display = 'block';
+        isValid = false;
+    } else {
+        cedulaInput.classList.remove('is-invalid');
+        cedulaInput.nextElementSibling.style.display = 'none';
+    }
 
-        if (!/^\d{10}$/.test(celularValue)) {
-            celularInput.classList.add('is-invalid');
-            feedback.style.display = 'block';
-        } else {
-            celularInput.classList.remove('is-invalid');
-            feedback.style.display = 'none';
-        }
-    });
+    // Validación de nombre
+    if (!/^[A-Za-z\s]{1,20}$/.test(nombreValue)) {
+        nombreInput.classList.add('is-invalid');
+        nombreInput.nextElementSibling.style.display = 'block';
+        isValid = false;
+    } else {
+        nombreInput.classList.remove('is-invalid');
+        nombreInput.nextElementSibling.style.display = 'none';
+    }
+
+    // Validación de celular
+    if (!/^\d{10}$/.test(celularValue)) {
+        celularInput.classList.add('is-invalid');
+        celularInput.nextElementSibling.style.display = 'block';
+        isValid = false;
+    } else {
+        celularInput.classList.remove('is-invalid');
+        celularInput.nextElementSibling.style.display = 'none';
+    }
 
     // Validación de correo electrónico
-    document.getElementById('correo').addEventListener('blur', function() {
-        var correoInput = this;
-        var correoValue = correoInput.value.trim();
-        var feedback = correoInput.parentElement.querySelector('.invalid-feedback');
+    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(correoValue)) {
+        correoInput.classList.add('is-invalid');
+        correoInput.parentElement.querySelector('.invalid-feedback').style.display = 'block';
+        isValid = false;
+    } else {
+        correoInput.classList.remove('is-invalid');
+        correoInput.parentElement.querySelector('.invalid-feedback').style.display = 'none';
+    }
 
-        if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(correoValue)) {
-            correoInput.classList.add('is-invalid');
-            feedback.style.display = 'block';
-        } else {
-            correoInput.classList.remove('is-invalid');
-            feedback.style.display = 'none';
-        }
-    });
+    // Si todas las validaciones son exitosas, enviar el formulario
+    if (isValid) {
+        this.submit();
+    }
+});
+
 </script>
 
                     <select class="cont" name="tipo_user">

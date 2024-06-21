@@ -66,48 +66,52 @@ $con = $db -> conectar();
               <dialog class="añadir_cont" id="añadir_cont">
                 <button id="añadir_close" class="btn modal_close" onclick="closedialog();">X</button>
 
-                <h2 class="modal__title">Registrar Tipos de Evento</h2> 
-          <!-- Multi Columns Form -->
+                <h2 class="modal__title">Registrar Tipos de Evento</h2>
 
-                <form method="post" name="formreg" id="formreg"   class="row g-3"  autocomplete="off"> 
+<!-- Multi Columns Form -->
+<form method="post" name="formreg" id="formreg" class="row g-3" autocomplete="off">
 
-              
-               
-                <div class="col-md-12">
-            <label for="inputEmail5" class="form-label">Nombre del Tipo</label>
-            <input class="form-control" type="text" name="tipo_e" id="tipoInput" placeholder="Tipo">
-            <div id="error_tipo" class="invalid-feedback">
-                El nombre del tipo debe contener solo letras y máximo dos espacios, con un máximo de 20 caracteres.
-            </div>
+    <div class="col-md-12">
+        <label for="inputEmail5" class="form-label">Nombre del Tipo</label>
+        <input class="form-control" type="text" name="tipo_e" id="tipoInput" placeholder="Tipo">
+        <div id="error_tipo" class="invalid-feedback">
+            El nombre del tipo debe contener solo letras y máximo dos espacios, con un máximo de 20 caracteres.
         </div>
-
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var tipoInput = document.getElementById('tipoInput');
-        var errorTipo = document.getElementById('error_tipo');
-
-        tipoInput.addEventListener('input', function() {
-            var tipo = tipoInput.value.trim();
-
-            // Validar que el tipo contenga solo letras y máximo dos espacios, con un máximo de 20 caracteres
-            if (/^[A-Za-z ]{1,20}$/.test(tipo) && !/\s{3,}/.test(tipo)) {
-                tipoInput.classList.remove('is-invalid');
-                errorTipo.style.display = 'none';
-            } else {
-                tipoInput.classList.add('is-invalid');
-                errorTipo.style.display = 'block';
-            }
-        });
-    });
-</script>
-                
-                <div class="text-center">
+    </div>
+    <div class="text-center">
                   <tr>
                   <input type="submit" name="registrar" value="Registro" class="btn btn-primary modal_close">
                   </tr>
                 </div>
+   
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var form = document.getElementById('formreg');
+        var tipoInput = document.getElementById('tipoInput');
+        var errorTipo = document.getElementById('error_tipo');
+
+        form.addEventListener('submit', function(event) {
+            var tipo = tipoInput.value.trim();
+
+            // Validar que el tipo contenga solo letras y máximo dos espacios, con un máximo de 20 caracteres
+            if (!/^[A-Za-z ]{1,20}$/.test(tipo) || /\s{3,}/.test(tipo)) {
+                // Si la validación falla, detenemos el envío del formulario
+                event.preventDefault();
+                tipoInput.classList.add('is-invalid');
+                errorTipo.style.display = 'block';
+            } else {
+                // Si la validación es exitosa, quitamos cualquier indicación de error
+                tipoInput.classList.remove('is-invalid');
+                errorTipo.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+                
+                
 
             </dialog>
 

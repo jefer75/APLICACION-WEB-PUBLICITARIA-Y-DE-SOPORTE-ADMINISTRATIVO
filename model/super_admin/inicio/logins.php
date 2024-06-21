@@ -47,6 +47,25 @@ if (isset($_POST['recuperar'])) {
     <title>ELITECH</title>
     <link rel="icon" href="https://images.emojiterra.com/google/noto-emoji/unicode-15/bw/512px/1f9d1-1f4bb.png">
     <link rel="stylesheet" href="../css/conf.css">
+    <script>
+        function validarFormulario() {
+            var correoInput = document.getElementById('correo');
+            var correoValue = correoInput.value.trim();
+            var feedback = correoInput.parentElement.querySelector('.invalid-feedback');
+
+            // Validación de correo electrónico
+            // Se actualiza la expresión regular para validar longitud y estructura del correo
+            if (!/^[\w-\.]{1,30}@[\w-]+\.[\w-]{2,}$/.test(correoValue)) {
+                correoInput.classList.add('is-invalid');
+                feedback.style.display = 'block';
+                return false; // Evita que el formulario se envíe
+            } else {
+                correoInput.classList.remove('is-invalid');
+                feedback.style.display = 'none';
+                return true; // Permite el envío del formulario
+            }
+        }
+    </script>
 </head>
 <body>
 <header class="header">
@@ -69,9 +88,12 @@ if (isset($_POST['recuperar'])) {
                         <div class="col-sm-6 user">
                             <div class="form-floating">
                                 <input type="email" class="form-control border-0 gmail" id="correo" name="email" placeholder="Correo">
+                                <div class="invalid-feedback" style="display: none;">
+                                    Ingrese un correo válido (máximo 30 caracteres y debe contener '@').
+                                </div>
                             </div>
                         </div>
-
+                        
                         <div class="col-12">
                             <button type="submit" name="recuperar" class="btn btn-primary w-100 py-3 ingresar" style="background-color: blue; color: white; border: 1px solid white;">Ingresar</button>
                         </div>
@@ -81,20 +103,6 @@ if (isset($_POST['recuperar'])) {
         </div>
     </div>
 </div>
-
-<script>
-    function validarFormulario() {
-        var correoInput = document.getElementById('correo').value;
-        var regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/; // Expresión regular para validar el formato del correo
-
-        // Verificar si el correo cumple con la expresión regular y si tiene máximo 30 caracteres
-        if (!regex.test(correoInput) || correoInput.length > 30) {
-            alert("Por favor ingresa un correo válido que contenga '@' y '.' y que tenga un máximo de 30 caracteres.");
-            return false;
-        }
-        return true;
-    }
-</script>
 
 </body>
 </html>
