@@ -1,62 +1,56 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 require_once "../../../db/connection.php";
 session_start();
 $db = new DataBase();
 $con = $db->conectar();
 
+if (!empty($_POST['registrar'])){
 
-if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0){
-
-    $nombre = $_POST['nombre'];
+    $nombre_act = $_POST['nombre'];
     $descripcion = $_POST['descripcion'];
-
-    $nombre_img = $_FILES['imagen']['name'];
-    $tipos = $_FILES['imagen']['type'];
-    $datos = file_get_contents($_FILES['imagen']['tmp_name']);
-    $tamaño = $_FILES['imagen']['size'];
-
-    // Lista de tipos de archivos permitidos
-    $tiposPermitidos = ['image/png', 'image/jpeg', 'image/jpg'];
     
-    // Verificar el tamaño del archivo (5 MB)
-    $maxTamaño = 5 * 1024 * 1024; // 5 MB
+    $imagen=$_FILES['imagen']['tmp_name'];
+    $nombre=$_FILES['imagen']['name'];
+    $formato=strtolower(pathinfo($nombre,PATHINFO_EXTENSION));
+    $peso=$_FILES['imagen']['size'];
+    $carpeta="../../../imagenes/registradas/actividades/";
 
-    if ($tamaño > $maxTamaño) {
-        echo '<script>alert("El archivo es demasiado grande. El tamaño máximo permitido es de 5 MB.");</script>';
-        echo '<script>window.location="../pages/decoracion.php"</script>';
-    } elseif (in_array($tipos, $tiposPermitidos)) {
-        // Preparar la declaración SQL
-        $insert = $con->prepare("INSERT INTO actividades (nombre, descripcion, nombre_img, tipos, datos) VALUES (:nombre, :descripcion, :nombre_img, :tipos, :datos)");
-        // Enlazar los parámetros
-        $insert->bindParam(':nombre', $nombre);
-        $insert->bindParam(':descripcion', $descripcion);
-        $insert->bindParam(':nombre_img', $nombre_img);
-        $insert->bindParam(':tipos', $tipos);
-        $insert->bindParam(':datos', $datos, PDO::PARAM_LOB);
 
-        // Ejecutar la declaración
-        if ($insert->execute()) {
-            echo '<script>alert("Imagen subida correctamente");</script>';
+    if ($nombre_act!="" || $descripcion!="" || $imagen!="") {
+        
+    
+    if ($formato=="jpg" || $formato=="jpeg" || $formato=="png") {
+        
+        $insertSQL = $con->prepare("INSERT INTO actividades(nombre, descripcion, imagen) VALUES('$nombre_act', '$descripcion','')");
+        $insertSQL -> execute();
+
+        $sql= $con -> prepare ("SELECT * FROM actividades WHERE imagen=''");
+        $sql -> execute();
+        $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
+        foreach($fila as $fila){
+            $id_registrado=$fila['id_actividad'];
+        }
+
+        $direccion=$carpeta.$id_registrado.".".$formato;
+
+        $insertSQL = $con->prepare("UPDATE actividades SET imagen='$direccion' WHERE id_actividad = $id_registrado");
+        $insertSQL -> execute();
+
+        if (move_uploaded_file($imagen,$direccion)) {
+            echo '<script>alert ("La imagen ha sido guardad exitosamente");</script>';
             echo '<script>window.location="../pages/actividades.php"</script>';
         } else {
-            echo '<script>alert("Error al subir la imagen.");</script>';
+            echo '<script>alert ("Error al guardar la imagen en el almacenamiento");</script>';
             echo '<script>window.location="../pages/actividades.php"</script>';
         }
     } else {
-            echo '<script>alert("Tipo de archivo incompatible, solo se aceptan PNG, JPG y JPEG");</script>';
-            echo '<script>window.location="../pages/actividades.php"</script>';
-        }
-
-    
-        echo '<script> alert("REGISTRO EXITOSO");</script>';
+        echo '<script>alert ("El formato del archivo no corresponde");</script>';
         echo '<script>window.location="../pages/actividades.php"</script>';
-}
+    }
 
+    } else {
+        echo '<script>alert ("Por favor llene todos los campos");</script>';
+        echo '<script>window.location="../pages/actividades.php"</script>';
+    }
 
-
-
-
-?>
+ }

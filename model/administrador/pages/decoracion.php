@@ -1,6 +1,6 @@
 <?php
 include 'plantilla.php';
- 
+include '../funciones/img_decoracion.php';
 ?>
 <head>
 <title>Decoracion</title>
@@ -9,13 +9,8 @@ include 'plantilla.php';
 <script src="../../../js/jquery.min.js"></script>
     <script src="../../../js/bootstrap.min.js"></script>
     </head>
-<main id="main" class="main">
 
-    <style>
-      table img{
-        width: 40vh;
-      }
-    </style>
+<main id="main" class="main">
 
 <div class="pagetitle">
   <h1>Decoracion</h1>
@@ -39,7 +34,7 @@ include 'plantilla.php';
                 <h2 class="modal__title">Insertar Imagen</h2> 
           <!-- Multi Columns Form -->
 
-                <form action="../funciones/img_decoracion.php" method="post" class="row g-3" enctype="multipart/form-data" autocomplete="off">
+                <form method="post" class="row g-3" enctype="multipart/form-data" autocomplete="off">
                 <div class="col-md-6">
 
                   <label for="inputEmail5" class="form-label">Imagen</label>
@@ -68,15 +63,19 @@ include 'plantilla.php';
                     $query->execute();
                     $imagenes = $query->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($imagenes as $imagen) {
+                      $direccion=$imagen['imagen'];
                     ?>
                   <tr>
                     <td>
-                        <img class="imagenes_tablas" src="data:<?php echo $imagen['tipo']; ?>;base64,<?php echo base64_encode($imagen['datos']); ?>" alt="<?php echo htmlspecialchars($imagen['nombre']); ?>">
+                        <img class="imagenes_tablas" src="<?php echo $direccion?>">
                     </td>                                
                       <td>
-                        <a href="" class="btn btn-warning" onclick="window.open
+                        <a href="#" class="btn btn-warning" onclick="window.open
                         ('../actualizar/decoracion.php?id=<?php echo $imagen['id_imagen'] ?>','','width= 450,height=350, toolbar=NO');void(null);"><i class="bi bi-trash"></i>Eliminar</a>
+
+                    </a>
                         </td>
+                        
 
                       </td>
                         <?php } ?>

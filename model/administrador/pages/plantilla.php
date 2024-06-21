@@ -334,17 +334,24 @@ if(isset($_POST['cerrar_sesion']))
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="actividades.php">
-      <i class="bi bi-gift-fill"></i>
+      <i class="bi bi-bookmark-star-fill"></i>
       <span>actividades</span>
     </a>
   </li><!-- End Contact Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="compras.php">
-      <i class="bi bi-cart-plus"></i>
-      <span>Compras</span>
+    <a class="nav-link collapsed" href="decoracion.php">
+      <i class="bi bi-award-fill"></i>
+      <span>Decoracion</span>
     </a>
-  </li><!-- End Contact Page Nav -->
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="tipos_e.php">
+      <i class="bi bi-award-fill"></i>
+      <span>Tipos de evento</span>
+    </a>
+  </li>
 
   <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
@@ -385,33 +392,23 @@ if(isset($_POST['cerrar_sesion']))
     </a>
     <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
-        <a href="cumpleaños.php">
-          <i class="bi bi-circle"></i><span>Cumpleaños</span>
+        <a href="registro_venta.php">
+          <i class="bi bi-circle"></i><span>Registrar venta</span>
         </a>
       </li>
       <li>
-        <a href="baby_shower.php">
-          <i class="bi bi-circle"></i><span>Baby Shower</span>
+        <a href="pendientes.php">
+          <i class="bi bi-circle"></i><span>Pendientes</span>
         </a>
       </li>
       <li>
-        <a href="xv_años.php">
-          <i class="bi bi-circle"></i><span>XV Años</span>
+        <a href="completadas.php">
+          <i class="bi bi-circle"></i><span>Completadas</span>
         </a>
       </li>
       <li>
-        <a href="comunion.php">
-          <i class="bi bi-circle"></i><span>Primera Comunión</span>
-        </a>
-      </li>
-      <li>
-        <a href="matrimonio.php">
-          <i class="bi bi-circle"></i><span>Matrimonio</>
-        </a>
-      </li>
-      <li>
-        <a href="hallowen.php">
-          <i class="bi bi-circle"></i><span>Hallowen</span>
+        <a href="canceladas.php">
+          <i class="bi bi-circle"></i><span>Canceladas</span>
         </a>
       </li>
     </ul>
@@ -422,11 +419,7 @@ if(isset($_POST['cerrar_sesion']))
       <i class="bi bi-person"></i><span>Usuarios</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
     <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-      <li>
-        <a href="administradores.php">
-          <i class="bi bi-circle"></i><span>Administradores</span>
-        </a>
-      </li>
+      
       <li>
         <a href="clientes.php">
           <i class="bi bi-circle"></i><span>Clientes</span>

@@ -1,47 +1,7 @@
 <?php
-
-require_once("../../../db/connection.php");
-// include("../../../controller/validarSesion.php");
-$db = new Database();
-$con = $db -> conectar();
-
     include 'plantilla.php';
-
-    if (isset($_POST['registrar'])){
-
-    $id_actividad= $_POST['id_actividad'];
-    $nombre = $_POST['nombre'];
-    $descripcion = $_POST['descripcion'];
-    $imagen = $_POST['imagen'];
-   
-
-
-     $sql= $con -> prepare ("SELECT * FROM actividades WHERE id_actividad='$id_actividad'");
-     $sql -> execute();
-     $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
-
-     if ($fila){
-        echo '<script>alert ("ESTE PAQUETE YA EXISTE //CAMBIELO//");</script>';
-        echo '<script>window.location="actividades.php"</script>';
-     }
-
-     else
-   
-     if ( $nombre_paquete =="" || $edad_min =="" || $edad_max =="" || $valor =="")
-      {
-         echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
-         echo '<script>window.location="actividades.php"</script>';
-      }
-      
-      else{
-
-        $insertSQL = $con->prepare("INSERT INTO paquetes(nombre_paquete , edad_min , edad_max ,  valor) VALUES('$nombre_paquete', '$edad_min', '$edad_max', '$valor')");
-        $insertSQL -> execute();
-        echo '<script> alert("REGISTRO EXITOSO");</script>';
-        echo '<script>window.location="actividades.php"</script>';
-     }  
-    }
-    ?>
+    include '../funciones/reg_actividades.php';
+?>
 
 <title>actividades</title>
 
@@ -67,6 +27,12 @@ $con = $db -> conectar();
               <h5 class="card-title"></h5>
 
               <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
+
+              <form method="post" action="funciones/act_excel.php">
+                            <button type="submit" name="act_excel" class="btn btn-success">
+                                <i class="bi bi-download"></i>
+                            </button>
+                        </form>
               
 
               <dialog class="añadir_cont" id="añadir_cont">
@@ -75,33 +41,74 @@ $con = $db -> conectar();
                 <h2 class="modal__title">Registrar actividad</h2> 
           <!-- Multi Columns Form -->
 
-                <form method="post" name="formreg" action="../funciones/reg_actividades.php"  class="row g-3"  autocomplete="off" enctype="multipart/form-data"> 
-
-             
-               
-
+                <form method="post" name="formreg" action="../funciones/reg_actividades.php"  class="row g-3"  autocomplete="off" enctype="multipart/form-data">
                 <div class="col-md-6">
+            <label for="inputEmail5" class="form-label">Nombre</label>
+            <input class="form-control" type="text" name="nombre" id="nombreInput" placeholder="Nombre actividad">
+            <div id="error_nombre" class="invalid-feedback">
+                El nombre debe contener entre 1 y 20 letras y máximo dos espacios.
+            </div>
+        </div>
+   
 
-                  <label for="inputEmail5" class="form-label">Nombre</label>
 
-                  <input  class="form-control" type="text" name="nombre" pattern="[A-Za-z/s]{4,10}" placeholder="Nombre actividad ">
-                </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var nombreInput = document.getElementById('nombreInput');
+        var errorNombre = document.getElementById('error_nombre');
+
+        nombreInput.addEventListener('input', function() {
+            var nombre = nombreInput.value.trim();
+
+            // Expresión regular para validar nombre (letras y máximo dos espacios)
+            var regex = /^[A-Za-z]+(?:\s[A-Za-z]+){0,2}$/;
+
+            if (regex.test(nombre) && nombre.length >= 1 && nombre.length <= 20) {
+                nombreInput.classList.remove('is-invalid');
+                errorNombre.style.display = 'none';
+            } else {
+                nombreInput.classList.add('is-invalid');
+                errorNombre.style.display = 'block';
+            }
+        });
+    });
+</script>
 
                
 
-                <div class="co-md-6">
-                  <label for="inputEmail5" class="form-label">Descripcion</label>
-                  <input  class="form-control" type="text" name="descripcion" placeholder=" descripcion del paquete">
-                </div>
+<div class="col-md-6">
+            <label for="inputEmail5" class="form-label">Descripción</label>
+            <input class="form-control" type="text" name="descripcion" id="descripcionInput" placeholder="Descripción del paquete">
+            <div id="error_descripcion" class="invalid-feedback">
+                La descripción no puede exceder los 80 caracteres ni contener más de un espacio.
+            </div>
+        </div>
+   
 
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var descripcionInput = document.getElementById('descripcionInput');
+        var errorDescripcion = document.getElementById('error_descripcion');
+
+        descripcionInput.addEventListener('input', function() {
+            var descripcion = descripcionInput.value.trim();
+
+            // Validar que la descripción tenga hasta 80 caracteres y máximo un espacio
+            if (descripcion.length <= 80 && !/\s{2,}/.test(descripcion)) {
+                descripcionInput.classList.remove('is-invalid');
+                errorDescripcion.style.display = 'none';
+            } else {
+                descripcionInput.classList.add('is-invalid');
+                errorDescripcion.style.display = 'block';
+            }
+        });
+    });
+</script>
                 <div class="co-md-6">
                   <label for="inputEmail5" class="form-label">Imagen</label>
                   <input  class="form-control" type="file" name="imagen" placeholder="subir imagen" >
                 </div>
-
-                
-
-                
                 
                 <div class="text-center">
                   <tr>
@@ -119,8 +126,8 @@ $con = $db -> conectar();
                     <th>Actividades</th>
                     <th>Descripcion</th>
                     <th>Imagen</th>
-                    
-                    
+                    <th>Actualizar</th>
+                    <th>Eliminar</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -139,9 +146,16 @@ $con = $db -> conectar();
                     
                   <td><?php echo $nombre?></td>
                     <td><?php echo $descripcion?></td>
-                    <td> <img src="data:<?php echo $fila['tipos']; ?>;base64,<?php echo base64_encode($fila['datos']); ?>" alt="<?php echo htmlspecialchars($fila['nombre_img']);?>"></td>
+                    <td> <img src="<?php echo $fila['imagen']?>"></td>
                     
-
+                    <td>
+                      <a href="#" class="boton" onclick="window.open('../actualizar/actividades.php?id=<?php echo $id_actividad ?>','','width=500,height=450,toolbar=NO');void(null);">
+                      <i class="bi bi-pencil"></i>
+                      </a>
+                    </td>
+                    <td>    
+                      <a href="#" class="btn btn-warning" onclick="window.open ('../eliminar/eli_actividades.php?id=<?php echo $id_actividad ?>','','width= 450,height=350, toolbar=NO');void(null);"><i class="bi bi-trash"></i></a>
+                    </td>
                   </tr>
                     <?php
                       }

@@ -68,60 +68,116 @@
           <h5 class="card-title">paquetes</h5>
           <form autocomplete="off"class="row g-3" name="form_actualizar" method="POST">
           <div class="col-md-6">
-    <label for="inputEmail5" class="form-label">Nombre paquete</label>
-    <input name="nombre_paquete" class="form-control" value="<?php echo $fila['nombre_paquete'] ?>" required>
-</div>
-
-<div class="col-12">
-    <label for="inputAddress2" class="form-label">Edad mínima</label>
-    <input type="number" class="form-control" name="edad_min" value="<?php echo $fila['edad_min'] ?>" required>
-</div>
-
-<div class="col-12">
-    <label for="inputAddress2" class="form-label">Edad máxima</label>
-    <input type="number" class="form-control" name="edad_max" value="<?php echo $fila['edad_max'] ?>" required>
-</div>
-
-<div class="col-12">
-    <label for="inputAddress2" class="form-label">Valor</label>
-    <input type="number" class="form-control" name="valor" value="<?php echo $fila['valor'] ?>" required>
+    <label for="nombre_paquete" class="form-label">Nombre paquete</label>
+    <input name="nombre_paquete" class="form-control" value="<?php echo $fila['nombre_paquete'] ?>" id="nombre_paquete">
+    <div id="error_nombre_paquete" class="invalid-feedback" style="display: none;">
+        El nombre del paquete debe contener solo letras y espacios, con un máximo de 30 caracteres.
+    </div>
 </div>
 
 <script>
-    function validarFormulario() {
-        var nombre = document.getElementsByName("nombre_paquete")[0].value.trim();
-        var edadMin = document.getElementsByName("edad_min")[0].value.trim();
-        var edadMax = document.getElementsByName("edad_max")[0].value.trim();
-        var valor = document.getElementsByName("valor")[0].value.trim();
+    var nombrePaqueteInput = document.getElementById('nombre_paquete');
+    var errorNombrePaquete = document.getElementById('error_nombre_paquete');
 
-        if (!/^[A-Za-z ]{1,30}$/.test(nombre)) {
-            alert("El nombre debe contener solo letras y tener un máximo de 30 caracteres.");
-            return false;
+    nombrePaqueteInput.addEventListener('input', function() {
+        var nombrePaquete = nombrePaqueteInput.value.trim();
+
+        // Expresión regular para validar solo letras y espacios
+        var regex = /^[a-zA-Z\s]+$/;
+
+        if (regex.test(nombrePaquete) && nombrePaquete.length <= 30) {
+            nombrePaqueteInput.classList.remove('is-invalid');
+            errorNombrePaquete.style.display = 'none';
+        } else {
+            nombrePaqueteInput.classList.add('is-invalid');
+            errorNombrePaquete.style.display = 'block';
         }
-
-        if (!/^\d{1,2}$/.test(edadMin) || edadMin[0] === '0') {
-            alert("La edad mínima debe ser un número entre 1 y 99 y no puede empezar con 0.");
-            return false;
-        }
-
-        if (!/^\d{1,2}$/.test(edadMax) || edadMax[0] === '0' || edadMax < 1 || edadMax > 100) {
-            alert("La edad máxima debe ser un número entre 1 y 100 y no puede empezar con 0.");
-            return false;
-        }
-
-        if (!/^\d{1,8}$/.test(valor)) {
-            alert("El valor debe ser un número y tener un máximo de 8 dígitos.");
-            return false;
-        }
-
-        return true;
-    }
+    });
 </script>
 
+
+<div class="col-12">
+    <label for="edad_min" class="form-label">Edad mínima</label>
+    <input type="number" class="form-control" name="edad_min" value="<?php echo $fila['edad_min']?>" id="edad_min">
+    <div id="error_edad_min" class="invalid-feedback" style="display: none;">
+        La edad mínima debe ser un número entre 1 y 100.
+    </div>
+</div>
+
+<script>
+    var edadMinInput = document.getElementById('edad_min');
+    var errorEdadMin = document.getElementById('error_edad_min');
+
+    edadMinInput.addEventListener('input', function() {
+        var edadMin = parseInt(edadMinInput.value.trim());
+
+        if (!isNaN(edadMin) && edadMin >= 1 && edadMin <= 100) {
+            edadMinInput.classList.remove('is-invalid');
+            errorEdadMin.style.display = 'none';
+        } else {
+            edadMinInput.classList.add('is-invalid');
+            errorEdadMin.style.display = 'block';
+        }
+    });
+</script>
+
+<div class="col-12">
+    <label for="edad_max" class="form-label">Edad máxima</label>
+    <input type="number" class="form-control" name="edad_max" value="<?php echo $fila['edad_max'] ?>" id="edad_max">
+    <div id="error_edad_max" class="invalid-feedback" style="display: none;">
+        La edad máxima debe ser un número entre 1 y 100.
+    </div>
+</div>
+
+<script>
+    var edadMaxInput = document.getElementById('edad_max');
+    var errorEdadMax = document.getElementById('error_edad_max');
+
+    edadMaxInput.addEventListener('input', function() {
+        var edadMax = parseInt(edadMaxInput.value.trim());
+
+        if (!isNaN(edadMax) && edadMax >= 1 && edadMax <= 100) {
+            edadMaxInput.classList.remove('is-invalid');
+            errorEdadMax.style.display = 'none';
+        } else {
+            edadMaxInput.classList.add('is-invalid');
+            errorEdadMax.style.display = 'block';
+        }
+    });
+</script>
+
+<div class="col-12">
+    <label for="valor" class="form-label">Valor</label>
+    <input type="number" class="form-control" name="valor" value="<?php echo $fila['valor'] ?>" id="valor">
+    <div id="error_valor" class="invalid-feedback" style="display: none;">
+        El valor debe ser un número y no puede exceder los 11 dígitos.
+    </div>
+</div>
+
+<script>
+    var valorInput = document.getElementById('valor');
+    var errorValor = document.getElementById('error_valor');
+
+    valorInput.addEventListener('input', function() {
+        var valor = valorInput.value.trim();
+
+        // Expresión regular para validar solo números
+        var regex = /^\d{1,11}$/;
+
+        if (regex.test(valor)) {
+            valorInput.classList.remove('is-invalid');
+            errorValor.style.display = 'none';
+        } else {
+            valorInput.classList.add('is-invalid');
+            errorValor.style.display = 'block';
+        }
+    });
+</script>
 
           <div class="text-center">
             <tr>
               <td><input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="actualizar" value="Actualizar"></td>
+              <td><input class="btn" style="background-color: gray; color: white;" type="submit" name="eliminar" value="Eliminar"></td>
           </tr>
         </div>
 

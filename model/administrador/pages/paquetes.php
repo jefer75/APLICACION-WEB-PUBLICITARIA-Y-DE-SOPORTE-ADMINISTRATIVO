@@ -47,7 +47,7 @@ $con = $db -> conectar();
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>paquetes</h1>
+    <h1>Paquetes</h1>
 
   </div><!-- End Page Title -->
 
@@ -55,10 +55,17 @@ $con = $db -> conectar();
       <div class="row">
         <div class="col-lg-12">
           <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"></h5>
-
-              <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
+          <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <a type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();"> 
+                        <i class="bi bi-plus-circle"></i>
+                        </a>
+                          
+                        <form method="post" action="funciones/paque_excel.php">
+                            <button type="submit" name="paque_excel" class="btn btn-success">
+                                <i class="bi bi-download"></i>
+                            </button>
+                        </form>
               
 
               <dialog class="añadir_cont" id="añadir_cont">
@@ -73,105 +80,117 @@ $con = $db -> conectar();
                
 
                 <div class="col-md-6">
-    <label for="inputEmail5" class="form-label">Nombre paquete</label>
-    <input id="nombre_paquete" class="form-control" type="text" name="nombre_paquete" placeholder="Nombre de paquete">
-    <div id="mensaje_error" style="color: red;"></div>
+    <label for="nombre_paquete" class="form-label">Nombre paquete</label>
+    <input class="form-control" type="text" id="nombre_paquete" name="nombre_paquete" placeholder="Nombre de paquete">
+    <div id="error_nombre_paquete" class="invalid-feedback" style="display: none;">
+        El nombre del paquete debe contener solo letras y dos espacios como máximo, con un máximo de 20 caracteres.
+    </div>
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var inputNombrePaquete = document.getElementById('nombre_paquete');
-    var mensajeError = document.getElementById('mensaje_error');
-    
-    inputNombrePaquete.addEventListener('input', function() {
-        var valor = this.value.trim();
-        if (!/^[A-Za-z ]{1,30}$/.test(valor)) {
-            mensajeError.textContent = "Solo se permiten letras, un máximo de 30 caracteres y solo un espacio.";
-            inputNombrePaquete.setCustomValidity("Solo se permiten letras, un máximo de 30 caracteres y solo un espacio.");
+    var nombrePaqueteInput = document.getElementById('nombre_paquete');
+    var errorNombrePaquete = document.getElementById('error_nombre_paquete');
+
+    nombrePaqueteInput.addEventListener('input', function() {
+        var nombrePaquete = nombrePaqueteInput.value.trim();
+
+        // Expresión regular para validar solo letras y dos espacios, máximo 30 caracteres
+        var regex = /^[a-zA-Z]+(?: [a-zA-Z]+){0,2}$/;
+
+        if (regex.test(nombrePaquete) && nombrePaquete.length <= 20) {
+            nombrePaqueteInput.classList.remove('is-invalid');
+            errorNombrePaquete.style.display = 'none';
         } else {
-            mensajeError.textContent = "";
-            inputNombrePaquete.setCustomValidity("");
+            nombrePaqueteInput.classList.add('is-invalid');
+            errorNombrePaquete.style.display = 'block';
         }
     });
-});
 </script>
+
+                
 
                
-
-                <div class="col-md-6">
-    <label for="inputEmail5" class="form-label">Edad mínima</label>
-    <input id="edad_min" class="form-control" type="text" name="edad_min" placeholder="Edad mínima">
-    <div id="mensaje_error" style="color: red;"></div>
+<div class="col-md-6">
+    <label for="edad_min" class="form-label">Edad mínima</label>
+    <input class="form-control" type="text" id="edad_min" name="edad_min" placeholder="Edad mínima">
+    <div id="error_edad_min" class="invalid-feedback" style="display: none;">
+        La edad mínima debe ser un número entre 1 y 20.
+    </div>
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var inputEdadMin = document.getElementById('edad_min');
-    var mensajeError = document.getElementById('mensaje_error');
-    
-    inputEdadMin.addEventListener('input', function() {
-        var valor = this.value.trim();
-        if (!/^\d{1,2}$/.test(valor) || valor < 0 || valor[0] === '0') {
-            mensajeError.textContent = "Solo se permiten números.";
-            inputEdadMin.setCustomValidity("Solo se permiten números.");
+    var edadMinInput = document.getElementById('edad_min');
+    var errorEdadMin = document.getElementById('error_edad_min');
+
+    edadMinInput.addEventListener('input', function() {
+        var edadMin = edadMinInput.value.trim();
+
+        // Expresión regular para validar que no empiece con cero
+        var regex = /^(?!0\d)\d{1,2}$/;
+
+        if (regex.test(edadMin) && parseInt(edadMin) >= 1 && parseInt(edadMin) <= 20) {
+            edadMinInput.classList.remove('is-invalid');
+            errorEdadMin.style.display = 'none';
         } else {
-            mensajeError.textContent = "";
-            inputEdadMin.setCustomValidity("");
+            edadMinInput.classList.add('is-invalid');
+            errorEdadMin.style.display = 'block';
         }
     });
-});
 </script>
 
-<div class="col-12">
-    <label for="inputAddress5" class="form-label">Edad máxima</label>
-    <input id="edad_max" class="form-control" type="text" name="edad_max" placeholder="Edad máxima">
-    <div id="mensaje_error" style="color: red;"></div>
+
+<div class="col-md-6">
+    <label for="edad_max" class="form-label">Edad máxima</label>
+    <input class="form-control" type="text" id="edad_max" name="edad_max" placeholder="Edad máxima">
+    <div id="error_edad_max" class="invalid-feedback" style="display: none;">
+        La edad máxima debe ser un número entre 15 y 100.
+    </div>
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var inputEdadMax = document.getElementById('edad_max');
-    var mensajeError = document.getElementById('mensaje_error');
-    
-    inputEdadMax.addEventListener('input', function() {
-        var valor = this.value.trim();
-        var edad = parseInt(valor, 10);
-        
-        if (isNaN(edad) || edad < 1 || edad > 100 || valor.indexOf('.') !== -1 || valor.indexOf(',') !== -1 || (valor.length > 1 && valor[0] === '0')) {
-            mensajeError.textContent = "Solo se permiten números.";
-            inputEdadMax.setCustomValidity("Solo se permiten números.");
+    var edadMaxInput = document.getElementById('edad_max');
+    var errorEdadMax = document.getElementById('error_edad_max');
+
+    edadMaxInput.addEventListener('input', function() {
+        var edadMax = edadMaxInput.value.trim();
+
+        if (parseInt(edadMax) >= 15 && parseInt(edadMax) <= 100) {
+            edadMaxInput.classList.remove('is-invalid');
+            errorEdadMax.style.display = 'none';
         } else {
-            mensajeError.textContent = "";
-            inputEdadMax.setCustomValidity("");
+            edadMaxInput.classList.add('is-invalid');
+            errorEdadMax.style.display = 'block';
         }
     });
-});
 </script>
 
-               
-<div class="col-12">
-    <label for="inputAddress2" class="form-label">Valor</label>
-    <input id="valor" class="form-control" type="text" name="valor" placeholder="Valor">
-    <div id="mensaje_error" style="color: red;"></div>
+
+<div class="col-md-6">
+    <label for="valor" class="form-label">Valor</label>
+    <input class="form-control" type="text" id="valor" name="valor" placeholder="Valor">
+    <div id="error_valor" class="invalid-feedback" style="display: none;">
+        El valor debe ser un númerico.
+    </div>
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var inputValor = document.getElementById('valor');
-    var mensajeError = document.getElementById('mensaje_error');
-    
-    inputValor.addEventListener('input', function() {
-        var valor = this.value.trim();
-        
-        if (!/^[1-9]\d{0,7}$/.test(valor)) {
-            mensajeError.textContent = "Solo se permiten números.";
-            inputValor.setCustomValidity("Solo se permiten números.");
+    var valorInput = document.getElementById('valor');
+    var errorValor = document.getElementById('error_valor');
+
+    valorInput.addEventListener('input', function() {
+        var valor = valorInput.value.trim();
+
+        // Expresión regular para validar solo números
+        var regex = /^\d{1,11}$/;
+
+        if (regex.test(valor)) {
+            valorInput.classList.remove('is-invalid');
+            errorValor.style.display = 'none';
         } else {
-            mensajeError.textContent = "";
-            inputValor.setCustomValidity("");
+            valorInput.classList.add('is-invalid');
+            errorValor.style.display = 'block';
         }
     });
-});
 </script>
 
                 
@@ -217,9 +236,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     <td><?php echo $edad_max?></td>
                     <td><?php echo $valor?></td>
                     <td><a href="" class="boton" onclick="window.open
-                    ('../actualizar/act_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width= 600,height=500, toolbar=NO');void(null);">Click Aqui</a>
-                    <td><a href="" class="boton" onclick="window.open
-                    ('../consultar/detalle_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width= 600,height=500, toolbar=NO');void(null);">detalles</a>
+                    ('../actualizar/act_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width= 600,height=500, toolbar=NO');void(null);">
+                     <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <td>
+                      <a href="" class="boton" onclick="window.open
+                    ('../detalles/detalle_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width= 600,height=500, toolbar=NO');void(null);">detalles</a>
 
                   </tr>
                     <?php

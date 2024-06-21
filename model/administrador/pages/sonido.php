@@ -1,53 +1,7 @@
 <?php
-
-require_once("../../../db/connection.php");
-// include("../../../controller/validarSesion.php");
-$db = new Database();
-$con = $db -> conectar();
-
-    include 'plantilla.php';
-
-    if (isset($_POST["registrar"])){
-
-    $id_tipo_art = $_POST['id_tipo_art'];
-    $nombre_A = $_POST['nombre_A'];
-    $id_estado = 1;
-    $descripcion = $_POST['descripcion']; 
-    $cantidad = $_POST['cantidad'];
-    $valor= $_POST['valor'];
-
-      // Validación de campos vacíos
-  if (empty($id_tipo_art) || empty($nombre_A) || empty($id_estado) || empty($descripcion) || empty($cantidad) || empty($valor)) {
-    echo '<script>alert("EXISTEN DATOS VACIOS");</script>';
-    echo '<script>window.location="sonido.php"</script>';
-} else if ($cantidad <= 0 || $valor <= 0) {  
-    echo '<script>alert("CANTIDAD Y VALOR DEBEN SER MAYORES A 0");</script>';
-    echo '<script>window.location="sonido.php"</script>';
-} else {
-    $sql = $con->prepare("SELECT * FROM articulos WHERE nombre_A = :nombre_A");
-    $sql->bindParam(':nombre_A', $nombre_A);
-    $sql->execute();
-    $fila = $sql->fetch(PDO::FETCH_ASSOC);
-
-    if ($fila) {
-        echo '<script>alert("ESTE ARTICULO YA EXISTE //CAMBIELO//");</script>';
-        echo '<script>window.location="luces.php"</script>';
-    } else {
-        $insertSQL = $con->prepare("INSERT INTO articulos (nombre_A, id_tipo_art, id_estado, descripcion, cantidad, valor) VALUES (:nombre_A, :id_tipo_art, :id_estado, :descripcion, :cantidad, :valor)");
-        $insertSQL->bindParam(':nombre_A', $nombre_A);
-        $insertSQL->bindParam(':id_tipo_art', $id_tipo_art);
-        $insertSQL->bindParam(':id_estado', $id_estado);
-        $insertSQL->bindParam(':descripcion', $descripcion);
-        $insertSQL->bindParam(':cantidad', $cantidad);
-        $insertSQL->bindParam(':valor', $valor);
-        $insertSQL->execute();
-
-        echo '<script>alert("REGISTRO EXITOSO");</script>';
-        echo '<script>window.location="luces.php"</script>';
-    }
-  }
-    }
-    ?>
+  include 'plantilla.php';
+  include '../funciones/reg_articulos.php';
+?>
 
 <title>articulos</title>
 
@@ -91,105 +45,22 @@ $con = $db -> conectar();
                                 </select>
                             </div>
                             <div class="col-md-6">
-    <label for="inputNombreArticulo" class="form-label">Nombre artículo</label>
-    <input class="form-control" type="text" id="nombreArticuloInput" name="nombre_A" placeholder="Nombre de artículo (máximo 20 caracteres)">
-</div>
-
-<script>
-    // Obtener referencia al elemento de entrada de nombre de artículo
-    var nombreArticuloInput = document.getElementById('nombreArticuloInput');
-
-    // Agregar un event listener para el evento de cambio de valor
-    nombreArticuloInput.addEventListener('input', function() {
-        // Obtener el valor actual del campo de entrada
-        var nombreArticuloValue = nombreArticuloInput.value.trim();
-
-        // Validar si la entrada contiene solo letras y espacios y tiene una longitud de hasta 20 caracteres
-        if (/^[A-Za-z\s]{1,20}$/.test(nombreArticuloValue)) {
-            // La entrada es válida
-            nombreArticuloInput.setCustomValidity('');
-        } else {
-            // La entrada no es válida, establecer un mensaje de validación personalizado
-            nombreArticuloInput.setCustomValidity('Por favor, ingrese solo letras.');
-        }
-    });
-</script>
-
+                                <label for="inputNombreArticulo" class="form-label">Nombre articulo</label>
+                                <input class="form-control" type="text" name="nombre_A" pattern="[A-Za-z ]{4,15}" placeholder="Nombre de articulo">
+                            </div>
                          
-<div class="col-md-6">
-    <label for="inputDescripcion" class="form-label">Descripción</label>
-    <input class="form-control" type="text" id="descripcionInput" name="descripcion" placeholder="Descripción (máximo 50 caracteres)">
-</div>
-
-<script>
-    // Obtener referencia al elemento de entrada de descripción
-    var descripcionInput = document.getElementById('descripcionInput');
-
-    // Agregar un event listener para el evento de cambio de valor
-    descripcionInput.addEventListener('input', function() {
-        // Obtener el valor actual del campo de entrada
-        var descripcionValue = descripcionInput.value.trim();
-
-        // Validar si la entrada contiene letras, puntos, comas, y números y tiene una longitud de hasta 50 caracteres
-        if (/^[A-Za-z0-9.,\s]{1,50}$/.test(descripcionValue)) {
-            // La entrada es válida
-            descripcionInput.setCustomValidity('');
-        } else {
-            // La entrada no es válida, establecer un mensaje de validación personalizado
-            descripcionInput.setCustomValidity('Por favor, ingrese letras, puntos, comas y números, con un máximo de 50 caracteres.');
-        }
-    });
-</script>
-<div class="col-12">
-    <label for="inputCantidad" class="form-label">Cantidad</label>
-    <input class="form-control" type="text" id="cantidadInput" name="cantidad" placeholder="Cantidad (máximo 3 dígitos)">
-</div>
-
-<script>
-    // Obtener referencia al elemento de entrada de cantidad
-    var cantidadInput = document.getElementById('cantidadInput');
-
-    // Agregar un event listener para el evento de cambio de valor
-    cantidadInput.addEventListener('input', function() {
-        // Obtener el valor actual del campo de entrada
-        var cantidadValue = cantidadInput.value.trim();
-
-        // Validar si la entrada es un número positivo de hasta 3 dígitos
-        if (/^\d{1,3}$/.test(cantidadValue) && parseInt(cantidadValue, 10) > 0) {
-            // La entrada es válida
-            cantidadInput.setCustomValidity('');
-        } else {
-            // La entrada no es válida, establecer un mensaje de validación personalizado
-            cantidadInput.setCustomValidity('Por favor, ingrese números.');
-        }
-    });
-</script>
-
-<div class="col-12">
-    <label for="inputValor" class="form-label">Valor</label>
-    <input class="form-control" type="text" id="valorInput" name="valor" placeholder="Valor (máximo 8 dígitos)" required>
-</div>
-
-<script>
-    // Obtener referencia al elemento de entrada de valor
-    var valorInput = document.getElementById('valorInput');
-
-    // Agregar un event listener para el evento de cambio de valor
-    valorInput.addEventListener('input', function() {
-        // Obtener el valor actual del campo de entrada
-        var valorValue = valorInput.value.trim();
-
-        // Validar si la entrada es un número positivo de hasta 8 dígitos
-        if (/^\d{1,8}$/.test(valorValue) && parseInt(valorValue, 10) >= 0) {
-            // La entrada es válida
-            valorInput.setCustomValidity('');
-        } else {
-            // La entrada no es válida, establecer un mensaje de validación personalizado
-            valorInput.setCustomValidity('Por favor, ingrese números.');
-        }
-    });
-</script>
-
+                            <div class="col-md-6">
+                                <label for="inputDescripcion" class="form-label">Descripción</label>
+                                <input class="form-control" type="text" name="descripcion" placeholder="Descripción">
+                            </div>
+                            <div class="col-6">
+                                <label for="inputCantidad" class="form-label">Cantidad</label>
+                                <input class="form-control" type="number" name="cantidad" placeholder="Cantidad" min="1">
+                            </div>
+                            <div class="col-6">
+                                <label for="inputValor" class="form-label">Valor</label>
+                                <input class="form-control" type="number" name="valor" pattern="[0-9]{1,15}" title="Solo se permiten números" placeholder="Valor" min="1">
+                            </div>
                             <div class="text-center">
                                 <input type="submit" name="registrar" value="Registro" class="btn btn-primary modal_close">
                             </div>
@@ -208,41 +79,37 @@ $con = $db -> conectar();
                     <th>descripcion</th>
                     <th>cantidad</th>
                     <th>valor</th>
-                    <th>Actualizar</th>
+                    <th>Codigo de barras</th>
+                    <th>Editar</th>
 
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                       $con_paquetes = $con->prepare("SELECT articulos.id_articulo,tipo_articulo.id_tipo_art, tipo_articulo.tipo_articulo, estados.estado , articulos.nombre_A, articulos.descripcion,  articulos.cantidad,  articulos.valor
+                       $con_fila = $con->prepare("SELECT articulos.id_articulo,tipo_articulo.id_tipo_art, tipo_articulo.tipo_articulo, estados.estado , articulos.nombre_A, articulos.descripcion,  articulos.cantidad,  articulos.valor, articulos.barcode
                         FROM articulos INNER JOIN tipo_articulo ON tipo_articulo.id_tipo_art = articulos.id_tipo_art INNER JOIN estados ON estados.id_estado = articulos.id_estado  where articulos.id_tipo_art= 1");
-                      $con_paquetes->execute();
-                      $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
-                      foreach ($paquetes as $fila) {
-                       
-                        $id_tipo_art = $fila['tipo_articulo'];
-                        $nombre_A = $fila['nombre_A'];
-                        $id_estado = $fila['estado'];
-                        $descripcion = $fila['descripcion'];
-                        $cantidad = $fila['cantidad'];
-                        $valor = $fila['valor'];
-                        
-                    ?>
-                  <tr>
-                    
-                  <td><?php echo $id_tipo_art?></td>
-                    <td><?php echo $nombre_A?></td>
-                    <td><?php echo $id_estado?></td>
-                    <td><?php echo $descripcion?></td>
-                    <td><?php echo $cantidad?></td>
-                    <td><?php echo $valor?></td>
-                    <td>
-                    <a href="#" class="boton" onclick="window.open('../actualizar/articulos.php?id=<?php echo $fila['id_articulo']; ?>','','width=800,height=750,toolbar=NO');void(null);">
-                      <i class="bi bi-arrow-clockwise"></i>
-                    </a>
-
-<?php
-                      }
+                      $con_fila->execute();
+                      $fila = $con_fila->fetchAll(PDO::FETCH_ASSOC);
+                      foreach ($fila as $fila) {
+                        ?>
+                        <tr>
+                            <td><?php echo $fila['tipo_articulo']; ?></td>
+                            <td><?php echo $fila['nombre_A']; ?></td>
+                            <td><?php echo $fila['estado']; ?></td>
+                            <td><?php echo $fila['descripcion']; ?></td>
+                            <td><?php echo $fila['cantidad']; ?></td>
+                            <td><?php echo $fila['valor']; ?></td>
+                            <td>
+                                <img src="<?php echo $fila['barcode']?>">
+</td>
+                            <td>
+                                <a href="#" class="boton" onclick="window.open('../actualizar/articulos.php?id=<?php echo $fila['id_articulo']; ?>','','width=800,height=750,toolbar=NO');void(null);">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <?php
+                    }
                       ?>
                   </tr>
                  
