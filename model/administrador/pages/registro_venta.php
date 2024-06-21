@@ -100,16 +100,64 @@
                     </div>
 
                     <div class="col-md-6">
-                      <label for="yourEmail" class="form-label">Direccion</label>
-                      <input type="text" name="lugar" class="form-control" pattern="[A-Za-z/s ]{10,30}" title="Solo se aceptan letras, minimo 10 caracteres" placeholder="Digite la direccion del evento">
-                      <div class="invalid-feedback">Lugar</div>
-                    </div>
+    <label for="yourEmail" class="form-label">Dirección</label>
+    <input type="text" name="lugar" id="lugar" class="form-control" placeholder="Digite la dirección del evento" required>
+    <div id="error_lugar" class="invalid-feedback">
+        La dirección debe contener entre 10 y 40 caracteres y solo letras, espacios, '/' y '#'.
+    </div>
+</div>
 
-                    <div class="col-md-6">
-                      <label for="yourPassword" class="form-label">Cantidad de niños</label>
-                      <input type="number" name="cantidad" min="1" max="500"  class="form-control" placeholder="(Aproximada)">
-                      <div class="invalid-feedback">Ingresa la cantidad de niños</div>
-                    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var lugarInput = document.getElementById('lugar');
+        var errorLugar = document.getElementById('error_lugar');
+
+        lugarInput.addEventListener('input', function() {
+            var lugar = lugarInput.value.trim();
+
+            if (/^[A-Za-z\s/#]{10,40}$/.test(lugar)) {
+                lugarInput.classList.remove('is-invalid');
+                errorLugar.style.display = 'none';
+            } else {
+                lugarInput.classList.add('is-invalid');
+                errorLugar.style.display = 'block';
+            }
+        });
+    });
+</script>
+
+
+<div class="col-md-6">
+    <label for="yourPassword" class="form-label">Cantidad de niños</label>
+    <input type="number" name="cantidad" id="cantidad" min="1" max="1000" class="form-control" placeholder="Ingrese la cantidad de niños (Aproximada)" required>
+    <div id="error_cantidad" class="invalid-feedback">
+        Ingresa una cantidad válida entre 1 y 1000.
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var cantidadInput = document.getElementById('cantidad');
+        var errorCantidad = document.getElementById('error_cantidad');
+
+        cantidadInput.addEventListener('input', function() {
+            var cantidad = cantidadInput.value.trim();
+
+            if (isValidNumber(cantidad) && cantidad >= 1 && cantidad <= 1000) {
+                cantidadInput.classList.remove('is-invalid');
+                errorCantidad.style.display = 'none';
+            } else {
+                cantidadInput.classList.add('is-invalid');
+                errorCantidad.style.display = 'block';
+            }
+        });
+
+        function isValidNumber(value) {
+            return /^\d+$/.test(value);
+        }
+    });
+</script>
+
 
                     <div class="col-md-6">
                       <label for="yourUsername" class="form-label">Fecha de inicio del evento</label>
@@ -140,17 +188,65 @@
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <label for="yourPassword" class="form-label">Edad del Homenageado</label>
-                      <input type="number" name="edad" min="1" max="120"  class="form-control" placeholder="Edad">
-                      <div class="invalid-feedback">Ingresa la cantidad de niños</div>
-                    </div>
-                    <div class="col-md-6">
-                      <label for="yourUsername" class="form-label">Descripcion</label>
-                      <div class="input-group has-validation">
-                        <input type="text" name="descripcion" class="form-control" placeholder="Descripcion" >
-                        <div class="invalid-feedback">Ingresa tu email</div>
-                      </div>
-                    </div>
+    <label for="edadHomenajeado" class="form-label">Edad del Homenajeado</label>
+    <input type="number" name="edad" id="edad" min="1" max="130" class="form-control" placeholder="Edad del homenajeado" required>
+    <div id="error_edad" class="invalid-feedback">
+        Ingresa una edad válida entre 1 y 130.
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var edadInput = document.getElementById('edad');
+        var errorEdad = document.getElementById('error_edad');
+
+        edadInput.addEventListener('input', function() {
+            var edad = edadInput.value.trim();
+
+            if (isValidNumber(edad) && edad >= 1 && edad <= 130) {
+                edadInput.classList.remove('is-invalid');
+                errorEdad.style.display = 'none';
+            } else {
+                edadInput.classList.add('is-invalid');
+                errorEdad.style.display = 'block';
+            }
+        });
+
+        function isValidNumber(value) {
+            return /^\d+$/.test(value);
+        }
+    });
+</script>
+
+<div class="col-md-6">
+    <label for="descripcion" class="form-label">Descripción</label>
+    <div class="input-group has-validation">
+        <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Descripción" maxlength="80" required>
+        <div id="error_descripcion" class="invalid-feedback">
+            Ingresa una descripción válida (máximo 80 caracteres).
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var descripcionInput = document.getElementById('descripcion');
+        var errorDescripcion = document.getElementById('error_descripcion');
+
+        descripcionInput.addEventListener('input', function() {
+            var descripcion = descripcionInput.value.trim();
+
+            if (/^[A-Za-z0-9.,\s]{0,80}$/.test(descripcion)) {
+                descripcionInput.classList.remove('is-invalid');
+                errorDescripcion.style.display = 'none';
+            } else {
+                descripcionInput.classList.add('is-invalid');
+                errorDescripcion.style.display = 'block';
+            }
+        });
+    });
+</script>
+
 
                     <div class="col-12">
                       <div class="form-check">

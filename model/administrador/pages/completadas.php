@@ -45,7 +45,7 @@
         INNER JOIN tipo_e ON tipo_e.id_tipo_e = eventos.id_tipo_e
         INNER JOIN usuarios ON usuarios.cedula = eventos.cedula
         INNER JOIN estados ON eventos.id_estado = estados.id_estado
-        WHERE eventos.id_estado = 6");
+        WHERE eventos.id_estado = 8");
         $con_paquetes->execute();
         $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
         foreach ($paquetes as $fila) {

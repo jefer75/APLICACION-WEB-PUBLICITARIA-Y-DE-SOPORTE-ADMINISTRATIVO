@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-06-2024 a las 13:14:20
+-- Tiempo de generación: 21-06-2024 a las 18:49:12
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -39,7 +39,7 @@ CREATE TABLE `actividades` (
 --
 
 INSERT INTO `actividades` (`id_actividad`, `nombre`, `descripcion`, `imagen`) VALUES
-(21, 'Pintucaritas', 'Dibujos en la piel para todos los niños que deseen', '../../../imagenes/registradas/actividades/21.jpeg'),
+(21, 'Pintucaritas', 'Hermosas figuras hechas con pinturas especiales', '../../../imagenes/registradas/actividades/21.jpeg'),
 (22, 'Show de payasito', 'Gran show de payasito', '../../../imagenes/registradas/actividades/22.jpg');
 
 -- --------------------------------------------------------
@@ -75,19 +75,20 @@ INSERT INTO `articulos` (`id_articulo`, `nombre_A`, `id_tipo_art`, `id_estado`, 
 
 CREATE TABLE `decoracion` (
   `id_imagen` int(11) NOT NULL,
-  `imagen` varchar(50) NOT NULL
+  `imagen` varchar(50) NOT NULL,
+  `descripcion` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `decoracion`
 --
 
-INSERT INTO `decoracion` (`id_imagen`, `imagen`) VALUES
-(22, '../../../imagenes/registradas/decoracion/22.jpg'),
-(23, '../../../imagenes/registradas/decoracion/23.jpg'),
-(24, '../../../imagenes/registradas/decoracion/24.jpg'),
-(25, '../../../imagenes/registradas/decoracion/25.jpg'),
-(26, '../../../imagenes/registradas/decoracion/26.jpeg');
+INSERT INTO `decoracion` (`id_imagen`, `imagen`, `descripcion`) VALUES
+(22, '../../../imagenes/registradas/decoracion/22.jpg', 'Frozen'),
+(23, '../../../imagenes/registradas/decoracion/23.jpg', 'Celebra tu baby shower con una decoración apropiada para la ocasión'),
+(24, '../../../imagenes/registradas/decoracion/24.jpg', 'experiencia'),
+(25, '../../../imagenes/registradas/decoracion/25.jpg', 'felicidad'),
+(28, '../../../imagenes/registradas/decoracion/28.jpeg', 'Leon');
 
 -- --------------------------------------------------------
 
@@ -137,7 +138,8 @@ INSERT INTO `detalle_paquete` (`id_detalles`, `id_actividad`, `id_paquetes`) VAL
 (10, 0, 0),
 (11, 0, 0),
 (12, 0, 13),
-(13, 0, 13);
+(13, 0, 13),
+(14, 21, 1);
 
 -- --------------------------------------------------------
 
@@ -232,7 +234,7 @@ CREATE TABLE `eventos` (
 --
 
 INSERT INTO `eventos` (`id_eventos`, `fecha_evento`, `id_paquetes`, `id_tipo_e`, `lugar`, `cant_ninos`, `f_inicio`, `f_fin`, `hora_inicio`, `hora_fin`, `edad_home`, `descripcion`, `cedula`, `id_estado`) VALUES
-(13, '2024-06-18', 3, 7, 'cra 123 #56 barrio condorito', 120, '2024-06-26', '2024-06-26', '15:00:00', '19:00:00', 15, 'celebración del día del niño ', 1031540636, 6);
+(13, '2024-06-18', 3, 7, 'cra 123 #56 barrio condorito', 120, '2024-06-26', '2024-06-26', '15:30:00', '19:00:00', 15, 'celebración del día del niños', 4554564, 8);
 
 -- --------------------------------------------------------
 
@@ -362,7 +364,8 @@ CREATE TABLE `tipo_user` (
 INSERT INTO `tipo_user` (`id_tipo_user`, `tipo_user`) VALUES
 (1, 'administrador'),
 (2, 'cliente'),
-(3, 'empleado');
+(3, 'empleado'),
+(4, 'super_admin');
 
 -- --------------------------------------------------------
 
@@ -422,7 +425,17 @@ INSERT INTO `trig` (`n_contrasena`, `v_contrasena`, `tipo`, `fecha_creacion`) VA
 ('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-03-04 06:39:20'),
 ('$2y$10$TcRFiBEGNBDdmjrEavGhue8hLf2rrxIs9C2371laGPE', '$2y$10$TcRFiBEGNBDdmjrEavGhue8hLf2rrxIs9C2371laGPE', 'update', '2024-03-04 06:51:32'),
 ('$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrd', '$2y$10$TcRFiBEGNBDdmjrEavGhue8hLf2rrxIs9C2371laGPE', 'update', '2024-03-04 06:53:40'),
-('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-11 15:56:19');
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-11 15:56:19'),
+('$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', '$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', 'update', '2024-06-21 09:30:11'),
+('$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', '$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', 'update', '2024-06-21 09:30:19'),
+('$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', '$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', 'update', '2024-06-21 09:31:20'),
+('$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', '$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', 'update', '2024-06-21 09:31:24'),
+('$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', '$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', 'update', '2024-06-21 09:31:30'),
+('$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', '$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', 'update', '2024-06-21 09:32:14'),
+('$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', '$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', 'update', '2024-06-21 09:37:19'),
+('$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', '$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', 'update', '2024-06-21 09:37:42'),
+('$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', '$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', 'update', '2024-06-21 09:38:08'),
+('$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', '$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', 'update', '2024-06-21 09:38:11');
 
 -- --------------------------------------------------------
 
@@ -450,7 +463,7 @@ INSERT INTO `usuarios` (`cedula`, `nombre`, `celular`, `contrasena`, `correo`, `
 (4554564, 'yurica', 454564564, '$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrddoCHsLiu/K', 'yuriducu04@gmail.com', 2, 1, 123456789, 'u589'),
 (123456789, 'Gloria', 3157418168, '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0VUXfUp.NIWy', 'Gloria@gmail.com', 1, 1, 123456789, ''),
 (1005911563, 'Jennifer', 3114409273, '234567', 'ortiztatiana1416@gmail.com', 2, 1, 123456789, ''),
-(1031540636, 'jeferson', 3213879832, '$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q0.KmZdcO6S', 'yiyecardenal@gmail.com', 3, 1, 123456789, 'y9hr'),
+(1031540636, 'jeferson', 3213879832, '$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q0.KmZdcO6S', 'yiyecardenal@gmail.com', 4, 1, 123456789, '858r'),
 (1104254269, 'Daniel', 34114212, '$2y$10$Aim2aWnMG6LOV5YyW1ZKceqmQSPEZjA.5T6KE6USIJYvn2CDZ5Grm', 'Daniel@gmail.com', 2, 1, 123456789, '');
 
 --
@@ -572,7 +585,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `id_actividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_actividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `articulos`
@@ -584,7 +597,7 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT de la tabla `decoracion`
 --
 ALTER TABLE `decoracion`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_factura`
@@ -596,7 +609,7 @@ ALTER TABLE `detalle_factura`
 -- AUTO_INCREMENT de la tabla `detalle_paquete`
 --
 ALTER TABLE `detalle_paquete`
-  MODIFY `id_detalles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_detalles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_tipo_e`
@@ -632,7 +645,7 @@ ALTER TABLE `licencia`
 -- AUTO_INCREMENT de la tabla `paquetes`
 --
 ALTER TABLE `paquetes`
-  MODIFY `id_paquetes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_paquetes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_articulo`
@@ -650,7 +663,7 @@ ALTER TABLE `tipo_e`
 -- AUTO_INCREMENT de la tabla `tipo_user`
 --
 ALTER TABLE `tipo_user`
-  MODIFY `id_tipo_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_tipo_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -26,7 +26,7 @@ foreach ($nombres as $fila) {
     $nombre = $fila['nombre'];
 }
 
-if(isset($_POST['cerrar_sesion']))
+if(isset($_POST['cerrar']))
 {
     session_destroy();
 
@@ -65,7 +65,7 @@ if(isset($_POST['cerrar_sesion']))
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../../css/tablas.css">
+  <link rel="stylesheet" href="../../../css/tablas.css">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -77,6 +77,23 @@ if(isset($_POST['cerrar_sesion']))
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+    aside .cerrar{
+      background-color: transparent;
+      border: 0;
+      margin: 0;
+      padding: 0;
+      font-weight: bold;
+      color: #012970;
+    }
+    header .cerrar{
+      background-color: transparent;
+      border: 0;
+      margin: 0;
+      padding: 0;
+    }
+    
+  </style>
 </head>
 
 <body>
@@ -136,13 +153,6 @@ if(isset($_POST['cerrar_sesion']))
           <hr class="dropdown-divider">
         </li>
 
-        <li>
-          <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-            <i class="bi bi-gear"></i>
-            <span>Configuración</span>
-          </a>
-        </li>
-        <li>
           <hr class="dropdown-divider">
         </li>
 
@@ -159,7 +169,9 @@ if(isset($_POST['cerrar_sesion']))
         <li>
           <a class="dropdown-item d-flex align-items-center" href="#">
             <i class="bi bi-box-arrow-right"></i>
-            <span>Cerrar Sesión</span>
+            <form method="POST">
+                <span><input type="submit" class="cerrar" name="cerrar" value="Cerrar Sesion"></span>
+              </form>
           </a>
         </li>
 
@@ -317,16 +329,17 @@ if(isset($_POST['cerrar_sesion']))
       <span>Ayuda</span>
     </a>
   </li><!-- End F.A.Q Page Nav -->
-  <form method="POST">
       
       <li class="nav-item">
           <a class="nav-link collapsed" href="#">
               <i class="bi bi-box-arrow-right"></i>
-              <span>Cerrar Sesion</span>
-              <input type="submit" name="cerrar_sesion" value="cerrar sesion">
+              <form method="POST">
+                <span><input type="submit" class="cerrar" name="cerrar" value="Cerrar Sesion"></span>
+              </form>
+              
             </a>
         </li><!-- End Blank Page Nav -->
-    </form>
+
         
 </ul>
 

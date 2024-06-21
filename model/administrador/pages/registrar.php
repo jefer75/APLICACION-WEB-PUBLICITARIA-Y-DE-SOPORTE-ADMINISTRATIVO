@@ -5,6 +5,8 @@
    {
     $cedula= $_POST['cedula'];
     $nombre= $_POST['nombre'];
+    $apellido= $_POST['apellido'];
+    $nombre_comp = $nombre . " " . $apellido;
     $celular= $_POST['celular'];
     $contrasena= $_POST['contrasena'];
     $correo= $_POST['correo'];
@@ -23,7 +25,7 @@
 
      else
    
-     if ($cedula=="" || $nombre=="" || $correo=="" || $celular=="" || $contrasena=="" || $tipo_user=="" || $id_estado=="")
+     if ($cedula=="" || $nombre=="" || $apellido=="" || $correo=="" || $celular=="" || $contrasena=="" || $tipo_user=="" || $id_estado=="")
       {
          echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
          echo '<script>window.location="registrar.php"</script>';
@@ -33,7 +35,7 @@
 
         $pass_cifrado = password_hash($contrasena,PASSWORD_DEFAULT, array("pass"=>12));
         
-        $insertSQL = $con->prepare("INSERT INTO usuarios(cedula, nombre, celular, contrasena , correo, id_tipo_user, id_estado, nit) VALUES('$cedula', '$nombre', '$celular', '$pass_cifrado', '$correo', '$tipo_user', '$id_estado', 123456789)");
+        $insertSQL = $con->prepare("INSERT INTO usuarios(cedula, nombre, celular, contrasena , correo, id_tipo_user, id_estado, nit) VALUES('$cedula', '$nombre_comp', '$celular', '$pass_cifrado', '$correo', '$tipo_user', '$id_estado', 123456789)");
         $insertSQL -> execute();
         echo '<script> alert("REGISTRO EXITOSO");</script>';
         echo '<script>window.location="registrar.php"</script>';
@@ -46,11 +48,8 @@
   <main id="main" class="main">
     <div class="container">
 
-      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
-        <div class="container">
           <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
-
+            
               <div class="card mb-3">
 
                 <div class="card-body">
@@ -61,69 +60,144 @@
                   </div>
 
                   <form class="row g-3 needs-validation" name="formreg" id="formreg" method="POST">
-                    <div class="col-12">
-                      <label for="yourName" class="form-label">Cedula</label>
-                      <input type="text" pattern="[0-9]{7,12}" title="La cedula solo puede tener numeros y como minimo 7 caracteres" name="cedula" class="form-control" id="cedula" required>
-                      <div class="invalid-feedback">Ingresa tu cedula</div>
-                    </div>
+                  <div class="col-4">
+                      <label for="cedula" class="form-label">Cédula</label>
+                      <input type="text" class="form-control" id="cedula" name="cedula">
+                      <div class="invalid-feedback">Ingresa tu cédula (solo números entre 8 y 10).</div>
+                  </div>
 
-                    <div class="col-12">
-                      <label for="yourEmail" class="form-label">Nombre completo</label>
-                      <input type="text" name="nombre" class="form-control" id="nombre" pattern="[A-Za-z/s ]{10,30}" title="Solo se aceptan letras, minimo 10 caracteres" required>
+                  <div class="col-4">
+                      <label for="nombre" class="form-label">Nombres</label>
+                      <input type="text" name="nombre" class="form-control" id="nombre" >
                       <div class="invalid-feedback">Ingresa tu nombre</div>
-                    </div>
+                  </div>
 
-                    <div class="col-12">
-                      <label for="yourPassword" class="form-label">celular</label>
-                      <input type="text" name="celular" pattern="[0-9]{8,12}" title="La telefono solo puede tener numeros y como minimo 8 caracteres"class="form-control" id="celular" required>
-                      <div class="invalid-feedback">Ingresa tu telefono</div>
-                    </div>
+                  <div class="col-4">
+                      <label for="nombre" class="form-label">Apellidos</label>
+                      <input type="text" name="nombre" class="form-control" id="nombre" >
+                      <div class="invalid-feedback">Ingresa tu apellido</div>
+                  </div>
+                  
+                  <div class="col-4">
+                      <label for="celular" class="form-label">Celular</label>
+                      <input type="text" name="celular" class="form-control" id="celular">
+                      <div class="invalid-feedback">Ingresa tu teléfono</div>
+                  </div>
 
-                    <div class="col-12">
-                      <label for="yourUsername" class="form-label">correo</label>
+                  <div class="col-4">
+                      <label for="correo" class="form-label">Correo electrónico</label>
                       <div class="input-group has-validation">
-                        <input type="email" name="correo" class="form-control" id="correo" required>
-                        <div class="invalid-feedback">Ingresa tu email</div>
+                          <input type="email" name="correo" class="form-control" id="correo" >
+                          <div class="invalid-feedback">Ingresa un correo electrónico válido.</div>
                       </div>
-                    </div>
-                    <select class="cont" name="tipo_user">
-                    <option value ="">Seleccione Tipo Usuario</option>
-                     <br>
+                  </div>
 
-                    <?php
-                        $control = $con -> prepare ("SELECT * from tipo_user WHERE id_tipo_user= 2 OR id_tipo_user=3");
-                        $control -> execute();
-                    while ($fila = $control->fetch(PDO::FETCH_ASSOC)) 
-                    {
-                        echo "<option value=" . $fila['id_tipo_user'] . ">"
-                        . $fila['tipo_user'] . "</option>";
-                    } 
-                    ?>
-                </select>
-                <br>
-                <select class="cont"  name="id_estado">
-                    <option  value ="">Seleccione el estado</option>
-                    
-                    <?php
-                        $control = $con -> prepare ("SELECT * from estados where id_estado <= 2");
-                        $control -> execute();
-                    while ($fila = $control->fetch(PDO::FETCH_ASSOC)) 
-                    {
-                        echo "<option value=" . $fila['id_estado'] . ">"
-                        . $fila['estado'] . "</option>";
-                    } 
-                    ?>
-                </select>
+<script>
+    // Validación de cédula (solo números y entre 8 y 10 caracteres)
+    document.getElementById('cedula').addEventListener('blur', function() {
+        var cedulaInput = this;
+        var cedulaValue = cedulaInput.value.trim();
+        var feedback = cedulaInput.nextElementSibling;
 
-                <div class="col-12">
-                      <label for="yourPassword" class="form-label">contraseña</label>
-                      <input type="password" name="contrasena" class="form-control" id="contrasena" pattern="[A-Za-z0-9]{8,12}" title="La contraseña solo debe tener minimo 8 caracteres" required>
-                      <div class="invalid-feedback">Ingresa tu contraseña</div>
-                    </div>
+        if (!/^\d{8,10}$/.test(cedulaValue)) {
+            cedulaInput.classList.add('is-invalid');
+            feedback.style.display = 'block';
+        } else {
+            cedulaInput.classList.remove('is-invalid');
+            feedback.style.display = 'none';
+        }
+    });
+
+    // Validación de nombre (solo letras y un espacio, máximo 20 caracteres)
+    document.getElementById('nombre').addEventListener('blur', function() {
+        var nombreInput = this;
+        var nombreValue = nombreInput.value.trim();
+        var feedback = nombreInput.nextElementSibling;
+
+        if (!/^[A-Za-z\s]{1,20}$/.test(nombreValue)) {
+            nombreInput.classList.add('is-invalid');
+            feedback.style.display = 'block';
+        } else {
+            nombreInput.classList.remove('is-invalid');
+            feedback.style.display = 'none';
+        }
+    });
+
+    // Validación de celular (exactamente 10 números)
+    document.getElementById('celular').addEventListener('blur', function() {
+        var celularInput = this;
+        var celularValue = celularInput.value.trim();
+        var feedback = celularInput.nextElementSibling;
+
+        if (!/^\d{10}$/.test(celularValue)) {
+            celularInput.classList.add('is-invalid');
+            feedback.style.display = 'block';
+        } else {
+            celularInput.classList.remove('is-invalid');
+            feedback.style.display = 'none';
+        }
+    });
+
+    // Validación de correo electrónico
+    document.getElementById('correo').addEventListener('blur', function() {
+        var correoInput = this;
+        var correoValue = correoInput.value.trim();
+        var feedback = correoInput.parentElement.querySelector('.invalid-feedback');
+
+        if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(correoValue)) {
+            correoInput.classList.add('is-invalid');
+            feedback.style.display = 'block';
+        } else {
+            correoInput.classList.remove('is-invalid');
+            feedback.style.display = 'none';
+        }
+    });
+</script> 
+                <div class="col-4">
+                <label for="correo" class="form-label">Seleccion el tipo de usuario</label>
+                                    <select class="form-control" name="tipo_user">
+                                    <option value ="">Seleccione</option>
+                                    <br>
+
+                                    <?php
+                                        $control = $con -> prepare ("SELECT * from tipo_user WHERE id_tipo_user= 2 OR id_tipo_user=3");
+                                        $control -> execute();
+                                    while ($fila = $control->fetch(PDO::FETCH_ASSOC)) 
+                                    {
+                                        echo "<option value=" . $fila['id_tipo_user'] . ">"
+                                        . $fila['tipo_user'] . "</option>";
+                                    } 
+                                    ?>
+                                </select>
+                </div>        
+                
+                <div class="col-6">
+                  <label for="contrasena" class="form-label">Contraseña</label>
+                  <input type="password" name="contrasena" class="form-control" id="contrasena">
+                  <div class="invalid-feedback">Ingresa tu contraseña (entre 8 y 11 caracteres).</div>
+              </div>
+
+<script>
+    // Validación de contraseña (entre 8 y 11 caracteres)
+    document.getElementById('contrasena').addEventListener('blur', function() {
+        var contrasenaInput = this;
+        var contrasenaValue = contrasenaInput.value.trim();
+        var feedback = contrasenaInput.nextElementSibling;
+
+        if (contrasenaValue.length < 8 || contrasenaValue.length > 11) {
+            contrasenaInput.classList.add('is-invalid');
+            feedback.style.display = 'block';
+        } else {
+            contrasenaInput.classList.remove('is-invalid');
+            feedback.style.display = 'none';
+        }
+    });
+</script>
+
 
                     <div class="col-12">
                       <div class="form-check">
-                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" >
                         <label class="form-check-label" for="acceptTerms">Estoy de acuerdo con los <a href="#">Terminos y condiciones</a></label>
                         <div class="invalid-feedback">Debes estar de acuerdo para continuar</div>
                       </div>
@@ -135,22 +209,17 @@
                   </form>
 
                 </div>
-              </div>
 
               <div class="credits">
                 <!-- All the links in the footer should remain intact. -->
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-                Diseñada por<a href="https://bootstrapmade.com/">Elitech JYD</a>
               </div>
 
             </div>
           </div>
         </div>
-
-      </section>
-
     </div>
   </main><!-- End #main -->
 

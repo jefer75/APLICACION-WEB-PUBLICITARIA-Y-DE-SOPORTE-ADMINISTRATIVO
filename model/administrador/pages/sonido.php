@@ -45,22 +45,94 @@
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputNombreArticulo" class="form-label">Nombre articulo</label>
-                                <input class="form-control" type="text" name="nombre_A" pattern="[A-Za-z ]{4,15}" placeholder="Nombre de articulo">
-                            </div>
+    <label for="inputNombreArticulo" class="form-label">Nombre artículo</label>
+    <input class="form-control" type="text" name="nombre_A" id="nombre_A" placeholder="Nombre de artículo">
+    <div class="invalid-feedback">Ingresa el nombre del artículo (solo letras y espacios, entre 4 y 15 caracteres).</div>
+</div>
+
+<script>
+    document.getElementById('nombre_A').addEventListener('blur', function() {
+        var nombreArticuloInput = this;
+        var nombreArticuloValue = nombreArticuloInput.value.trim();
+        var feedback = nombreArticuloInput.nextElementSibling;
+
+        if (!/^[A-Za-z\s]{4,15}$/.test(nombreArticuloValue)) {
+            nombreArticuloInput.classList.add('is-invalid');
+            feedback.style.display = 'block';
+        } else {
+            nombreArticuloInput.classList.remove('is-invalid');
+            feedback.style.display = 'none';
+        }
+    });
+</script>
+
                          
-                            <div class="col-md-6">
-                                <label for="inputDescripcion" class="form-label">Descripción</label>
-                                <input class="form-control" type="text" name="descripcion" placeholder="Descripción">
-                            </div>
-                            <div class="col-6">
-                                <label for="inputCantidad" class="form-label">Cantidad</label>
-                                <input class="form-control" type="number" name="cantidad" placeholder="Cantidad" min="1">
-                            </div>
-                            <div class="col-6">
-                                <label for="inputValor" class="form-label">Valor</label>
-                                <input class="form-control" type="number" name="valor" pattern="[0-9]{1,15}" title="Solo se permiten números" placeholder="Valor" min="1">
-                            </div>
+<div class="col-md-6">
+    <label for="inputDescripcion" class="form-label">Descripción</label>
+    <input class="form-control" type="text" name="descripcion" id="descripcion" placeholder="Descripción">
+    <div class="invalid-feedback">Ingresa la descripción del artículo (máximo 80 caracteres).</div>
+</div>
+
+<script>
+    document.getElementById('descripcion').addEventListener('blur', function() {
+        var descripcionInput = this;
+        var descripcionValue = descripcionInput.value.trim();
+        var feedback = descripcionInput.nextElementSibling;
+
+        if (descripcionValue.length > 80) {
+            descripcionInput.classList.add('is-invalid');
+            feedback.style.display = 'block';
+        } else {
+            descripcionInput.classList.remove('is-invalid');
+            feedback.style.display = 'none';
+        }
+    });
+</script>
+
+<div class="col-6">
+    <label for="inputCantidad" class="form-label">Cantidad</label>
+    <input class="form-control" type="number" name="cantidad" id="cantidad" placeholder="Cantidad" min="1">
+    <div class="invalid-feedback">Ingresa la cantidad del artículo.</div>
+</div>
+
+<script>
+    document.getElementById('cantidad').addEventListener('blur', function() {
+        var cantidadInput = this;
+        var cantidadValue = cantidadInput.value.trim();
+        var feedback = cantidadInput.nextElementSibling;
+
+        if (!/^\d{1,4}$/.test(cantidadValue) || parseInt(cantidadValue) < 1 || parseInt(cantidadValue) > 1000) {
+            cantidadInput.classList.add('is-invalid');
+            feedback.style.display = 'block';
+        } else {
+            cantidadInput.classList.remove('is-invalid');
+            feedback.style.display = 'none';
+        }
+    });
+</script>
+<div class="col-6">
+    <label for="inputValor" class="form-label">Valor</label>
+    <input class="form-control" type="number" name="valor" id="valor" placeholder="Valor" min="1">
+    <div class="invalid-feedback">Ingresa el valor del artículo.</div>
+</div>
+
+<script>
+  document.getElementById('valor').addEventListener('blur', function() {
+        var valorInput = this;
+        var valorValue = valorInput.value.trim();
+        var feedback = valorInput.nextElementSibling;
+
+        // Validación: solo números válidos y máximo 8 dígitos
+        if (!/^\d{1,8}$/.test(valorValue)) {
+            valorInput.classList.add('is-invalid');
+            feedback.style.display = 'block';
+        } else {
+            valorInput.classList.remove('is-invalid');
+            feedback.style.display = 'none';
+        }
+    });
+</script>
+
                             <div class="text-center">
                                 <input type="submit" name="registrar" value="Registro" class="btn btn-primary modal_close">
                             </div>

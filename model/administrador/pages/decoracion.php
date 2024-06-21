@@ -35,10 +35,12 @@ include '../funciones/img_decoracion.php';
           <!-- Multi Columns Form -->
 
                 <form method="post" class="row g-3" enctype="multipart/form-data" autocomplete="off">
-                <div class="col-md-6">
-
+                <div class="col-6">
+                  <label for="inputEmail5" class="form-label">Descripcion</label>
+                  <input  class="form-control" type="text" name="descripcion" placeholder=" descripcion del paquete">
+                </div>
+                <div class="col-6">
                   <label for="inputEmail5" class="form-label">Imagen</label>
-
                   <input  class="form-control" type="file" name="imagen" placeholder="subir imagen" required>
                 </div>
 
@@ -54,7 +56,10 @@ include '../funciones/img_decoracion.php';
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
+                    <th>Descripcion</th>
                     <th>Imagenes</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -67,13 +72,22 @@ include '../funciones/img_decoracion.php';
                     ?>
                   <tr>
                     <td>
+                        <p><?php echo $imagen['descripcion']?></p>
+                    </td>
+                    <td>
                         <img class="imagenes_tablas" src="<?php echo $direccion?>">
-                    </td>                                
+                    </td>     
+                    <td>
+                    <a href="#" class="boton" onclick="window.open
+                        ('../actualizar/decoracion.php?id=<?php echo $imagen['id_imagen'] ?>','','width= 600,height=490, toolbar=NO');void(null);"><i class="bi bi-pencil"></i></a>
+
+                    
+                        </td>                             
                       <td>
                         <a href="#" class="btn btn-warning" onclick="window.open
-                        ('../actualizar/decoracion.php?id=<?php echo $imagen['id_imagen'] ?>','','width= 450,height=350, toolbar=NO');void(null);"><i class="bi bi-trash"></i>Eliminar</a>
+                        ('../eliminar/eli_decorar.php?id=<?php echo $imagen['id_imagen'] ?>','','width= 450,height=350, toolbar=NO');void(null);"><i class="bi bi-trash"></i>Eliminar</a>
 
-                    </a>
+                    
                         </td>
                         
 

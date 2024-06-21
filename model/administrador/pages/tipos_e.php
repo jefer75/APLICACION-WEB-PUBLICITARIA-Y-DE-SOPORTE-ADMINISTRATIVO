@@ -73,13 +73,35 @@ $con = $db -> conectar();
 
               
                
-
                 <div class="col-md-12">
+            <label for="inputEmail5" class="form-label">Nombre del Tipo</label>
+            <input class="form-control" type="text" name="tipo_e" id="tipoInput" placeholder="Tipo">
+            <div id="error_tipo" class="invalid-feedback">
+                El nombre del tipo debe contener solo letras y máximo dos espacios, con un máximo de 20 caracteres.
+            </div>
+        </div>
 
-                  <label for="inputEmail5" class="form-label">Nombre del Tipo</label>
 
-                  <input  class="form-control" type="text" name="tipo_e" pattern="[A-Za-z ]{4,15}" placeholder="Tipo">
-                </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var tipoInput = document.getElementById('tipoInput');
+        var errorTipo = document.getElementById('error_tipo');
+
+        tipoInput.addEventListener('input', function() {
+            var tipo = tipoInput.value.trim();
+
+            // Validar que el tipo contenga solo letras y máximo dos espacios, con un máximo de 20 caracteres
+            if (/^[A-Za-z ]{1,20}$/.test(tipo) && !/\s{3,}/.test(tipo)) {
+                tipoInput.classList.remove('is-invalid');
+                errorTipo.style.display = 'none';
+            } else {
+                tipoInput.classList.add('is-invalid');
+                errorTipo.style.display = 'block';
+            }
+        });
+    });
+</script>
                 
                 <div class="text-center">
                   <tr>

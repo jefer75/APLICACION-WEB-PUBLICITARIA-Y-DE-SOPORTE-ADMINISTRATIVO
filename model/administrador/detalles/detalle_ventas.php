@@ -165,10 +165,20 @@
                     <div class="invalid-feedback">Solo se aceptan numeros</div>
                 </div>
                 </div>       
-                            <div class="text-center">
+                <?php 
+                  $con_evento = $con->prepare("SELECT * FROM eventos WHERE id_eventos= '".$_GET['id']."'");
+                  $con_evento->execute();
+                  $fila = $con_evento->fetch();
+                  
+                  if ($fila['id_estado']==6) {
+                  echo'<div class="text-center">
                             <tr>
                                 <td><input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="registro" value="registrar"></td>
-                            </tr>
+                            </tr>';
+                  }
+                
+            ?>
+                            
                            
                 </div>
                 </div> 
@@ -204,9 +214,21 @@
                     <form method="POST">
                         <input type="hidden" name="cantidad" value="<?php echo $fila['cantidad'] ?>" >
                         <input type="hidden" name="articulo_select" value="<?php echo $fila['id_articulo'] ?>" >
-                        <button type="submit" class="btn" name="eliminar" style="background-color: #2c8ac9; color: white;">
+
+                        <?php 
+                  $con_evento = $con->prepare("SELECT * FROM eventos WHERE id_eventos= '".$_GET['id']."'");
+                  $con_evento->execute();
+                  $fila = $con_evento->fetch();
+                  
+                  if ($fila['id_estado']==6) {
+                  echo'<button type="submit" class="btn" name="eliminar" style="background-color: #2c8ac9; color: white;">
                         <i class="bi bi-trash"></i>
-                        </button>
+                        </button>';
+                  }
+                
+            ?>
+
+                        
                       
                       </form>
                     </td>

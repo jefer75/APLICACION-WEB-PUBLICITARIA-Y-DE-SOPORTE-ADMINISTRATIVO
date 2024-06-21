@@ -22,7 +22,7 @@ include 'plantilla.php';
             <div class="card-body">
               <h5 class="card-title">Empleados</h5>
 
-              <a href="../registrar/paquetes.php" class="añadir">Añadir</a>
+              <a href="registrar.php" class="añadir">Añadir</a>
 
               <form method="post" action="funciones/empl_excel.php">
                             <button type="submit" name="empl_excel" class="btn btn-success">

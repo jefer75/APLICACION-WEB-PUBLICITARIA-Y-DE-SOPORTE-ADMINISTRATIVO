@@ -40,6 +40,7 @@ $con = $db -> conectar();
     <!-- Template Stylesheet -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/infantil.css">
 </head>
 
 <body>
@@ -98,23 +99,34 @@ $con = $db -> conectar();
                 </div>
 
                         <!-- Gallery-->
+                <div class="info">
+                    <?php
+                       $actividades = $con->prepare("SELECT * FROM decoracion");
+                       $actividades->execute();
+                       $actividades = $actividades->fetchAll(PDO::FETCH_ASSOC);
+                       foreach ($actividades as $fila) {
+                       
+                        $descripcion = $fila['descripcion'];
+                        $imagen = $fila['imagen'];
+                    ?>
 
-                        <section class="gallery">
-                            <ul class="images">
-                            <?php
-                            $query = $con->prepare("SELECT * FROM decoracion");
-                            $query->execute();
-                            $imagenes = $query->fetchAll(PDO::FETCH_ASSOC);
-                            foreach ($imagenes as $imagen) {
-                            ?>
-                                <li class="img">
-                                <img src="model/administrador/pages/<?php echo $imagen['imagen']?>"></li>
-                            <?php
-                                }
-                            ?>
-                              
-                            </ul>
-                          </section>
+                    <div class="con">
+                        <div class="img">
+                        <img class="imagenes_tablas" src="model/administrador/pages/<?php echo $imagen?>">
+                        </div>
+                        <div class="top-text">
+                                <h3><?php echo $descripcion?></h3>   
+                        </div>
+                        
+                    </div>
+            <?php
+              }
+            ?>
+         </div>
+                
+    
+       
+               </div>
 
                           <div class="row g-4">
 

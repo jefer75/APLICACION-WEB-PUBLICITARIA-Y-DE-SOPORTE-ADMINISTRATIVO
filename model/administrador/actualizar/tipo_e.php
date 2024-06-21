@@ -64,13 +64,35 @@
 
           <h5 class="card-title">Tipos de Evento</h5>
           <form autocomplete="off"class="row g-3" name="form_actualizar" method="POST">
-            <div class="col-md-6">
-
-              <label for="inputEmail5" class="form-label">Nombre</label>
-
-              <input class="form-control" name="tipo_evento" value="<?php echo $fila['tipo_evento'] ?>" >    
-
+          <div class="col-md-6">
+            <label for="inputEmail5" class="form-label">Nombre</label>
+            <input class="form-control" type="text" name="tipo_evento" id="tipoEventoInput" value="<?php echo $fila['tipo_evento'] ?>" placeholder="Nombre del evento">
+            <div id="error_tipo_evento" class="invalid-feedback">
+                El nombre del evento debe contener solo letras y máximo dos espacios, con un máximo de 20 caracteres.
             </div>
+        </div>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var tipoEventoInput = document.getElementById('tipoEventoInput');
+        var errorTipoEvento = document.getElementById('error_tipo_evento');
+
+        tipoEventoInput.addEventListener('input', function() {
+            var tipoEvento = tipoEventoInput.value.trim();
+
+            // Validar que el tipo de evento contenga solo letras y máximo dos espacios, con un máximo de 20 caracteres
+            if (/^[A-Za-z ]{1,20}$/.test(tipoEvento) && !/\s{3,}/.test(tipoEvento)) {
+                tipoEventoInput.classList.remove('is-invalid');
+                errorTipoEvento.style.display = 'none';
+            } else {
+                tipoEventoInput.classList.add('is-invalid');
+                errorTipoEvento.style.display = 'block';
+            }
+        });
+    });
+</script>
 
           <div class="text-center">
             <tr>

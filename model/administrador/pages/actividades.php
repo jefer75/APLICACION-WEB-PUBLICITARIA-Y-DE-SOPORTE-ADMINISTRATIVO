@@ -101,7 +101,7 @@
                     <td> <img src="<?php echo $fila['imagen']?>"></td>
                     
                     <td>
-                      <a href="#" class="boton" onclick="window.open('../actualizar/actividades.php?id=<?php echo $id_actividad ?>','','width=500,height=450,toolbar=NO');void(null);">
+                      <a href="#" class="boton" onclick="window.open('../actualizar/actividades.php?id=<?php echo $id_actividad ?>','','width=500,height=500,toolbar=NO');void(null);">
                       <i class="bi bi-pencil"></i>
                       </a>
                     </td>

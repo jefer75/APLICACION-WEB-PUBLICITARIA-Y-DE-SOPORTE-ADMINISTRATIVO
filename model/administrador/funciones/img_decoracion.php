@@ -5,7 +5,8 @@ $db = new DataBase();
 $con = $db->conectar();
 
 if (!empty($_POST['registrar'])) {
-    
+    $descripcion=$_POST['descripcion'];
+
     $imagen=$_FILES['imagen']['tmp_name'];
     $nombre=$_FILES['imagen']['name'];
     $formato=strtolower(pathinfo($nombre,PATHINFO_EXTENSION));
@@ -14,7 +15,7 @@ if (!empty($_POST['registrar'])) {
 
     if ($formato=="jpg" || $formato=="jpeg" || $formato=="png") {
         
-        $insertSQL = $con->prepare("INSERT INTO decoracion(imagen) VALUES('')");
+        $insertSQL = $con->prepare("INSERT INTO decoracion(descripcion, imagen) VALUES('$descripcion','')");
         $insertSQL -> execute();
 
         $sql= $con -> prepare ("SELECT * FROM decoracion 

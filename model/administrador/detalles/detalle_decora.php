@@ -17,14 +17,16 @@
 
    if (isset($_POST['actualizar'])){
 
+    $nombre_act = $_POST['nombre'];
     $descripcion = $_POST['descripcion'];
     
     $imagen=$_FILES['imagen']['tmp_name'];
     $nombre=$_FILES['imagen']['name'];
     $formato=strtolower(pathinfo($nombre,PATHINFO_EXTENSION));
     $peso=$_FILES['imagen']['size'];
-    $carpeta="../../../imagenes/registradas/decoracion/";
+    $carpeta="../../../imagenes/registradas/actividades/";
 
+    
     if ($imagen!="") {
       
       if ($formato=="jpg" || $formato=="jpeg" || $formato=="png") {
@@ -35,9 +37,9 @@
           //throw $th;
         }
 
-        $direccion=$carpeta.$id_imagen.".".$formato;
+        $direccion=$carpeta.$id_actividad.".".$formato;
 
-        $insert= $con -> prepare ("UPDATE decoracion SET  descripcion='$descripcion', imagen='$direccion' WHERE id_imagen = $id_imagen");
+        $insert= $con -> prepare ("UPDATE decoracion SET  descripcion='$descripcion', imagen='$direccion' WHERE id_imagen = $id_actividad");
         $insert -> execute();
         echo '<script> alert ("Registro actualizado exitosamente");</script>';
         echo '<script> window.close(); </script>';
@@ -54,7 +56,7 @@
        }
 
     } else {
-      $insert= $con -> prepare ("UPDATE decoracion SET  descripcion='$descripcion' WHERE id_imagen = $id_imagen");
+      $insert= $con -> prepare ("UPDATE decoracion SET  descripcion='$descripcion' WHERE id_imagen = $id_actividad");
         $insert -> execute();
         echo '<script> alert ("Registro actualizado exitosamente");</script>';
         echo '<script> window.close(); </script>';
@@ -117,20 +119,24 @@
             <?php
               }
             ?>
-        <form autocomplete="off"class="row g-3" enctype="multipart/form-data"  name="form_actualizar" method="POST">
-        <div class="col-md-6">
-            <div class="col-8">
-            <label for="inputEmail5" class="form-label">Descripcion</label>
-            <input  class="form-control" type="text" name="descripcion" value="<?php echo $fila['descripcion']?>" placeholder="Descripcion del paquete">
-        </div>
+          <form autocomplete="off"class="row g-3" enctype="multipart/form-data"  name="form_actualizar" method="POST">
+          <div class="col-md-6">
 
-        <div class="col-8">
-            <label for="inputEmail5" class="form-label">Imagen</label>
-            <input  class="form-control" type="file" name="imagen">
-            </div>
-            <br>
-        </div>
-        <div class="text-center">
+          
+
+
+
+<div class="col-8">
+<label for="inputEmail5" class="form-label">Descripcion</label>
+<input  class="form-control" type="text" name="descripcion" value="<?php echo $fila['descripcion']?>" placeholder=" descripcion del paquete">
+</div>
+
+<div class="col-8">
+<label for="inputEmail5" class="form-label">Imagen</label>
+<input  class="form-control" type="file" name="imagen">
+</div>
+<br>
+          <div class="text-center">
             <tr>
               <td><input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="actualizar" value="Actualizar"></td>
             </tr>
