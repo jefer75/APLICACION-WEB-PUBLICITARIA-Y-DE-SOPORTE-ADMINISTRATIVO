@@ -6,6 +6,12 @@ $db = new DataBase();
 $con = $db->conectar();
 
 $cedula = $_SESSION['cedula'];
+if (!isset($cedula)){
+  //include("../../../controller/validar_licencia.php");
+  echo '<script>No has iniciado sesion</script>';
+  header("Location: ../inicio/login.php");
+  }
+
 $con_nombre = $con->prepare("SELECT * FROM usuarios WHERE cedula = $cedula");
 $con_nombre->execute();
 $nombres = $con_nombre->fetchAll(PDO::FETCH_ASSOC);
@@ -327,6 +333,13 @@ if(isset($_POST['cerrar_sesion']))
   </li><!-- End Contact Page Nav -->
 
   <li class="nav-item">
+    <a class="nav-link collapsed" href="actividades.php">
+      <i class="bi bi-gift-fill"></i>
+      <span>actividades</span>
+    </a>
+  </li><!-- End Contact Page Nav -->
+
+  <li class="nav-item">
     <a class="nav-link collapsed" href="compras.php">
       <i class="bi bi-cart-plus"></i>
       <span>Compras</span>
@@ -338,6 +351,11 @@ if(isset($_POST['cerrar_sesion']))
       <i class="bi bi-layout-text-sidebar-reverse"></i><span>Articulos</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
     <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="arti.php">
+          <i class="bi bi-circle"></i><span>Articulos</span>
+        </a>
+      </li>
       <li>
         <a href="sonido.php">
           <i class="bi bi-circle"></i><span>Sonido</span>
@@ -425,7 +443,7 @@ if(isset($_POST['cerrar_sesion']))
   <li class="nav-heading">Ayuda</li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="perfil.php">
+    <a class="nav-link collapsed" href="users-profile.php">
       <i class="bi bi-person-circle"></i>
       <span>Perfil</span>
     </a>

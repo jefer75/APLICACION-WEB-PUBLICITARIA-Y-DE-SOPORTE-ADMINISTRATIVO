@@ -16,19 +16,17 @@ include 'plantilla.php';
                         <h5 class="card-title">Eventos</h5>
 
                         <table class="table table-striped">
-                            <input type="submit" class="detalle" id="detalle" value="Detalle" onclick="opendialog();">
                             <dialog class="añadir_cont" id="añadir_cont">
-                                <button id="añadir_close" class="btn modal_close" onclick="closedialog();">X</button>
+                              
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Fecha Evento</th>
                                             <th>Lugar</th>
-                                            <th>Hora Inicio</th>s
+                                            <th>Hora Inicio</th>
                                             <th>Hora Fin</th>
                                             <th>Descripción</th>
                                             <th>Contacto</th>
-                                            
                                             <th></th>
                                         </tr>
                                     </thead>

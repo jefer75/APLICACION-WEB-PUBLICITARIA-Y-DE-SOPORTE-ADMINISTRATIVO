@@ -1,4 +1,3 @@
-
 <?php
     session_start();
     require_once("db/connection.php");
@@ -48,7 +47,6 @@
      }  
     }
     ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -85,14 +83,6 @@
 
 <body>
     <div class="container-xxl bg-white p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
-
 
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
@@ -133,8 +123,34 @@
         <!-- Page Header End -->
 
 
-       
-        <form method="post" name="formreg" id="formreg" class="signup-form" autocomplete="off" onsubmit="return validarFormulario()">
+        <!-- Contact Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <h1 class="mb-3">Contactanos</h1>
+                    <p>Estamos ubicados en La ciudad de Ibague, en el departamento del Tolima, sin embargo, realizamos evenos en todos los municipios del Tolima, ademas Girardot-Cundinamarca.</p>
+                </div>
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6 col-lg-4 text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 75px; height: 75px;">
+                            <i class="fa fa-map-marker-alt fa-2x text-primary"></i>
+                        </div>
+                        <h6>Urbanizacion Anda Lucia Real, Barrio las Margaritas, Ibague-Tolima</h6>
+                    </div>
+                    <div class="col-md-6 col-lg-4 text-center wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 75px; height: 75px;">
+                            <i class="fa fa-envelope-open fa-2x text-primary"></i>
+                        </div>
+                        <h6>Arlequin_Eventos@gmail.com</h6>
+                    </div>
+                    <div class="col-md-6 col-lg-4 text-center wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 75px; height: 75px;">
+                            <i class="fa fa-phone-alt fa-2x text-primary"></i>
+                        </div>
+                        <h6>3157418168 - 3187808830</h6>
+                    </div>
+                </div>
+                <form method="post" name="formreg" id="formreg" class="signup-form" autocomplete="off" onsubmit="return validarFormulario()">
     <!-- Appointment Start -->
     <div class="container-xxl py-5" id="registrate">
         <div class="container">
@@ -143,8 +159,10 @@
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                         <div class="h-100 d-flex flex-column justify-content-center p-5">
                             <h1 class="mb-4">Regístrate</h1>
-                            <p>Regístrate para conocer más acerca de los paquetes y hacer tu reservación</p>
+                    
                         
+                                <p class="mb-4">Al llenar el siguiente formulario, estarias creando tu propio perfil en nuestro sitio web, por lo que si deseas reservar un evento, podras ingresar con tu usario y contraseña y reservarlo desde nuestro sitio web.</p>
+                                <form>
                                 <div class="row g-3">
                                     <div class="col-sm-6">
                                         <div class="form-floating">
@@ -194,9 +212,9 @@
                         </div>
                     </div>
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
-                        <div class="position-relative h-100">
-                            <img class="position-absolute w-100 h-100 rounded" src="imagenes/contenido/img19.jpg" style="object-fit: cover;">
-                        </div>
+                    <div class="position-relative h-100">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1988.9144383679056!2d-75.18760232341391!3d4.442929272459184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e38c50fb2ddff45%3A0x59199eb4e87be4fd!2sUrbanizaci%C3%B3n%20Andalucia%20Real!5e0!3m2!1ses!2sco!4v1711054122223!5m2!1ses!2sco" width="550" height="610" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -258,12 +276,10 @@
     }
 </script>
 
-
-
         <!-- Contact End -->
 
 
-  
+ 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">

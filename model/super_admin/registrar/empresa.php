@@ -5,6 +5,13 @@
     $db = new Database();
     $con = $db->conectar();
 
+    // Verificar si el usuario ha iniciado sesión
+    $cedula = $_SESSION['cedula'];
+    if (!isset($_SESSION['cedula'])) {
+        header("Location: ../inicio/logins.php");
+        exit;
+    }
+
     if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formreg")) {
         $nit = $_POST['nit'];
         $nombre_emp = $_POST['nombre_emp'];
@@ -25,7 +32,7 @@
 
             if ($insertSQL->execute()) {
                 echo '<script>alert("REGISTRO EXITOSO");</script>';
-                echo '<script>window.location="../consultar/read_empresa.php";</script>';
+                echo '<script>window.location="../read_empresa.php";</script>';
             } else {
                 echo '<script>alert("ERROR EN EL REGISTRO");</script>';
                 echo '<script>window.location="empresa.php";</script>';
@@ -71,8 +78,7 @@
 </head>
 <br>
 <body style="background-color: white;">
-    <a class="btn-regresar" href="../consultar/read_empresa.php" style="background-color: blue; color: white; border: none; padding: 10px 20px; border-radius: 15px; text-decoration: none; margin-top: 70px; margin-left: 10px;">Regresar</a>
-    
+
     <h2 class="card-title" style="font-family: 'Arial Rounded MT Bold', sans-serif; text-align: center; margin-top: 20px;">Registrar Empresa</h2>
     <div class="col-lg-6" style="margin-top: 20px; margin-left: auto; margin-right: auto;">
         <div class="container" style="text-align: center;">

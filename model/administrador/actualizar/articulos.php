@@ -1,7 +1,3 @@
-
-
-
-
 <?php
        session_start();
        require_once("../../../db/connection.php");
@@ -10,44 +6,42 @@
        $con = $db -> conectar();
 
    //empieza la consulta
-   $sql = $con -> prepare("SELECT * FROM articulos WHERE id_articulo='".$_GET['id']."'");
-   $sql -> execute();
-   $fila = $sql -> fetch ();
+  
+   
 
    //declaracion de variables de campos en la tabla
 
    if (isset($_POST['actualizar'])){
 
+    $sql = $con -> prepare(" SELECT * FROM articulos WHERE id_articulo='".$_GET['id']."'");
+    $sql->execute();
+    $fila = $sql->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($fila as $fila) {
+  //  foreach ($fila as $fila) {
+    $cantidad = $fila['cantidad'];
+  }
+
        $id_tipo_art= $_POST['id_tipo_art'];
        $nombre_A = $_POST['nombre_A'];
        $id_estado= $_POST['id_estado'];
        $descripcion= $_POST['descripcion'];
-       $cantidad = $_POST['cantidad'];
+       $suma = $_POST['suma'];
        $valor= $_POST['valor'];
-       
-           $insert= $con -> prepare ("UPDATE articulos SET  nombre_A='$nombre_A', id_estado='$id_estado', descripcion='$descripcion', id_tipo_art='$id_tipo_art' , cantidad='$cantidad', valor='$valor' WHERE id_articulo = '".$_GET['id']."'");
+
+      if ($suma <= 0 || $valor <= 0) {  
+        echo '<script>alert("CANTIDAD Y VALOR DEBEN SER MAYORES A 0");</script>';
+        echo '<script>window.location="articulos.php"</script>';
+      }
+       else {
+        
+        $cantidad_total = $suma + $cantidad;
+        
+           $insert= $con -> prepare ("UPDATE articulos SET  nombre_A='$nombre_A', id_estado='$id_estado', descripcion='$descripcion', id_tipo_art='$id_tipo_art' , cantidad='$cantidad_total', valor='$valor' WHERE id_articulo = '".$_GET['id']."'");
            $insert -> execute();
            echo '<script> alert ("Registro actualizado exitosamente");</script>';
            echo '<script> window.close(); </script>';
-               
+       } 
        }
-
-       else if (isset($_POST['eliminar'])){
-          
-      
-           $id_tipo_art= $_POST['id_tipo_art'];
-           $nombre_A = $_POST['nombre_A'];
-           $id_estado= $_POST['id_estado'];
-           $descripcion= $_POST['descripcion'];
-           $cantidad = $_POST['cantidad'];
-           $valor= $_POST['valor'];
-       
-               $insert= $con -> prepare ("DELETE FROM articulos WHERE id_articulo = '".$_GET['id']."'");
-               $insert -> execute();
-               echo '<script> alert ("Registro actualizado exitosamente");</script>';
-               echo '<script> window.close(); </script>';
-                   
-           }
 
         ?>
 
@@ -65,7 +59,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paquetes</title>
+<title>Articulos</title>
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,7 +69,7 @@
 <link href="lib/animate/animate.min.css" rel="stylesheet">
 <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 <link href="../../../css/bootstrap.min.css" rel="stylesheet">
-<link href="../../../css/tablaedi.css" rel="stylesheet">
+
 
 </head>
 
@@ -87,18 +81,26 @@
 
         <div class="card-body">
 
-          <h5 class="card-title">Ventas</h5>
-
-
+          <h5 class="card-title">Articulos</h5>
 
           <!-- Multi Columns Form -->
 
           <form autocomplete="off"class="row g-3" name="form_actualizar" method="POST">
 
+          <?php
+          $sql = $con -> prepare("SELECT articulos.id_articulo, articulos.id_tipo_art, tipo_articulo.tipo_articulo, articulos.id_estado,  estados.estado, articulos.nombre_A, articulos.descripcion, articulos.cantidad, articulos.valor
+          FROM articulos
+          INNER JOIN tipo_articulo ON tipo_articulo.id_tipo_art = articulos.id_tipo_art
+          INNER JOIN estados ON estados.id_estado = articulos.id_estado WHERE id_articulo='".$_GET['id']."'");
+          $sql->execute();
+          $fila = $sql->fetchAll(PDO::FETCH_ASSOC);
+          foreach ($fila as $fila) {
+        //  foreach ($fila as $fila) {
+          $id_tipo_art = $fila['id_tipo_art'];
+          $tipo_art = $fila['tipo_articulo'];
+          $id_estado = $fila['id_estado'];
 
-
-            
-
+            ?>
             <div class="col-md-6">
 
               <label for="inputEmail5" class="form-label">Nombre Articulo</label>
@@ -107,38 +109,7 @@
 
             </div>
 
-            <div class="col-md-6">
-
-            <label  class="form-label" for="id_estado">estado</label>
-            <br>
-            <select class="cont" name="id_estado">
-                <option value="<?php echo htmlspecialchars($evento['id_estado']); ?>">Seleccione el estado</option>
-                <?php
-                $paquetes = $con->query("SELECT * FROM estados")->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($paquetes as $paquete) {
-                    echo "<option value='" . htmlspecialchars($paquete['id_estado']) . "'>" . htmlspecialchars($paquete['estado']) . "</option>";
-                }
-                ?>
-            </select>
-
-            </div>
-
-             <div class="col-md-6">
-
-             <label  class="form-label" for="id_tipo_art">tipo articulo</label>
-            <br>
-            <select class="cont" name="id_tipo_art">
-                <option value="<?php echo htmlspecialchars($evento['id_tipo_art']); ?>">Seleccione el tipo de articulo</option>
-                <?php
-                $paquetes = $con->query("SELECT * FROM tipo_articulo")->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($paquetes as $paquete) {
-                    echo "<option value='" . htmlspecialchars($paquete['id_tipo_art']) . "'>" . htmlspecialchars($paquete['tipo_articulo']) . "</option>";
-                }
-                ?>
-            </select>
-            </div>
-
-           
+            
 
             <div class="col-12">
 
@@ -149,42 +120,67 @@
             
             <div class="col-12">
 
-              <label for="inputAddress2" class="form-label">Cantidad</label>
-              <input type="number" class="form-control"  name="cantidad" value="<?php echo $fila['cantidad'] ?>">
+              <label for="inputAddress2" class="form-label">Cantidad Actual</label>
+              <input type="number" class="form-control"  readonly value="<?php echo $fila['cantidad'] ?>" min="1">
+
+            </div>
+            <div class="col-12">
+
+              <label for="inputAddress2" class="form-label">Añadir Compra</label>
+              <input type="number" class="form-control"  name="suma" placeholder="cantidad añadida" min="1">
 
             </div>
             <div class="col-12">
 
               <label for="inputAddress2" class="form-label">Valor</label>
-              <input type="number"  class="form-control" name="valor" value="<?php echo $fila['valor'] ?>"></td>      
+              <input type="number"  class="form-control" name="valor" value="<?php echo $fila['valor'] ?>" min="1"></td>      
             </div>
 
-           
+            <div class="col-md-6">
+                                <label for="inputTipoArticulo" class="form-label">Estado</label>
+                                <select class="form-control" name="id_estado">
+                                    <option value="<?php echo $fila['id_estado'] ?>"><?php echo $fila['estado'] ?></option>
+                                    <?php
+                                    $control = $con-> prepare ("SELECT * FROM estados WHERE id_estado != $id_estado");
+                                    $control -> execute();
+                                    while ($fila = $control->fetch(PDO::FETCH_ASSOC))  
+                                    {
+                                        echo "<option value='" . $fila['id_estado'] . "'>" . $fila['estado'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
 
-           
-
-         
+            <div class="col-md-6">
+                                <label for="inputTipoArticulo" class="form-label">Tipo Articulos</label>
+                                <select class="form-control" name="id_tipo_art">
+                                <option value="<?php echo $id_tipo_art ?>"><?php echo $tipo_art ?></option>
+                                    <?php
+                                    $control = $con-> prepare ("SELECT * FROM tipo_articulo WHERE id_tipo_art != $id_tipo_art ");
+                                    $control -> execute();
+                                    while ($fila = $control->fetch(PDO::FETCH_ASSOC))  
+                                    {
+                                        echo "<option value='" . $fila['id_tipo_art'] . "'>" . $fila['tipo_articulo'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
 
             <div class="text-center">
 
             <tr>
 
             <td><input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="actualizar" value="Actualizar"></td>
-                    <td><input type="submit" class="btn" style="background-color: gray; color: white;" name="eliminar" value="Eliminar"></td>
-
-
-
 
             </tr>
 
-              <!-- <button type="submit" class="btn btn-primary">Submit</button>
-
- 
-
-              <button type="reset" class="btn btn-secondary">Reset</button> -->
-
             </div>
 
+
+            <?php
+                                  }
+
+        ?>
           </form><!-- End Multi Columns Form -->
 
 

@@ -25,6 +25,37 @@
     <!-- Template Stylesheet -->
     <link href="../../../css/style.css" rel="stylesheet">
     <link href="../../../css/recuperar_con.css" rel="stylesheet">
+
+    <style>
+        .input_valid {
+            border: 2px solid transparent; /* Borde inicial transparente */
+        }
+        .valid-input {
+            border-color: #0c0; /* Borde verde para entrada válida */
+        }
+        .invalid-input {
+            border-color: #f00; /* Borde rojo para entrada inválida */
+        }
+        .validation-message {
+            font-size: 14px;
+            color: #f00;
+            display: none;
+            margin-top: 5px;
+        }
+        .valid-feedback, .invalid-feedback {
+            display: none;
+            font-size: 15px;
+            margin-top: 5px;
+        }
+        .valid-feedback::before {
+            content: '✔ ';
+            color: #0c0;
+        }
+        .invalid-feedback::before {
+            content: '❌ ';
+            color: #f00;
+        }
+    </style>
 </head>
 <body>
 
@@ -84,6 +115,9 @@ if (isset($_POST['regresar'])){
                             <div class="form-floating">
                                 <input class="form-control border-0 gmail" name="cedula" type="number" pattern="[0-9]{7,15}" title="Solo se permiten números, mínimo 7 dígitos" placeholder="Cedula">
                                 <label for="fecha">Cédula</label>
+                                <div class="valid-feedback">Válido</div>
+                                <div class="invalid-feedback">Inválido</div>
+                                <div class="validation-message"></div>
                             </div>
                         </div>
 
@@ -92,6 +126,9 @@ if (isset($_POST['regresar'])){
                                 <input class="form-control border-0 gmail" name="contrasena" type="password" pattern="[a-zA-Z0-9]{8,11}" title="La contraseña debe tener mínimo 8 dígitos y máximo 11" placeholder="Nueva Contraseña">
                                 <span class="toggle-password" onclick="togglePasswordVisibility(this)"></span>
                                 <label for="fecha">Nueva Contraseña</label>
+                                <div class="valid-feedback">Válido</div>
+                                <div class="invalid-feedback">Inválido</div>
+                                <div class="validation-message"></div>
                             </div>
                         </div>
 
@@ -100,6 +137,9 @@ if (isset($_POST['regresar'])){
                                 <input class="form-control border-0 gmail" name="confirmar_contrasena" type="password" pattern="[a-zA-Z0-9]{8,11}" title="La contraseña debe tener mínimo 8 dígitos y máximo 11" placeholder="Confirmar Contraseña">
                                 <span class="focus-border"></span>
                                 <label for="fecha">Confirmar Contraseña</label>
+                                <div class="valid-feedback">Válido</div>
+                                <div class="invalid-feedback">Inválido</div>
+                                <div class="validation-message"></div>
                             </div>
                         </div>
                         
@@ -116,18 +156,69 @@ if (isset($_POST['regresar'])){
 </div>
 
 <script>
-function validarContraseñas() {
-    var contrasena = document.forms["form1"]["contrasena"].value;
-    var confirmarContrasena = document.forms["form1"]["confirmar_contrasena"].value;
+    document.getElementById('cedula').addEventListener('input', function() {
+        var input = this.value.trim();
+        var validationMessage = this.parentElement.querySelector('.validation-message');
+        var validFeedback = this.parentElement.querySelector('.valid-feedback');
+        var invalidFeedback = this.parentElement.querySelector('.invalid-feedback');
 
-    // Verificar si las contraseñas coinciden
-    if (contrasena !== confirmarContrasena) {
-        alert("Las contraseñas no coinciden");
-        return false;
-    }
+        
+        if (/^\d{8,10}$/.test(input)) {
+            this.classList.remove('invalid-input');
+            this.classList.add('valid-input');
+            validFeedback.style.display = 'block';
+            invalidFeedback.style.display = 'none';
+            validationMessage.textContent = '';
+        } else {
+            this.classList.remove('valid-input');
+            this.classList.add('invalid-input');
+            invalidFeedback.style.display = 'block';
+            validFeedback.style.display = 'none';
+            validationMessage.textContent = 'El campo Cédula debe contener minimo 8 y maximo 11 dígitos numéricos.';
+        }
+    });
 
-    return true;
-}
+  
+    document.getElementById('contrasena').addEventListener('input', function() {
+        var input = this.value.trim();
+        var validationMessage = this.parentElement.querySelector('.validation-message');
+        var validFeedback = this.parentElement.querySelector('.valid-feedback');
+        var invalidFeedback = this.parentElement.querySelector('.invalid-feedback');
+        if (input.length >= 8 && input.length <= 11) {
+            this.classList.remove('invalid-input');
+            this.classList.add('valid-input');
+            validFeedback.style.display = 'block';
+            invalidFeedback.style.display = 'none';
+            validationMessage.textContent = '';
+        } else {
+            this.classList.remove('valid-input');
+            this.classList.add('invalid-input');
+            invalidFeedback.style.display = 'block';
+            validFeedback.style.display = 'none';
+            validationMessage.textContent = 'La contraseña debe tener minimo 8 y maximo 11 caracteres.';
+        }
+    });
+
+
+    document.getElementById('contrasena').addEventListener('input', function() {
+        var input = this.value.trim();
+        var validationMessage = this.parentElement.querySelector('.validation-message');
+        var validFeedback = this.parentElement.querySelector('.valid-feedback');
+        var invalidFeedback = this.parentElement.querySelector('.invalid-feedback');
+        if (input.length >= 8 && input.length <= 11) {
+            this.classList.remove('invalid-input');
+            this.classList.add('valid-input');
+            validFeedback.style.display = 'block';
+            invalidFeedback.style.display = 'none';
+            validationMessage.textContent = '';
+        } else {
+            this.classList.remove('valid-input');
+            this.classList.add('invalid-input');
+            invalidFeedback.style.display = 'block';
+            validFeedback.style.display = 'none';
+            validationMessage.textContent = 'La contraseña debe tener al menos minimo 8 y maximo 11 caracteres.';
+        }
+    });
 </script>
 
 </body>

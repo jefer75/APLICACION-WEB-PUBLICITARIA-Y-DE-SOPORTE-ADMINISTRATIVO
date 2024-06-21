@@ -1,0 +1,93 @@
+/* General body styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container styling */
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #007bff;
+    text-align: center;
+}
+
+/* Form layout styling */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-column {
+    flex: 0 0 48%;
+    margin-bottom: 20px;
+}
+
+.form-column.full-width {
+    flex: 0 0 100%;
+}
+
+.form-floating label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.form-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Button styling */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}

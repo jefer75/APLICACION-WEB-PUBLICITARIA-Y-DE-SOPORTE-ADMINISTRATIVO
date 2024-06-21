@@ -113,15 +113,36 @@ header('Location: ../../../index.php');
                           <form action="../../../controller/validar_codigo.php" method="POST" name="form1">
     <div class="row g-3 inputs">
         <div class="col-sm-6 user">
-            <div class="form-floating">
-                <input class="form-control border-0 gmail" name="codigo" id="c" type="text" placeholder="Código">
-                <label for="codigo">Código</label>
-            </div>
+        <div class="container">
+    <div class="form-floating">
+        <input class="form-control border-0 gmail" name="codigo" id="codigo" type="text" placeholder="Código">
+        <label for="codigo">Código</label>
+    </div>
+</div>
+
+<script>
+    const codigoInput = document.getElementById('codigo');
+
+    codigoInput.addEventListener('input', function() {
+        // Eliminar espacios en blanco y convertir a mayúsculas
+        let codigo = this.value.trim().toUpperCase();
+        
+        // Eliminar caracteres no permitidos (dejar solo números y letras)
+        codigo = codigo.replace(/[^a-zA-Z0-9]/g, '');
+
+        // Limitar la longitud a 4 caracteres
+        codigo = codigo.slice(0, 4);
+
+        // Asignar el valor limpio de nuevo al campo de texto
+        this.value = codigo;
+    });
+</script>
         </div>
         <div class="col-12">
             <button type="submit" name="verificar" class="btn btn-primary w-100 py-3 ingresar">Restablecer</button>
         </div>
     </div>
+    
 </form>
 
                       </div>

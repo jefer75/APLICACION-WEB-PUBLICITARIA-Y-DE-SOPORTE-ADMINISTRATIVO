@@ -68,19 +68,82 @@
         </div>
 
         <div class="col-md-6">
-          <label for="inputPassword5" class="form-label">Cedula de cliente</label>
-          <input  class="form-control" type="text" name="cedula" pattern="[0-9]{7,12}" title="Solo se aceptan numeros" placeholder="Contacto" >
-        </div>
+    <label for="inputPassword5" class="form-label">Cedula de cliente</label>
+    <input class="form-control" type="text" id="cedulaInput" name="cedula" placeholder="Cedula de cliente (entre 8 y 10 dígitos)">
+</div>
 
-        <div class="col-md-6">
-          <label for="inputPassword5" class="form-label">Lugar</label>
-          <input  class="form-control" type="text" name="lugar" pattern="[A-Za-z0-9#-/]{8,30}" title="Debe contener al menos 8 caracteres, incluyendo letras, números y caracteres especiales" placeholder="Lugar" >
-        </div>
+<script>
+    // Obtener referencia al elemento de entrada de cedula
+    var cedulaInput = document.getElementById('cedulaInput');
 
-        <div class="col-md-6">
-          <label for="inputPassword5" class="form-label">Cantidad de  niños</label>
-          <input  class="form-control" type="text" name="cantidad" pattern="[0-9]{1,3}" title="Solo se aceptan numeros, minimo 1 caracter y maximo 3" placeholder="Cantidad de niños" >
-        </div>
+    // Agregar un event listener para el evento de cambio de valor
+    cedulaInput.addEventListener('input', function() {
+        // Obtener el valor actual del campo de entrada
+        var cedulaValue = cedulaInput.value.trim();
+
+        // Validar si la entrada contiene solo números y tiene una longitud entre 8 y 10 dígitos
+        if (/^\d{8,10}$/.test(cedulaValue)) {
+            // La entrada es válida
+            cedulaInput.setCustomValidity('');
+        } else {
+            // La entrada no es válida, establecer un mensaje de validación personalizado
+            cedulaInput.setCustomValidity('Por favor, ingrese solo números con una longitud entre 8 y 10 dígitos.');
+        }
+    });
+</script>
+
+
+<div class="col-md-6">
+    <label for="inputPassword5" class="form-label">Lugar</label>
+    <input class="form-control" type="text" id="lugarInput" name="lugar" placeholder="Lugar (máximo 30 caracteres)">
+</div>
+
+<script>
+    // Obtener referencia al elemento de entrada de lugar
+    var lugarInput = document.getElementById('lugarInput');
+
+    // Agregar un event listener para el evento de cambio de valor
+    lugarInput.addEventListener('input', function() {
+        // Obtener el valor actual del campo de entrada
+        var lugarValue = lugarInput.value.trim();
+
+        // Validar si la entrada contiene solo letras y espacios y tiene una longitud de hasta 30 caracteres
+        if (/^[A-Za-z\s]{1,30}$/.test(lugarValue)) {
+            // La entrada es válida
+            lugarInput.setCustomValidity('');
+        } else {
+            // La entrada no es válida, establecer un mensaje de validación personalizado
+            lugarInput.setCustomValidity('Por favor, ingrese solo letras y espacios, con un máximo de 30 caracteres.');
+        }
+    });
+</script>
+
+<div class="col-md-6">
+    <label for="inputPassword5" class="form-label">Cantidad de niños</label>
+    <input class="form-control" type="text" id="cantidadInput" name="cantidad" placeholder="Cantidad de niños (máximo 3 dígitos)">
+</div>
+
+<script>
+    // Obtener referencia al elemento de entrada de cantidad de niños
+    var cantidadInput = document.getElementById('cantidadInput');
+
+    // Agregar un event listener para el evento de cambio de valor
+    cantidadInput.addEventListener('input', function() {
+        // Obtener el valor actual del campo de entrada
+        var cantidadValue = cantidadInput.value.trim();
+
+        // Validar si la entrada tiene un máximo de 3 dígitos
+        if (/^\d{1,3}$/.test(cantidadValue)) {
+            // La entrada es válida
+            cantidadInput.setCustomValidity('');
+        } else {
+            // La entrada no es válida, establecer un mensaje de validación personalizado
+            cantidadInput.setCustomValidity('Por favor, ingrese un máximo de 3 dígitos.');
+        }
+    });
+</script>
+
+
 
         <div class="col-md-6">
           <label for="inputPassword5" class="form-label">Fecha de inicio</label>
@@ -101,20 +164,58 @@
           <input  class="form-control" type="time" name="hora_fin"  placeholder="Hora de fin" >
         </div>
         <div class="col-md-6">
-          <label for="inputPassword5" class="form-label">Descripcion</label>
-          <input  class="form-control" type="text" name="descripcion" pattern="[A-Za-z/s]{10,40}" title="Solo se aceptan letras, minimo 8 caracteres" placeholder="Descripcion">
-        </div>
-        
-        <div class="col-md-6">
-          <label for="inputPassword5" class="form-label">Contacto</label>
-          <input  class="form-control" type="text" name="contacto" pattern="[0-9]{9,11}" title="Solo se aceptan numeros" placeholder="Contacto" >
-        </div>
+    <label for="inputPassword5" class="form-label">Descripción</label>
+    <input class="form-control" type="text" id="descripcionInput" name="descripcion" placeholder="Descripción (máximo 50 caracteres)">
+</div>
+
+<script>
+    // Obtener referencia al elemento de entrada de descripción
+    var descripcionInput = document.getElementById('descripcionInput');
+
+    // Agregar un event listener para el evento de cambio de valor
+    descripcionInput.addEventListener('input', function() {
+        // Obtener el valor actual del campo de entrada
+        var descripcionValue = descripcionInput.value.trim();
+
+        // Validar si la longitud del valor excede 50 caracteres
+        if (descripcionValue.length > 50) {
+            // Truncar el valor para que no exceda los 50 caracteres
+            descripcionInput.value = descripcionValue.slice(0, 50);
+        }
+    });
+</script>
+
+<div class="col-md-6">
+    <label for="inputPassword5" class="form-label">Contacto</label>
+    <input class="form-control" type="text" id="contactoInput" name="contacto" placeholder="Contacto (10 dígitos numéricos)" required>
+</div>
+
+<script>
+    // Obtener referencia al elemento de entrada de contacto
+    var contactoInput = document.getElementById('contactoInput');
+
+    // Agregar un event listener para el evento de cambio de valor
+    contactoInput.addEventListener('input', function() {
+        // Obtener el valor actual del campo de entrada
+        var contactoValue = contactoInput.value.trim();
+
+        // Validar si la longitud del valor es exactamente 10 caracteres y si contiene solo números
+        if (/^\d{10}$/.test(contactoValue)) {
+            // La entrada es válida
+            contactoInput.setCustomValidity('');
+        } else {
+            // La entrada no es válida, establecer un mensaje de validación personalizado
+            contactoInput.setCustomValidity('Por favor, ingrese un número de contacto válido con exactamente 10 dígitos.');
+        }
+    });
+</script>
+
       
           <div class="text-center">
             <tr>
-            <button class="btn" id="añadir_arti">Añadir articulo</button>
-
-            <div id="añadir_articulo"></div>
+            <button id="añadir_art">Crear Contenedor</button>
+        
+    <div id="contenido_art">
 
             <input type="submit" name="registrar" value="Registro" class="btn btn-primary modal_close">
             </tr>
@@ -122,6 +223,7 @@
       </form>
     </div>
 </dialog>
+
 
 <!-- Table with stripped rows -->
 <table class="table datatable">

@@ -1,5 +1,8 @@
 <?php
-include 'plantilla.php';
+  include 'plantilla.php';
+
+
+
 ?>
 
   <title>Bienvenido-inicio</title>

@@ -10,7 +10,7 @@ if (isset($_POST["inicio"])) {
     
     $contrasena = htmlentities(addslashes($_POST['contrasena']));
 
-    $sql = $con->prepare("SELECT*FROM usuarios where cedula = '$cedula'");
+    $sql = $con->prepare("SELECT * FROM usuarios where cedula = '$cedula'");
     $sql->execute();
     $fila = $sql->fetch();
 
@@ -26,7 +26,7 @@ if (isset($_POST["inicio"])) {
         }
         
      else if ($_SESSION['id_tipo_user'] == 2) {
-         header ("Location: ../model/cliente/cliente.php");
+         header ("Location: ../model/cliente/plantilla.php");
          exit();
          }
          else if ($_SESSION['id_tipo_user'] == 3) {
