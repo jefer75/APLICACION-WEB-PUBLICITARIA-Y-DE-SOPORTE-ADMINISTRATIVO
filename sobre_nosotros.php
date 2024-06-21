@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
-
+    
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -43,32 +43,18 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-<<<<<<< HEAD:sobre_nosotros.html
-                    <a href="index.php" class="nav-item nav-link active">Inicio</a>
-=======
                     <a href="index.php" class="nav-item nav-link">Inicio</a>
->>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f:sobre_nosotros.php
 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Recreación</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-<<<<<<< HEAD:sobre_nosotros.html
-                            <a href="infantil.html" class="dropdown-item">Infantil</a>
-                            <a href="adultos.html" class="dropdown-item">Adultos</a>
-                        </div>
-                    </div>
-
-                    <a href="decoracion.html" class="nav-item nav-link">Decoración</a>
-                    <a href="sobre_nosotros.html" class="nav-item nav-link">Sobre Nosotros</a>                    
-=======
                             <a href="infantil.php" class="dropdown-item">Infantil</a>
                             <a href="adultos.php" class="dropdown-item">Adultos</a>
                         </div>
                     </div>
 
                     <a href="decoracion.php" class="nav-item nav-link">Decoración</a>
-                    <a href="sobre_nosotros.php" class="nav-item nav-link active">Sobre Nosotros</a>
->>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f:sobre_nosotros.php
+                    <a href="sobre_nosotros.php" class="nav-item nav-link active">Sobre Nosotros</a>                    
                     <a href="contact.php" class="nav-item nav-link">Contáctanos</a>
                 </div>
                 <a href="model/administrador/inicio/login.php" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Iniciar Sesión<i class="fa fa-arrow-right ms-3"></i></a>
@@ -81,18 +67,9 @@
         <div class="container-xxl py-5 page-header position-relative mb-5">
             <div class="container py-5">
                 <h1 class="display-2 text-white animated slideInDown mb-4">Quienes Somos?</h1>
-<<<<<<< HEAD:sobre_nosotros.html
-                <nav aria-label="breadcrumb animated slideInDown">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">Sobre Nosotros</li>
-                    </ol>
-                </nav>
-=======
                 <div class="col-sm-6">
                                 <a class="btn btn-primary rounded-pill py-3 px-5" href="#historia">Conoce más.</a>
                             </div>
->>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f:sobre_nosotros.php
             </div>
         </div>
         <!-- Page Header End -->
@@ -104,9 +81,9 @@
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                         <h1 class="mb-4">Enterate de más sobre nuestra identidad empresarial</h1>
-                        <p class="mb-4">En el corazón de Ibagué y sus alrededores, Arlequin Eventos brilla como un faro de alegría y excelencia desde su fundación en octubre de 2019. Bajo la dirección de Stephania Henao y la administración de Gloria Henao, esta empresa ha dejado una marca imborrable en la industria la animación de eventos. Su compromiso con la calidad, la calidez humana y el desarrollo juvenil la convierten en un pilar invaluable en la comunidad. Acompáñanos en este recorrido donde descubriremos la magia de Arlequin Eventos y su capacidad para crear momentos inolvidables.</p>
+                        <p class="mb-4">La empresa Arlequin Eventos fue creada en el año 2019, para el mes de octubre por Stephania Henao, quien es la fundadora y actual dueña de la empresa, cuenta con una administradora, la cual es Gloria Henao. Durante los ultimos 4 años ha brindado felicidad y alegria a sus clientes, se encuentra ubicada en la ciudad de ibague, sin embargo, tambien realiza eventos para municipios aledaños dentro del departamento. A lo largo de su existencia ha brindado la oportunidad a los jovenes de obtener su primer empleo, lo cual ayuda tanto al desarrollo personal, como al desarrollo economico.</p>
                         <div class="row g-4 align-items-center">
-
+                            
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center">
                                     <img class="rounded-circle flex-shrink-0" src="imagenes/logos/stephania.jpg" alt="" style="width: 45px; height: 45px;">
@@ -136,51 +113,41 @@
         </div>
         <!-- About End -->
 
-
+        
 <!-- Facilities Start -->
 <div class="container-xxl py-5">
     <div class="container" id="inicio">
         <div class="row g-4">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;" id="historia">
                 <h1 class="mb-3">Historia</h1>
-                <p>La empresa Arlequin Eventos fue creada en el año 2019, para el mes de octubre por Stephania Henao, quien es la fundadora y actual dueña de la empresa, cuenta con una administradora, la cual es Gloria Henao. Durante los ultimos 4 años ha brindado felicidad y alegría a sus clientes, se encuentra ubicada en la ciudad de ibagué, sin embargo, también realiza eventos para municipios aledaños dentro del departamento. A lo largo de su existencia ha brindado la oportunidad a los jóvenes de obtener su primer empleo, lo cual ayuda tanto al desarrollo personal, como al desarrollo económico.</p>
+                <p>La empresa Arlequin Eventos fue creada en el año 2019, para el mes de octubre por Stephania Henao, quien es la fundadora y actual dueña de la empresa, cuenta con una administradora, la cual es Gloria Henao. Durante los ultimos 4 años ha brindado felicidad y alegria a sus clientes, se encuentra ubicada en la ciudad de ibague, sin embargo, tambien realiza eventos para municipios aledaños dentro del departamento. A lo largo de su existencia ha brindado la oportunidad a los jovenes de obtener su primer empleo, lo cual ayuda tanto al desarrollo personal, como al desarrollo economico.</p>
             </div>
+            <div class="row g-4">
 
-<div class="container-xxl py-5">
-            <div class="container">
-                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="testimonial-item bg-light rounded p-5">
-
-                        <p class="fs-5">Arlequin Eventos es una empresa en la cual nos encargamos de organizar eventos teniendo en cuenta elementos como la animación, la recreación y la logística. Entendemos que los recuerdos son valiosos, por ello, llevamos alegría a los momentos más importantes de nuestros clientes. Ofrecemos un servicio de calidad con calor humano.</p>
-                        <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-
-                            <div class="ps-3">
-                                <h3 class="mb-1">Misión</h3>
-                            </div>
-                            <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="facility-item">
+                        <div class="facility-icon bg-info">
+                            <span class="bg-info"></span>
+                            <i class="fa fa-futbol teacher fa-3x text-info"></i>
+                            <span class="bg-info"></span>
                         </div>
-<<<<<<< HEAD:sobre_nosotros.html
                         <div class="facility-text bg-info">
-                        <h3 class="text-info mb-3">Misión</h3>
-                        <p class="mb-0">Arlequin Eventos es una empresa en la cual nos encargamos de organizar eventos teniendo en cuenta elementos como la animación, la recreación y la logística. Entendemos que los recuerdos son valiosos, por ello, llevamos alegría a los momentos más importantes de nuestros clientes. Ofrecemos un servicio de calidad con calor humano.</p>
+                        <h3 class="text-info mb-3">Mision</h3>
+                        <p class="mb-0">Arlequin Eventos es una empresa en la cual nos encargamos de organizar eventos teniendo en cuenta elementos como la animacion, la recreacion y la logistica. Entendemos que los recuerdos son valiosos, por ello, llevamos alegria a los momentos mas importantes de nuestros clientes. Ofrecemos un servicio de calidad con calor humano.</p>
                         
-=======
->>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f:sobre_nosotros.php
                     </div>
-                    <div class="testimonial-item bg-light rounded p-5">
-                        <p class="fs-5">Posicionarse como lideres en diseño, planificacion, produccion y resultados de eventos que dejen en nuestros clientes recuerdos inolvidables de momentos especiales.</p>
-                        <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-
-                            <div class="ps-3">
-                                <h3 class="mb-1">Visión</h3>
-                            </div>
-                            <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
-                        </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="facility-item">
+                    <div class="facility-icon bg-warning">
+                        <span class="bg-warning"></span>
+                        <i class="fa fa-home fa-3x text-warning"></i>
+                        <span class="bg-warning"></span>
                     </div>
-<<<<<<< HEAD:sobre_nosotros.html
                     <div class="facility-text bg-warning">
-                        <h3 class="text-warning mb-3 ">Visión</h3>
-                        <p class="mb-0">Posicionarse como lideres en diseño, planificación, producción y resultados de eventos que dejen en nuestros clientes recuerdos inolvidables de momentos especiales.</p>
+                        <h3 class="text-warning mb-3 ">Vision</h3>
+                        <p class="mb-0">Posicionarse como lideres en diseño, planificacion, produccion y resultados de eventos que dejen en nuestros clientes recuerdos inolvidables de momentos especiales.</p>
                         
                     </div>
                 </div>
@@ -196,16 +163,11 @@
                         <h3 class="text-primary mb-3 ">Valores</h3>
                         
                         <ul class="mb-0">
-=======
-                    <div class="testimonial-item bg-light rounded p-5">
-                         <ul class="fs-5">
->>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f:sobre_nosotros.php
                             <li>Honestidada</li>
                             <li>Cumplimiento</li>
                             <li>Trabajo en equipo</li>
-                            <li>Comunicación</li>
+                            <li>Comunicacion</li>
                         </ul>
-<<<<<<< HEAD:sobre_nosotros.html
                     </div>
                 </div>
             </div>
@@ -228,21 +190,16 @@
                         <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                             <div class="h-100 d-flex flex-column justify-content-center p-5">
                                 <h1 class="mb-4">Conviertete en Animador.</h1>
-                                <p class="mb-4">Para ser parte de nuestro equipo es indispensable que estes dispuesto a aprender cosas nuevas, y arriesgarte a hacer cosas que probablemente nunca pensaste hacer, por lo que requerimos que seas un entusiasta de los niños.
+                                <p class="mb-4">Para ser parte de nuestro equipo es indispensable que estes dispuesto a aprender cosas nuevas, y arriezgarte a hacer cosas que probablemente nunca pensaste hacer, por lo que requerimos que seas un entusiasta de los niños.
                                 </p>
                                 <a class="btn btn-primary py-3 px-5" href="">Postulate<i class="fa fa-arrow-right ms-2"></i></a>
-=======
-                        <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                            <div class="ps-3">
-                                <h3 class="mb-1">Valores</h3>
->>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f:sobre_nosotros.php
                             </div>
-                            <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Call To Action End -->
 
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -261,13 +218,13 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <h3 class="text-white mb-4">Acceso Rápido</h3>
-                        <a class="btn btn-link text-white-50" href="index.php">Inicio</a>
-                        <a class="btn btn-link text-white-50" href="infantil.html">Recreación Infantil</a>
-                        <a class="btn btn-link text-white-50" href="adultos.html">Recreación Adultos</a>
-                        <a class="btn btn-link text-white-50" href="decoracion.html">Decoración</a>
-                        <a class="btn btn-link text-white-50" href="sobre_nosotros.html">Sobre Nosotros</a>
-                        <a class="btn btn-link text-white-50" href="contact.php">Contáctanos</a>
+                <h3 class="text-white mb-4">Acceso Rapido</h3>
+                <a class="btn btn-link text-white-50" href="#header">Inicio</a>
+                <a class="btn btn-link text-white-50" href="">Recreacion Infantil</a>
+                <a class="btn btn-link text-white-50" href="">Recreacion Adultos</a>
+                <a class="btn btn-link text-white-50" href="">Decoracion</a>
+                <a class="btn btn-link text-white-50" href="sobre_n.html">Sobre Nosotros</a>
+                <a class="btn btn-link text-white-50" href="contact.html">Contactanos</a>
             </div>
             <div class="col-lg-3 col-md-6">
                 <h3 class="text-white mb-4">Galeria de Fotos</h3>
@@ -294,9 +251,9 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <h3 class="text-white mb-4">Nuevo Comentario</h3>
-                <p>Danos tu opinión sobre nuestro servicio o nuestro sitio web.</p>
+                <p>Danos tu opinion sobre nuestro servicio o nuestro sitio web.</p>
                 <div class="position-relative mx-auto" style="max-width: 400px;">
-                    <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Danos tu opnión">
+                    <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Danos tu opnion">
                     <br>
                     <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Enviar</button>
                 </div>
@@ -307,18 +264,13 @@
         <div class="copyright">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-<<<<<<< HEAD:sobre_nosotros.html
-                    &copy; <a class="border-bottom" href="index.php">Arlequin Eventos</a>, All Right Reserved. 
+                    &copy; <a class="border-bottom" href="#">Arlequin Eventos</a>, All Right Reserved. 
                     
-=======
-                    &copy; <a class="border-bottom" href="#">Arlequin Eventos</a>, All Right Reserved.
-
->>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f:sobre_nosotros.php
                     <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    Designed By <a class="border-bottom" href="">Elitech JYDT</a>
-                    <br>Distributed By: <a class="border-bottom" href="" target="_blank">Elitech JYDT</a>
+                    Designed By <a class="border-bottom" href="https://htmlcodex.com">Elitech JYDT</a>
+                    <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">Elitech JYDT</a>
                 </div>
-
+                
             </div>
         </div>
     </div>

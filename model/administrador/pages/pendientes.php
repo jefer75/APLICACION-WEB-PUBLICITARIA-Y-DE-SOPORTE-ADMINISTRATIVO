@@ -58,6 +58,8 @@ $con = $db -> conectar();
             <div class="card-body">
               <h5 class="card-title">Pendientes</h5>
 
+              <td><a href="funciones/factura.php?id_eventos=<?php echo $id_eventos ?>" class="boton"><i class="bi bi-file-earmark-pdf"></i></a></td>
+
               <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
               
 

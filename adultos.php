@@ -3,11 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-<<<<<<< HEAD:infantil.html
-    <title>Recreación Infantil</title>
-=======
     <title>Recreación Adultos</title>
->>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f:adultos.php
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -34,7 +30,6 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/infantil.css" rel="stylesheet">
 </head>
 
 <body>
@@ -48,20 +43,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-<<<<<<< HEAD:infantil.html
-                    <a href="index.php" class="nav-item nav-link active">Inicio</a>
-
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Recreación</a>
-                        <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                            <a href="infantil.html" class="dropdown-item">Infantil</a>
-                            <a href="adultos.html" class="dropdown-item">Adultos</a>
-                        </div>
-                    </div>
-
-                    <a href="decoracion.html" class="nav-item nav-link">Decoración</a>
-                    <a href="sobre_nosotros.html" class="nav-item nav-link">Sobre Nosotros</a>                    
-=======
                     <a href="index.php" class="nav-item nav-link">Inicio</a>
 
                     <div class="nav-item dropdown">
@@ -74,7 +55,6 @@
 
                     <a href="decoracion.php" class="nav-item nav-link">Decoración</a>
                     <a href="sobre_nosotros.php" class="nav-item nav-link">Sobre Nosotros</a>                    
->>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f:adultos.php
                     <a href="contact.php" class="nav-item nav-link">Contáctanos</a>
                 </div>
                 <a href="model/administrador/inicio/login.php" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Iniciar Sesión<i class="fa fa-arrow-right ms-3"></i></a>
@@ -85,19 +65,11 @@
         <!-- Page Header End -->
         <div class="container-xxl py-5 page-header position-relative mb-5">
             <div class="container py-5">
-<<<<<<< HEAD:infantil.html
-                <h1 class="display-2 text-white animated slideInDown mb-4">Recreación Infantil</h1>
-                <nav aria-label="breadcrumb animated slideInDown">
-                    <ol class="breadcrumb">
-                       
-                        <li class="breadcrumb-item text-white active" aria-current="page">Aquí, cada risa cuenta una historia y cada juego es una nueva aventura esperando a ser descubierta.</li>
-=======
                 <h1 class="display-2 text-white animated slideInDown mb-4">Recreación para Adultos</h1>
                 <nav aria-label="breadcrumb animated slideInDown">
                     <ol class="breadcrumb">
                        
                         <li class="breadcrumb-item text-white active" aria-current="page">Experiencias recreativas exclusivas para adultos: diversión y relajación en un solo lugar.</li>
->>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f:adultos.php
                     </ol>
                 </nav>
             </div>
@@ -108,11 +80,6 @@
         <!-- About Start -->
         <div class="container-xxl py-5">
             <div class="container">
-<<<<<<< HEAD:infantil.html
-                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <h1 class="mb-3">Bienvenidos</h1>
-                    <p>Arlequín Eventos se destaca por poner la diversión y la alegría en el centro de cada evento infantil que organiza. A través de una variedad de actividades emocionantes y seguras, como juegos al aire libre y desafíos creativos en grupo, se asegura de crear experiencias inolvidables para los niños. Su equipo de animadores capacitados no solo estimula la imaginación de los pequeños, sino que también promueve la cooperación y garantiza momentos de risas y entretenimiento en un ambiente seguro y supervisado. Cada evento se convierte en una aventura mágica que deja recuerdos duraderos en los niños y sus familias.</p>
-=======
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                         <h1 class="mb-4">Bienvenidos</h1>
@@ -132,157 +99,10 @@
                             </div>
                         </div>
                     </div>
->>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f:adultos.php
                 </div>
-                </div></div>
-
-        <!-- recreacio -->
-        <div class="cuadro">
-
-        <div class="info">
-            <div class="con">
-               <div class="img">
-                  <img src="imagenes/contenido/img91.jpeg">
-               </div>
-               <div class="top-text">
-                    <h3>Pintucaritas 🎨</h3>
-                  
-               </div>
-               <div class="bottom-text">
-                  <div class="text">
-                    Nuestro servicio de pintacaritas transforma rostros en lienzos vivientes llenos de color y diversión. Con diseños creativos y seguros, nuestros artistas hacen realidad los sueños de los niños, convirtiendo cada evento en una experiencia mágica y llena de alegría.
-                  </div>
-                  <div class="btn">
-                     <a href="imagenes/contenido/img91.jpeg">Ver Imagen</a>
-                  </div>
-               </div>
             </div>
-            <div class="con">
-                <div class="img">
-                   <img src="imagenes/contenido/img10.jpg">
-                </div>
-                <div class="top-text">
-                     <h3>Recreación 🤹‍♂️</h3>
-                   
-                </div>
-                <div class="bottom-text">
-                   <div class="text">
-                     En nuestra área de recreación infantil, la emoción es constante. Desde juegos al aire libre hasta desafíos creativos, cada actividad está diseñada para estimular la imaginación y promover la diversión en un ambiente seguro. ¡La aventura espera en nuestro espacio de recreación para niños!
-                   </div>
-                   <div class="btn">
-                      <a href="imagenes/contenido/img10.jpg">Ver Imagen</a>
-                   </div>
-                </div>
-             </div>
-            <div class="con">
-               <div class="img">
-                  <img src="imagenes/contenido/img34.jpg">
-               </div>
-               <div class="top-text">
-                  <h3>Show de Payasitos 🤡</h3>
-               </div>
-               <div class="bottom-text">
-                  <div class="text">
-                    Nuestro show de payasitos es diversión garantizada para toda la familia! Con su humor travieso y travesuras encantadoras, hacen reír a grandes y chicos por igual. ¡Una experiencia llena de risas y alegría que todos recordarán.
-                  </div>
-                  <div class="btn">
-                     <a href="imagenes/contenido/img34.jpg">Ver Imagen</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-
-        <div class="info">
-            <div class="con">
-               <div class="img">
-                  <img src="imagenes/contenido/img37.jpg">
-               </div>
-               <div class="top-text">
-                    <h3>Show de Magia 🎩✨</h3>
-                  
-               </div>
-               <div class="bottom-text">
-                  <div class="text">
-                    Déjate sorprender por nuestro espectáculo de magia, donde la cartomagia y la misteriosa caja mágica te dejarán sin aliento! Disfruta de trucos fascinantes que desafían la lógica y la imaginación en cada acto. ¡Una experiencia única llena de asombro y diversión para todos
-                  </div>
-                  <div class="btn">
-                     <a href="imagenes/contenido/img37.jpg">Ver Imagen</a>
-                  </div>
-               </div>
-            </div>
-            <div class="con">
-               <div class="img">
-                  <img src="imagenes/contenido/img76.jpeg">
-               </div>
-               <div class="top-text">
-                  <h3>Show de Titeres  🎭</h3>
-               </div>
-               <div class="bottom-text">
-                  <div class="text">
-                    Disfruta de un espectáculo mágico con títeres que cobran vida. Con personajes encantadores y emocionantes historias, cada actuación es una aventura para toda la familia. ¡Déjate llevar por la magia de los títeres y crea recuerdos inolvidables!
-                  </div>
-                  <div class="btn">
-                     <a href="imagenes/contenido/img76.jpeg">Ver Imagen</a>
-                  </div>
-               </div>
-            </div>
-            <div class="con">
-               <div class="img">
-                  <img src="imagenes/contenido/img113.jpg">
-               </div>
-               <div class="top-text">
-                  <h3>Globoflexia 🎈</h3>
-               </div>
-               <div class="bottom-text">
-                  <div class="text">
-                    Déjate sorprender por nuestro espectáculo de globoflexia! Con habilidades impresionantes, nuestro artista transforma simples globos en figuras encantadoras que cautivan a grandes y pequeños. Disfruta de una experiencia llena de color y diversión que hará brillar tu evento.
-                  </div>
-                  <div class="btn">
-                     <a href="imagenes/contenido/img113.jpg">Ver Imagen</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-
-         <div class="info">
-            <div class="con">
-               <div class="img">
-                  <img src="imagenes/contenido/img116.jpg">
-               </div>
-               <div class="top-text">
-                    <h3>Personaje ✨</h3>
-                  
-               </div>
-               <div class="bottom-text">
-                  <div class="text">
-                    Imagina la emoción cuando los personajes favoritos de tus niños cobran vida en su fiesta! Desde princesas hasta superhéroes, nuestros invitados especiales llenarán el evento de diversión y magia. Con juegos, bailes y muchas sorpresas, ¡cada momento será inolvidable en la fiesta de tu pequeño!
-                  </div>
-                  <div class="btn">
-                     <a href="imagenes/contenido/img116.jpg">Ver Imagen</a>
-                  </div>
-               </div>
-            </div>
-            <div class="con">
-               <div class="img">
-                  <img src="imagenes/contenido/img142.jpeg">
-               </div>
-               <div class="top-text">
-                  <h3>Hora Loca 🎉🕺💃</h3>
-               </div>
-               <div class="bottom-text">
-                  <div class="text">
-                    ¡Prepárate para una hora loca llena de diversión y energía! Con música vibrante, bailes contagiosos y accesorios coloridos, nuestra hora loca transforma cualquier evento en una fiesta inolvidable. ¡Deja que nuestros animadores te hagan bailar, reír y disfrutar al máximo!
-                  </div>
-                  <div class="btn">
-                     <a href="imagenes/contenido/img142.jpeg">Ver Imagen</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-
         </div>
-
-        <!-- fin recre -->
+        <!-- Call To Action End -->
 
 
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -307,11 +127,7 @@
                         <a class="btn btn-link text-white-50" href="adultos.html">Recreación Adultos</a>
                         <a class="btn btn-link text-white-50" href="decoracion.html">Decoración</a>
                         <a class="btn btn-link text-white-50" href="sobre_nosotros.html">Sobre Nosotros</a>
-<<<<<<< HEAD:infantil.html
-                        <a class="btn btn-link text-white-50" href="contact.php">Contáctanos</a>
-=======
                         <a class="btn btn-link text-white-50" href="contact.html">Contáctanos</a>
->>>>>>> caa5871939e387c85e83b6bcc44d2640299dda2f:adultos.php
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">Galeria de Fotos</h3>

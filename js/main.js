@@ -79,24 +79,54 @@
     
 })(jQuery);
 
-const allImages = document.querySelectorAll(".images .img");
-const lightbox = document.querySelector(".lightbox");
-const closeImgBtn = lightbox.querySelector(".close-icon");
+    function validarFormulario() {
+        var nombre = document.getElementById('nombres').value;
+        var apellido = document.getElementById('apellidos').value;
+        var documento = document.getElementById('documento').value;
+        var contacto = document.getElementById('telefono').value;
+        var correo = document.getElementById('correo').value;
+        var contrasena = document.getElementById('contrasena').value;
 
-allImages.forEach(img => {
-    // Calling showLightBox function with passing clicked img src as argument
-    img.addEventListener("click", () => showLightbox(img.querySelector("img").src));
-});
+        // Validar nombre
+        var regexNombre = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,28}( [a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,28})?$/;
+        if (!regexNombre.test(nombre)) {
+            alert("Por favor ingresa un nombre válido.");
+            return false;
+        }
 
-const showLightbox = (img) => {
-    // Showing lightbox and updating img source
-    lightbox.querySelector("img").src = img;
-    lightbox.classList.add("show");
-    document.body.style.overflow = "hidden";
-}
+        // Validar apellido
+        var regexApellido = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,28}( [a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,28})?$/;
+        if (!regexApellido.test(apellido)) {
+            alert("Por favor ingresa un apellido válido no se permite puntos ni comas.");
+            return false;
+        }
 
-closeImgBtn.addEventListener("click", () => {
-    // Hiding lightbox on close icon click
-    lightbox.classList.remove("show");
-    document.body.style.overflow = "auto";
-});
+        // Validar documento
+        var regexDocumento = /^\d{8,10}$/;
+        if (!regexDocumento.test(documento)) {
+            alert("Por favor ingresa un número de documento válido.");
+            return false;
+        }
+
+        // Validar contacto
+        var regexContacto = /^\d{1,10}$/;
+        if (!regexContacto.test(contacto)) {
+            alert("Por favor ingresa un número de contacto válido.");
+            return false;
+        }
+
+        // Validar correo
+        var regexCorreo = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+        if (!regexCorreo.test(correo)) {
+            alert("Por favor ingresa una dirección de correo válida.");
+            return false;
+        }
+
+        // Validar contraseña
+        if (contrasena.length < 8 || contrasena.length > 11) {
+            alert("La contraseña debe tener entre 8 y 11 caracteres.");
+            return false;
+        }
+
+        return true;
+    }
