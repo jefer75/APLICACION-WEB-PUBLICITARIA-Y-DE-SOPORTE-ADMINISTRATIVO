@@ -93,40 +93,140 @@
           <form autocomplete="off"class="row g-3" name="form_actualizar" method="POST">
 
           
-            <div class="col-md-6">
-
-              <label for="inputEmail5" class="form-label">Nombre Articulo</label>
-
-              <input  name="nombre_A"  class="form-control" value="<?php echo $fila['nombre_A'] ?>" >    
-
+          <div class="col-md-6">
+            <label for="nombreArticulo" class="form-label">Nombre del Artículo</label>
+            <input class="form-control" type="text" name="nombre_A" id="nombreArticulo" value="<?php echo htmlspecialchars($fila['nombre_A'] ?? ''); ?>" placeholder="Nombre del artículo" required>
+            <div id="error_nombreArticulo" class="invalid-feedback">
+                El nombre del artículo solo letras y máximo tres espacios.
             </div>
+        </div>
+        <div class="col-6">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <input class="form-control" type="text" name="descripcion" id="descripcion" value="<?php echo htmlspecialchars($fila['descripcion'] ?? ''); ?>" placeholder="Descripción del artículo" required>
+            <div id="error_descripcion" class="invalid-feedback">
+                La descripción no puede estar vacía y debe contener máximo 80 caracteres.
+            </div>
+        </div>
+   
 
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+        // Referencias a los elementos del formulario
+        var nombreArticuloInput = document.getElementById('nombreArticulo');
+        var errorNombreArticulo = document.getElementById('error_nombreArticulo');
+
+        // Validación para nombre del artículo
+        nombreArticuloInput.addEventListener('input', function() {
+            var nombreArticulo = nombreArticuloInput.value.trim();
+
+            // Expresión regular para validar nombre del artículo
+            var regex = /^[A-Za-z]+(?:\s+[A-Za-z]+){0,2}$/;
+
+            if (regex.test(nombreArticulo) && nombreArticulo.length >= 4 && nombreArticulo.length <= 30) {
+                nombreArticuloInput.classList.remove('is-invalid');
+                errorNombreArticulo.style.display = 'none';
+            } else {
+                nombreArticuloInput.classList.add('is-invalid');
+                errorNombreArticulo.style.display = 'block';
+            }
+        });
+  
+
+        // Validación para descripción (máximo 80 caracteres)
+        descripcionInput.addEventListener('input', function() {
+            var descripcion = descripcionInput.value.trim();
+
+            if (descripcion.length > 0 && descripcion.length <= 80) {
+                descripcionInput.classList.remove('is-invalid');
+                errorDescripcion.style.display = 'none';
+            } else {
+                descripcionInput.classList.add('is-invalid');
+                errorDescripcion.style.display = 'block';
+            }
+        });
+    });
+</script>
             
-
-            <div class="col-6">
-
-              <label for="inputAddress2" class="form-label">Descripcion</label>
-              <input type="varchar" class="form-control"  name="descripcion" value="<?php echo $fila['descripcion']?>" >
-
+<div class="col-6">
+            <label for="cantidadActual" class="form-label">Cantidad Actual</label>
+            <input type="number" class="form-control" id="cantidadActual" readonly value="<?php echo htmlspecialchars($fila['cantidad'] ?? ''); ?>" min="1" max="500">
+        </div>
+        <div class="col-6">
+            <label for="suma" class="form-label">Añadir Compra</label>
+            <input type="number" class="form-control" id="suma" name="suma" placeholder="Cantidad añadida" >
+            <div id="error_suma" class="invalid-feedback">
+                La cantidad añadida debe ser del 1 al 500.
             </div>
-            
-            <div class="col-6">
-
-              <label for="inputAddress2" class="form-label">Cantidad Actual</label>
-              <input type="number" class="form-control"  readonly value="<?php echo $fila['cantidad'] ?>" min="1">
-
+        </div>
+        <div class="col-6">
+            <label for="valor" class="form-label">Valor de alquiler</label>
+            <input type="number" class="form-control" id="valor" name="valor" value="<?php echo htmlspecialchars($fila['valor'] ?? ''); ?>" min="1" max="99999999">
+            <div id="error_valor" class="invalid-feedback">
+                El valor debe ser un número válido y no puede exceder los 8 dígitos.
             </div>
-            <div class="col-6">
+        </div>
+   
 
-              <label for="inputAddress2" class="form-label">Añadir Compra</label>
-              <input type="number" class="form-control"  name="suma" placeholder="Cantidad añadida" min="1">
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Referencias a los elementos del formulario
+        var cantidadActualInput = document.getElementById('cantidadActual');
+        var sumaInput = document.getElementById('suma');
+        var valorInput = document.getElementById('valor');
+        var errorSuma = document.getElementById('error_suma');
+        var errorValor = document.getElementById('error_valor');
 
-            </div>
-            <div class="col-6">
+        // Validación para campo "Añadir Compra"
+        sumaInput.addEventListener('input', function() {
+            var suma = sumaInput.value.trim();
 
-              <label for="inputAddress2" class="form-label">Valor</label>
-              <input type="number"  class="form-control" name="valor" value="<?php echo $fila['valor'] ?>" min="1"></td>      
-            </div>
+            if (/^\d{1,3}$/.test(suma)) {
+                sumaInput.classList.remove('is-invalid');
+                errorSuma.style.display = 'none';
+            } else {
+                sumaInput.classList.add('is-invalid');
+                errorSuma.style.display = 'block';
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+        // Referencias a los elementos del formulario
+        var sumaInput = document.getElementById('suma');
+        var errorSuma = document.getElementById('error_suma');
+
+        // Validación para campo suma
+        sumaInput.addEventListener('input', function() {
+            var suma = sumaInput.value.trim();
+
+            // Verificar si la suma está dentro del rango y es un número válido
+            if (isValidNumber(suma) && suma >= 1 && suma <= 500) {
+                sumaInput.classList.remove('is-invalid');
+                errorSuma.style.display = 'none';
+            } else {
+                sumaInput.classList.add('is-invalid');
+                errorSuma.style.display = 'block';
+            }
+        });
+
+        // Función para validar que sea un número válido
+        function isValidNumber(value) {
+            return /^\d+$/.test(value);
+        }
+    });
+        // Validación para campo "Valor de alquiler"
+        valorInput.addEventListener('input', function() {
+            var valor = valorInput.value.trim();
+
+            if (/^\d{1,8}$/.test(valor)) {
+                valorInput.classList.remove('is-invalid');
+                errorValor.style.display = 'none';
+            } else {
+                valorInput.classList.add('is-invalid');
+                errorValor.style.display = 'block';
+            }
+        });
+    });
+</script>
 
             <div class="col-md-6">
                                 <label for="inputTipoArticulo" class="form-label">Estado</label>
