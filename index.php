@@ -263,32 +263,6 @@
         </div>
         <!-- About End -->
 
-
-        <!-- Call To Action Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="bg-light rounded">
-                    <div class="row g-0">
-                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s" style="min-height: 400px;">
-                            <div class="position-relative h-100">
-                                <img class="position-absolute w-100 h-100 rounded" src="imagenes/contenido/img52_.jpg" style="object-fit: cover;">
-                            </div>
-                        </div>
-                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                            <div class="h-100 d-flex flex-column justify-content-center p-5">
-                                <h1 class="mb-4">Únete a nuestro equipo</h1>
-                                <p class="mb-4">Para ser parte de nuestro equipo es indispensable que estes dispuesto a aprender cosas nuevas, y arriesgarte a hacer cosas que probablemente nunca pensaste hacer, por lo que requerimos que seas un entusiasta de los niños
-                                </p>
-                                <a class="btn btn-primary py-3 px-5" href="">Únete a la familia Arlequin<i class="fa fa-arrow-right ms-2"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Call To Action End -->
-
-
         <!-- Classes Start -->
         <div class="container-xxl py-5">
             <div class="container">
@@ -540,10 +514,10 @@
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">Acceso Rápido</h3>
                         <a class="btn btn-link text-white-50" href="#header">Inicio</a>
-                        <a class="btn btn-link text-white-50" href="infantil.html">Recreación Infantil</a>
-                        <a class="btn btn-link text-white-50" href="adultos.html">Recreación Adultos</a>
-                        <a class="btn btn-link text-white-50" href="decoracion.html">Decoración</a>
-                        <a class="btn btn-link text-white-50" href="sobre_nosotros.html">Sobre Nosotros</a>
+                        <a class="btn btn-link text-white-50" href="infantil.php">Recreación Infantil</a>
+                        <a class="btn btn-link text-white-50" href="adultos.php">Recreación Adultos</a>
+                        <a class="btn btn-link text-white-50" href="decoracion.php">Decoración</a>
+                        <a class="btn btn-link text-white-50" href="sobre_nosotros.php">Sobre Nosotros</a>
                         <a class="btn btn-link text-white-50" href="contact.php">Contáctanos</a>
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -569,15 +543,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <h3 class="text-white mb-4">Nuevo Comentario</h3>
-                        <p>Danos tu opinión sobre nuestro servicio o nuestro sitio web.</p>
-                        <div class="position-relative mx-auto" style="max-width: 400px;">
-                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Danos tu opnión">
-                            <br>
-                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Enviar</button>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="container">
