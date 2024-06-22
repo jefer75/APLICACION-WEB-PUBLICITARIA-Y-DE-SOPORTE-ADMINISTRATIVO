@@ -84,19 +84,10 @@ $con = $db -> conectar();
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title"></h5>
-                            <a class="añadir" id="añadir" onclick="opendialog();">
-                                <i class="bi bi-plus-circle"></i> Añadir
-                            </a>
-
-                            <form method="post" action="funciones/paque_excel.php">
-                                <button type="submit" name="paque_excel" class="btn btn-success">
-                                    <i class="bi bi-download"></i> Descargar Excel
-                                </button>
-                            </form>
-
+                           
+                        
                             <dialog class="añadir_cont" id="añadir_cont">
-                                <button id="añadir_close" class="btn modal_close" onclick="closedialog();">X</button>
-                                <h2 class="modal__title">Registrar paquetes</h2>
+                               
 
                                 <form method="post" name="formreg" id="formreg" class="row g-3" autocomplete="off"
                                     onsubmit="return validarFormulario();">
@@ -154,7 +145,6 @@ $con = $db -> conectar();
                                         <th>Edad mínima</th>
                                         <th>Edad máxima</th>
                                         <th>Valor</th>
-                                        <th>Actualizar</th>
                                         <th>Detalles</th>
                                     </tr>
                                 </thead>
@@ -174,15 +164,10 @@ $con = $db -> conectar();
                                         <td><?php echo $edad_min ?></td>
                                         <td><?php echo $edad_max ?></td>
                                         <td><?php echo $valor ?></td>
+                                       
                                         <td>
                                             <a href=""
-                                                onclick="window.open('../actualizar/act_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width=600,height=500,toolbar=NO');return false;">
-                                                <i class="bi bi-pencil-square"></i> Actualizar
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href=""
-                                                onclick="window.open('../detalles/detalle_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width=600,height=500,toolbar=NO');return false;">
+                                                onclick="window.open('detalles/detalle_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width=600,height=500,toolbar=NO');return false;">
                                                 Detalles
                                             </a>
                                         </td>

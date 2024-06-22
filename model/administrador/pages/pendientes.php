@@ -26,20 +26,15 @@
               <table class="table datatable">
   <thead>
     <tr>
-        <th>F. Reserva</th>
+        <th>Fecha de Reserva</th>
         <th>Paquete</th>
-        <th>T. Evento</th>
+        <th>Tipo de Evento</th>
         <th>Lugar</th>
-        <th>C. Niños</th>
-        <th>F. Inicio</th>
-        <th>F. Fin</th>
-        <th>H. Inicio</th>
-        <th>H. Fin</th>
-        <th>descripcion</th>
+        <th>Fecha de Evento</th>
+        <th>Hora de Evento</th>
         <th>Cliente</th>
-        <th>Estado</th>
         <th>Detalles</th>
-        <th>Actualizarx </th>
+        <th>Alquiler</th>
     </tr>
   </thead>
   <tbody>
@@ -71,23 +66,18 @@
           
       ?>
       
-    <tr>
-        <td><?php echo $f_evento?></td>
-        <td><?php echo $nombre_paquete?></td>
-        <td><?php echo $tipo_e?></td>
-        <td><?php echo $lugar?></td>
-        <td><?php echo $cant_ninos?></td>
-        <td><?php echo $f_inicio?></td>
-        <td><?php echo $f_fin?></td>
-        <td><?php echo $hora_inicio?></td>
-        <td><?php echo $hora_fin?></td>
-        <td><?php echo $descripcion?></td>
-        <td><?php echo $nombre?></td>
-        <td><?php echo $estado?></td>
+      <tr>
+        <td><?php echo $fila['fecha_evento'];?></td>
+        <td><?php echo $fila['nombre_paquete'];?></td>
+        <td><?php echo $fila['tipo_evento'];?></td>
+        <td><?php echo $fila['lugar'];?></td>
+        <td><?php echo $fila['f_inicio'];?></td>
+        <td><?php echo $fila['hora_inicio'];?></td>
+        <td><?php echo $fila['nombre'];?></td>
         <td><a href="" class="boton" onclick="window.open
-       ('../actualizar/eventos.php?id=<?php echo $id_eventos ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i></a></td>
+       ('../actualizar/eventos.php?id=<?php echo $id_eventos ?>','','width= 900,height=655, toolbar=NO');void(null);"><i class="bi bi-book"></i></a></td>
         <td><a href="" class="boton" onclick="window.open
-       ('../detalles/detalle_ventas.php?id=<?php echo $id_eventos ?>','','width= 800,height=850, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i></a></td>
+       ('../detalles/detalle_ventas.php?id=<?php echo $id_eventos ?>','','width= 800,height=850, toolbar=NO');void(null);"><i class="bi bi-cash-coin"></i></a></td>
     </tr>
       <?php
         }

@@ -62,8 +62,8 @@
       }
      }  
     }
+    include 'C:/xampp/htdocs/APLICACION-WEB/model/cliente/eliminar/eli_articulo_venta.php';
 
-    include '../eliminar/eli_articulo_venta.php';
 ?>
 
 <!DOCTYPE html>
