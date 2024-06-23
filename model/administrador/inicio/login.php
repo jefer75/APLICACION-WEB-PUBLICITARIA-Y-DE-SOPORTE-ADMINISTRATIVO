@@ -115,7 +115,7 @@ if ($fila_nit) {
                 </div>
                 <form action="" method="POST">
                     <div class="contenido">
-                        <input type="submit" class="btn btn-primary rounded-pill px-3 d-none d-lg-block" value="Regresar" name="regresar" id="regresar">
+                        <a href="../../../index.php" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Regresar</a>
                     </div>
                 </form>
             </div>
@@ -150,7 +150,8 @@ if ($fila_nit) {
                                         
                                         <div class="col-12">
                                             <button type="submit" name="inicio" class="btn btn-primary w-100 py-3 ingresar">Ingresar</button>
-                                            <a href="recuperar_con.php" class="enlaces" id="contra">Olvidé la contraseña</a>
+                                            <a href="recuperar_con.php" class="enlaces" id="contra">Olvidé la contraseña</a><br>
+                                            <a href="../../../index.php #registrate">Registrarse</a>
                                         </div>
                                     </div>
                                 </form>

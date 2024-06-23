@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-06-2024 a las 18:49:12
+-- Tiempo de generación: 23-06-2024 a las 08:56:34
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -39,7 +39,7 @@ CREATE TABLE `actividades` (
 --
 
 INSERT INTO `actividades` (`id_actividad`, `nombre`, `descripcion`, `imagen`) VALUES
-(21, 'Pintucaritas', 'Hermosas figuras hechas con pinturas especiales', '../../../imagenes/registradas/actividades/21.jpeg'),
+(21, 'Pintucaritas', 'Hermosas figuras hechas con pinturas especiales pa', '../../../imagenes/registradas/actividades/21.jpeg'),
 (22, 'Show de payasito', 'Gran show de payasito', '../../../imagenes/registradas/actividades/22.jpg');
 
 -- --------------------------------------------------------
@@ -64,8 +64,8 @@ CREATE TABLE `articulos` (
 --
 
 INSERT INTO `articulos` (`id_articulo`, `nombre_A`, `id_tipo_art`, `id_estado`, `descripcion`, `cantidad`, `valor`, `barcode`) VALUES
-(5, 'Cabina de sonido', 1, 2, 'Cabina de sonido grande', 3, 14354, '../../../imagenes/registradas/barcode/6673a5865b9361286.png'),
-(7, 'Luz laser', 2, 1, 'Laser', 4, 20000, '../../../imagenes/registradas/barcode/6673abbb788f43916.png');
+(2, 'Cabina de sonido', 1, 1, 'Cabina de sonido grande', 2, 50000, '../../../imagenes/registradas/barcode/6673a5865b9361286.png'),
+(7, 'Luz laser', 2, 1, 'Laser', 2, 20000, '../../../imagenes/registradas/barcode/6673abbb788f43916.png');
 
 -- --------------------------------------------------------
 
@@ -84,11 +84,29 @@ CREATE TABLE `decoracion` (
 --
 
 INSERT INTO `decoracion` (`id_imagen`, `imagen`, `descripcion`) VALUES
-(22, '../../../imagenes/registradas/decoracion/22.jpg', 'Frozen'),
 (23, '../../../imagenes/registradas/decoracion/23.jpg', 'Celebra tu baby shower con una decoración apropiada para la ocasión'),
 (24, '../../../imagenes/registradas/decoracion/24.jpg', 'experiencia'),
-(25, '../../../imagenes/registradas/decoracion/25.jpg', 'felicidad'),
+(25, '../../../imagenes/registradas/decoracion/25.jpg', 'decoracion baby shower'),
 (28, '../../../imagenes/registradas/decoracion/28.jpeg', 'Leon');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `detalle_animador`
+--
+
+CREATE TABLE `detalle_animador` (
+  `id_det_animador` int(11) NOT NULL,
+  `id_eventos` int(11) NOT NULL,
+  `cedula` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `detalle_animador`
+--
+
+INSERT INTO `detalle_animador` (`id_det_animador`, `id_eventos`, `cedula`) VALUES
+(6, 14, 987654321);
 
 -- --------------------------------------------------------
 
@@ -109,8 +127,9 @@ CREATE TABLE `detalle_factura` (
 --
 
 INSERT INTO `detalle_factura` (`id_detalle_eve`, `id_evento`, `id_articulo`, `cantidad`, `valor_neto`) VALUES
-(5, 13, 2, 2, 100000),
-(10, 13, 7, 2, 40000);
+(29, 14, 7, 2, 40000),
+(30, 14, 2, 1, 50000),
+(31, 13, 2, 1, 50000);
 
 -- --------------------------------------------------------
 
@@ -139,7 +158,8 @@ INSERT INTO `detalle_paquete` (`id_detalles`, `id_actividad`, `id_paquetes`) VAL
 (11, 0, 0),
 (12, 0, 13),
 (13, 0, 13),
-(14, 21, 1);
+(14, 21, 1),
+(15, 22, 1);
 
 -- --------------------------------------------------------
 
@@ -158,7 +178,8 @@ CREATE TABLE `detalle_tipo_e` (
 --
 
 INSERT INTO `detalle_tipo_e` (`id_detalle`, `id_tipo_e`, `id_paquetes`) VALUES
-(24, 1, 1);
+(27, 1, 2),
+(28, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -234,7 +255,8 @@ CREATE TABLE `eventos` (
 --
 
 INSERT INTO `eventos` (`id_eventos`, `fecha_evento`, `id_paquetes`, `id_tipo_e`, `lugar`, `cant_ninos`, `f_inicio`, `f_fin`, `hora_inicio`, `hora_fin`, `edad_home`, `descripcion`, `cedula`, `id_estado`) VALUES
-(13, '2024-06-18', 3, 7, 'cra 123 #56 barrio condorito', 120, '2024-06-26', '2024-06-26', '15:30:00', '19:00:00', 15, 'celebración del día del niños', 4554564, 8);
+(13, '2024-06-18', 3, 7, 'cra 123 #56 barrio condoritos', 120, '2024-06-26', '2024-06-26', '15:30:00', '19:00:00', 15, 'celebración del día del niños', 987654321, 6),
+(14, '2024-06-22', 1, 1, 'calle 10 numero 15/12', 12, '2024-06-26', '2024-06-26', '15:00:00', '22:45:00', 4, 'descripcion evento 2', 1104254269, 6);
 
 -- --------------------------------------------------------
 
@@ -435,7 +457,36 @@ INSERT INTO `trig` (`n_contrasena`, `v_contrasena`, `tipo`, `fecha_creacion`) VA
 ('$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', '$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', 'update', '2024-06-21 09:37:19'),
 ('$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', '$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', 'update', '2024-06-21 09:37:42'),
 ('$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', '$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', 'update', '2024-06-21 09:38:08'),
-('$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', '$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', 'update', '2024-06-21 09:38:11');
+('$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', '$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q', 'update', '2024-06-21 09:38:11'),
+('$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrd', '$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrd', 'update', '2024-06-21 20:48:33'),
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-22 22:50:02'),
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-22 22:50:08'),
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-22 22:50:14'),
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-22 22:50:20'),
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-22 22:50:44'),
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-22 22:50:49'),
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-22 22:51:38'),
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-22 22:51:40'),
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-22 22:51:40'),
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-22 22:51:59'),
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-22 22:52:07'),
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-22 22:52:36'),
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-22 22:53:13'),
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-22 22:53:49'),
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-22 22:53:57'),
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-22 22:54:03'),
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-22 22:54:13'),
+('$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0V', 'update', '2024-06-22 22:54:25'),
+('$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrd', '$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrd', 'update', '2024-06-22 23:59:22'),
+('$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrd', '$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrd', 'update', '2024-06-22 23:59:25'),
+('$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrd', '$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrd', 'update', '2024-06-22 23:59:32'),
+('$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrd', '$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrd', 'update', '2024-06-23 00:00:24'),
+('$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrd', '$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrd', 'update', '2024-06-23 00:00:35'),
+('$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrd', '$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrd', 'update', '2024-06-23 00:00:42'),
+('$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrd', '$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrd', 'update', '2024-06-23 00:33:39'),
+('$2y$10$lXCJTxHHFGHsNC6EjGyeBe8/6a435pLjd10rE8jebdu', '$2y$10$lXCJTxHHFGHsNC6EjGyeBe8/6a435pLjd10rE8jebdu', 'update', '2024-06-23 00:46:21'),
+('$2y$10$lXCJTxHHFGHsNC6EjGyeBe8/6a435pLjd10rE8jebdu', '$2y$10$lXCJTxHHFGHsNC6EjGyeBe8/6a435pLjd10rE8jebdu', 'update', '2024-06-23 01:23:44'),
+('$2y$10$lXCJTxHHFGHsNC6EjGyeBe8/6a435pLjd10rE8jebdu', '$2y$10$lXCJTxHHFGHsNC6EjGyeBe8/6a435pLjd10rE8jebdu', 'update', '2024-06-23 01:32:32');
 
 -- --------------------------------------------------------
 
@@ -460,8 +511,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`cedula`, `nombre`, `celular`, `contrasena`, `correo`, `id_tipo_user`, `id_estado`, `nit`, `token`) VALUES
-(4554564, 'yurica', 454564564, '$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrddoCHsLiu/K', 'yuriducu04@gmail.com', 2, 1, 123456789, 'u589'),
 (123456789, 'Gloria', 3157418168, '$2y$10$7Qn95SuDvzP5o39jYnaE2u1Pjlknnlm6ZRuheq2BC0VUXfUp.NIWy', 'Gloria@gmail.com', 1, 1, 123456789, ''),
+(455456411, 'yurica', 454564564, '$2y$10$KL8G8EAcE9aoC3K5HwtOZ./1bohem/Uz1jIEah.msrddoCHsLiu/K', 'yuriducu04@gmail.com', 3, 1, 123456789, 'u589'),
+(987654321, 'Kevin Cardenal', 1234567890, '$2y$10$lXCJTxHHFGHsNC6EjGyeBe8/6a435pLjd10rE8jebduILbypUDTIG', 'kevin07cardenal@gmail.com', 2, 1, 123456789, ''),
 (1005911563, 'Jennifer', 3114409273, '234567', 'ortiztatiana1416@gmail.com', 2, 1, 123456789, ''),
 (1031540636, 'jeferson', 3213879832, '$2y$10$rltL2wRywbiham1d8/oVSOOB2zZ7.WJmsmKHbKtmp0q0.KmZdcO6S', 'yiyecardenal@gmail.com', 4, 1, 123456789, '858r'),
 (1104254269, 'Daniel', 34114212, '$2y$10$Aim2aWnMG6LOV5YyW1ZKceqmQSPEZjA.5T6KE6USIJYvn2CDZ5Grm', 'Daniel@gmail.com', 2, 1, 123456789, '');
@@ -498,6 +550,12 @@ ALTER TABLE `articulos`
 --
 ALTER TABLE `decoracion`
   ADD PRIMARY KEY (`id_imagen`);
+
+--
+-- Indices de la tabla `detalle_animador`
+--
+ALTER TABLE `detalle_animador`
+  ADD PRIMARY KEY (`id_det_animador`);
 
 --
 -- Indices de la tabla `detalle_factura`
@@ -600,22 +658,28 @@ ALTER TABLE `decoracion`
   MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
+-- AUTO_INCREMENT de la tabla `detalle_animador`
+--
+ALTER TABLE `detalle_animador`
+  MODIFY `id_det_animador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de la tabla `detalle_factura`
 --
 ALTER TABLE `detalle_factura`
-  MODIFY `id_detalle_eve` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_detalle_eve` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_paquete`
 --
 ALTER TABLE `detalle_paquete`
-  MODIFY `id_detalles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_detalles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_tipo_e`
 --
 ALTER TABLE `detalle_tipo_e`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `estados`
@@ -627,7 +691,7 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id_eventos` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_eventos` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `factura`
@@ -657,7 +721,7 @@ ALTER TABLE `tipo_articulo`
 -- AUTO_INCREMENT de la tabla `tipo_e`
 --
 ALTER TABLE `tipo_e`
-  MODIFY `id_tipo_e` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_tipo_e` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_user`

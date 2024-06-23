@@ -26,11 +26,11 @@ if (isset($_POST["inicio"])) {
         }
         
      else if ($_SESSION['id_tipo_user'] == 2) {
-         header ("Location: ../model/cliente/cliente.php");
+         header ("Location: ../model/cliente/index.php");
          exit();
          }
          else if ($_SESSION['id_tipo_user'] == 3) {
-         header ("Location: ../model/empleado/empleado.php");
+         header ("Location: ../model/empleado/index.php");
          exit();
          }
    
