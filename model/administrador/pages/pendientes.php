@@ -22,6 +22,11 @@
 
               <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
 
+              <form method="post" action="funciones/luc_excel.php">
+                            <button type="submit" name="luc_excel" class="btn btn-success">
+                                <i class="bi bi-download"></i>
+                            </button>
+                        </form>
               <!-- Table with stripped rows -->
               <table class="table datatable">
   <thead>
@@ -34,6 +39,7 @@
         <th>Hora de Evento</th>
         <th>Cliente</th>
         <th>Detalles</th>
+        <th>Animador</th>
         <th>Alquiler</th>
     </tr>
   </thead>
@@ -75,7 +81,9 @@
         <td><?php echo $fila['hora_inicio'];?></td>
         <td><?php echo $fila['nombre'];?></td>
         <td><a href="" class="boton" onclick="window.open
-       ('../actualizar/eventos.php?id=<?php echo $id_eventos ?>','','width= 900,height=655, toolbar=NO');void(null);"><i class="bi bi-book"></i></a></td>
+       ('../actualizar/eventos.php?id=<?php echo $id_eventos ?>','','width= 900,height=655, toolbar=NO');void(null);"><i class="bi bi-info-circle"></i></a></td>
+        <td><a href="" class="boton" onclick="window.open
+       ('../detalles/detalle_animador.php?id=<?php echo $id_eventos ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-person"></i></a></td>
         <td><a href="" class="boton" onclick="window.open
        ('../detalles/detalle_ventas.php?id=<?php echo $id_eventos ?>','','width= 800,height=850, toolbar=NO');void(null);"><i class="bi bi-cash-coin"></i></a></td>
     </tr>

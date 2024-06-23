@@ -1,5 +1,4 @@
 <?php
-
 include 'plantilla.php';
 ?>
 
@@ -29,38 +28,6 @@ include 'plantilla.php';
                                 <i class="bi bi-download"></i>
                             </button>
                         </form>
-              
-
-              <section class="modal ">
-                <div class="modal__container">
-                    
-                    <a href="#" class="modal__close" id="cerrar">X</a>
-                    <h2 class="modal__title">Registrar paquete</h2>
-                    <form method="post" name="formreg" id="formreg" class="signup-form"  autocomplete="off"> 
-                        <br>
-                        <label for="nombre_paquete">Nombre Paquete</label>
-                        <br>
-                        <input type="text" name="nombre_paquete" pattern="[A-Za-z]+" title="(Solo se aceptan letras)" class="form_inputs" placeholder="Nombre paquete">
-                        <br>
-                        <label for="nombre_artistico">Edad Minima</label>
-                        <br>
-                        <input type="number" name="edad_min" class="form_inputs" placeholder="Edad minima">
-                        <br>
-                        <label for="direccion">Edad Maxima</label>
-                        <br>
-                        <input type="number" name="edad_max" class="form_inputs" placeholder="Edad maxima">
-                        <br>
-                        <label for="telefono">Valor</label>
-                        <br>
-                        <input type="number" name="valor" pattern="[0-9]{1,15}" class="form_inputs" title="Solo se permiten numeros" placeholder="Precio">
-                        <br>
-                        <br>
-                        <br>
-                        <input type="submit" name="validar" value="Registro" class="modal__close">
-                        <input type="hidden" name="MM_insert" value="formreg">
-                        </form>
-                  </div>
-              </section>
 
               <!-- Table with stripped rows -->
               <table class="table datatable">
@@ -70,8 +37,7 @@ include 'plantilla.php';
                     <th>Nombre</th>
                     <th>Telefono</th>
                     <th>Correo</th>
-                    <th>estado</th>
-                    <th>Accion</th>
+                    <th>Estado</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -95,9 +61,6 @@ include 'plantilla.php';
                     <td><?php echo $celular?></td>
                     <td><?php echo $correo?></td>
                     <td><?php echo $estado?></td>
-                    <td><a href="" class="boton" onclick="window.open
-                    ('../update/articulos.php?id=<?php echo $cedula ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-arrow-counterclockwise"></i>Actualizar</a></td>
-
                   </tr>
                     <?php
                       }

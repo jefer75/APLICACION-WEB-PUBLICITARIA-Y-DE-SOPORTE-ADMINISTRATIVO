@@ -82,7 +82,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paquetes</title>
+<title>Actualizar Reserva</title>
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,7 +108,7 @@
             </div>
 
             <div class="col-4">
-                <label for="inputEmail5" class="form-label">Paquete</label>
+                <label for="inputEmail5" class="form-label">Paquete (Paquete - Precio)</label>
                 <select class="form-control" name="paquete">
                     <option value="<?php echo $id_paquete?>"><?php echo $nombre_paquete?></option>
                     <?php
@@ -117,7 +117,7 @@
                         while ($fila = $control->fetch(PDO::FETCH_ASSOC))  
                         {
                             echo "<option value='" . $fila['id_paquetes'] . "'>" 
-                            . $fila['nombre_paquete'] . "</option>";
+                            . $fila['nombre_paquete'] . ". ". "- $" .number_format($fila['valor'])."</option>";
                         }
                     ?>
                 </select>   
@@ -191,7 +191,7 @@
               <select class="form-control" name="estado">
                     <option value="<?php echo $id_estado ?>"><?php echo $estado?></option>
                     <?php
-                        $control = $con-> prepare ("SELECT * FROM estados Where id_estado != $id_estado AND id_estado = 6 or id_estado = 9");
+                        $control = $con-> prepare ("SELECT * FROM estados Where id_estado != $id_estado AND id_estado = 6 or id_estado = 9 or id_estado=8");
                         $control -> execute();
                         while ($fila = $control->fetch(PDO::FETCH_ASSOC))  
                         {
@@ -222,7 +222,6 @@
                 
             ?>
           
-
           </form><!-- End Multi Columns Form -->
         </div>
       </div>

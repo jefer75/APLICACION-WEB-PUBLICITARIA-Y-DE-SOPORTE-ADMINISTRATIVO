@@ -102,7 +102,7 @@ include '../funciones/reg_articulos.php';
 </td>
                             <td>
                                 <a href="#" class="boton" onclick="window.open('../actualizar/articulos.php?id=<?php echo $fila['id_articulo']; ?>','','width=800,height=750,toolbar=NO');void(null);">
-                                    <i class="bi bi-pencil"></i>
+                                    <i class="bi bi-pencil-square"></i>
                                 </a>
                             </td>
                         </tr>

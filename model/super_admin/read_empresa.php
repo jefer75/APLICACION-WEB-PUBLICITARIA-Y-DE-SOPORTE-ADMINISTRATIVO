@@ -24,7 +24,7 @@
                     <th>Telefono</th>
                     <th>Direccion</th>
                     <th>Actualizar</th>
-                    <th>Eliminar</th>
+                
                 </tr>
                 
                 <?php 
@@ -48,12 +48,6 @@
             </a>
             </td>
 
-            <td>
-            <a class="hiper" href="" onclick="window.open
-            ('actualizar y eliminar/empresa.php?id=<?php echo $fila['nit'] ?>','','width=500, height=400, toolbar=NO'); void(null);">
-            <i class="uil uil-trash-alt "></i>
-            </a>
-            </td>
             
         </tr>
         <?php

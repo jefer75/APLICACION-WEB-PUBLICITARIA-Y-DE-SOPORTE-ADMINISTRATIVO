@@ -79,16 +79,15 @@ include '../funciones/img_decoracion.php';
                     </td>     
                     <td>
                     <a href="#" class="boton" onclick="window.open
-                        ('../actualizar/decoracion.php?id=<?php echo $imagen['id_imagen'] ?>','','width= 600,height=490, toolbar=NO');void(null);"><i class="bi bi-pencil"></i></a>
+                        ('../actualizar/decoracion.php?id=<?php echo $imagen['id_imagen'] ?>','','width= 600,height=490, toolbar=NO');void(null);"><i class="bi bi-pencil-square"></i></a>
 
                     
                         </td>                             
                       <td>
-                        <a href="#" class="btn btn-warning" onclick="window.open
-                        ('../eliminar/eli_decorar.php?id=<?php echo $imagen['id_imagen'] ?>','','width= 450,height=350, toolbar=NO');void(null);"><i class="bi bi-trash"></i>Eliminar</a>
-
-                    
-                        </td>
+                        <a href="#" class="boton" onclick="window.open
+                        ('../eliminar/eli_decorar.php?id=<?php echo $imagen['id_imagen'] ?>','','width= 450,height=350, toolbar=NO');void(null);"><i class="bi bi-trash"></i>
+                        </a>
+                      </td>
                         
 
                       </td>

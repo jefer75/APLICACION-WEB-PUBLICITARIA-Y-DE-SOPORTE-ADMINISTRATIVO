@@ -14,13 +14,12 @@
    $sql->execute();
    $fila = $sql->fetchAll(PDO::FETCH_ASSOC);
    foreach ($fila as $fila) {
- //  foreach ($fila as $fila) {
    $id_tipo_art = $fila['id_tipo_art'];
    $tipo_art = $fila['tipo_articulo'];
    $id_estado = $fila['id_estado'];
    $estado = $fila['estado'];
    $cantidad = $fila['cantidad'];
-
+   }
    //declaracion de variables de campos en la tabla
 
    if (isset($_POST['actualizar'])){
@@ -41,12 +40,12 @@
         
         $cantidad_total = $suma + $cantidad;
         
-           $insert= $con -> prepare ("UPDATE articulos SET  nombre_A='$nombre_A', id_estado='$id_estado', descripcion='$descripcion', id_tipo_art='$id_tipo_art' , cantidad='$cantidad_total', valor='$valor' WHERE id_articulo = '".$_GET['id']."'");
+           $insert= $con -> prepare ("UPDATE articulos SET  nombre_A='$nombre_A', id_estado='$id_estado', descripcion='$descripcion', id_tipo_art='$id_tipo_art' , cantidad=$cantidad_total, valor='$valor' WHERE id_articulo = '".$_GET['id']."'");
            $insert -> execute();
            echo '<script> alert ("Registro actualizado exitosamente");</script>';
            echo '<script> window.close(); </script>';
        } 
-       }
+    }
 
         ?>
 
@@ -64,7 +63,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Articulos</title>
+<title>Actualizar Articulos</title>
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -270,7 +269,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
             <?php
-                                  }
 
         ?>
           </form><!-- End Multi Columns Form -->

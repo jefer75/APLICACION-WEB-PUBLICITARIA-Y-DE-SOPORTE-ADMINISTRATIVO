@@ -41,60 +41,32 @@ $con = $db -> conectar();
      }  
     }
     ?>
+<title>Paquetes</title>
 
-<!DOCTYPE html>
-<html lang="es">
+<main id="main" class="main">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paquetes</title>
+  <div class="pagetitle">
+    <h1>Paquetes</h1>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  </div><!-- End Page Title -->
 
-    <!-- Bootstrap Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
 
-    <!-- Custom styles for this template -->
-    <style>
-        .is-invalid {
-            border: 1px solid red !important;
-        }
+                        
 
-        .invalid-feedback {
-            color: red;
-            display: none;
-        }
-    </style>
-</head>
-
-<body>
-
-    <main id="main" class="main">
-
-        <div class="pagetitle">
-            <h1>Paquetes</h1>
-        </div>
-
-        <section class="section">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"></h5>
-                            <a class="añadir" id="añadir" onclick="opendialog();">
-                                <i class="bi bi-plus-circle"></i> Añadir
-                            </a>
-
-                            <form method="post" action="funciones/paque_excel.php">
-                                <button type="submit" name="paque_excel" class="btn btn-success">
-                                    <i class="bi bi-download"></i> Descargar Excel
-                                </button>
-                            </form>
-
-                            <dialog class="añadir_cont" id="añadir_cont">
+                        <form method="post" action="funciones/paque_excel.php">
+                            <button type="submit" name="paque_excel" class="btn btn-success">
+                                <i class="bi bi-download"></i>Descargar reporte
+                            </button>
+                        </form>
+                        
+                        <dialog class="añadir_cont" id="añadir_cont">
                                 <button id="añadir_close" class="btn modal_close" onclick="closedialog();">X</button>
                                 <h2 class="modal__title">Registrar paquetes</h2>
 
@@ -146,7 +118,6 @@ $con = $db -> conectar();
 
                                 </form>
                             </dialog>
-
                             <table class="table datatable">
                                 <thead>
                                     <tr>
@@ -175,15 +146,14 @@ $con = $db -> conectar();
                                         <td><?php echo $edad_max ?></td>
                                         <td><?php echo $valor ?></td>
                                         <td>
-                                            <a href=""
-                                                onclick="window.open('../actualizar/act_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width=600,height=500,toolbar=NO');return false;">
-                                                <i class="bi bi-pencil-square"></i> Actualizar
+                                            <a href="" class="boton" onclick="window.open('../actualizar/act_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width=600,height=500,toolbar=NO');return false;">
+                                             <i class="bi bi-pencil-square"></i>
                                             </a>
                                         </td>
                                         <td>
-                                            <a href=""
+                                            <a href="" class="boton"
                                                 onclick="window.open('../detalles/detalle_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width=600,height=500,toolbar=NO');return false;">
-                                                Detalles
+                                                <i class="bi bi-info-circle"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -192,81 +162,46 @@ $con = $db -> conectar();
                                     ?>
                                 </tbody>
                             </table>
+              <!-- End Table with stripped rows -->
 
-                        </div>
-                    </div>
-                </div>
             </div>
-        </section>
+          </div>
 
-    </main>
+        </div>
+      </div>
+    </section>
 
-    <!-- Vendor JS Files -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </main><!-- End #main -->
 
-    <!-- Custom Script for Validation -->
-    <script>
-        function validarFormulario() {
-            var nombrePaqueteInput = document.getElementById('nombre_paquete');
-            var errorNombrePaquete = document.getElementById('error_nombre_paquete');
-            var nombrePaquete = nombrePaqueteInput.value.trim();
-            var regexNombre = /^[a-zA-Z]+(?: [a-zA-Z]+){0,2}$/;
-            if (!regexNombre.test(nombrePaquete) || nombrePaquete.length > 20) {
-                nombrePaqueteInput.classList.add('is-invalid');
-                errorNombrePaquete.style.display = 'block';
-                return false; // Evitar envío del formulario
-            } else {
-                nombrePaqueteInput.classList.remove('is-invalid');
-                errorNombrePaquete.style.display = 'none';
-            }
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+  </footer><!-- End Footer -->
 
-            var edadMinInput = document.getElementById('edad_min');
-            var errorEdadMin = document.getElementById('error_edad_min');
-            var edadMin = edadMinInput.value.trim();
-            var regexEdadMin = /^(?!0\d)\d{1,2}$/;
-            if (!regexEdadMin.test(edadMin) || parseInt(edadMin) < 1 || parseInt(edadMin) > 20) {
-                edadMinInput.classList.add('is-invalid');
-                errorEdadMin.style.display = 'block';
-                return false; // Evitar envío del formulario
-            } else {
-                edadMinInput.classList.remove('is-invalid');
-                errorEdadMin.style.display = 'none';
-            }
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-            var edadMaxInput = document.getElementById('edad_max');
-            var errorEdadMax = document.getElementById('error_edad_max');
-            var edadMax = edadMaxInput.value.trim();
-            if (parseInt(edadMax) < 15 || parseInt(edadMax) > 100) {
-                edadMaxInput.classList.add('is-invalid');
-                errorEdadMax.style.display = 'block';
-                return false; // Evitar envío del formulario
-            } else {
-                edadMaxInput.classList.remove('is-invalid');
-                errorEdadMax.style.display = 'none';
-            }
+  <!-- Vendor JS Files -->
+  <script src="../../../js/modal.js"></script>
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
 
-            var valorInput = document.getElementById('valor');
-            var errorValor = document.getElementById('error_valor');
-            var valor = valorInput.value.trim();
-            var regexValor = /^\d{1,11}$/;
-            if (!regexValor.test(valor)) {
-                valorInput.classList.add('is-invalid');
-                errorValor.style.display = 'block';
-                return false; // Evitar envío del formulario
-            } else {
-                valorInput.classList.remove('is-invalid');
-                errorValor.style.display = 'none';
-            }
-
-            // Si todas las validaciones pasan, se envía el formulario
-            return true;
-        }
-    </script>
-
-    <!-- Custom Script for Modal -->
-    <script src="../../../js/modal.js"></script>
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
 
 </body>
 

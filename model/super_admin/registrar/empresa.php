@@ -32,7 +32,7 @@
 
             if ($insertSQL->execute()) {
                 echo '<script>alert("REGISTRO EXITOSO");</script>';
-                echo '<script>window.location="../consultar/read_empresa.php";</script>';
+                echo '<script>window.location="../read_empresa.php";</script>';
             } else {
                 echo '<script>alert("ERROR EN EL REGISTRO");</script>';
                 echo '<script>window.location="empresa.php";</script>';

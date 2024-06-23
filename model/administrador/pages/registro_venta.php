@@ -69,7 +69,7 @@
                     </div>
                     
                       <div class="col-md-4">
-                        <label class="form-label">Seleccione el paquete</label>
+                        <label class="form-label">Seleccione el paquete(Paquete - Precio)</label>
                         <select class="form-control" name="paquete">
                         <option value="">Seleccione el Paquete</option>
                           <?php
@@ -78,7 +78,7 @@
                             while ($fila = $control->fetch(PDO::FETCH_ASSOC))  
                             {
                               echo "<option value='" . $fila['id_paquetes'] . "'>"
-                              . $fila['nombre_paquete'] . "</option>";
+                              . $fila['nombre_paquete'].". ". "- $" .number_format($fila['valor']). "</option>";
                             }
                           ?>
                       </select>
@@ -89,7 +89,7 @@
                         <select class="form-control" name="cliente" id="clienteSelect">
                             <option value="">Seleccione</option>
                             <?php
-                            $control = $con->prepare("SELECT * FROM usuarios");
+                            $control = $con->prepare("SELECT * FROM usuarios WHERE id_tipo_user=2");
                             $control->execute();
                             while ($fila = $control->fetch(PDO::FETCH_ASSOC)) {
                                 echo "<option value='" . $fila['cedula'] . "'>" 

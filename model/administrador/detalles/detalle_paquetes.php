@@ -1,7 +1,3 @@
-
-
-
-
 <?php
        session_start();
        require_once("../../../db/connection.php");
@@ -12,7 +8,7 @@
   $act = $_GET['id'];
 
    //empieza la consulta
-   $sql = $con -> prepare("SELECT * FROM detalle_paquete WHERE id_detalles = $act");
+   $sql = $con -> prepare("SELECT * FROM detalle_paquete WHERE id_paquetes = $act");
    $sql -> execute();
    $fila = $sql -> fetch ();
 
@@ -74,7 +70,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paquetes</title>
+<title>Asignar Actividades</title>
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -131,7 +127,7 @@
                     <form method="POST">
 
                       <td><select class="form-control" name="id_actividad">
-                        <option value="">Seleccione el tipo de articulo</option>
+                        <option value="">Seleccione la actividad</option>
                       <?php
                                     $control = $con-> prepare ("SELECT * FROM actividades");
                                     $control -> execute();

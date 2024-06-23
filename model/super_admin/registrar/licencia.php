@@ -49,7 +49,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formreg")) {
 
             if ($insertSQL->execute()) {
                 echo '<script>alert("REGISTRO EXITOSO");</script>';
-                echo '<script>window.location="../consultar/read_licencia.php";</script>';
+                echo '<script>window.location="../read_licencia.php";</script>';
             } else {
                 echo '<script>alert("ERROR EN EL REGISTRO");</script>';
                 echo '<script>window.location="licencia.php";</script>';

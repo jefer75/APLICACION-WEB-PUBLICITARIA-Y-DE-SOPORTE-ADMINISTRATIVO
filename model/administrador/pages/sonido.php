@@ -22,7 +22,7 @@
 
                         <form method="post" action="funciones/soni_excel.php">
                             <button type="submit" name="soni_excel" class="btn btn-success">
-                                <i class="bi bi-download"></i>
+                                <i class="bi bi-download"></i>Descargar reporte
                             </button>
                         </form>
 
@@ -176,7 +176,7 @@
 </td>
                             <td>
                                 <a href="#" class="boton" onclick="window.open('../actualizar/articulos.php?id=<?php echo $fila['id_articulo']; ?>','','width=800,height=750,toolbar=NO');void(null);">
-                                    <i class="bi bi-pencil"></i>
+                                    <i class="bi bi-pencil-square"></i>
                                 </a>
                             </td>
                         </tr>

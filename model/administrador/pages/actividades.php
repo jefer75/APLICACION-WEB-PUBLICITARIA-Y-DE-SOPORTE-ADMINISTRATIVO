@@ -102,11 +102,11 @@
                     
                     <td>
                       <a href="#" class="boton" onclick="window.open('../actualizar/actividades.php?id=<?php echo $id_actividad ?>','','width=500,height=500,toolbar=NO');void(null);">
-                      <i class="bi bi-pencil"></i>
+                      <i class="bi bi-pencil-square"></i>
                       </a>
                     </td>
                     <td>    
-                      <a href="#" class="btn btn-warning" onclick="window.open ('../eliminar/eli_actividades.php?id=<?php echo $id_actividad ?>','','width= 450,height=350, toolbar=NO');void(null);"><i class="bi bi-trash"></i></a>
+                      <a href="#" class="boton" onclick="window.open ('../eliminar/eli_actividades.php?id=<?php echo $id_actividad ?>','','width= 450,height=350, toolbar=NO');void(null);"><i class="bi bi-trash"></i></a>
                     </td>
                   </tr>
                     <?php

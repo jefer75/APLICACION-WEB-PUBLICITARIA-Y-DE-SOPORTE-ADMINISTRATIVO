@@ -130,7 +130,6 @@ if(isset($_POST['cerrar']))
     <li class="nav-item dropdown pe-3">
 
       <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-        <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
         <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $nombre ?></span>
       </a><!-- End Profile Iamge Icon -->
 
@@ -144,7 +143,7 @@ if(isset($_POST['cerrar']))
         </li>
 
         <li>
-          <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+          <a class="dropdown-item d-flex align-items-center" href="perfil.php">
             <i class="bi bi-person"></i>
             <span>Mi Perfil</span>
           </a>
@@ -153,18 +152,6 @@ if(isset($_POST['cerrar']))
           <hr class="dropdown-divider">
         </li>
 
-          <hr class="dropdown-divider">
-        </li>
-
-        <li>
-          <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-            <i class="bi bi-question-circle"></i>
-            <span>Necesitas Ayuda?</span>
-          </a>
-        </li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
 
         <li>
           <a class="dropdown-item d-flex align-items-center" href="#">
@@ -221,7 +208,7 @@ if(isset($_POST['cerrar']))
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="tipos_e.php">
-      <i class="bi bi-award-fill"></i>
+      <i class="bi bi-card-checklist"></i>
       <span>Tipos de evento</span>
     </a>
   </li>
@@ -309,7 +296,7 @@ if(isset($_POST['cerrar']))
   <li class="nav-heading">Ayuda</li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="users-profile.php">
+    <a class="nav-link collapsed" href="perfil.php">
       <i class="bi bi-person-circle"></i>
       <span>Perfil</span>
     </a>
@@ -319,17 +306,10 @@ if(isset($_POST['cerrar']))
   <li class="nav-item">
     <a class="nav-link collapsed" href="registrar.php">
       <i class="bi bi-people"></i>
-      <span>Registrar</span>
+      <span>Registrar Usuario</span>
     </a>
   </li><!-- End Register Page Nav -->
 
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="ayuda.php">
-      <i class="bi bi-question-circle"></i>
-      <span>Ayuda</span>
-    </a>
-  </li><!-- End F.A.Q Page Nav -->
-      
       <li class="nav-item">
           <a class="nav-link collapsed" href="#">
               <i class="bi bi-box-arrow-right"></i>

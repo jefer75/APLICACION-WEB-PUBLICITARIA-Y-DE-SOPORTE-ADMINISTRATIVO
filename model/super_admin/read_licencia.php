@@ -42,7 +42,7 @@ $resultados = $query->fetchAll(PDO::FETCH_ASSOC);
                     <th>Empresa</th>
                     <th>Estado</th>
                     <th>Actualizar</th>
-                    <th>Eliminar</th>
+                   
                 </tr>
 
                 <?php foreach ($resultados as $fila) : ?>
@@ -56,10 +56,7 @@ $resultados = $query->fetchAll(PDO::FETCH_ASSOC);
                         <td><a class="hiper" href="" onclick="window.open('actualizar y eliminar/licencia.php?id=<?php echo $fila['nit'] ?>','','width=500, height=400, toolbar=NO'); void(null);"><i class="uil uil-edit"></i>
                         </a>
                         </td>
-                        <td>
-                        <a class="hiper" href="" onclick="window.open('actualizar y eliminar/licencia.php?id=<?php echo $fila['nit'] ?>','','width=500, height=400, toolbar=NO'); void(null);"><i class="uil uil-trash-alt "></i>
-                        </a>
-                        </td>
+                        
                     </tr>
                 <?php endforeach; ?>
 
