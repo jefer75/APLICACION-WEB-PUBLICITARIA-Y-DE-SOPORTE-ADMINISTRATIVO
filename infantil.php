@@ -53,16 +53,8 @@ $con = $db -> conectar();
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="index.php" class="nav-item nav-link">Inicio</a>
-
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Recreación</a>
-                        <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                            <a href="infantil.php" class="dropdown-item">Infantil</a>
-                            <a href="adultos.php" class="dropdown-item">Adultos</a>
-                        </div>
-                    </div>
-
+                <a href="index.php" class="nav-item nav-link">Inicio</a>
+                    <a href="infantil.php" class="nav-item nav-link active">Recreacion</a>
                     <a href="decoracion.php" class="nav-item nav-link">Decoración</a>
                     <a href="sobre_nosotros.php" class="nav-item nav-link">Sobre Nosotros</a>                    
                     <a href="contact.php" class="nav-item nav-link">Contáctanos</a>
@@ -97,8 +89,6 @@ $con = $db -> conectar();
             </div>
         </div>
 
-        <!-- recreacio -->
-         
         <div class="cuadro">
             
         <div class="info">
@@ -110,15 +100,13 @@ $con = $db -> conectar();
                        
                         $nombre = $fila['nombre'];
                         $descripcion = $fila['descripcion'];
-                        $nombre_img = $fila['nombre_img'];
-                        $tipos = $fila['tipos'];
-                        $datos = $fila['datos'];
+                        $imagen = $fila['imagen'];
                        
                     ?>
 
             <div class="con">
                <div class="img">
-               <img class="imagenes_tablas" src="data:<?php echo $fila['tipos']; ?>;base64,<?php echo base64_encode($fila['datos']); ?>" alt="<?php echo htmlspecialchars($fila['nombre_img']); ?>">
+               <img src="model/administrador/inicio/<?php echo $imagen?>">
                </div>
                <div class="top-text">
                     <h3><?php echo $nombre?></h3>
@@ -140,8 +128,30 @@ $con = $db -> conectar();
     
         </div>
 
-        <!-- fin recre -->
-
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        
+                        <p class="mb-4">Sumérgete en la emoción y la camaradería con Arlequin Eventos, donde te esperan una variedad de actividades diseñadas para sacar tu lado más aventurero. Desde desafiantes juegos de equipo que pondrán a prueba tu colaboración y coordinación, hasta competencias deportivas llenas de adrenalina y diversión, en nuestro espacio encontrarás la combinación perfecta entre emoción y entretenimiento para disfrutar en grupo.</p>
+                        
+                    </div>
+                    <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <img class="img-fluid w-75 rounded-circle bg-light p-3" src="imagenes/contenido/img115.jpg" alt="">
+                            </div>
+                            <div class="col-6 text-start" style="margin-top: -150px;">
+                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="imagenes/contenido/img77.jpeg" alt="">
+                            </div>
+                            <div class="col-6 text-end" style="margin-top: -150px;">
+                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="imagenes/contenido/img144.jpeg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        <!-- fin recre -->
 
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">

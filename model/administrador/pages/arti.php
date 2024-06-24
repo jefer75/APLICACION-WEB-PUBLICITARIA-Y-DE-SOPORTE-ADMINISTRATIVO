@@ -35,7 +35,7 @@ include '../funciones/reg_articulos.php';
                             <form method="post" name="formreg" id="formreg" class="row g-3" autocomplete="off" onsubmit="return validarFormulario()">
     <div class="col-md-6">
         <label for="inputTipoArticulo" class="form-label">Tipo Artículos</label>
-        <select class="form-control" name="id_tipo_art" id="inputTipoArticulo" required>
+        <select class="form-control" name="id_tipo_art" id="inputTipoArticulo" >
             <option value="">Seleccione el tipo de artículo</option>
             <?php
             $control = $con->prepare("SELECT * FROM tipo_articulo");
