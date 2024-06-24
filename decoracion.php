@@ -102,8 +102,8 @@ $con = $db -> conectar();
                             foreach ($imagenes as $imagen) {
                             ?>
                                 <li class="img">
-                                <img src="data:<?php echo $imagen['tipo']; ?>;base64,<?php echo base64_encode($imagen['datos']); ?>" alt="<?php echo htmlspecialchars($imagen['nombre']); ?>"></li>
-                            <?php
+                                    <img src="model/administrador/inicio/<?php echo $imagen['imagen']; ?>" alt="">
+                                <?php
                                 }
                             ?>
                               

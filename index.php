@@ -116,7 +116,7 @@
                                 <div class="col-10 col-lg-8">
                                     <h1 class="display-2 text-white animated slideInDown mb-4">Arlequin Eventos</h1>
                                     <p class="fs-5 fw-medium text-white mb-4 pb-2">En Arlequín eventos, fusionamos la magia de la recreación, la emoción de la animación y la elegancia de la decoración para crear experiencias unicas y memorables.</p>
-                                    <a href="#inicio" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Descubre</a>
+                                    <a href="model/administrador/inicio/login.php" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Iniciar Sesion</a>
                                     <a href="#registrate" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Registrate</a>
                                 </div>
                             </div>
