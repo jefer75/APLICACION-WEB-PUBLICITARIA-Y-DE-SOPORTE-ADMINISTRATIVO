@@ -83,7 +83,7 @@
                 <div class="text-center">
                   <?php
                   if ($estado==6) {
-                    echo'<input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="registro" value="registrar">';
+                    echo'<input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="registro" value="Asignar">';
                   }
                   ?>
                 </div>

@@ -40,7 +40,8 @@ $con = $db -> conectar();
     <!-- Template Stylesheet -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/infantil.css">
+    <link href="css/deco.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -62,7 +63,7 @@ $con = $db -> conectar();
                             <a href="infantil.php" class="dropdown-item">Infantil</a>
                             <a href="adultos.php" class="dropdown-item">Adultos</a>
                         </div>
-                    </div>
+                    </div>               
 
                     <a href="decoracion.php" class="nav-item nav-link active">Decoración</a>
                     <a href="sobre_nosotros.php" class="nav-item nav-link">Sobre Nosotros</a>                    
@@ -99,34 +100,23 @@ $con = $db -> conectar();
                 </div>
 
                         <!-- Gallery-->
-                <div class="info">
-                    <?php
-                       $actividades = $con->prepare("SELECT * FROM decoracion");
-                       $actividades->execute();
-                       $actividades = $actividades->fetchAll(PDO::FETCH_ASSOC);
-                       foreach ($actividades as $fila) {
-                       
-                        $descripcion = $fila['descripcion'];
-                        $imagen = $fila['imagen'];
-                    ?>
 
-                    <div class="con">
-                        <div class="img">
-                        <img class="imagenes_tablas" src="model/administrador/pages/<?php echo $imagen?>">
-                        </div>
-                        <div class="top-text">
-                                <h3><?php echo $descripcion?></h3>   
-                        </div>
-                        
-                    </div>
-            <?php
-              }
-            ?>
-         </div>
-                
-    
-       
-               </div>
+                        <section class="gallery">
+                            <ul class="images">
+                            <?php
+                            $query = $con->prepare("SELECT * FROM decoracion");
+                            $query->execute();
+                            $imagenes = $query->fetchAll(PDO::FETCH_ASSOC);
+                            foreach ($imagenes as $imagen) {
+                            ?>
+                                <li class="img">
+                                <img src="data:<?php echo $imagen['tipo']; ?>;base64,<?php echo base64_encode($imagen['datos']); ?>" alt="<?php echo htmlspecialchars($imagen['nombre']); ?>"></li>
+                            <?php
+                                }
+                            ?>
+                              
+                            </ul>
+                          </section>
 
                           <div class="row g-4">
 
@@ -213,13 +203,14 @@ $con = $db -> conectar();
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <h3 class="text-white mb-4">Acceso Rapido</h3>
-                        <a class="btn btn-link text-white-50" href="#header">Inicio</a>
-                        <a class="btn btn-link text-white-50" href="">Recreacion Infantil</a>
-                        <a class="btn btn-link text-white-50" href="">Recreacion Adultos</a>
-                        <a class="btn btn-link text-white-50" href="">Decoracion</a>
-                        <a class="btn btn-link text-white-50" href="sobre_n.html">Sobre Nosotros</a>
-                        <a class="btn btn-link text-white-50" href="contact.html">Contactanos</a>
+                        <h3 class="text-white mb-4">Acceso Rápido</h3>
+                        <a class="btn btn-link text-white-50" href="index.php">Inicio</a>
+                        <a class="btn btn-link text-white-50" href="infantil.html">Recreación Infantil</a>
+                        <a class="btn btn-link text-white-50" href="adultos.html">Recreación Adultos</a>
+                        <a class="btn btn-link text-white-50" href="decoracion.html">Decoración</a>
+                        <a class="btn btn-link text-white-50" href="sobre_nosotros.html">Sobre Nosotros</a>
+                        <a class="btn btn-link text-white-50" href="contact.php">Contáctanos</a>
+
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">Galeria de Fotos</h3>
@@ -244,15 +235,7 @@ $con = $db -> conectar();
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <h3 class="text-white mb-4">Nuevo Comentario</h3>
-                        <p>Danos tu opinion sobre nuestro servicio o nuestro sitio web.</p>
-                        <div class="position-relative mx-auto" style="max-width: 400px;">
-                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Danos tu opnion">
-                            <br>
-                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Enviar</button>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="container">

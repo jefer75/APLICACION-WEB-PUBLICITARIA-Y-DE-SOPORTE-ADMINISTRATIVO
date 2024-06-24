@@ -127,15 +127,15 @@
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <h1 class="mb-3">Contactanos</h1>
-                    <p>Estamos ubicados en La ciudad de Ibague, en el departamento del Tolima, sin embargo, realizamos evenos en todos los municipios del Tolima, ademas Girardot-Cundinamarca.</p>
+                    <h1 class="mb-3">Contáctanos</h1>
+                    <p>Estamos ubicados en La ciudad de Ibagué, en el departamento del Tolima, sin embargo, realizamos eventos en todos los municipios del Tolima, ademas Girardot-Cundinamarca.</p>
                 </div>
                 <div class="row g-4 mb-5">
                     <div class="col-md-6 col-lg-4 text-center wow fadeInUp" data-wow-delay="0.1s">
                         <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 75px; height: 75px;">
                             <i class="fa fa-map-marker-alt fa-2x text-primary"></i>
                         </div>
-                        <h6>Urbanizacion Anda Lucia Real, Barrio las Margaritas, Ibague-Tolima</h6>
+                        <h6>Urbanizacion Anda Lucia Real, Barrio las Margaritas, Ibagué-Tolima</h6>
                     </div>
                     <div class="col-md-6 col-lg-4 text-center wow fadeInUp" data-wow-delay="0.3s">
                         <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 75px; height: 75px;">
@@ -278,7 +278,9 @@
 
         <!-- Contact End -->
 
-
+        </div>
+</div>
+</div>
  
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -297,13 +299,13 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <h3 class="text-white mb-4">Acceso Rapido</h3>
-                        <a class="btn btn-link text-white-50" href="#header">Inicio</a>
-                        <a class="btn btn-link text-white-50" href="">Recreacion Infantil</a>
-                        <a class="btn btn-link text-white-50" href="">Recreacion Adultos</a>
-                        <a class="btn btn-link text-white-50" href="">Decoracion</a>
-                        <a class="btn btn-link text-white-50" href="sobre_n.html">Sobre Nosotros</a>
-                        <a class="btn btn-link text-white-50" href="contact.html">Contactanos</a>
+                    <h3 class="text-white mb-4">Acceso Rápido</h3>
+                        <a class="btn btn-link text-white-50" href="index.php">Inicio</a>
+                        <a class="btn btn-link text-white-50" href="infantil.php">Recreación Infantil</a>
+                        <a class="btn btn-link text-white-50" href="adultos.php">Recreación Adultos</a>
+                        <a class="btn btn-link text-white-50" href="decoracion.php">Decoración</a>
+                        <a class="btn btn-link text-white-50" href="sobre_nosotros.php">Sobre Nosotros</a>
+                        <a class="btn btn-link text-white-50" href="contact.php">Contáctanos</a>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">Galeria de Fotos</h3>
@@ -328,15 +330,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <h3 class="text-white mb-4">Nuevo Comentario</h3>
-                        <p>Danos tu opinion sobre nuestro servicio o nuestro sitio web.</p>
-                        <div class="position-relative mx-auto" style="max-width: 400px;">
-                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Danos tu opnion">
-                            <br>
-                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Enviar</button>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
             <div class="container">

@@ -78,8 +78,7 @@
        ('detalles/eventos.php?id=<?php echo $id_eventos ?>','','width= 900,height=655, toolbar=NO');void(null);"><i class="bi bi-info-circle"></i></a></td>
         <td><a href="#" class="boton" onclick="window.open
        ('detalles/detalle_ventas.php?id=<?php echo $id_eventos ?>','','width= 800,height=850, toolbar=NO');void(null);"><i class="bi bi-cash-coin"></i></a></td>
-       <td><a href="#" class="boton" onclick="window.open
-       ('detalles/detalle_ventas.php?id=<?php echo $id_eventos ?>','','width= 800,height=850, toolbar=NO');void(null);"><i class="ri-article-line"></i></a></td>
+       <td><a href="funciones/factura.php?id=<?php echo $id_eventos; ?>" class="btn btn-success"><i class="bi bi-file-earmark-pdf"></i></a></td>
     </tr>
       <?php
         }

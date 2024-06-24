@@ -1,4 +1,3 @@
-
 <?php
     session_start();
     require_once("db/connection.php");
@@ -62,8 +61,8 @@
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+     <!-- Google Web Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
     
@@ -114,12 +113,11 @@
         </nav>
         <!-- Navbar End -->
 
-
         <!-- Carousel Start -->
         <div class="container-fluid p-0 mb-5" id="header">
             <div class="owl-carousel header-carousel position-relative">
                 <div class="owl-carousel-item position-relative">
-                    <img class="img-fluid" src="imagenes/slide/img2.jpg" alt="">
+                    <img class="img-fluid" src="imagenes/slide/img34.jpg" alt="">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .2);">
                         <div class="container">
                             <div class="row justify-content-start">
@@ -133,7 +131,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="owl-carousel-item position-relative">
+                <!-- <div class="owl-carousel-item position-relative">
                     <img class="img-fluid" src="imagenes/slide/img14.jpg" alt="">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .2);">
                         <div class="container">
@@ -149,9 +147,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Carousel End -->
-
+        </div>
 
         <!-- Facilities Start -->
         <div class="container-xxl py-5">
@@ -264,32 +262,6 @@
             </div>
         </div>
         <!-- About End -->
-
-
-        <!-- Call To Action Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="bg-light rounded">
-                    <div class="row g-0">
-                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s" style="min-height: 400px;">
-                            <div class="position-relative h-100">
-                                <img class="position-absolute w-100 h-100 rounded" src="imagenes/contenido/img52_.jpg" style="object-fit: cover;">
-                            </div>
-                        </div>
-                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                            <div class="h-100 d-flex flex-column justify-content-center p-5">
-                                <h1 class="mb-4">Únete a nuestro equipo</h1>
-                                <p class="mb-4">Para ser parte de nuestro equipo es indispensable que estes dispuesto a aprender cosas nuevas, y arriesgarte a hacer cosas que probablemente nunca pensaste hacer, por lo que requerimos que seas un entusiasta de los niños
-                                </p>
-                                <a class="btn btn-primary py-3 px-5" href="">Únete a la familia Arlequin<i class="fa fa-arrow-right ms-2"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Call To Action End -->
-
 
         <!-- Classes Start -->
         <div class="container-xxl py-5">
@@ -521,110 +493,7 @@
     </div>
 </form>
 
-<script>
-    function validarFormulario() {
-        var nombre = document.getElementById('nombres').value;
-        var apellido = document.getElementById('apellidos').value;
-        var documento = document.getElementById('documento').value;
-        var contacto = document.getElementById('telefono').value;
-        var correo = document.getElementById('correo').value;
-        var contrasena = document.getElementById('contrasena').value;
-
-        // Validar nombre
-        var regexNombre = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,28}( [a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,28})?$/;
-        if (!regexNombre.test(nombre)) {
-            alert("Por favor ingresa un nombre válido.");
-            return false;
-        }
-
-        // Validar apellido
-        var regexApellido = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,28}( [a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,28})?$/;
-        if (!regexApellido.test(apellido)) {
-            alert("Por favor ingresa un apellido válido no se permite puntos ni comas.");
-            return false;
-        }
-
-        // Validar documento
-        var regexDocumento = /^\d{8,10}$/;
-        if (!regexDocumento.test(documento)) {
-            alert("Por favor ingresa un número de documento válido.");
-            return false;
-        }
-
-        // Validar contacto
-        var regexContacto = /^\d{1,10}$/;
-        if (!regexContacto.test(contacto)) {
-            alert("Por favor ingresa un número de contacto válido.");
-            return false;
-        }
-
-        // Validar correo
-        var regexCorreo = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-        if (!regexCorreo.test(correo)) {
-            alert("Por favor ingresa una dirección de correo válida.");
-            return false;
-        }
-
-        // Validar contraseña
-        if (contrasena.length < 8 || contrasena.length > 11) {
-            alert("La contraseña debe tener entre 8 y 11 caracteres.");
-            return false;
-        }
-
-        return true;
-    }
-</script>
-
-
-
-        <!-- Appointment End -->
-
-
-        <!-- Team Start -->
-        
-        <!-- Testimonial Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <h1 class="mb-3">Estos son algunos de nuestros más fieles clientes</h1>
-                    <p>Los siguientes comentarios los realizaron algunos de nuestros clientes mas recurrentes, los cuales nos ayudan no solo confiando en nostros como empresa, sino, también realizando críticas que nos ayudan a mejorar</p>
-                </div>
-                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="testimonial-item bg-light rounded p-5">
-                        <p class="fs-5">Los mejores recreacionistas que hubiera podido elegir para la fiesta de mi hija, ya llevo contratano 2 años seguidos y no me han defraudado.</p>
-                        <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg" style="width: 90px; height: 90px;">
-                            <div class="ps-3">
-                                <h3 class="mb-1">Cliente anónimo</h3>
-                            </div>
-                            <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-light rounded p-5">
-                        <p class="fs-5">Los conoci hace poco mas de dos años y he contratado varias veces con ustedes, nunca me han decepcionado</p>
-                        <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-2.jpg" style="width: 90px; height: 90px;">
-                            <div class="ps-3">
-                                <h3 class="mb-1">Cliente anónimo</h3>
-                            </div>
-                            <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-light rounded p-5">
-                        <p class="fs-5">Llevo 4 años contratando para los cumpleaños de mi hijo y siempre han hecho el mejor trabajo con mis invitados, me han dado muy buenas referencias de ellos y estoy muy agradecido.</p>
-                        <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-3.jpg" style="width: 90px; height: 90px;">
-                            <div class="ps-3">
-                                <h3 class="mb-1">cliente anónimo</h3>
-                            </div>
-                            <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Testimonial End -->
-
+       
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -645,10 +514,10 @@
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">Acceso Rápido</h3>
                         <a class="btn btn-link text-white-50" href="#header">Inicio</a>
-                        <a class="btn btn-link text-white-50" href="infantil.html">Recreación Infantil</a>
-                        <a class="btn btn-link text-white-50" href="adultos.html">Recreación Adultos</a>
-                        <a class="btn btn-link text-white-50" href="decoracion.html">Decoración</a>
-                        <a class="btn btn-link text-white-50" href="sobre_nosotros.html">Sobre Nosotros</a>
+                        <a class="btn btn-link text-white-50" href="infantil.php">Recreación Infantil</a>
+                        <a class="btn btn-link text-white-50" href="adultos.php">Recreación Adultos</a>
+                        <a class="btn btn-link text-white-50" href="decoracion.php">Decoración</a>
+                        <a class="btn btn-link text-white-50" href="sobre_nosotros.php">Sobre Nosotros</a>
                         <a class="btn btn-link text-white-50" href="contact.php">Contáctanos</a>
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -674,15 +543,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <h3 class="text-white mb-4">Nuevo Comentario</h3>
-                        <p>Danos tu opinión sobre nuestro servicio o nuestro sitio web.</p>
-                        <div class="position-relative mx-auto" style="max-width: 400px;">
-                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Danos tu opnión">
-                            <br>
-                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Enviar</button>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="container">

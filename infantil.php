@@ -110,12 +110,15 @@ $con = $db -> conectar();
                        
                         $nombre = $fila['nombre'];
                         $descripcion = $fila['descripcion'];
-                        $imagen = $fila['imagen'];
+                        $nombre_img = $fila['nombre_img'];
+                        $tipos = $fila['tipos'];
+                        $datos = $fila['datos'];
+                       
                     ?>
 
             <div class="con">
                <div class="img">
-               <img class="imagenes_tablas" src="model/administrador/pages/<?php echo $imagen?>">
+               <img class="imagenes_tablas" src="data:<?php echo $fila['tipos']; ?>;base64,<?php echo base64_encode($fila['datos']); ?>" alt="<?php echo htmlspecialchars($fila['nombre_img']); ?>">
                </div>
                <div class="top-text">
                     <h3><?php echo $nombre?></h3>
@@ -156,12 +159,12 @@ $con = $db -> conectar();
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <h3 class="text-white mb-4">Acceso Rápido</h3>
+                    <h3 class="text-white mb-4">Acceso Rápido</h3>
                         <a class="btn btn-link text-white-50" href="index.php">Inicio</a>
-                        <a class="btn btn-link text-white-50" href="infantil.html">Recreación Infantil</a>
-                        <a class="btn btn-link text-white-50" href="adultos.html">Recreación Adultos</a>
-                        <a class="btn btn-link text-white-50" href="decoracion.html">Decoración</a>
-                        <a class="btn btn-link text-white-50" href="sobre_nosotros.html">Sobre Nosotros</a>
+                        <a class="btn btn-link text-white-50" href="infantil.php">Recreación Infantil</a>
+                        <a class="btn btn-link text-white-50" href="adultos.php">Recreación Adultos</a>
+                        <a class="btn btn-link text-white-50" href="decoracion.php">Decoración</a>
+                        <a class="btn btn-link text-white-50" href="sobre_nosotros.php">Sobre Nosotros</a>
                         <a class="btn btn-link text-white-50" href="contact.php">Contáctanos</a>
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -187,15 +190,7 @@ $con = $db -> conectar();
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <h3 class="text-white mb-4">Nuevo Comentario</h3>
-                        <p>Danos tu opinión sobre nuestro servicio o nuestro sitio web.</p>
-                        <div class="position-relative mx-auto" style="max-width: 400px;">
-                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Danos tu opnión">
-                            <br>
-                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Enviar</button>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
             <div class="container">

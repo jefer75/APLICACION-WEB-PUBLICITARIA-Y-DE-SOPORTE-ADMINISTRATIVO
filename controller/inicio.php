@@ -7,7 +7,7 @@ session_start();
 if (isset($_POST["inicio"])) {
 
     $cedula = $_POST["cedula"];
-    
+
     $contrasena = htmlentities(addslashes($_POST['contrasena']));
 
     $sql = $con->prepare("SELECT*FROM usuarios where cedula = '$cedula'");
