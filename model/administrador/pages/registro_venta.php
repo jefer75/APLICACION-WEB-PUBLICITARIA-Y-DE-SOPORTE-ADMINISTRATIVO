@@ -103,7 +103,7 @@
     <label for="yourEmail" class="form-label">Dirección</label>
     <input type="text" name="lugar" id="lugar" class="form-control" placeholder="Digite la dirección del evento" required>
     <div id="error_lugar" class="invalid-feedback">
-        La dirección debe contener entre 10 y 40 caracteres y solo letras, espacios, '/' y '#'.
+        La dirección debe tener máximo 30 caracteres.
     </div>
 </div>
 
@@ -115,7 +115,7 @@
         lugarInput.addEventListener('input', function() {
             var lugar = lugarInput.value.trim();
 
-            if (/^[A-Za-z\s/#]{10,40}$/.test(lugar)) {
+            if (lugar.length <= 30) {
                 lugarInput.classList.remove('is-invalid');
                 errorLugar.style.display = 'none';
             } else {
@@ -123,8 +123,42 @@
                 errorLugar.style.display = 'block';
             }
         });
+
+        // Validar el formulario antes de enviar
+        document.forms["tu_formulario"].addEventListener("submit", function(event) {
+            var lugar = lugarInput.value.trim();
+
+            // Validar longitud del lugar
+            if (lugar.length > 30) {
+                lugarInput.classList.add('is-invalid');
+                errorLugar.style.display = 'block';
+                event.preventDefault(); // Evitar envío del formulario si hay errores
+            }
+        });
     });
+
+    // Función para validar el formulario antes de enviar
+    function validateForm() {
+        var lugar = document.forms["tu_formulario"]["lugar"].value.trim();
+
+        // Validar longitud del lugar
+        if (lugar.length > 30) {
+            var lugarInput = document.getElementById('lugar');
+            var errorLugar = document.getElementById('error_lugar');
+            lugarInput.classList.add('is-invalid');
+            errorLugar.style.display = 'block';
+            return false; // Evitar envío del formulario si hay errores
+        }
+
+        // Otras validaciones pueden agregarse aquí si es necesario
+
+        return true; // Permitir envío del formulario si todas las validaciones pasan
+    }
 </script>
+
+
+
+
 
 
 <div class="col-md-6">
@@ -217,13 +251,12 @@
         }
     });
 </script>
-
 <div class="col-md-6">
     <label for="descripcion" class="form-label">Descripción</label>
     <div class="input-group has-validation">
         <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Descripción" maxlength="80" required>
         <div id="error_descripcion" class="invalid-feedback">
-            Ingresa una descripción válida (máximo 80 caracteres).
+            Ingresa una descripción válida (máximo 30 caracteres).
         </div>
     </div>
 </div>
@@ -236,7 +269,7 @@
         descripcionInput.addEventListener('input', function() {
             var descripcion = descripcionInput.value.trim();
 
-            if (/^[A-Za-z0-9.,\s]{0,80}$/.test(descripcion)) {
+            if (/^[A-Za-z0-9.,\s]{0,30}$/.test(descripcion)) {
                 descripcionInput.classList.remove('is-invalid');
                 errorDescripcion.style.display = 'none';
             } else {
@@ -247,6 +280,38 @@
     });
 </script>
 
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var lugarInput = document.getElementById('lugar');
+        var errorLugar = document.getElementById('error_lugar');
+
+        lugarInput.addEventListener('input', function() {
+            var lugar = lugarInput.value.trim();
+
+            if (lugar.length <= 30) {
+                lugarInput.classList.remove('is-invalid');
+                errorLugar.style.display = 'none';
+            } else {
+                lugarInput.classList.add('is-invalid');
+                errorLugar.style.display = 'block';
+            }
+        });
+
+        // Validar el formulario antes de enviar
+        document.getElementById('formreg').addEventListener("submit", function(event) {
+            var lugar = lugarInput.value.trim();
+
+            // Validar longitud del lugar
+            if (lugar.length > 30) {
+                lugarInput.classList.add('is-invalid');
+                errorLugar.style.display = 'block';
+                event.preventDefault(); // Evitar envío del formulario si hay errores
+            }
+        });
+    });
+</script>
 
                     <div class="col-12">
                       <div class="form-check">

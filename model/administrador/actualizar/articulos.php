@@ -24,8 +24,6 @@
 
    if (isset($_POST['actualizar'])){
 
-    
-
        $id_tipo_art= $_POST['id_tipo_art'];
        $nombre_A = $_POST['nombre_A'];
        $id_estado= $_POST['id_estado'];
@@ -40,7 +38,7 @@
         
         $cantidad_total = $suma + $cantidad;
         
-           $insert= $con -> prepare ("UPDATE articulos SET  nombre_A='$nombre_A', id_estado='$id_estado', descripcion='$descripcion', id_tipo_art='$id_tipo_art' , cantidad=$cantidad_total, valor='$valor' WHERE id_articulo = '".$_GET['id']."'");
+           $insert= $con -> prepare ("UPDATE articulos SET  nombre_A='$nombre_A', id_estado='$id_estado', descripcion='$descripcion', id_tipo_art='$id_tipo_art', cantidad=$cantidad_total, valor='$valor' WHERE id_articulo = '".$_GET['id']."'");
            $insert -> execute();
            echo '<script> alert ("Registro actualizado exitosamente");</script>';
            echo '<script> window.close(); </script>';
@@ -78,7 +76,6 @@
 </head>
 
 <body onload="centrar();">
-
 
 
 <div class="card">
@@ -149,11 +146,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
 <div class="col-6">
             <label for="cantidadActual" class="form-label">Cantidad Actual</label>
-            <input type="number" class="form-control" id="cantidadActual" readonly value="<?php echo htmlspecialchars($fila['cantidad'] ?? ''); ?>" min="1" max="500">
+            <input type="number" class="form-control" id="cantidadActual" readonly value="<?php echo $cantidad; ?>">
         </div>
         <div class="col-6">
             <label for="suma" class="form-label">Añadir Compra</label>
-            <input type="number" class="form-control" id="suma" name="suma" placeholder="Cantidad añadida" >
+            <input type="number" class="form-control" id="suma" name="suma" placeholder="Cantidad añadida">
             <div id="error_suma" class="invalid-feedback">
                 La cantidad añadida debe ser del 1 al 500.
             </div>

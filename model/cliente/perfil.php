@@ -131,31 +131,64 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                                     <!-- Formulario de Edición de Perfil -->
-                                    <form method="POST" action="">
-                                        <div class="row mb-3">
-                                            <label for="Phone"
-                                                class="col-md-4 col-lg-3 col-form-label">Teléfono</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <input class="form-control" type="text" id="celular" name="celular"
-                                                    value="<?php echo htmlspecialchars($cliente['celular']); ?>">
-                                            </div>
-                                        </div>
+                                    <form method="POST" action="" onsubmit="return validarFormulario()">
 
-                                        <div class="row mb-3">
-                                            <label for="Email"
-                                                class="col-md-4 col-lg-3 col-form-label">Correo electrónico</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <input class="form-control" type="email" id="correo" name="correo"
-                                                    value="<?php echo htmlspecialchars($cliente['correo']); ?>">
-                                            </div>
-                                        </div>
+                                    <!-- Formulario de Edición de Perfil -->
+                                    <div class="row mb-3">
+        <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Teléfono</label>
+        <div class="col-md-8 col-lg-9">
+            <input class="form-control" type="text" id="celular" name="celular"
+                value="<?php echo htmlspecialchars($cliente['celular']); ?>">
+            <div id="error-celular" class="invalid-feedback">Teléfono debe contener solo números y tener exactamente 10 dígitos.</div>
+        </div>
+    </div>
 
-                                        <div class="text-center">
-                                            <input type="submit" class="btn"
-                                                style="background-color: #2c8ac9; color: white;" name="actualizar"
-                                                value="Actualizar">
-                                        </div>
-                                    </form><!-- End Formulario de Edición de Perfil -->
+    <div class="row mb-3">
+        <label for="Email" class="col-md-4 col-lg-3 col-form-label">Correo electrónico</label>
+        <div class="col-md-8 col-lg-9">
+            <input class="form-control" type="email" id="correo" name="correo"
+                value="<?php echo htmlspecialchars($cliente['correo']); ?>">
+            <div id="error-correo" class="invalid-feedback">Correo electrónico debe tener un formato válido (max 30 caracteres y debe contener '@').</div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="actualizar"
+            value="Actualizar">
+    </div>
+</form>
+
+<script>
+    function validarFormulario() {
+        var celularInput = document.getElementById('celular');
+        var correoInput = document.getElementById('correo');
+
+        var celular = celularInput.value.trim();
+        var correo = correoInput.value.trim();
+
+        var celularValido = /^[0-9]{10}$/.test(celular); // Teléfono debe ser exactamente 10 dígitos numéricos
+        var correoValido = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,30}$/.test(correo); // Correo electrónico debe tener un formato válido
+
+        if (!celularValido) {
+            celularInput.classList.add('is-invalid');
+            document.getElementById('error-celular').style.display = 'block';
+        } else {
+            celularInput.classList.remove('is-invalid');
+            document.getElementById('error-celular').style.display = 'none';
+        }
+
+        if (!correoValido) {
+            correoInput.classList.add('is-invalid');
+            document.getElementById('error-correo').style.display = 'block';
+        } else {
+            correoInput.classList.remove('is-invalid');
+            document.getElementById('error-correo').style.display = 'none';
+        }
+
+        // Retorna true si ambos campos son válidos, de lo contrario, retorna false para evitar el envío del formulario
+        return celularValido && correoValido;
+    }
+</script> 
 
                                 </div>
 

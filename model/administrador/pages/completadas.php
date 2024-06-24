@@ -22,11 +22,11 @@
 
               <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
 
-              <form method="post" action="funciones/luc_excel.php">
-                            <button type="submit" name="luc_excel" class="btn btn-success">
+              <form method="post" action="funciones/com_excel.php">
+                            <button type="submit" name="com_excel" class="btn btn-success">
                                 <i class="bi bi-download"></i>
                             </button>
-                        </form>
+                        </form>
               <!-- Table with stripped rows -->
               <table class="table datatable">
   <thead>
@@ -88,8 +88,7 @@
        ('../detalles/detalle_animador.php?id=<?php echo $id_eventos ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-person"></i></a></td>
         <td><a href="#" class="boton" onclick="window.open
        ('../detalles/detalle_ventas.php?id=<?php echo $id_eventos ?>','','width= 800,height=850, toolbar=NO');void(null);"><i class="bi bi-cash-coin"></i></a></td>
-       <td><a href="#" class="boton" onclick="window.open
-       ('../detalles/detalle_ventas.php?id=<?php echo $id_eventos ?>','','width= 800,height=850, toolbar=NO');void(null);"><i class="ri-article-line"></i></a></td>
+       <td><a href="funciones/factura.php?id=<?php echo $id_eventos; ?>" class="btn btn-success"><i class="bi bi-file-earmark-pdf"></i></a></td>
     </tr>
       <?php
         }

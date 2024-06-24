@@ -22,11 +22,6 @@
 
               <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
 
-              <form method="post" action="funciones/luc_excel.php">
-                            <button type="submit" name="luc_excel" class="btn btn-success">
-                                <i class="bi bi-download"></i>
-                            </button>
-                        </form>
               <!-- Table with stripped rows -->
               <table class="table datatable">
   <thead>

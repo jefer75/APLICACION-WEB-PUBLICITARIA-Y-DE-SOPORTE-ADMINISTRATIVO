@@ -1,6 +1,6 @@
 <?php
-require('../../../fpdf/fpdf.php');
-require_once("../../../db/connection.php");
+require('../../../../fpdf/fpdf.php');
+require_once("../../../../db/connection.php");
 
 // Conectar a la base de datos
 $db = new Database();
@@ -10,7 +10,7 @@ class PDF extends FPDF {
     // Cabecera de página
     function Header() {
         // Logo
-        $this->Image('../../../imagenes/logos/Logo Arlequin Color.png', 10, 8, 33); // Ajusta la ruta del logo según sea necesario
+        $this->Image('../../../../imagenes/logos/Logo Arlequin Color.png', 10, 8, 33); // Ajusta la ruta del logo según sea necesario
         // Arial bold 15
         $this->SetFont('Arial', 'B', 15);
         // Título
