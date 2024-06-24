@@ -2,7 +2,7 @@
 
     include 'plantilla.php';
 
-?>
+    ?>
 
 <title>Reservas</title>
 
@@ -18,12 +18,12 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Pendientes</h5>
+              <h5 class="card-title">Completadas</h5>
 
               <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
 
-              <form method="post" action="funciones/pend_excel.php">
-                            <button type="submit" name="pend_excel" class="btn btn-success">
+              <form method="post" action="funciones/luc_excel.php">
+                            <button type="submit" name="luc_excel" class="btn btn-success">
                                 <i class="bi bi-download"></i>
                             </button>
                         </form>
@@ -41,6 +41,7 @@
         <th>Detalles</th>
         <th>Animador</th>
         <th>Alquiler</th>
+        <th>Factura</th>
     </tr>
   </thead>
   <tbody>
@@ -51,7 +52,7 @@
         INNER JOIN tipo_e ON tipo_e.id_tipo_e = eventos.id_tipo_e
         INNER JOIN usuarios ON usuarios.cedula = eventos.cedula
         INNER JOIN estados ON eventos.id_estado = estados.id_estado
-        WHERE eventos.id_estado = 6");
+        WHERE eventos.id_estado = 8");
         $con_paquetes->execute();
         $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
         foreach ($paquetes as $fila) {
@@ -80,12 +81,15 @@
         <td><?php echo $fila['f_inicio'];?></td>
         <td><?php echo $fila['hora_inicio'];?></td>
         <td><?php echo $fila['nombre'];?></td>
-        <td><a href="" class="boton" onclick="window.open
+
+        <td><a href="#" class="boton" onclick="window.open
        ('../actualizar/eventos.php?id=<?php echo $id_eventos ?>','','width= 900,height=655, toolbar=NO');void(null);"><i class="bi bi-info-circle"></i></a></td>
-        <td><a href="" class="boton" onclick="window.open
+        <td><a href="#" class="boton" onclick="window.open
        ('../detalles/detalle_animador.php?id=<?php echo $id_eventos ?>','','width= 600,height=500, toolbar=NO');void(null);"><i class="bi bi-person"></i></a></td>
-        <td><a href="" class="boton" onclick="window.open
+        <td><a href="#" class="boton" onclick="window.open
        ('../detalles/detalle_ventas.php?id=<?php echo $id_eventos ?>','','width= 800,height=850, toolbar=NO');void(null);"><i class="bi bi-cash-coin"></i></a></td>
+       <td><a href="#" class="boton" onclick="window.open
+       ('../detalles/detalle_ventas.php?id=<?php echo $id_eventos ?>','','width= 800,height=850, toolbar=NO');void(null);"><i class="ri-article-line"></i></a></td>
     </tr>
       <?php
         }

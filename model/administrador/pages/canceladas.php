@@ -2,7 +2,7 @@
 
     include 'plantilla.php';
 
-?>
+    ?>
 
 <title>Reservas</title>
 
@@ -18,12 +18,12 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Pendientes</h5>
+              <h5 class="card-title">Canceladas</h5>
 
               <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
 
-              <form method="post" action="funciones/pend_excel.php">
-                            <button type="submit" name="pend_excel" class="btn btn-success">
+              <form method="post" action="funciones/luc_excel.php">
+                            <button type="submit" name="luc_excel" class="btn btn-success">
                                 <i class="bi bi-download"></i>
                             </button>
                         </form>
@@ -51,7 +51,7 @@
         INNER JOIN tipo_e ON tipo_e.id_tipo_e = eventos.id_tipo_e
         INNER JOIN usuarios ON usuarios.cedula = eventos.cedula
         INNER JOIN estados ON eventos.id_estado = estados.id_estado
-        WHERE eventos.id_estado = 6");
+        WHERE eventos.id_estado = 9");
         $con_paquetes->execute();
         $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
         foreach ($paquetes as $fila) {
