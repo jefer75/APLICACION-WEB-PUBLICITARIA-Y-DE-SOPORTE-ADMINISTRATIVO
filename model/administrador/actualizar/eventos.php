@@ -5,10 +5,12 @@
         $db = new Database();
         $con = $db -> conectar();
 
+        $fecha_actual=date('Y-m-d');
         $id_eventos= $_GET['id'];
+        
 
     //empieza la consulta
-        $con_paquetes = $con->prepare("SELECT eventos.id_eventos, eventos.fecha_evento, paquetes.id_paquetes, paquetes.nombre_paquete, eventos.id_tipo_e, tipo_e.tipo_evento, eventos.lugar, eventos.cant_ninos, eventos.f_inicio, eventos.f_fin, eventos.hora_inicio, eventos.hora_fin, eventos.edad_home, eventos.descripcion, eventos.cedula, usuarios.nombre, eventos.id_estado, estados.estado
+        $con_paquetes = $con->prepare("SELECT eventos.id_eventos, eventos.fecha_evento, paquetes.id_paquetes, paquetes.nombre_paquete, paquetes.valor, eventos.id_tipo_e, tipo_e.tipo_evento, eventos.lugar, eventos.cant_ninos, eventos.f_inicio, eventos.f_fin, eventos.hora_inicio, eventos.hora_fin, eventos.edad_home, eventos.descripcion, eventos.cedula, usuarios.nombre, eventos.id_estado, estados.estado
         FROM eventos
         INNER JOIN paquetes ON paquetes.id_paquetes = eventos.id_paquetes
         INNER JOIN tipo_e ON tipo_e.id_tipo_e = eventos.id_tipo_e
@@ -22,6 +24,7 @@
           $f_evento = $fila['fecha_evento'];
           $id_paquete = $fila['id_paquetes'];
           $nombre_paquete = $fila['nombre_paquete'];
+          $precio = $fila['valor'];
           $id_tipo_e = $fila['id_tipo_e'];
           $tipo_e = $fila['tipo_evento'];
           $lugar = $fila['lugar'];
@@ -54,10 +57,27 @@
         $descripcion= $_POST['descripcion'];
         $estado= $_POST['estado'];
 
+
+        $art_alquilados= $con -> prepare("SELECT SUM(detalle_factura.valor_neto) AS valor_articulos
+                                    FROM detalle_factura WHERE id_evento = $id_eventos");
+        $art_alquilados->execute();
+        $fila = $art_alquilados -> fetch();
+        $valor=$fila['valor_articulos'];
+        
+        $valor_total=$precio + $valor;
+
             $insert= $con -> prepare ("UPDATE eventos SET id_paquetes='$id_paquetes', id_tipo_e=$id_tipo_e, lugar='$lugar', cant_ninos='$cant_ninos', f_inicio='$f_inicio', f_fin='$f_fin', hora_inicio='$hora_inicio', hora_fin='$hora_fin', edad_home='$edad_home', cedula='$cliente', descripcion='$descripcion', id_estado='$estado' WHERE id_eventos = $id_eventos");
             $insert -> execute();
+              
+
+            if($estado==8){
+
+              $insert= $con -> prepare ("INSERT INTO factura (fecha, id_eventos, valor_total) VALUES ('$fecha_actual', $id_eventos, $valor_total)");
+            $insert -> execute();
+              
+            }
             echo '<script> alert ("Registro actualizado exitosamente");</script>';
-            echo '<script> window.close(); </script>';   
+            echo '<script> window.close(); </script>'; 
         }
 
         else if (isset($_POST['eliminar'])){

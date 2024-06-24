@@ -75,7 +75,6 @@
 
     <div class="text-center">
         <input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="actualizar" value="Actualizar">
-        <input class="btn" style="background-color: gray; color: white;" type="submit" name="eliminar" value="Eliminar">
     </div>
 
 </form>

@@ -28,7 +28,7 @@ $con = $db -> conectar();
    
      if ( $nombre_paquete =="" || $edad_min =="" || $edad_max =="" || $valor =="")
       {
-         echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
+         echo '<script>alert ("Por favor llene todos los campos");</script>';
          echo '<script>window.location="paquetes.php"</script>';
       }
       
@@ -62,7 +62,7 @@ $con = $db -> conectar();
 
                         <form method="post" action="funciones/paque_excel.php">
                             <button type="submit" name="paque_excel" class="btn btn-success">
-                                <i class="bi bi-download"></i>Descargar reporte
+                                <i class="bi bi-download"></i> Descargar Reporte
                             </button>
                         </form>
                         
@@ -98,7 +98,7 @@ $con = $db -> conectar();
                                         <input class="form-control" type="text" id="edad_max" name="edad_max"
                                             placeholder="Edad máxima">
                                         <div id="error_edad_max" class="invalid-feedback" style="display: none;">
-                                            La edad máxima debe ser un número entre 15 y 100.
+                                            La edad máxima debe ser un número entre 5 y 100.
                                         </div>
                                     </div>
 
@@ -107,7 +107,7 @@ $con = $db -> conectar();
                                         <input class="form-control" type="text" id="valor" name="valor"
                                             placeholder="Valor">
                                         <div id="error_valor" class="invalid-feedback" style="display: none;">
-                                            El valor debe ser un númerico.
+                                            Solo se aceptan numeros (mayor a 50.000)
                                         </div>
                                     </div>
 
@@ -146,7 +146,7 @@ $con = $db -> conectar();
                                         <td><?php echo $edad_max ?></td>
                                         <td><?php echo $valor ?></td>
                                         <td>
-                                            <a href="" class="boton" onclick="window.open('../actualizar/act_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width=600,height=500,toolbar=NO');return false;">
+                                            <a href="" class="boton" onclick="window.open('../actualizar/act_paquetes.php?id=<?php echo $fila['id_paquetes'] ?>','','width=600,height=600,toolbar=NO');return false;">
                                              <i class="bi bi-pencil-square"></i>
                                             </a>
                                         </td>
@@ -188,6 +188,7 @@ $con = $db -> conectar();
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <script src="../../validaciones/validar_paquetes.js"></script>
 
   <!-- Vendor JS Files -->
   <script src="../../../js/modal.js"></script>

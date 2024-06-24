@@ -32,52 +32,55 @@ include '../funciones/reg_articulos.php';
                         <dialog class="añadir_cont" id="añadir_cont">
                             <button id="añadir_close" class="btn modal_close" onclick="closedialog();">X</button>
                             <h2 class="modal__title">Registrar artículo</h2>
-                            <form method="post" name="formreg" id="formreg" class="row g-3" autocomplete="off" onsubmit="return validateForm()">
-                                <div class="col-md-6">
-                                    <label for="inputTipoArticulo" class="form-label">Tipo Articulos</label>
-                                    <select class="form-control" name="id_tipo_art" required>
-                                        <option value="">Seleccione el tipo de articulo</option>
-                                        <?php
-                                        $control = $con->prepare("SELECT * FROM tipo_articulo");
-                                        $control->execute();
-                                        while ($fila = $control->fetch(PDO::FETCH_ASSOC)) {
-                                            echo "<option value='" . $fila['id_tipo_art'] . "'>" . $fila['tipo_articulo'] . "</option>";
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputNombreArticulo" class="form-label">Nombre artículo</label>
-                                    <input class="form-control" type="text" name="nombre_A" id="nombreArticulo" pattern="[A-Za-z ]{4,30}" title="Solo se permiten letras y espacios, entre 4 y 30 caracteres, con hasta 3 espacios" placeholder="Nombre de artículo" required>
-                                    <div id="error_nombreArticulo" class="invalid-feedback">
-                                        El nombre del artículo debe contener entre 4 y 30 letras con 3 espacios.
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputDescripcion" class="form-label">Descripción</label>
-                                    <input class="form-control" type="text" name="descripcion" id="descripcion" maxlength="80" placeholder="Descripción" required>
-                                    <div id="error_descripcion" class="invalid-feedback">
-                                        La descripción no puede exceder los 80 caracteres.
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <label for="inputCantidad" class="form-label">Cantidad</label>
-                                    <input class="form-control" type="number" name="cantidad" id="cantidad" placeholder="Cantidad" title="Solo se permiten números, máximo 5 dígitos" min="1" max="500" required>
-                                    <div id="error_cantidad" class="invalid-feedback">
-                                        La cantidad debe ser un número entre 1 y 500.
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <label for="inputValor" class="form-label">Valor de alquiler</label>
-                                    <input class="form-control" type="number" name="valor" id="valor" pattern="[0-9]{1,8}" title="Solo se permiten números, máximo 8 dígitos" placeholder="Valor" min="1" required>
-                                    <div id="error_valor" class="invalid-feedback">
-                                        El valor solo puede contener números y máximo 8 dígitos.
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    <input type="submit" name="registrar" value="Registro" class="btn btn-primary modal_close">
-                                </div>
-                            </form>
+                            <form method="post" name="formreg" id="formreg" class="row g-3" autocomplete="off" onsubmit="return validarFormulario()">
+    <div class="col-md-6">
+        <label for="inputTipoArticulo" class="form-label">Tipo Artículos</label>
+        <select class="form-control" name="id_tipo_art" id="inputTipoArticulo" required>
+            <option value="">Seleccione el tipo de artículo</option>
+            <?php
+            $control = $con->prepare("SELECT * FROM tipo_articulo");
+            $control->execute();
+            while ($fila = $control->fetch(PDO::FETCH_ASSOC)) {
+                echo "<option value='" . $fila['id_tipo_art'] . "'>" . $fila['tipo_articulo'] . "</option>";
+            }
+            ?>
+        </select>
+        <div id="error_tipo_articulo" class="invalid-feedback" style="display: none;">
+            Por favor, seleccione el tipo de artículo.
+        </div>
+    </div>
+    <div class="col-md-6">
+        <label for="inputNombreArticulo" class="form-label">Nombre artículo</label>
+        <input class="form-control" type="text" name="nombre_A" id="nombreArticulo" placeholder="Nombre de artículo">
+        <div id="error_nombreArticulo" class="invalid-feedback">
+            El nombre del artículo debe contener entre 4 y 30 caracteres (solo letras).
+        </div>
+    </div>
+    <div class="col-md-6">
+        <label for="inputDescripcion" class="form-label">Descripción</label>
+        <input class="form-control" type="text" name="descripcion" id="descripcion" placeholder="Descripción">
+        <div id="error_descripcion" class="invalid-feedback">
+            La descripción debe tener al menos 10 y máximo 80 caracteres.
+        </div>
+    </div>
+    <div class="col-6">
+        <label for="inputCantidad" class="form-label">Cantidad</label>
+        <input class="form-control" type="number" name="cantidad" id="cantidad" placeholder="Cantidad">
+        <div id="error_cantidad" class="invalid-feedback">
+            La cantidad debe ser un número entre 1 y 200.
+        </div>
+    </div>
+    <div class="col-6">
+        <label for="inputValor" class="form-label">Valor de alquiler</label>
+        <input class="form-control" type="number" name="valor" id="valor" placeholder="Valor">
+        <div id="error_valor" class="invalid-feedback">
+            El valor solo puede contener números y máximo 8 dígitos.
+        </div>
+    </div>
+    <div class="text-center">
+        <input type="submit" name="registrar" value="Registro" class="btn btn-primary modal_close">
+    </div>
+</form>
                         </dialog>
 
                         <!-- Table with stripped rows -->
@@ -161,6 +164,20 @@ include '../funciones/reg_articulos.php';
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+
+        var tipoArticuloInput = document.getElementById('inputTipoArticulo');
+    var errorTipoArticulo = document.getElementById('error_tipo_articulo');
+
+    // Validar si se ha seleccionado una opción
+    if (tipoArticuloInput.value === '') {
+        tipoArticuloInput.classList.add('is-invalid');
+        errorTipoArticulo.style.display = 'block';
+        return false; // Evitar envío del formulario
+    } else {
+        tipoArticuloInput.classList.remove('is-invalid');
+        errorTipoArticulo.style.display = 'none';
+    }
+
         // Referencias a los elementos del formulario
         var nombreArticuloInput = document.getElementById('nombreArticulo');
         var descripcionInput = document.getElementById('descripcion');

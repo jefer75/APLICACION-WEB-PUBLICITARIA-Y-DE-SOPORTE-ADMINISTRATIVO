@@ -117,28 +117,29 @@
             <?php
               }
             ?>
-        <form autocomplete="off"class="row g-3" enctype="multipart/form-data"  name="form_actualizar" method="POST">
-        <div class="col-md-6">
-            <div class="col-8">
-            <label for="inputEmail5" class="form-label">Descripcion</label>
-            <input  class="form-control" type="text" name="descripcion" value="<?php echo $fila['descripcion']?>" placeholder="Descripcion del paquete">
+        <form autocomplete="off" class="row g-3" enctype="multipart/form-data" name="form_actualizar" method="POST" onsubmit="return validarFormulario()">
+    <div class="col-md-6">
+        <div class="col-8">
+            <label for="inputEmail5" class="form-label">Descripción</label>
+            <input class="form-control" type="text" name="descripcion" id="descripcionInput" value="<?php echo htmlspecialchars($fila['descripcion']); ?>" placeholder="Descripción del paquete">
+            <div id="error_descripcion" class="invalid-feedback" style="display: none;">
+                La descripción debe tener entre 10 y 100 caracteres.
+            </div>
         </div>
 
         <div class="col-8">
             <label for="inputEmail5" class="form-label">Imagen</label>
-            <input  class="form-control" type="file" name="imagen">
-            </div>
-            <br>
+            <input class="form-control" type="file" name="imagen">
         </div>
-        <div class="text-center">
-            <tr>
-              <td><input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="actualizar" value="Actualizar"></td>
-            </tr>
-        </div>
-
-          </form><!-- End Multi Columns Form -->
+        <br>
+    </div>
+    <div class="text-center">
+        <input type="submit" class="btn" style="background-color: #2c8ac9; color: white;" name="actualizar" value="Actualizar">
+    </div>
+</form>
         </div>
       </div>
     </div>
+    <script src="../../validaciones/validar_decoracion.js"></script>
 </body>
 </html>

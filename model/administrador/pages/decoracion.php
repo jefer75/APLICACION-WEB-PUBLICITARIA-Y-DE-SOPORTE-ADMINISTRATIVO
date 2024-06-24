@@ -34,23 +34,23 @@ include '../funciones/img_decoracion.php';
                 <h2 class="modal__title">Insertar Imagen</h2> 
           <!-- Multi Columns Form -->
 
-                <form method="post" class="row g-3" enctype="multipart/form-data" autocomplete="off">
-                <div class="col-6">
-                  <label for="inputEmail5" class="form-label">Descripcion</label>
-                  <input  class="form-control" type="text" name="descripcion" placeholder=" descripcion del paquete">
-                </div>
-                <div class="col-6">
-                  <label for="inputEmail5" class="form-label">Imagen</label>
-                  <input  class="form-control" type="file" name="imagen" placeholder="subir imagen" required>
-                </div>
+          <form method="post" class="row g-3" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarFormulario()">
+    <div class="col-6">
+        <label for="descripcionInput" class="form-label">Descripción</label>
+        <input class="form-control" type="text" name="descripcion" id="descripcionInput" placeholder="Descripción del paquete">
+        <div id="error_descripcion" class="invalid-feedback" style="display: none;">
+            La descripción debe tener entre 10 y 100 caracteres.
+        </div>
+    </div>
+    <div class="col-6">
+        <label for="imagenInput" class="form-label">Imagen</label>
+        <input class="form-control" type="file" name="imagen" id="imagenInput" placeholder="Subir imagen">
+    </div>
 
-                
-                <div class="text-center">
-                  <tr>
-                  <input type="submit" name="registrar" value="Registro" class="btn btn-primary modal_close">
-                  </tr>
-                </div>
-
+    <div class="text-center">
+        <input type="submit" name="registrar" value="Registro" class="btn btn-primary modal_close">
+    </div>
+</form>
             </dialog>
 
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -122,6 +122,7 @@ include '../funciones/img_decoracion.php';
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   
   <!-- Vendor JS Files -->
+  <script src="../../validaciones/validar_decoracion.js"></script>
   <script src="../../../js/modal.js"></script>
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

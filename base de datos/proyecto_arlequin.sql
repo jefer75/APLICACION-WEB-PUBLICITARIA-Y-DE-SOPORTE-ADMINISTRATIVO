@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-06-2024 a las 08:56:34
+-- Tiempo de generación: 24-06-2024 a las 07:45:54
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `actividades` (
   `id_actividad` int(11) NOT NULL,
   `nombre` varchar(20) NOT NULL,
-  `descripcion` varchar(50) NOT NULL,
+  `descripcion` varchar(150) NOT NULL,
   `imagen` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -39,7 +39,7 @@ CREATE TABLE `actividades` (
 --
 
 INSERT INTO `actividades` (`id_actividad`, `nombre`, `descripcion`, `imagen`) VALUES
-(21, 'Pintucaritas', 'Hermosas figuras hechas con pinturas especiales pa', '../../../imagenes/registradas/actividades/21.jpeg'),
+(21, 'Pintucaritas', 'Dibujos para los niños', '../../../imagenes/registradas/actividades/21.jpeg'),
 (22, 'Show de payasito', 'Gran show de payasito', '../../../imagenes/registradas/actividades/22.jpg');
 
 -- --------------------------------------------------------
@@ -84,7 +84,7 @@ CREATE TABLE `decoracion` (
 --
 
 INSERT INTO `decoracion` (`id_imagen`, `imagen`, `descripcion`) VALUES
-(23, '../../../imagenes/registradas/decoracion/23.jpg', 'Celebra tu baby shower con una decoración apropiada para la ocasión'),
+(23, '../../../imagenes/registradas/decoracion/23.jpg', 'Descripcion de prueba 1'),
 (24, '../../../imagenes/registradas/decoracion/24.jpg', 'experiencia'),
 (25, '../../../imagenes/registradas/decoracion/25.jpg', 'decoracion baby shower'),
 (28, '../../../imagenes/registradas/decoracion/28.jpeg', 'Leon');
@@ -256,7 +256,7 @@ CREATE TABLE `eventos` (
 
 INSERT INTO `eventos` (`id_eventos`, `fecha_evento`, `id_paquetes`, `id_tipo_e`, `lugar`, `cant_ninos`, `f_inicio`, `f_fin`, `hora_inicio`, `hora_fin`, `edad_home`, `descripcion`, `cedula`, `id_estado`) VALUES
 (13, '2024-06-18', 3, 7, 'cra 123 #56 barrio condoritos', 120, '2024-06-26', '2024-06-26', '15:30:00', '19:00:00', 15, 'celebración del día del niños', 987654321, 6),
-(14, '2024-06-22', 1, 1, 'calle 10 numero 15/12', 12, '2024-06-26', '2024-06-26', '15:00:00', '22:45:00', 4, 'descripcion evento 2', 1104254269, 6);
+(14, '2024-06-22', 1, 1, 'calle 10 numero 15/12', 12, '2024-06-26', '2024-06-26', '15:00:00', '22:45:00', 4, 'descripcion evento 2', 1104254269, 8);
 
 -- --------------------------------------------------------
 
@@ -276,7 +276,7 @@ CREATE TABLE `factura` (
 --
 
 INSERT INTO `factura` (`id_factura`, `fecha`, `id_eventos`, `valor_total`) VALUES
-(1, '2024-06-13', 1, 150000);
+(2, '2024-06-24', 14, 190000);
 
 -- --------------------------------------------------------
 
@@ -319,9 +319,11 @@ CREATE TABLE `paquetes` (
 --
 
 INSERT INTO `paquetes` (`id_paquetes`, `nombre_paquete`, `edad_min`, `edad_max`, `valor`) VALUES
-(1, 'payasin', 2, 10, 100000),
-(2, 'Mini', 2, 10, 80000),
-(3, 'Titiriloco', 5, 12, 120000);
+(1, 'Payasin', 2, 10, 100000),
+(2, 'Mini', 1, 10, 80000),
+(3, 'Titiriloco', 5, 12, 100000),
+(7, 'Loco', 1, 0, 2),
+(8, 'asdsa', 12, 12, 123456);
 
 -- --------------------------------------------------------
 
@@ -366,7 +368,8 @@ INSERT INTO `tipo_e` (`id_tipo_e`, `tipo_evento`) VALUES
 (4, 'Matrimonio'),
 (5, 'Primera comunion'),
 (7, 'Especial Halloween'),
-(8, 'Despedida de soltero');
+(8, 'Despedida de soltero'),
+(12, 'prueba');
 
 -- --------------------------------------------------------
 
@@ -643,7 +646,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `id_actividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_actividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `articulos`
@@ -697,7 +700,7 @@ ALTER TABLE `eventos`
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `licencia`
@@ -709,7 +712,7 @@ ALTER TABLE `licencia`
 -- AUTO_INCREMENT de la tabla `paquetes`
 --
 ALTER TABLE `paquetes`
-  MODIFY `id_paquetes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_paquetes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_articulo`
@@ -721,7 +724,7 @@ ALTER TABLE `tipo_articulo`
 -- AUTO_INCREMENT de la tabla `tipo_e`
 --
 ALTER TABLE `tipo_e`
-  MODIFY `id_tipo_e` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_tipo_e` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_user`

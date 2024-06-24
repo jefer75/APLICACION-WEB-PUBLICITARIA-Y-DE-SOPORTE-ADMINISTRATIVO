@@ -28,7 +28,7 @@
 
               <input type="submit" class="añadir" id="añadir" value="Añadir" onclick="opendialog();">
 
-              <form method="post" action="funciones/act_excel.php">
+              <form method="post" action="funciones/act_excel.php" onsubmit="return validarFormulario();">
                             <button type="submit" name="act_excel" class="btn btn-success">
                                 <i class="bi bi-download"></i>
                             </button>
@@ -41,25 +41,26 @@
                 <h2 class="modal__title">Registrar actividad</h2> 
           <!-- Multi Columns Form -->
 
-                <form method="post" name="formreg" action="../funciones/reg_actividades.php"  class="row g-3"  autocomplete="off" enctype="multipart/form-data">
-
+          <form method="post" name="formreg" action="../funciones/reg_actividades.php"  class="row g-3"  autocomplete="off" enctype="multipart/form-data" onsubmit="return validarFormulario();">
                 <div class="col-md-6">
-
-                  <label for="inputEmail5" class="form-label">Nombre</label>
-
-                  <input  class="form-control" type="text" name="nombre" pattern="[A-Za-z/s]{4,10}" placeholder="Nombre actividad ">
-                </div>
-
-               
-
-                <div class="co-md-6">
-                  <label for="inputEmail5" class="form-label">Descripcion</label>
-                  <input  class="form-control" type="text" name="descripcion" placeholder=" descripcion del paquete">
-                </div>
-
+            <label for="inputEmail5" class="form-label">Nombre</label>
+            <input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nombre actividad">
+            <div id="error_nombre" class="invalid-feedback">
+                El nombre debe contener minimo 4.
+            </div>
+        </div>
+       
+        <div class="col-md-6">
+            <label for="inputEmail5" class="form-label">Descripción</label>
+            <input class="form-control" type="text" name="descripcion" id="descripcionInput" placeholder="Descripción del paquete">
+            <div id="error_descripcion" class="invalid-feedback">
+                La descripción debe tener minimo 10 caracteres y no puede exceder los 80 caracteres.
+            </div>
+        </div>
+   
                 <div class="co-md-6">
                   <label for="inputEmail5" class="form-label">Imagen</label>
-                  <input  class="form-control" type="file" name="imagen" placeholder="subir imagen" >
+                  <input  class="form-control" type="file" name="imagen">
                 </div>
                 
                 <div class="text-center">
@@ -145,6 +146,7 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+  <script src="../../validaciones/validar_actividades.js"></script>
   <script src="../../../js/modal.js"></script>
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
