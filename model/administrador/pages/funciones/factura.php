@@ -113,7 +113,7 @@ class PDF extends FPDF {
         $this->Cell(0, 6, $reserva['hora_inicio'], 0, 1, 'L');
         $this->Cell(50, 6, 'Cliente:', 0, 0, 'L');
         $this->Cell(0, 6, $reserva['nombre'], 0, 1, 'L');
-        $this->Ln(5); // 
+        $this->Ln(5); // Salto de línea
     }
 
     // Función para mostrar el listado de reservas
@@ -132,23 +132,26 @@ class PDF extends FPDF {
 
         // Encabezados de la tabla
         $this->SetFont('Arial', 'B', 10);
-        $this->Cell(90, 6, 'Articulo', 1, 0, 'L');
-        $this->Cell(30, 6, 'Cantidad', 1, 0, 'L');
-        $this->Cell(40, 6, 'Valor Neto', 1, 0, 'L');
-        $this->Cell(30, 6, 'Valor Total', 1, 1, 'L');
+        $this->Cell(90, 6, 'Articulo', 1, 0, 'C');
+        $this->Cell(30, 6, 'Cantidad', 1, 0, 'C');
+        $this->Cell(40, 6, 'Valor Neto', 1, 0, 'C');
+        $this->Ln(6);
 
         $this->SetFont('Arial', '', 10);
         foreach ($reservas as $reserva) {
             $this->Cell(90, 6, $reserva['nombre_A'], 1);
-            $this->Cell(30, 6, $reserva['cantidad'], 1);
-            $this->Cell(40, 6, number_format($reserva['valor_neto'], 2), 1);
-            $this->Cell(30, 6, number_format($reserva['valor_total'], 2), 1);
+            $this->Cell(30, 6, $reserva['cantidad'], 1, 0, 'C');
+            $this->Cell(40, 6, number_format($reserva['valor_neto'], 2), 1, 0, 'R');
             $this->Ln(6);
         }
 
+        $sql = $con->prepare("SELECT * FROM factura WHERE id_eventos = :id_evento");
+        $sql->execute(['id_evento' => $_GET['id']]);
+        $fila = $sql->fetch();
+
         // Valor total fuera de la tabla
         $this->Ln(10);
-        $total = $reservas[0]['valor_total']; // Asumimos que el valor total es el mismo para todas las reservas
+        $total = $fila['valor_total'];
         $this->Cell(0, 10, 'Valor Total: ' . number_format($total, 2), 0, 1, 'R');
     }
 }

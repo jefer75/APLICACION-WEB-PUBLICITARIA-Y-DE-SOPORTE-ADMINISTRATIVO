@@ -111,7 +111,7 @@
                 </thead>
                 <tbody>
                   <?php
-                       $con_paquetes = $con->prepare("SELECT * FROM paquetes WHERE id_paquetes='".$_GET['id']."'");
+                      $con_paquetes = $con->prepare("SELECT * FROM paquetes WHERE id_paquetes='".$_GET['id']."'");
                       $con_paquetes->execute();
                       $paquetes = $con_paquetes->fetchAll(PDO::FETCH_ASSOC);
                       foreach ($paquetes as $fila) {
@@ -188,14 +188,13 @@
                         $id_actividades = $fila['id_actividad'];
                         $nombre = $fila['nombre'];
                        
-                        
                     ?>
                   <tr>
                     
                   <td><?php echo $nombre?></td>
                   <td>
                     <form method="POST">
-                      <input type="hidden" name="valor" value="<?php echo $id_actividades ?>" >
+                        <input type="hidden" name="valor" value="<?php echo $id_actividades ?>" >
                         <button type="submit" class="btn" name="eliminar" style="background-color: #2c8ac9; color: white;">
                         <i class="bi bi-trash"></i>
                         </button>

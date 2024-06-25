@@ -58,24 +58,39 @@
         $estado= $_POST['estado'];
 
 
+        
+        $insert= $con -> prepare ("UPDATE eventos SET id_paquetes='$id_paquetes', id_tipo_e=$id_tipo_e, lugar='$lugar', cant_ninos='$cant_ninos', f_inicio='$f_inicio', f_fin='$f_fin', hora_inicio='$hora_inicio', hora_fin='$hora_fin', edad_home='$edad_home', cedula='$cliente', descripcion='$descripcion', id_estado='$estado' WHERE id_eventos = $id_eventos");
+        $insert -> execute();
+        
         $art_alquilados= $con -> prepare("SELECT SUM(detalle_factura.valor_neto) AS valor_articulos
                                     FROM detalle_factura WHERE id_evento = $id_eventos");
         $art_alquilados->execute();
         $fila = $art_alquilados -> fetch();
-        $valor=$fila['valor_articulos'];
         
-        $valor_total=$precio + $valor;
 
-            $insert= $con -> prepare ("UPDATE eventos SET id_paquetes='$id_paquetes', id_tipo_e=$id_tipo_e, lugar='$lugar', cant_ninos='$cant_ninos', f_inicio='$f_inicio', f_fin='$f_fin', hora_inicio='$hora_inicio', hora_fin='$hora_fin', edad_home='$edad_home', cedula='$cliente', descripcion='$descripcion', id_estado='$estado' WHERE id_eventos = $id_eventos");
-            $insert -> execute();
-              
+        if ($fila) {
+          $valor=$fila['valor_articulos'];
+          
+          $valor_total=$precio + $valor;
 
-            if($estado==8){
+          $insert= $con -> prepare ("INSERT INTO factura (fecha, id_eventos, valor_total) VALUES ('$fecha_actual', $id_eventos, $valor_total)");
+          $insert -> execute();
+          
+          if($estado==8){
 
-              $insert= $con -> prepare ("INSERT INTO factura (fecha, id_eventos, valor_total) VALUES ('$fecha_actual', $id_eventos, $valor_total)");
-            $insert -> execute();
-              
-            }
+            $insert= $con -> prepare ("INSERT INTO factura (fecha, id_eventos, valor_total) VALUES ('$fecha_actual', $id_eventos, $valor_total)");
+          $insert -> execute();
+          }
+        }
+        else {
+          if($estado==8){
+  
+            $insert= $con -> prepare ("INSERT INTO factura (fecha, id_eventos, valor_total) VALUES ('$fecha_actual', $id_eventos, $precio)");
+          $insert -> execute();
+          }
+        }
+        
+
             echo '<script> alert ("Registro actualizado exitosamente");</script>';
             echo '<script> window.close(); </script>'; 
         }
