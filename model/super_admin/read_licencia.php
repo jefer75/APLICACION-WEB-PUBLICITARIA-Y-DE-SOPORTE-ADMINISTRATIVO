@@ -53,7 +53,7 @@ $resultados = $query->fetchAll(PDO::FETCH_ASSOC);
                         <td><?php echo $fila['fecha_fin'] ?></td>
                         <td><?php echo $fila['nombre_emp'] ?></td>
                         <td><?php echo $fila['estado'] ?></td>
-                        <td><a class="hiper" href="" onclick="window.open('actualizar y eliminar/licencia.php?id=<?php echo $fila['nit'] ?>','','width=500, height=400, toolbar=NO'); void(null);"><i class="uil uil-edit"></i>
+                        <td><a class="hiper" href="" onclick="window.open('actualizar y eliminar/licencia.php?id=<?php echo $fila['id_licencia'] ?>','','width=500, height=400, toolbar=NO'); void(null);"><i class="uil uil-edit"></i>
                         </a>
                         </td>
                         

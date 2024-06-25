@@ -26,22 +26,26 @@
 
        $id_tipo_art= $_POST['id_tipo_art'];
        $nombre_A = $_POST['nombre_A'];
-       $id_estado= $_POST['id_estado'];
        $descripcion= $_POST['descripcion'];
        $suma = $_POST['suma'];
        $valor= $_POST['valor'];
 
-      if ($valor <= 0) {  
-        echo '<script>alert("CANTIDAD Y VALOR DEBEN SER MAYORES A 0");</script>';
+      if (is_int($suma) AND $suma > 0) {
+            $cantidad_total=$suma + $cantidad;
+            $insert= $con -> prepare ("UPDATE articulos SET  nombre_A='$nombre_A', descripcion='$descripcion', id_tipo_art='$id_tipo_art', cantidad=$cantidad_total, valor='$valor' WHERE id_articulo = '".$_GET['id']."'");
+            $insert -> execute();
+            echo '<script> alert ("Registro actualizado exitosamente");</script>';
+            echo '<script> window.close(); </script>';
+              
+      }
+      else if($suma!=""){
+            echo '<script> alert ("La cantidad sumada debe ser un valor entero");</script>';
       }
        else {
-        
-        $cantidad_total = $suma + $cantidad;
-        
-           $insert= $con -> prepare ("UPDATE articulos SET  nombre_A='$nombre_A', id_estado='$id_estado', descripcion='$descripcion', id_tipo_art='$id_tipo_art', cantidad=$cantidad_total, valor='$valor' WHERE id_articulo = '".$_GET['id']."'");
-           $insert -> execute();
-           echo '<script> alert ("Registro actualizado exitosamente");</script>';
-           echo '<script> window.close(); </script>';
+            $insert= $con -> prepare ("UPDATE articulos SET  nombre_A='$nombre_A', descripcion='$descripcion', id_tipo_art='$id_tipo_art', valor='$valor' WHERE id_articulo = '".$_GET['id']."'");
+            $insert -> execute();
+            echo '<script> alert ("Registro actualizado exitosamente");</script>';
+            echo '<script> window.close(); </script>';
        } 
     }
 
@@ -223,21 +227,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 </script>
-
-            <div class="col-md-6">
-                                <label for="inputTipoArticulo" class="form-label">Estado</label>
-                                <select class="form-control" name="id_estado">
-                                    <option value="<?php echo $id_estado ?>"><?php echo $estado ?></option>
-                                    <?php
-                                    $control = $con-> prepare ("SELECT * FROM estados WHERE id_estado != $id_estado AND estado = 'Activo' or estado='inactivo'");
-                                    $control -> execute();
-                                    while ($fila = $control->fetch(PDO::FETCH_ASSOC))  
-                                    {
-                                        echo "<option value='" . $fila['id_estado'] . "'>" . $fila['estado'] . "</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
 
             <div class="col-md-6">
                                 <label for="inputTipoArticulo" class="form-label">Tipo Articulos</label>

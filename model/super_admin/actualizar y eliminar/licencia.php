@@ -6,21 +6,25 @@
         $con = $db -> conectar();
 
     //empieza la consulta
-    $sql = $con -> prepare("SELECT * FROM licencia WHERE id_licencia='".$_GET['id']."'");
+    $sql = $con -> prepare("SELECT licencia.fecha_fin, licencia.id_estado, estados.estado
+    FROM licencia
+    INNER JOIN estados ON estados.id_estado=licencia.id_estado
+    WHERE id_licencia='".$_GET['id']."'");
     $sql -> execute();
     $fila = $sql -> fetch ();
+    
+    $fecha_fin=$fila['fecha_fin'];
+    $id_estado=$fila['id_estado'];
+    $estado=$fila['estado'];
+
     //declaracion de variables de campos en la tabla
 
     if (isset($_POST['actualizar'])){
 
-        $id_licencia = $_POST['id_licencia'];
-        $licencia = $_POST['licencia'];
-        $nit = $_POST['nit'];
-        $fecha_ini = $_POST['fecha_ini'];
         $fecha_fin = $_POST['fecha_fin'];
         $id_estado = $_POST['id_estado'];
 
-            $insert= $con -> prepare ("UPDATE licencia SET Nit='$nit', fecha_fin='$fecha_fin', id_estado='$id_estado' WHERE id_licencia = '".$_GET['id']."'");
+            $insert= $con -> prepare ("UPDATE licencia SET fecha_fin='$fecha_fin', id_estado='$id_estado' WHERE id_licencia = '".$_GET['id']."'");
             $insert -> execute();
             echo '<script> alert ("Registro actualizado exitosamente");</script>';
             echo '<script> window.close(); </script>';
@@ -94,30 +98,15 @@
   <div class="card-body">
             <form autocomplete="off" name="form_actualizar" method="POST">
 
-                
-                
-               
-
-                
-
                 <tr>
-                    <td>Fecha de inicio</td>
-                    <td><input type="date"  class="form-control"  name="fecha_ini" value="<?php echo $fila['fecha_ini'] ?>" readonly></td>                 
-                </tr>
-
-                
-
-                <tr>
-                    <td>Fecha fin</td>
-                    <td><input type="date"   class="form-control" name="fecha_fin" value="<?php echo $fila['fecha_fin'] ?>"></td>                 
-                </tr>
-
-                
+                    <td>Fecha de fin</td>
+                    <td><input type="date"  class="form-control"  name="fecha_fin" value="<?php echo $fecha_fin ?>"></td>                 
+                </tr>                
                 <tr>
                     <td>Estado</td>
                     <td>
                     <select  class="form-control" name="id_estado">
-                    <option value ="<?php echo $fila['id_estado'] ?>">Seleccione Estado de licencia</option>
+                    <option value ="<?php echo $id_estado ?>"><?php echo $estado ?></option>
                     <?php
                         $control = $con -> prepare ("SELECT * from estados where id_estado <= 2");
                         $control -> execute();
