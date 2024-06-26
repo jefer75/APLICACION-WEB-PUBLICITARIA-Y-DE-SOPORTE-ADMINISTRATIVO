@@ -5,6 +5,13 @@ require_once("../../../db/connection.php");
 $db = new Database();
 $con = $db -> conectar();
 
+$cedula = $_SESSION['cedula'];
+       if (!isset($cedula)){
+         //include("../../../controller/validar_licencia.php");
+         echo '<script>alert("No has iniciado sesion");</script>';
+         header("Location: ../inicio/login.php");
+         }
+
 if (isset($_POST['aceptar'])){
     
     $sql= $con -> prepare ("SELECT * FROM decoracion WHERE id_imagen='".$_GET['id']."'");

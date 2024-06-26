@@ -4,6 +4,14 @@ require_once("../../../db/connection.php");
 // include("../../../controller/validarSesion.php");
 $db = new Database();
 $con = $db -> conectar();
+
+$cedula = $_SESSION['cedula'];
+       if (!isset($cedula)){
+         //include("../../../controller/validar_licencia.php");
+         echo '<script>alert("No has iniciado sesion");</script>';
+         header("Location: ../inicio/login.php");
+         }
+
     $id_evento = $_GET['id'];
 
     $con_evento = $con->prepare("SELECT * FROM eventos WHERE id_eventos= $id_evento");

@@ -2,8 +2,6 @@
 include 'plantilla.php';
 include '../funciones/reg_articulos.php';
 ?>
-  
-
 <title>Articulos</title>
 
 <main id="main" class="main">
@@ -12,7 +10,6 @@ include '../funciones/reg_articulos.php';
     <h1>Complementos</h1>
 
   </div><!-- End Page Title -->
-
   <section class="section">
         <div class="row">
             <div class="col-lg-12">

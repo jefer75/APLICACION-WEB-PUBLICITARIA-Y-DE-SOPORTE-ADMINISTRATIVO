@@ -1,4 +1,11 @@
-
+<?php
+$cedula = $_SESSION['cedula'];
+if (!isset($cedula)){
+  //include("../../../controller/validar_licencia.php");
+  echo '<script>alert("No has iniciado sesion");</script>';
+  header("Location: ../inicio/login.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="es-MX">
 

@@ -5,6 +5,12 @@
         $db = new Database();
         $con = $db -> conectar();
 
+        $cedula = $_SESSION['cedula'];
+        if (!isset($_SESSION['cedula'])) {
+            header("Location: ../inicio/logins.php");
+            exit;
+        }
+
     //empieza la consulta
     $sql = $con -> prepare("SELECT licencia.fecha_fin, licencia.id_estado, estados.estado
     FROM licencia

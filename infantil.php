@@ -1,7 +1,6 @@
 <?php
-
+//realiza la conexion a la base de datos
 require_once("db/connection.php");
-// include("../../../controller/validarSesion.php");
 $db = new Database();
 $con = $db -> conectar();
 ?>
@@ -93,6 +92,7 @@ $con = $db -> conectar();
             
         <div class="info">
             <?php
+            //realiza la consulta a la tabla actividades y se trae los datos encontrados
                        $actividades = $con->prepare("SELECT * FROM actividades");
                        $actividades->execute();
                        $actividades = $actividades->fetchAll(PDO::FETCH_ASSOC);
@@ -106,14 +106,17 @@ $con = $db -> conectar();
 
             <div class="con">
                <div class="img">
+                <!-- imprime la imagen con el direccionamiento que trae desde la base de datos -->
                <img src="model/administrador/inicio/<?php echo $imagen?>">
                </div>
                <div class="top-text">
+                <!-- imprime el nombre -->
                     <h3><?php echo $nombre?></h3>
                 
                </div>
                <div class="bottom-text">
                   <div class="text">
+                    <!-- imprime la descripcion -->
                   <p><?php echo $descripcion?></p>
                   </div>
                   <div class="btn">

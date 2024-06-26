@@ -4,28 +4,6 @@ require_once "../../db/connection.php";
 $db = new DataBase();
 $con = $db->conectar();
 
-// Verificar si el usuario ha iniciado sesión
-$cedula = $_SESSION['cedula'];
-if (!isset($_SESSION['cedula'])) {
-    header("Location: inicio/logins.php");
-    exit;
-}
-
-
-$con_nombre = $con->prepare("SELECT * FROM usuarios WHERE cedula = $cedula");
-$con_nombre->execute();
-$nombres = $con_nombre->fetchAll(PDO::FETCH_ASSOC);
-foreach ($nombres as $fila) {
-    $nombre = $fila['nombre'];
-}
-?>
-<?php
-// Cerrar sesión si se envió el formulario
-if (isset($_POST['cerrar_sesion'])) {
-     // Elimina la variable de sesión específica
-    session_destroy(); // Destruye la sesión
-    header('Location: index.php'); // Redirige al inicio de sesión
-}
 ?>
 
 <!DOCTYPE html>

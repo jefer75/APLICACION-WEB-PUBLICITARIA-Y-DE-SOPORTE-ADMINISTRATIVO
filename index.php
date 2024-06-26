@@ -1,15 +1,16 @@
 <?php
-    session_start();
+    //realiza la conexion a la base de datos
     require_once("db/connection.php");
-    // include("../../../controller/validarSesion.php");
     $db = new Database();
     $con = $db -> conectar();
 
-
+    //escucha el boton que envia los datos del formulario de registro
    if ((isset($_POST["MM_insert"]))&&($_POST["MM_insert"]=="formreg"))
    {
+    //declara las variables que traen los inputs diligenciados por el usuario
     $nombre= $_POST['nombre'];
     $apellido= $_POST['apellido'];
+    //concatena el nombre y apellido
     $nombre_comp = $nombre . " " . $apellido;
     $cedula= $_POST['cedula'];
     $celular= $_POST['celular'];
@@ -19,6 +20,7 @@
     $id_estado= 1;
     $nit= 123456789; 
 
+    //consulta si la cedula ya esta registrada
      $sql= $con -> prepare ("SELECT * FROM usuarios WHERE cedula='$cedula'");
      $sql -> execute();
      $fila = $sql -> fetchAll(PDO::FETCH_ASSOC);
@@ -29,7 +31,7 @@
      }
 
      else
-   
+     //valida que los datos esten llenos correctamente
      if ($cedula=="" || $nombre=="" || $correo=="" || $celular=="" || $contrasena=="" || $tipo_user=="" || $id_estado=="" || $nit=="")
       {
          echo '<script>alert ("EXISTEN DATOS VACIOS");</script>';
@@ -37,9 +39,10 @@
       }
       
       else{
-
+        //encripta la contraseña
         $pass_cifrado = password_hash($contrasena,PASSWORD_DEFAULT, array("pass"=>12));
         
+        //inserta en la base de datos
         $insertSQL = $con->prepare("INSERT INTO usuarios(cedula, nombre, celular, contrasena, correo, id_tipo_user, id_estado, nit) VALUES('$cedula', '$nombre_comp', '$celular', '$pass_cifrado', '$correo', '$tipo_user', '$id_estado', '$nit')");
         $insertSQL -> execute();
         echo '<script> alert("REGISTRO EXITOSO");</script>';

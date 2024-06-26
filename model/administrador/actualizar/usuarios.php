@@ -5,6 +5,12 @@
        $db = new Database();
        $con = $db -> conectar();
 
+       $cedula = $_SESSION['cedula'];
+if (!isset($cedula)){
+  //include("../../../controller/validar_licencia.php");
+  echo '<script>alert("No has iniciado sesion");</script>';
+  header("Location: ../inicio/login.php");
+}
    //empieza la consulta
   
    $sql = $con -> prepare("SELECT usuarios.cedula, usuarios.nombre, usuarios.celular, usuarios.correo, tipo_user.tipo_user, usuarios.id_estado, estados.estado, empresa.nombre_emp
@@ -34,7 +40,7 @@
             $insert= $con -> prepare ("UPDATE usuarios SET id_estado=$estado WHERE cedula = '".$_GET['id']."'");
             $insert -> execute();
             echo '<script> alert ("Registro actualizado exitosamente");</script>';
-                echo '<script> window.close(); </script>';
+            echo '<script> window.close(); </script>';
         } 
 
         ?>
@@ -53,7 +59,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Actualizar Articulos</title>
+<title>Actualizar Usuarios</title>
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6375/6375816.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,7 +81,7 @@
 
         <div class="card-body">
 
-          <h5 class="card-title">Articulos</h5>
+          <h5 class="card-title">Usuarios</h5>
 
           <!-- Multi Columns Form -->
 

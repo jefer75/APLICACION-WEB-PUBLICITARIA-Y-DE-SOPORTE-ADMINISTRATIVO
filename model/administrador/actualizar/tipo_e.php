@@ -5,6 +5,13 @@
         $db = new Database();
         $con = $db -> conectar();
 
+        $cedula = $_SESSION['cedula'];
+        if (!isset($cedula)){
+          //include("../../../controller/validar_licencia.php");
+          echo '<script>alert("No has iniciado sesion");</script>';
+          header("Location: ../inicio/login.php");
+          }
+
     //empieza la consulta
     $sql = $con -> prepare("SELECT * FROM tipo_e WHERE id_tipo_e='".$_GET['id']."'");
     $sql -> execute();

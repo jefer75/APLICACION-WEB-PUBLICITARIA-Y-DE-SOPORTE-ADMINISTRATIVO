@@ -39,7 +39,7 @@ else {
 
         $total = $articulos_alq['articulos_alquilados']; 
     }
-                    
+
     $suma = $total + $cantidad;
 
     if ($fila){

@@ -27,7 +27,7 @@ if (isset($_POST['registro'])){
    }
    else{
 
-    $sql= $con -> prepare ("SELECT eventos.id_eventos, detalle_animador.cedula FROM detalle_animador INNER JOIN eventos ON eventos.id_eventos = detalle_animador.id_eventos Where eventos.f_inicio = '$fecha_inicio' AND detalle_animador.cedula = $animador AND eventos. id_estado = 6");
+    $sql= $con -> prepare ("SELECT eventos.id_eventos, detalle_animador.cedula FROM detalle_animador INNER JOIN eventos ON eventos.id_eventos = detalle_animador.id_eventos Where eventos.f_inicio = '$fecha_inicio' AND detalle_animador.cedula = $animador");
     $sql -> execute();
     $anim_asignado = $sql -> fetchAll(PDO::FETCH_ASSOC);
     
@@ -39,7 +39,6 @@ if (isset($_POST['registro'])){
         $insertSQL -> execute();
         echo '<script> alert("Animador asignado con éxito");</script>';
     }
-
    }
   }  
  }

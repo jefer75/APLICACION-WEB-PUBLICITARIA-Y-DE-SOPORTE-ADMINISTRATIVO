@@ -5,20 +5,13 @@ $db = new DataBase();
 $con = $db->conectar();
 
 // Consulta para obtener el NIT de la empresa con licencia activa
-$sql_nit = $con->prepare("SELECT nit FROM licencia WHERE id_estado = 1");
+$sql_nit = $con->prepare("SELECT * FROM licencia WHERE id_estado = 1");
 $sql_nit->execute();
 $fila_nit = $sql_nit->fetch();
 
 if ($fila_nit) {
     $nit = $fila_nit['nit'];
 
-    // Consulta para obtener el estado de la licencia usando el NIT
-    $sql = $con->prepare("SELECT id_estado FROM licencia WHERE nit = :nit");
-    $sql->bindParam(':nit', $nit, PDO::PARAM_INT);
-    $sql->execute();
-    $fila = $sql->fetch(PDO::FETCH_ASSOC);
-
-    if ($fila && $fila['id_estado'] == 1) {
 ?>
 
 <!DOCTYPE html>
@@ -178,13 +171,10 @@ if ($fila_nit) {
 </html>
 
 <?php
+    
     } else {
-        echo '<script>alert("Error: La licencia está inactiva o no existe. Para poder activar la Licencia comunicarse a este correo ortiztatiana1416@gmail.com "); window.location.href="../../../index.php";</script>';
-        exit();
+        echo '<script>alert("No hay ninguna licencia activa");</script>';
+    echo '<script>window.location="../../../index.php";</script>';
     }
-}
 
-if (isset($_POST['regresar'])) {
-    header('Location: ../../../index.php');
-}
 ?>

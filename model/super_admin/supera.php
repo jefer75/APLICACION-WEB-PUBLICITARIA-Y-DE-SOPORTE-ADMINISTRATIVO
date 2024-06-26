@@ -2,10 +2,28 @@
 
 include 'plantilla.php';
 
-
 ?>
     <title>ELITECH</title>
     <link rel="stylesheet" href="css/tabl.css">
+    <link rel="stylesheet" href="css/regis.css">
+    <style>
+    dialog{
+        width: 60%;
+        height: 70vh;
+        padding: 5vh 10vh;
+        border: 0;
+        margin: 5% 20%;
+        }  
+        .modal_close{
+            padding: 2vh;
+            background-color: red;
+            float:right;
+            margin-bottom: 2%;
+            border-radius: 1vh;
+            border: 0;
+            }
+    
+    </style>
 </head>
 <body>
 
@@ -17,12 +35,63 @@ include 'plantilla.php';
                     <i class="uil uil-user"></i>
                     <span class="text">Super Administradores</span>
                 </div>
+                <input type="submit" class="hiper" id="añadir" value="+" onclick="opendialog();">
+    
+                <dialog class="añadir_cont" id="añadir_cont">
+                    <form method="post" action="registrar/suadmin.php" class="signup-form" autocomplete="off">
+                    <button id="añadir_close" class="btn modal_close" onclick="closedialog();">X</button>
+                <div class="form-row">
+                    <div class="form-column">
+                        <div class="form-floating">
+                            <label for="nombres">Nombres</label>
+                            <input class="form-control" type="text" name="nombre" id="nombres" placeholder="Digite Nombre" required>
+                        </div>
+                    </div>
+
+                    <div class="form-column">
+                        <div class="form-floating">
+                            <label for="apellidos">Apellidos</label>
+                            <input class="form-control" type="text" name="apellido" id="apellidos" placeholder="Apellidos" required>
+                        </div>
+                    </div>
+
+                    <div class="form-column">
+                        <div class="form-floating">
+                            <label for="documento">N° Documento</label>
+                            <input class="form-control" type="text" name="cedula" id="documento" placeholder="Digite Documento" required>
+                        </div>
+                    </div>
+
+                    <div class="form-column">
+                        <div class="form-floating">
+                            <label for="telefono">Contacto</label>
+                            <input class="form-control" type="text" name="celular" id="telefono" placeholder="Digite Telefono" required>
+                        </div>
+                    </div>
+
+                    <div class="form-column">
+                        <div class="form-floating">
+                            <label for="correo">Correo</label>
+                            <input class="form-control" type="email" name="correo" id="correo" placeholder="Digite Correo" required>
+                        </div>
+                    </div>
+
+                    <div class="form-column">
+                        <div class="form-floating">
+                            <label for="contrasena">Contraseña</label>
+                            <input class="form-control" type="password" name="contrasena" id="contrasena" placeholder="Contraseña" required>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" type="submit" name="registrarse">Registro</button>
+                <input type="hidden" name="MM_insert" value="formreg">
+            </form>
+
+                </dialog>
                 <div class="formulario">
                 <br>
-                <a class="hiper" href="" onclick="window.open
-                ('registrar/suadmin.php?id=','','width=850, height=500, toolbar=NO'); void(null);">
-                <i class="uil uil-plus"></i>
-            </a>
+                
                 <form method="POST" action="">
                 
                 <table class="custom-table">
@@ -78,3 +147,46 @@ include 'plantilla.php';
         </div>
     </footer>
     </section>
+    <script src="../../js/modal.js"></script>
+    <script>
+        function validarFormulario() {
+            var nombres = document.getElementById('nombres').value.trim();
+            var apellidos = document.getElementById('apellidos').value.trim();
+            var documento = document.getElementById('documento').value.trim();
+            var telefono = document.getElementById('telefono').value.trim();
+            var correo = document.getElementById('correo').value.trim();
+            var contrasena = document.getElementById('contrasena').value.trim();
+
+            // Validación de nombres y apellidos (solo letras y espacios, máximo 30 caracteres)
+            if (!/^[a-zA-Z\s]{1,30}$/.test(nombres) || !/^[a-zA-Z\s]{1,30}$/.test(apellidos)) {
+                alert('Los nombres y apellidos deben contener solo letras y espacios, con un máximo de 30 caracteres cada uno.');
+                return false;
+            }
+
+            // Validación de documento (solo números, mínimo 8 y máximo 10 caracteres)
+            if (!/^\d{8,10}$/.test(documento)) {
+                alert('El número de documento debe contener solo números y tener entre 8 y 10 caracteres.');
+                return false;
+            }
+
+            // Validación de teléfono (solo números, exactamente 10 caracteres)
+            if (!/^\d{10}$/.test(telefono)) {
+                alert('El teléfono debe contener exactamente 10 dígitos numéricos.');
+                return false;
+            }
+
+            // Validación de correo electrónico (formato de correo válido)
+            if (!/\S+@\S+\.\S+/.test(correo)) {
+                alert('El correo electrónico no tiene un formato válido.');
+                return false;
+            }
+
+            // Validación de contraseña (mínimo 8 y máximo 11 caracteres)
+            if (contrasena.length < 8 || contrasena.length > 11) {
+                alert('La contraseña debe tener entre 8 y 11 caracteres.');
+                return false;
+            }
+
+            return true; // Si todas las validaciones pasan, se envía el formulario
+        }
+    </script>
